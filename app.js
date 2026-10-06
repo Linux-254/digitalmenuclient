@@ -1103,23 +1103,102 @@ function setupEventListeners() {
     renderStaffRoster();
   });
 
-  // Sidebar navigation handling
+  // ── Full Sidebar Navigation Panel Router ──
+  const NAV_PANEL_MAP = {
+    home:      'panel-home',
+    menu:      'panel-menu',
+    orders:    'panel-orders',
+    floor:     'panel-floor',
+    staff:     'panel-staff',
+    offers:    'panel-offers',
+    analytics: 'panel-analytics',
+    settings:  'panel-settings'
+  };
+
+  function switchDashPanel(targetNav) {
+    // Hide all panels
+    Object.values(NAV_PANEL_MAP).forEach(id => {
+      const el = document.getElementById(id);
+      if (el) el.style.display = 'none';
+    });
+    // Show the requested panel
+    const targetId = NAV_PANEL_MAP[targetNav] || 'panel-home';
+    const target = document.getElementById(targetId);
+    if (target) {
+      target.style.display = '';
+      target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+    // Special panel hydration
+    if (targetNav === 'floor') renderFloorMap();
+    if (targetNav === 'staff') renderStaffPanel();
+    if (targetNav === 'menu') {
+      renderDashboardCategories();
+      renderDashboardDishes();
+    }
+  }
+
+  // Floor Map renderer
+  function renderFloorMap() {
+    const grid = document.getElementById('floor-map-grid');
+    if (!grid || grid.dataset.rendered) return;
+    const tables = [
+      { num: 1,  zone: 'Garden',  seats: 4, status: 'occupied', waiter: 'Amina' },
+      { num: 2,  zone: 'Garden',  seats: 2, status: 'free',     waiter: '' },
+      { num: 3,  zone: 'Garden',  seats: 4, status: 'occupied', waiter: 'Brian' },
+      { num: 4,  zone: 'Terrace', seats: 6, status: 'occupied', waiter: 'Amina' },
+      { num: 5,  zone: 'Terrace', seats: 4, status: 'free',     waiter: '' },
+      { num: 6,  zone: 'Terrace', seats: 4, status: 'reserved', waiter: '' },
+      { num: 7,  zone: 'VIP',     seats: 8, status: 'occupied', waiter: 'Grace' },
+      { num: 8,  zone: 'Indoor',  seats: 4, status: 'free',     waiter: '' },
+      { num: 9,  zone: 'Indoor',  seats: 4, status: 'occupied', waiter: 'David' },
+      { num: 10, zone: 'Indoor',  seats: 2, status: 'free',     waiter: '' },
+      { num: 11, zone: 'Bar',     seats: 4, status: 'occupied', waiter: 'Grace' },
+      { num: 12, zone: 'Bar',     seats: 2, status: 'free',     waiter: '' },
+    ];
+    const statusColor = { occupied: '#10b981', free: '#e2e8f0', reserved: '#fef3c7' };
+    const statusBorder = { occupied: '#059669', free: '#cbd5e1', reserved: '#fbbf24' };
+    grid.innerHTML = tables.map(t => `
+      <div class="floor-table-cell" style="border-color:${statusBorder[t.status]};">
+        <div class="floor-table-status-dot" style="background:${statusColor[t.status]};"></div>
+        <div class="floor-table-num">Table ${t.num}</div>
+        <div class="floor-table-zone">${t.zone} · ${t.seats} seats</div>
+        ${t.waiter ? `<div class="floor-table-waiter">${t.waiter}</div>` : '<div class="floor-table-waiter floor-table-waiter--empty">Unassigned</div>'}
+        <div class="floor-table-status-label ${t.status}">${t.status.charAt(0).toUpperCase() + t.status.slice(1)}</div>
+      </div>`).join('');
+    grid.dataset.rendered = '1';
+  }
+
+  // Staff panel mirror renderer
+  function renderStaffPanel() {
+    const panelGrid = document.getElementById('staff-roster-grid-panel');
+    if (!panelGrid) return;
+    panelGrid.innerHTML = staffRoster.map(s => `
+      <div class="staff-card ${s.active ? '' : 'staff-card--inactive'}">
+        <div class="staff-avatar">${s.name.split(' ').map(w=>w[0]).join('').slice(0,2).toUpperCase()}</div>
+        <div class="staff-info">
+          <strong>${s.name}</strong>
+          <span>${s.role}</span>
+          <small>${s.station} · PIN ****</small>
+        </div>
+        <div class="staff-status-dot ${s.active ? 'active' : 'inactive'}"></div>
+      </div>`).join('');
+  }
+
   $$('.nav-link').forEach(link => {
     link.addEventListener('click', () => {
       $$('.nav-link').forEach(l => l.classList.remove('active'));
       link.classList.add('active');
       const targetNav = link.getAttribute('data-dash-nav');
-      if (targetNav === 'staff') {
-        const staffSec = $('#section-staff-team');
-        if (staffSec) {
-          staffSec.scrollIntoView({ behavior: 'smooth' });
-          staffSec.style.outline = '2px solid var(--forest)';
-          setTimeout(() => { staffSec.style.outline = 'none'; }, 2000);
-        }
-      } else if (targetNav === 'menu') {
-        setView('dashboard');
-      }
+      switchDashPanel(targetNav);
     });
+  });
+
+  // Wire "Add Staff Member" button in standalone Staff panel
+  document.getElementById('btn-open-add-staff-panel')?.addEventListener('click', () => {
+    $('#new-staff-name').value = '';
+    $('#new-staff-pin').value = '';
+    $('#staff-admin-pin-verify').value = '';
+    $('#modal-add-staff')?.classList.add('active');
   });
 
   // Dismiss modal overlay on outside click
