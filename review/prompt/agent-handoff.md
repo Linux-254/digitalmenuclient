@@ -59,35 +59,38 @@ digitalmenuclient/
 
 ---
 
-## 4. Current State & Implemented Features (Session 3 Complete)
+## 4. Current State & Implemented Features (Session 4 Complete)
 
-1. **Guest Menu Experience**:
-   - Filterable categories: All, Grill & Mains, Coastal & Swahili, Fresh Juices, Sides, Desserts.
-   - Pinned / Hero dish highlighting and visual price formatting.
-   - Realtime dish availability indicators (Available vs Sold Out).
-   - "New Dish" badge popping animation and special offer discount corner ribbons (`has-offer`).
-   - Party size selector and table context badge (default Table 4).
+1. **Dedicated Guest Mode & Tableside Menu**:
+   - Clean tableside experience (`.guest-mode` hides internal staff sidebar navigation and staff profile).
+   - Dedicated Guest Header with `Fanfarrón` typography, `Table 04 · Terrace` selector, search box, cart trigger, and discreet `Staff OS` PIN unlock gate.
+   - Unified brand color coordination using deep forest emerald (`#0d382d`), warm gold (`#c89b3c`), soft cream (`#f8faf9`), and clean white cards.
 
-2. **Cart & Ordering**:
-   - Slide-in responsive cart drawer with item count, notes, subtotal, and dynamic checkout.
-   - Instant cart updates with badge pulse animations.
+2. **Menu Categorization & Full Drinks Catalog**:
+   - Horizontal category rail with real-time counters: `All`, `Starters`, `Grill & Steaks`, `Pizzas & Burgers`, `Pasta & Coastal`, `Juices & Drinks`, and `Desserts`.
+   - Complete beverage menu: Cold-Pressed Mango Passion Cooler, Traditional Kenyan Dawa, Hibiscus Mint Cooler, Tamarind Sparkler, Tusker Apple Cider, and Nyeri Single-Origin AA Espresso.
+   - 18 synchronized items across both staff inventory management and guest tableside catalog.
 
-3. **Payment Flow Simulation (Safeguarded)**:
-   - Method selection: M-Pesa STK Push and Card.
-   - Multi-stage transaction state: Pending → Processing → Success with masked phone details.
-   - *Security Rule*: In production, client code NEVER authoritatively confirms payment. Only the Supabase `mpesa-callback` Edge Function with service-role privileges marks an order as paid.
+3. **Minimalistic Responsive Dish Cards**:
+   - Minimalistic cards that fit comfortably on mobile (1-2 columns) and desktop (3-4 columns) without awkward horizontal cutoffs.
+   - Displays real food photography, dietary/discount tags, `Fanfarrón` titles, `Milano Perla` ingredient body copy, prep times, prices in KES, and quick `+ Add` button.
 
-4. **Post-Order Rating Flow**:
-   - Interactive 5-star rating widget with feedback comments and immediate capture into analytics.
+4. **Complete Tableside Ordering Flow**:
+   - Dish Customization Modal (`#modal-dish-customization`) with spice levels (Mild/Medium/Hot), side choices (Hand-cut Fries, Jasmine Rice, Ugali, Garden Salad), and kitchen notes.
+   - Floating sticky bottom Order Pill (`#guest-order-pill`) displaying live item count, KES total, and "Review Order & Send" button.
+   - Cart & Table Checkout (`#modal-cart`) with itemized review, quantity adjusters, and table confirmation.
+   - Live Kitchen Order Tracker (`#modal-order-tracker`) with real-time pulsing status, 3-stage kitchen progress stepper (`Order Sent` -> `Preparing in Kitchen` -> `Ready for Serving`), order ID `#SH-104`, itemized receipt summary, and "Call Waiter" action.
 
-5. **Staff / Admin Studio (PIN: `2407`)**:
-   - PIN-protected security gate preventing unauthorized modifications.
-   - New dish creation form with instant addition to menu and `is-new` highlight animation.
-   - Live availability toggles (instant menu state updates).
-   - Offers & Discounts manager: apply percentage/flat discounts to any dish with live struck-through prices.
-   - Analytics view: Live breakdown of top sellers, total orders, revenue, and average guest satisfaction.
+5. **Admin Staff Team Management**:
+   - Staff Roster Section (`#section-staff-team`) displaying active staff members, roles, assigned stations, and PINs.
+   - Add Staff Member Modal (`#modal-add-staff`) allowing admin to register new waiters, chefs, and bartenders (secured by venue PIN `2407`).
+   - "Staff Team" navigation item in the sidebar with live team count badge.
 
-6. **Print-Ready QR Flyer (`public/qr-flyer.html`)**:
+6. **Quality, Zero Emojis & Accessibility Compliance**:
+   - Audited and verified 0 emojis across `index.html`, `app.js`, and `styles.css` (100% SVG icons & clean typography).
+   - Custom fonts `Fanfarrón.otf` and `Milano Perla.otf` verified and served with HTTP 200 headers from `/public/fonts/`.
+
+7. **Table QR Flyer (`public/qr-flyer.html`)**:
    - Styled dark-forest branded flyer with Fanfarrón typography, table badges, and 4-step guest flow.
    - Direct `window.print()` trigger for venue deployment.
 

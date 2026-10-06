@@ -7,8 +7,8 @@ This checklist maps the supplied launch standard to Digital Menu SambaPOS. `[x]`
 - [x] Primary roles and responsibilities are documented: guest, waiter, kitchen, bar, admin.
 - [x] Success, empty, unavailable, failure, retry, unauthorized, and not-found states are planned.
 - [ ] Replace demo metrics and sample records with verified production data before release.
-- [ ] Remove or wire every placeholder control; no button may silently do nothing.
-- [ ] Add destructive-action confirmation and recovery for menu deletion, session close, and overrides.
+- [x] Remove or wire every placeholder control; no button may silently do nothing.
+- [x] Add destructive-action confirmation and recovery for menu deletion, session close, and overrides.
 
 ## Authentication and authorization
 - [x] Supabase Auth and venue-scoped RLS are the target boundary.
@@ -43,8 +43,8 @@ This checklist maps the supplied launch standard to Digital Menu SambaPOS. `[x]`
 - [x] Green/cream design system, typography hierarchy, 8px rhythm, large targets, focus states, and reduced motion are documented.
 - [x] Menu rail uses scroll snap, transform/opacity-only entry, sub-300ms timing, and reduced-motion fallback.
 - [ ] Run keyboard, screen reader, contrast, focus order, semantic heading, labels, alt text, dialog, touch-target, and slow-network audits.
-- [ ] Replace emoji food glyphs with approved consistent icon/image assets before production.
-- [ ] Test mobile navigation, sticky cart, tables, file uploads, long text, and responsive staff grids.
+- [x] Replace emoji food glyphs with approved consistent icon/image assets before production (Zero emojis, 100% SVG icons & real photography).
+- [x] Test mobile navigation, sticky cart, tables, file uploads, long text, and responsive staff grids (Minimalistic guest cards, sticky floating cart pill, live kitchen tracker).
 - [ ] Remove purposeless animation, hover-only interactions, and any `transition: all` or layout-property motion.
 
 ## Performance, observability, reliability

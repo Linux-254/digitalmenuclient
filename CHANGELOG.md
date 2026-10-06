@@ -4,6 +4,39 @@ All notable changes to the **Shamba House Digital Menu & SambaPOS Bridge** proje
 
 ---
 
+## [1.3.0] — 2026-10-06 (Session 4: Dedicated Guest Tableside Experience, Ordering Flow & Staff Management)
+
+### Dedicated Guest Mode & Tableside Experience
+- **Separated Guest Tableside Experience**: When in Guest Mode (`.guest-mode`), internal staff sidebar and controls are completely hidden. Guests enjoy an uncluttered, responsive dining interface.
+- **Dedicated Guest Header**: Features brand badge with `Fanfarrón` typography, `Table 04 · Terrace` selector, instant menu/drink search box, cart count/total button, and discreet `Staff OS` PIN unlock gate.
+- **Brand-Coordinated Design**: Unified the color palette between staff dashboard and guest menu using deep emerald green (`#0d382d`), gold (`#c89b3c`), soft cream (`#f8faf9`), and clean white cards.
+
+### Comprehensive Menu Categorization & Full Drinks Catalog
+- **Guest Category Navigation**: Horizontal scrollable category rail with real-time counts across `All`, `Starters`, `Grill & Steaks`, `Pizzas & Burgers`, `Pasta & Coastal`, `Juices & Drinks`, and `Desserts`.
+- **Integrated Beverage Offerings**: Added cold-pressed juices (Passion Mango Cooler), Traditional Kenyan Dawa, Hibiscus Mint Cooler, Tamarind Sparkler, Tusker Apple Cider, and Nyeri Single-Origin AA Espresso.
+- **Synchronized Catalog**: Unified 18 items across both staff inventory management and guest tableside catalog.
+
+### Minimalistic Responsive Dish Cards
+- **Screen-Optimized Layout**: Replaced clunky serpentine ribbons with modern, minimalistic cards that fit smoothly on mobile screens (1-2 columns) and desktop (3-4 columns).
+- **Typography & Details**: Displays food photography, dietary/discount tags, `Fanfarrón` titles, `Milano Perla` ingredient body copy, prep times, prices in KES, and quick `+ Add` button.
+
+### Complete Tableside Ordering Flow
+- **Dish Customization Modal**: Allows guests to choose spice level (Mild, Medium, Hot), select preferred side (Fries, Rice, Ugali, Salad), and add special dietary notes.
+- **Floating Sticky Order Pill**: Floats at screen bottom with item count and subtotal when cart has items, triggering "Review Order & Send".
+- **Cart & Table Checkout**: Itemized order summary with quantity steppers, payment selection (M-Pesa STK or Pay at Table), and table confirmation.
+- **Live Kitchen Order Tracker**: Modal featuring live pulsing status, 3-stage kitchen progress stepper (`Order Sent` -> `Preparing in Kitchen` -> `Ready for Serving`), order ID `#SH-104`, itemized receipt summary, and "Call Waiter" action.
+
+### Admin Staff Team Management
+- **Staff Roster Section**: Admin dashboard panel displaying active staff members, roles, assigned stations, and PINs.
+- **Add Staff Member Modal**: Allows admin to register new waiters, chefs, and bartenders with name, role, station, phone, and 4-digit PIN (secured by venue PIN `2407`).
+- **Sidebar Integration**: Added "Staff Team" navigation item with live team count badge.
+
+### Zero Emojis & Accessibility
+- Audited and verified 0 emojis across `index.html`, `app.js`, and `styles.css` (100% SVG icons & clean typography).
+- Custom fonts `Fanfarrón.otf` and `Milano Perla.otf` verified and served with HTTP 200 headers.
+
+---
+
 ## [1.2.0] — 2026-10-06 (Session 3: Full Build Pass & Brand Integration)
 
 ### Brand & Typography

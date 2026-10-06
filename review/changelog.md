@@ -1,5 +1,38 @@
 # Changelog — Shamba House Digital Menu & SambaPOS Bridge
 
+## [1.3.0] — 2026-10-06 (Session 4: Dedicated Guest Tableside Experience, Ordering Flow & Staff Management)
+
+### Dedicated Guest Mode & Tableside Experience
+- Separated guest dining interface (`.guest-mode` hides internal staff sidebar & profile).
+- Dedicated Guest Header with `Fanfarrón` typography, `Table 04 · Terrace` selector, search box, cart trigger, and discreet `Staff OS` PIN unlock gate.
+- Unified brand color coordination using deep forest emerald (`#0d382d`), warm gold (`#c89b3c`), soft cream (`#f8faf9`), and clean white cards.
+
+### Menu Categorization & Full Drinks Catalog
+- Horizontal category rail with real-time counters: `All`, `Starters`, `Grill & Steaks`, `Pizzas & Burgers`, `Pasta & Coastal`, `Juices & Drinks`, and `Desserts`.
+- Beverage offerings: Cold-Pressed Mango Passion Cooler, Traditional Kenyan Dawa, Hibiscus Mint Cooler, Tamarind Sparkler, Tusker Apple Cider, and Nyeri Single-Origin AA Espresso.
+- Full catalog synchronized across staff inventory and guest tableside catalog (18 total items).
+
+### Minimalistic Responsive Dish Cards
+- Replaced clunky serpentine ribbons with modern, minimalistic cards fitting smoothly on mobile screens (1-2 columns) and desktop (3-4 columns).
+- Displays real food photography, dietary/discount tags, `Fanfarrón` titles, `Milano Perla` ingredient body copy, prep times, prices in KES, and quick `+ Add` button.
+
+### Tableside Ordering Flow
+- Dish Customization Modal (`#modal-dish-customization`) with spice levels, side selections, and special kitchen notes.
+- Floating sticky bottom Order Pill (`#guest-order-pill`) displaying live item count, KES total, and "Review Order & Send" button.
+- Cart & Table Checkout (`#modal-cart`) with itemized review, quantity adjusters, and table confirmation.
+- Live Kitchen Order Tracker (`#modal-order-tracker`) with real-time pulsing status, 3-stage kitchen progress stepper, order ID `#SH-104`, itemized receipt summary, and "Call Waiter" action.
+
+### Admin Staff Team Management
+- Staff Roster Section (`#section-staff-team`) displaying active staff members, roles, assigned stations, and PINs.
+- Add Staff Member Modal (`#modal-add-staff`) allowing admin to register new waiters, chefs, and bartenders (secured by venue PIN `2407`).
+- Added "Staff Team" navigation item in the sidebar with live team count badge.
+
+### Zero Emojis & Accessibility
+- Audited and verified 0 emojis across `index.html`, `app.js`, and `styles.css` (100% SVG icons & clean typography).
+- Custom fonts `Fanfarrón.otf` and `Milano Perla.otf` verified and served with HTTP 200 headers.
+
+---
+
 ## [1.2.0] — 2026-10-06 (Session 3: Full Build Pass & Brand Integration)
 
 ### Brand & Custom Fonts
