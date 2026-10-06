@@ -7,10 +7,11 @@
    100% SVG Icons · Zero Emojis · Strict Accessibility
    ═══════════════════════════════════════════════ */
 
-/* ── Custom Fonts (served from /public/fonts/) ── */
+/* ── Custom Fonts (served from /public/fonts/ or /fonts/) ── */
 @font-face {
   font-family: 'Fanfarron';
   src: url('/public/fonts/Fanfarron.otf') format('opentype'),
+       url('/fonts/Fanfarron.otf') format('opentype'),
        url('/fonts/fanfarron/Fanfarr%C3%B3n.otf') format('opentype');
   font-weight: 400 900;
   font-style: normal;
@@ -20,6 +21,7 @@
 @font-face {
   font-family: 'MilanoPerla';
   src: url('/public/fonts/MilanoPerla.otf') format('opentype'),
+       url('/fonts/MilanoPerla.otf') format('opentype'),
        url('/fonts/milano-perla/Milano%20Perla.otf') format('opentype');
   font-weight: 400;
   font-style: normal;

@@ -1,0 +1,9 @@
+{
+  "version": 2,
+  "cleanUrls": true,
+  "trailingSlash": false,
+  "rewrites": [
+    { "source": "/guest", "destination": "/index.html" },
+    { "source": "/menu", "destination": "/index.html" }
+  ]
+}
