@@ -2372,3 +2372,265 @@ img {
 }
 .staff-status-dot.active   { background: #10b981; }
 .staff-status-dot.inactive { background: #e2e8f0; }
+
+/* ═══════════════════════════════════════════════
+   TABLE QR CODES, FLOOR MAP & PRINT TENT STYLES
+   ═══════════════════════════════════════════════ */
+
+.floor-table-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 4px;
+}
+.floor-table-header .floor-table-status-dot {
+  position: static;
+}
+.floor-table-waiter-row {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 12px;
+  color: var(--dash-ink);
+  margin-top: 6px;
+}
+.floor-table-waiter-row svg {
+  color: var(--dash-muted);
+}
+.floor-table-bill {
+  font-size: 11px;
+  color: var(--forest);
+  background: rgba(13, 56, 45, 0.06);
+  padding: 4px 8px;
+  border-radius: 6px;
+  margin-top: 8px;
+}
+.floor-table-actions {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 6px;
+  margin-top: 12px;
+  padding-top: 10px;
+  border-top: 1px solid var(--dash-border);
+}
+.btn-table-qr,
+.btn-table-open {
+  padding: 6px 8px;
+  border-radius: 8px;
+  font-size: 11px;
+  font-weight: 700;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  transition: all var(--fast);
+}
+.btn-table-qr {
+  background: var(--forest);
+  color: #ffffff;
+  border: none;
+}
+.btn-table-qr:hover {
+  background: var(--forest-card);
+}
+.btn-table-open {
+  background: var(--dash-bg);
+  color: var(--dash-ink);
+  border: 1px solid var(--dash-border);
+}
+.btn-table-open:hover {
+  background: #ffffff;
+  border-color: var(--orange);
+  color: var(--orange);
+}
+.floor-table-cell--active {
+  box-shadow: 0 0 0 2px var(--orange), 0 8px 20px rgba(230, 81, 0, 0.15);
+}
+
+/* ── QR Code Modal ── */
+.table-qr-badge-header {
+  margin-bottom: 16px;
+}
+.qr-zone-pill {
+  display: inline-block;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  background: rgba(13, 56, 45, 0.08);
+  color: var(--forest);
+  padding: 4px 12px;
+  border-radius: 20px;
+}
+.qr-canvas-box {
+  background: #ffffff;
+  border: 2px solid var(--dash-border);
+  border-radius: 20px;
+  padding: 20px;
+  display: inline-block;
+  margin: 0 auto;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+}
+.qr-canvas-box img,
+.qr-canvas-box canvas,
+.qr-canvas-box svg {
+  display: block !important;
+  margin: 0 auto !important;
+}
+.qr-url-pill {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  background: var(--dash-bg);
+  border: 1px solid var(--dash-border);
+  padding: 8px 14px;
+  border-radius: 10px;
+  font-size: 11px;
+  color: var(--dash-muted);
+  margin-top: 14px;
+  word-break: break-all;
+}
+
+/* ── Multi-Table Print Grid ── */
+.print-cards-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+  margin-top: 16px;
+}
+@media (max-width: 700px) {
+  .print-cards-grid {
+    grid-template-columns: 1fr;
+  }
+}
+.print-qr-stand-card {
+  background: #07382d;
+  color: #e7dfb8;
+  border-radius: 24px;
+  padding: 28px 24px;
+  text-align: center;
+  box-shadow: 0 12px 36px rgba(0, 0, 0, 0.25);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  page-break-inside: avoid;
+  break-inside: avoid;
+}
+.print-card-brand small {
+  font-size: 9px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: #b9d68a;
+  font-weight: 700;
+  display: block;
+}
+.print-card-brand h2 {
+  font-family: 'Fanfarron', serif;
+  font-size: 32px;
+  font-weight: 900;
+  margin: 4px 0 2px;
+  color: #ffffff;
+}
+.print-card-brand span {
+  font-size: 11px;
+  color: #b9d68a;
+  opacity: 0.9;
+}
+.print-card-qr-box {
+  background: #ffffff;
+  padding: 12px;
+  border-radius: 16px;
+  margin: 16px 0;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+}
+.print-card-qr-box img,
+.print-card-qr-box canvas {
+  display: block !important;
+}
+.print-card-footer strong {
+  display: block;
+  font-size: 11px;
+  letter-spacing: 1px;
+  color: #b9d68a;
+  margin-bottom: 4px;
+}
+.print-card-footer p {
+  font-size: 11px;
+  opacity: 0.8;
+  line-height: 1.4;
+  max-width: 220px;
+  margin: 0 auto 8px;
+}
+.print-wifi-pill {
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 20px;
+  padding: 4px 12px;
+  font-size: 10px;
+  color: #e7dfb8;
+  display: inline-block;
+}
+
+/* ── Guest Table Selector Buttons ── */
+.guest-table-select-btn {
+  background: var(--dash-bg);
+  border: 2px solid var(--dash-border);
+  border-radius: 12px;
+  padding: 14px 8px;
+  text-align: center;
+  cursor: pointer;
+  transition: all var(--fast);
+}
+.guest-table-select-btn:hover {
+  border-color: var(--orange);
+  background: #ffffff;
+}
+.guest-table-select-btn.active {
+  border-color: var(--forest);
+  background: rgba(13, 56, 45, 0.06);
+}
+
+/* ── Print Media Mode ── */
+@media print {
+  body * {
+    visibility: hidden;
+  }
+  #modal-print-all-qr,
+  #modal-print-all-qr *,
+  #modal-table-qr,
+  #modal-table-qr * {
+    visibility: visible;
+  }
+  #modal-print-all-qr {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    background: transparent;
+    padding: 0;
+  }
+  #modal-print-all-qr .modal-window {
+    box-shadow: none;
+    max-width: 100%;
+    padding: 0;
+    margin: 0;
+  }
+  .modal-close-btn,
+  #btn-trigger-browser-print {
+    display: none !important;
+  }
+  .print-cards-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 16px !important;
+  }
+  .print-qr-stand-card {
+    box-shadow: none;
+    border: 1px solid #000000;
+    page-break-inside: avoid;
+    break-inside: avoid;
+    margin-bottom: 16px;
+  }
+}
+

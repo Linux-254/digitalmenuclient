@@ -351,10 +351,103 @@ let activeCategory = 'All';
 let guestActiveCategory = 'All';
 let cart = []; // Array of { id, name, price, qty, spice, side, notes }
 let currentView = 'dashboard'; // 'dashboard' or 'guest'
+let currentDashPanel = 'home';
 const ADMIN_PIN = '2407';
 let selectedDishForCustomization = null;
 let currentCustomSpice = 'Medium';
 let currentCustomSide = 'Hand-Cut Fries';
+
+// ── Tables OS Dataset (12 Tables across Garden, Terrace, VIP, Indoor, Bar) ──
+let tables = [
+  { num: '01', zone: 'Garden',  seats: 4, status: 'occupied', waiter: 'Amina Mwangi', ordersCount: 2, currentBill: 3450 },
+  { num: '02', zone: 'Garden',  seats: 2, status: 'free',     waiter: 'Unassigned',   ordersCount: 0, currentBill: 0 },
+  { num: '03', zone: 'Garden',  seats: 4, status: 'occupied', waiter: 'Brian Kiprop',  ordersCount: 1, currentBill: 1750 },
+  { num: '04', zone: 'Terrace', seats: 6, status: 'occupied', waiter: 'Amina Mwangi', ordersCount: 3, currentBill: 5800 },
+  { num: '05', zone: 'Terrace', seats: 4, status: 'free',     waiter: 'Unassigned',   ordersCount: 0, currentBill: 0 },
+  { num: '06', zone: 'Terrace', seats: 4, status: 'reserved', waiter: 'David Mutua',  ordersCount: 0, currentBill: 0 },
+  { num: '07', zone: 'VIP',     seats: 8, status: 'occupied', waiter: 'Grace Wanjiku', ordersCount: 4, currentBill: 12400 },
+  { num: '08', zone: 'Indoor',  seats: 4, status: 'free',     waiter: 'Unassigned',   ordersCount: 0, currentBill: 0 },
+  { num: '09', zone: 'Indoor',  seats: 4, status: 'occupied', waiter: 'David Mutua',  ordersCount: 2, currentBill: 2900 },
+  { num: '10', zone: 'Indoor',  seats: 2, status: 'free',     waiter: 'Unassigned',   ordersCount: 0, currentBill: 0 },
+  { num: '11', zone: 'Bar',     seats: 4, status: 'occupied', waiter: 'Grace Wanjiku', ordersCount: 2, currentBill: 2100 },
+  { num: '12', zone: 'Bar',     seats: 2, status: 'free',     waiter: 'Unassigned',   ordersCount: 0, currentBill: 0 },
+];
+
+let activeTableSession = { num: '04', zone: 'Terrace' };
+
+// ── Table URL & Session Management ──
+function getTableMenuUrl(tableNum, zone) {
+  const origin = window.location.origin && window.location.origin !== 'null'
+    ? window.location.origin
+    : 'https://dijimenu.vercel.app';
+  return `${origin}/?table=${String(tableNum).padStart(2, '0')}&zone=${encodeURIComponent(zone || 'Terrace')}`;
+}
+
+function setActiveTableSession(num, zone, updateUrl = false) {
+  const formattedNum = String(num).padStart(2, '0');
+  const matchedTable = tables.find(t => String(t.num).padStart(2, '0') === formattedNum);
+  const resolvedZone = zone || (matchedTable ? matchedTable.zone : 'Terrace');
+
+  activeTableSession = { num: formattedNum, zone: resolvedZone };
+  try {
+    localStorage.setItem('shamba_active_table', JSON.stringify(activeTableSession));
+  } catch(e) {}
+
+  const displayStr = `Table ${activeTableSession.num} · ${activeTableSession.zone}`;
+
+  const guestDisplay = $('#guest-table-display');
+  if (guestDisplay) guestDisplay.textContent = displayStr;
+
+  const activeDisplay = $('#active-table-display');
+  if (activeDisplay) activeDisplay.textContent = displayStr;
+
+  const footerTable = $('#guest-footer-table');
+  if (footerTable) footerTable.textContent = `Dining at Table ${activeTableSession.num} · ${activeTableSession.zone}`;
+
+  const trackerSub = $('#tracker-table-sub');
+  if (trackerSub) trackerSub.textContent = `Table ${activeTableSession.num} · ${activeTableSession.zone} · Live Order`;
+
+  if (updateUrl && window.history && window.history.replaceState) {
+    const url = new URL(window.location);
+    url.searchParams.set('table', activeTableSession.num);
+    url.searchParams.set('zone', activeTableSession.zone);
+    window.history.replaceState({}, '', url);
+  }
+}
+
+function initTableSessionFromUrl() {
+  const urlParams = new URLSearchParams(window.location.search);
+  const tableParam = urlParams.get('table') || urlParams.get('t');
+  const zoneParam = urlParams.get('zone') || urlParams.get('z');
+  const modeParam = urlParams.get('mode') || urlParams.get('view');
+
+  if (tableParam) {
+    const formattedNum = String(tableParam).padStart(2, '0');
+    const matched = tables.find(t => String(t.num).padStart(2, '0') === formattedNum);
+    const resolvedZone = zoneParam || (matched ? matched.zone : 'Terrace');
+    setActiveTableSession(formattedNum, resolvedZone, false);
+    setView('guest');
+    showToast(`Welcome! You are seated at Table ${formattedNum} (${resolvedZone}) · Tableside Menu`);
+    return;
+  }
+
+  // Check saved session
+  try {
+    const saved = localStorage.getItem('shamba_active_table');
+    if (saved) {
+      const parsed = JSON.parse(saved);
+      if (parsed && parsed.num) {
+        setActiveTableSession(parsed.num, parsed.zone, false);
+      }
+    }
+  } catch(e) {}
+
+  if (modeParam === 'guest') {
+    setView('guest');
+  } else {
+    setView('dashboard');
+  }
+}
 
 // ── Initialize App ──
 document.addEventListener('DOMContentLoaded', () => {
@@ -365,14 +458,7 @@ document.addEventListener('DOMContentLoaded', () => {
   renderGuestDishes();
   setupEventListeners();
   updateCartUI();
-
-  // Check URL query for direct guest mode
-  const urlParams = new URLSearchParams(window.location.search);
-  if (urlParams.get('mode') === 'guest' || urlParams.get('view') === 'guest') {
-    setView('guest');
-  } else {
-    setView('dashboard');
-  }
+  initTableSessionFromUrl();
 });
 
 // ═══════════════════════════════════════════
@@ -400,7 +486,7 @@ function setView(viewName) {
     renderGuestCategories();
     renderGuestDishes();
     window.scrollTo({ top: 0, behavior: 'smooth' });
-    showToast('Tableside Guest Menu Active · Table 04');
+    showToast(`Tableside Guest Menu Active · Table ${activeTableSession.num} (${activeTableSession.zone})`);
   } else {
     shell.classList.remove('guest-mode');
     if (dashView) dashView.style.display = 'block';
@@ -998,14 +1084,38 @@ function setupEventListeners() {
 
   // Call Attendant actions
   const callAttendant = () => {
-    showToast('Attendant alerted for Table 04 (Garden Terrace)');
+    showToast(`Attendant alerted for Table ${activeTableSession.num} (${activeTableSession.zone})`);
   };
   $('#btn-guest-call-attendant')?.addEventListener('click', callAttendant);
   $('#btn-tracker-call-waiter')?.addEventListener('click', callAttendant);
 
   // Bill Request
   $('#btn-guest-request-bill')?.addEventListener('click', () => {
-    showToast('Bill request sent to cashier for Table 04');
+    showToast(`Bill request sent to cashier for Table ${activeTableSession.num} (${activeTableSession.zone})`);
+  });
+
+  // Guest Topbar Table Selector
+  $('#btn-guest-table-select')?.addEventListener('click', () => {
+    openGuestTableSelectorModal();
+  });
+  $('#btn-close-guest-table-select')?.addEventListener('click', () => {
+    $('#modal-guest-table-select')?.classList.remove('active');
+  });
+
+  // Print All Table QR Tents
+  $('#btn-print-all-qr')?.addEventListener('click', () => {
+    openPrintAllQrModal();
+  });
+  $('#btn-close-print-all-qr')?.addEventListener('click', () => {
+    $('#modal-print-all-qr')?.classList.remove('active');
+  });
+  $('#btn-trigger-browser-print')?.addEventListener('click', () => {
+    window.print();
+  });
+
+  // Close Table QR Modal
+  $('#btn-close-table-qr')?.addEventListener('click', () => {
+    $('#modal-table-qr')?.classList.remove('active');
   });
 
   // Admin Add Dish Modal
@@ -1116,56 +1226,330 @@ function setupEventListeners() {
   };
 
   function switchDashPanel(targetNav) {
+    currentDashPanel = targetNav || 'home';
     // Hide all panels
     Object.values(NAV_PANEL_MAP).forEach(id => {
       const el = document.getElementById(id);
       if (el) el.style.display = 'none';
     });
+
+    const isHome = (currentDashPanel === 'home');
+    const heroCard = $('.hero-card');
+    const kpiRow = $('.kpi-row');
+    if (heroCard) heroCard.style.display = isHome ? '' : 'none';
+    if (kpiRow) kpiRow.style.display = isHome ? '' : 'none';
+
     // Show the requested panel
-    const targetId = NAV_PANEL_MAP[targetNav] || 'panel-home';
+    const targetId = NAV_PANEL_MAP[currentDashPanel] || 'panel-home';
     const target = document.getElementById(targetId);
     if (target) {
-      target.style.display = '';
-      target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      target.style.display = 'block';
+      window.scrollTo({ top: 0, behavior: 'smooth' });
     }
+
     // Special panel hydration
-    if (targetNav === 'floor') renderFloorMap();
-    if (targetNav === 'staff') renderStaffPanel();
-    if (targetNav === 'menu') {
-      renderDashboardCategories();
-      renderDashboardDishes();
+    if (currentDashPanel === 'floor') renderFloorMap();
+    if (currentDashPanel === 'staff') renderStaffPanel();
+    if (currentDashPanel === 'menu') {
+      renderMenuCatalogCategories();
+      renderMenuCatalogDishes();
+    }
+    if (currentDashPanel === 'orders') {
+      updateKanbanCounts();
     }
   }
 
-  // Floor Map renderer
+  // ── Menu Catalog Panel Renderer ──
+  function renderMenuCatalogCategories() {
+    const rail = document.getElementById('category-rail-menu');
+    if (!rail) return;
+    const cats = categoryNames.map(name => {
+      const count = name === 'All' ? menuItems.length : menuItems.filter(i => i.category === name).length;
+      return { name, count };
+    });
+    rail.innerHTML = cats.map(cat => `
+      <div class="category-card ${cat.name === activeCategory ? 'active' : ''}" data-cat="${cat.name}">
+        <strong>${cat.name}</strong>
+        <span>${cat.count} items</span>
+      </div>
+    `).join('');
+
+    rail.querySelectorAll('.category-card').forEach(card => {
+      card.addEventListener('click', () => {
+        activeCategory = card.getAttribute('data-cat');
+        renderMenuCatalogCategories();
+        renderMenuCatalogDishes();
+      });
+    });
+  }
+
+  function renderMenuCatalogDishes() {
+    const grid = document.getElementById('dishes-grid-menu');
+    if (!grid) return;
+    const filtered = menuItems.filter(item => activeCategory === 'All' || item.category === activeCategory);
+    grid.innerHTML = filtered.map(item => `
+      <article class="dish-card-dash ${!item.is_available ? 'sold-out' : ''}" data-id="${item.id}">
+        <div class="dish-card-image">
+          <img src="${item.image}" alt="${item.name}" loading="lazy" />
+          <div class="rating-pill">
+            <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <span>${item.rating}</span>
+          </div>
+        </div>
+        <div class="dish-card-body">
+          <div class="dish-tags">
+            <span class="dish-tag">${item.category}</span>
+            ${item.offer_label ? `<span class="dish-tag" style="background:#fee2e2;color:#b91c1c;">${item.offer_label}</span>` : ''}
+          </div>
+          <h4>${item.name}</h4>
+          <p>${item.desc}</p>
+          <div class="dish-meta-row">
+            <div>
+              <div class="dish-price">KES ${item.offer_price ? item.offer_price.toLocaleString() : item.price.toLocaleString()}</div>
+              <div class="dish-prep-time">
+                <svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                <span>${item.prep_time}</span>
+              </div>
+            </div>
+            <label class="switch-control" title="Toggle Live Availability">
+              <input type="checkbox" class="toggle-availability" data-id="${item.id}" ${item.is_available ? 'checked' : ''} />
+              <span class="switch-slider"></span>
+              <span class="switch-label ${item.is_available ? 'in-stock' : 'sold-out'}">
+                ${item.is_available ? 'In Stock' : 'Sold Out'}
+              </span>
+            </label>
+          </div>
+        </div>
+      </article>
+    `).join('');
+
+    grid.querySelectorAll('.toggle-availability').forEach(toggle => {
+      toggle.addEventListener('change', (e) => {
+        const id = e.target.getAttribute('data-id');
+        const item = menuItems.find(i => i.id === id);
+        if (item) {
+          item.is_available = e.target.checked;
+          showToast(`${item.name} marked as ${item.is_available ? 'Available' : 'Sold Out'}`);
+          renderMenuCatalogDishes();
+          renderDashboardDishes();
+          renderGuestDishes();
+        }
+      });
+    });
+  }
+
+  // ── Floor Map & Table QR Code Renderer ──
   function renderFloorMap() {
     const grid = document.getElementById('floor-map-grid');
-    if (!grid || grid.dataset.rendered) return;
-    const tables = [
-      { num: 1,  zone: 'Garden',  seats: 4, status: 'occupied', waiter: 'Amina' },
-      { num: 2,  zone: 'Garden',  seats: 2, status: 'free',     waiter: '' },
-      { num: 3,  zone: 'Garden',  seats: 4, status: 'occupied', waiter: 'Brian' },
-      { num: 4,  zone: 'Terrace', seats: 6, status: 'occupied', waiter: 'Amina' },
-      { num: 5,  zone: 'Terrace', seats: 4, status: 'free',     waiter: '' },
-      { num: 6,  zone: 'Terrace', seats: 4, status: 'reserved', waiter: '' },
-      { num: 7,  zone: 'VIP',     seats: 8, status: 'occupied', waiter: 'Grace' },
-      { num: 8,  zone: 'Indoor',  seats: 4, status: 'free',     waiter: '' },
-      { num: 9,  zone: 'Indoor',  seats: 4, status: 'occupied', waiter: 'David' },
-      { num: 10, zone: 'Indoor',  seats: 2, status: 'free',     waiter: '' },
-      { num: 11, zone: 'Bar',     seats: 4, status: 'occupied', waiter: 'Grace' },
-      { num: 12, zone: 'Bar',     seats: 2, status: 'free',     waiter: '' },
-    ];
-    const statusColor = { occupied: '#10b981', free: '#e2e8f0', reserved: '#fef3c7' };
-    const statusBorder = { occupied: '#059669', free: '#cbd5e1', reserved: '#fbbf24' };
-    grid.innerHTML = tables.map(t => `
-      <div class="floor-table-cell" style="border-color:${statusBorder[t.status]};">
-        <div class="floor-table-status-dot" style="background:${statusColor[t.status]};"></div>
-        <div class="floor-table-num">Table ${t.num}</div>
-        <div class="floor-table-zone">${t.zone} · ${t.seats} seats</div>
-        ${t.waiter ? `<div class="floor-table-waiter">${t.waiter}</div>` : '<div class="floor-table-waiter floor-table-waiter--empty">Unassigned</div>'}
-        <div class="floor-table-status-label ${t.status}">${t.status.charAt(0).toUpperCase() + t.status.slice(1)}</div>
-      </div>`).join('');
-    grid.dataset.rendered = '1';
+    if (!grid) return;
+
+    const statusColor = { occupied: '#10b981', free: '#94a3b8', reserved: '#f59e0b' };
+    const statusBorder = { occupied: '#059669', free: '#cbd5e1', reserved: '#d97706' };
+
+    grid.innerHTML = tables.map(t => {
+      const isCurrentSession = (t.num === activeTableSession.num);
+      return `
+        <div class="floor-table-cell ${isCurrentSession ? 'floor-table-cell--active' : ''}" style="border-color:${statusBorder[t.status] || '#cbd5e1'};">
+          <div class="floor-table-header">
+            <div class="floor-table-num">Table ${t.num}</div>
+            <div class="floor-table-status-dot" style="background:${statusColor[t.status] || '#cbd5e1'};"></div>
+          </div>
+          <div class="floor-table-zone">${t.zone} · ${t.seats} seats</div>
+          <div class="floor-table-waiter-row">
+            <svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/></svg>
+            <span>${t.waiter || 'Unassigned'}</span>
+          </div>
+          ${t.status === 'occupied' && t.currentBill > 0 ? `
+            <div class="floor-table-bill">Bill: <strong>KES ${t.currentBill.toLocaleString()}</strong></div>
+          ` : ''}
+          <div class="floor-table-status-label ${t.status}">${t.status.toUpperCase()}</div>
+          <div class="floor-table-actions">
+            <button class="btn-table-qr" onclick="openTableQrModal('${t.num}')" title="Generate &amp; view table QR flyer">
+              <svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
+              QR Code
+            </button>
+            <button class="btn-table-open" onclick="openTableDirectMenu('${t.num}', '${t.zone}')" title="Test guest view for this table">
+              Open Menu
+            </button>
+          </div>
+        </div>
+      `;
+    }).join('');
+  }
+
+  // ── Open Table QR Modal with Real Scannable QRCode ──
+  window.openTableQrModal = function(tableNum) {
+    const formattedNum = String(tableNum).padStart(2, '0');
+    const table = tables.find(t => String(t.num).padStart(2, '0') === formattedNum);
+    if (!table) return;
+
+    $('#qr-modal-zone').textContent = `${table.zone} Area`;
+    $('#qr-modal-title').textContent = `Table ${table.num}`;
+    $('#qr-modal-meta').textContent = `Capacity: ${table.seats} guests · Waiter: ${table.waiter || 'Unassigned'}`;
+
+    const url = getTableMenuUrl(table.num, table.zone);
+    $('#qr-modal-url-text').textContent = url;
+
+    // Render Scannable QR code
+    const container = document.getElementById('qr-code-canvas-container');
+    if (container) {
+      container.innerHTML = '';
+      if (typeof QRCode !== 'undefined') {
+        new QRCode(container, {
+          text: url,
+          width: 200,
+          height: 200,
+          colorDark: '#07382d',
+          colorLight: '#ffffff',
+          correctLevel: QRCode.CorrectLevel.M
+        });
+      } else {
+        container.innerHTML = `<div style="padding:20px;color:var(--dash-muted);">QR Code for ${url}</div>`;
+      }
+    }
+
+    // Status button text and dot
+    const statusDot = $('#qr-modal-status-dot');
+    const statusText = $('#qr-modal-status-btn-text');
+    const statusColor = { occupied: '#10b981', free: '#94a3b8', reserved: '#f59e0b' };
+    if (statusDot) statusDot.style.background = statusColor[table.status] || '#94a3b8';
+    if (statusText) statusText.textContent = `Status: ${table.status.toUpperCase()}`;
+
+    // Wire actions
+    $('#btn-qr-open-guest').onclick = () => {
+      $('#modal-table-qr')?.classList.remove('active');
+      openTableDirectMenu(table.num, table.zone);
+    };
+
+    $('#btn-qr-copy-link').onclick = () => {
+      navigator.clipboard.writeText(url).then(() => {
+        showToast(`Copied QR Link for Table ${table.num}!`);
+      }).catch(() => {
+        showToast(`Link: ${url}`);
+      });
+    };
+
+    $('#btn-qr-print-single').onclick = () => {
+      window.print();
+    };
+
+    $('#btn-qr-toggle-status').onclick = () => {
+      const nextStatus = table.status === 'occupied' ? 'free' : (table.status === 'free' ? 'reserved' : 'occupied');
+      table.status = nextStatus;
+      showToast(`Table ${table.num} status changed to ${nextStatus.toUpperCase()}`);
+      openTableQrModal(table.num);
+      renderFloorMap();
+    };
+
+    $('#modal-table-qr')?.classList.add('active');
+  };
+
+  window.openTableDirectMenu = function(tableNum, zone) {
+    setActiveTableSession(tableNum, zone, true);
+    setView('guest');
+  };
+
+  // ── Print Center: All 12 Table QR Tents ──
+  function openPrintAllQrModal() {
+    const container = document.getElementById('print-all-cards-container');
+    if (!container) return;
+    container.innerHTML = '';
+
+    tables.forEach(t => {
+      const url = getTableMenuUrl(t.num, t.zone);
+      const card = document.createElement('div');
+      card.className = 'print-qr-stand-card';
+      card.innerHTML = `
+        <div class="print-card-brand">
+          <small>SHAMBA HOUSE · SOCIAL HOUSE &amp; KITCHEN</small>
+          <h2>Table ${t.num}</h2>
+          <span>${t.zone} Area · ${t.seats} Guests</span>
+        </div>
+        <div class="print-card-qr-box" id="print-qr-box-${t.num}"></div>
+        <div class="print-card-footer">
+          <strong>SCAN WITH PHONE CAMERA</strong>
+          <p>Browse full menu, customize spices, and pay tableside</p>
+          <div class="print-wifi-pill">Free Wi-Fi: ShambaHouse_Guest</div>
+        </div>
+      `;
+      container.appendChild(card);
+
+      const qrBox = card.querySelector(`#print-qr-box-${t.num}`);
+      if (qrBox && typeof QRCode !== 'undefined') {
+        new QRCode(qrBox, {
+          text: url,
+          width: 140,
+          height: 140,
+          colorDark: '#07382d',
+          colorLight: '#ffffff',
+          correctLevel: QRCode.CorrectLevel.M
+        });
+      }
+    });
+
+    $('#modal-print-all-qr')?.classList.add('active');
+  }
+
+  // ── Guest Table Selector Modal ──
+  function openGuestTableSelectorModal() {
+    const grid = document.getElementById('guest-table-selector-grid');
+    if (!grid) return;
+
+    grid.innerHTML = tables.map(t => {
+      const isSelected = (t.num === activeTableSession.num);
+      return `
+        <button type="button" class="guest-table-select-btn ${isSelected ? 'active' : ''}" onclick="selectGuestTable('${t.num}', '${t.zone}')">
+          <strong style="display:block;font-size:15px;color:var(--dash-ink);">Table ${t.num}</strong>
+          <small style="color:var(--dash-muted);font-size:11px;">${t.zone}</small>
+        </button>
+      `;
+    }).join('');
+
+    $('#modal-guest-table-select')?.classList.add('active');
+  }
+
+  window.selectGuestTable = function(num, zone) {
+    setActiveTableSession(num, zone, true);
+    $('#modal-guest-table-select')?.classList.remove('active');
+    showToast(`Switched active table to Table ${num} (${zone})`);
+  };
+
+  // ── Kanban Ticket Advancement ──
+  window.advanceKanbanTicket = function(btn) {
+    const ticket = btn.closest('.kanban-ticket');
+    if (!ticket) return;
+
+    const col = ticket.closest('.kanban-col');
+    const cols = [...document.querySelectorAll('#panel-orders .kanban-col')];
+    const currentIndex = cols.indexOf(col);
+
+    if (currentIndex === 0) { // Incoming -> In Kitchen
+      ticket.classList.add('ticket-cooking');
+      btn.textContent = 'Ready to Serve';
+      cols[1].querySelector('.kanban-cards').appendChild(ticket);
+      showToast('Ticket moved to Kitchen cooking queue');
+    } else if (currentIndex === 1) { // In Kitchen -> Ready to Serve
+      ticket.classList.remove('ticket-cooking');
+      ticket.classList.add('ticket-ready');
+      btn.textContent = 'Mark Served';
+      cols[2].querySelector('.kanban-cards').appendChild(ticket);
+      showToast('Order ready! Attendant notified');
+    } else if (currentIndex === 2) { // Ready -> Served Today
+      ticket.classList.remove('ticket-ready');
+      ticket.classList.add('ticket-served');
+      btn.remove();
+      cols[3].querySelector('.kanban-cards').appendChild(ticket);
+      showToast('Order completed & closed');
+    }
+    updateKanbanCounts();
+  };
+
+  function updateKanbanCounts() {
+    document.querySelectorAll('#panel-orders .kanban-col').forEach(col => {
+      const countEl = col.querySelector('.kanban-count');
+      const tickets = col.querySelectorAll('.kanban-ticket').length;
+      if (countEl) countEl.textContent = tickets;
+    });
   }
 
   // Staff panel mirror renderer
@@ -1184,6 +1568,7 @@ function setupEventListeners() {
       </div>`).join('');
   }
 
+  // Wire Sidebar Nav buttons
   $$('.nav-link').forEach(link => {
     link.addEventListener('click', () => {
       $$('.nav-link').forEach(l => l.classList.remove('active'));
@@ -1193,12 +1578,39 @@ function setupEventListeners() {
     });
   });
 
+  // Wire "Add Dish" from Menu Catalog panel
+  document.getElementById('btn-menu-add-dish')?.addEventListener('click', () => {
+    $('#modal-add-dish')?.classList.add('active');
+  });
+
   // Wire "Add Staff Member" button in standalone Staff panel
   document.getElementById('btn-open-add-staff-panel')?.addEventListener('click', () => {
     $('#new-staff-name').value = '';
     $('#new-staff-pin').value = '';
     $('#staff-admin-pin-verify').value = '';
     $('#modal-add-staff')?.classList.add('active');
+  });
+
+  // Wire Offers button
+  document.getElementById('btn-new-offer')?.addEventListener('click', () => {
+    showToast('Offer creator initialized · Enter deal code');
+  });
+  document.getElementById('btn-hero-offers')?.addEventListener('click', () => {
+    showToast('SHAMBA30 promotional discount active on grill platters');
+  });
+  document.getElementById('btn-configure-promo')?.addEventListener('click', () => {
+    switchDashPanel('offers');
+  });
+
+  // Wire POS Bridge buttons
+  document.getElementById('btn-configure-pos')?.addEventListener('click', () => {
+    showToast('SambaPOS endpoint: http://localhost:8080/api/tickets');
+  });
+  document.getElementById('btn-sync-pos')?.addEventListener('click', () => {
+    showToast('Menu synchronized with SambaPOS terminal database!');
+  });
+  document.getElementById('btn-change-pin')?.addEventListener('click', () => {
+    showToast('Admin PIN is fixed to 2407 in demo environment');
   });
 
   // Dismiss modal overlay on outside click
