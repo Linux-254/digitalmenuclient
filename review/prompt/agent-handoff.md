@@ -106,7 +106,16 @@ npx -y serve . -p 3000 --single
 
 ---
 
-## 6. Architecture & POS Bridge Constraints
+## 6. Git Branching Strategy & Workflow
+- **`main`**: **Production Only**. Directly deployed to live production. No direct commits; only merged from `staging` after verification.
+- **`staging`**: **Pre-Production / Staging**. Used for integration testing and pre-launch quality checks before promoting to `main`.
+- **`dev`**: **Active Development Branch**. The primary integration branch where ongoing verified work converges.
+- **`feature/<feature-name>`**: **Feature Branches**. Branch created per new feature (e.g., `feature/daraja-stk-push`, `feature/supabase-realtime`), branched off `dev` and merged back via PR/fast-forward.
+- Currently checked out on: **`dev`**.
+
+---
+
+## 7. Architecture & POS Bridge Constraints
 
 - **Single Source of Truth for Availability**: `menu_items.is_available` in the database.
 - **POS Bridge Interface**: `POSConnector` abstract interface with `MockConnector` currently implemented. Real SambaPOS GraphQL connector is mapped in `packages/shared/src/types/pos-connector.ts`.
