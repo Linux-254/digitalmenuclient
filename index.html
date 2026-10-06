@@ -1,0 +1,586 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="theme-color" content="#07382d" />
+  <meta name="description" content="Shamba House — QR-first digital menu. Scan, browse, order, and pay from your table." />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+  <link rel="manifest" href="/site.webmanifest" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/styles.css" />
+  <title>Shamba House · Digital Menu</title>
+</head>
+<body>
+<a class="skip-link" href="#main-content">Skip to main content</a>
+
+<div class="app-shell">
+
+  <!-- ══ SIDEBAR ══ -->
+  <aside class="sidebar" aria-label="Primary navigation">
+    <div class="brand-mark">
+      <span aria-hidden="true">SH</span>
+      <small>TABLESIDE OS</small>
+    </div>
+    <div class="venue-switch">
+      <span class="live-dot"></span>
+      <div>
+        <strong>Shamba House</strong>
+        <small>Westlands · Nairobi</small>
+      </div>
+      <button class="icon-btn" aria-label="Switch venue">⌄</button>
+    </div>
+    <nav class="nav-list" aria-label="Staff tools">
+      <button class="nav-item active" data-view="staff" aria-current="page">
+        <span aria-hidden="true">⌂</span>Overview
+      </button>
+      <button class="nav-item" data-view="guest">
+        <span aria-hidden="true">◫</span>Guest preview
+      </button>
+      <button class="nav-item" data-view="studio">
+        <span aria-hidden="true">✦</span>Menu studio
+        <b class="new-nav">NEW</b>
+      </button>
+      <button class="nav-item" data-panel="floor">
+        <span aria-hidden="true">▦</span>Floor map
+        <b>6</b>
+      </button>
+      <button class="nav-item" data-panel="kitchen">
+        <span aria-hidden="true">◒</span>Kitchen
+        <b class="amber">4</b>
+      </button>
+      <button class="nav-item" data-panel="payments">
+        <span aria-hidden="true">◈</span>Payments
+      </button>
+      <button class="nav-item" data-view="analytics">
+        <span aria-hidden="true">◎</span>Analytics
+      </button>
+    </nav>
+    <div class="sidebar-bottom">
+      <div class="sync-card">
+        <span class="live-dot"></span>
+        <div>
+          <strong>Realtime connected</strong>
+          <small>Cloudflare edge · Supabase</small>
+        </div>
+      </div>
+      <button class="user-chip">
+        <span class="avatar" aria-hidden="true">AM</span>
+        <span>
+          <strong>Amina Mwangi</strong>
+          <small>Admin · <span id="clock">--:-- EAT</span></small>
+        </span>
+        <span aria-hidden="true">⋯</span>
+      </button>
+    </div>
+  </aside>
+
+  <!-- ══ MAIN ══ -->
+  <main id="main-content" class="main-content">
+
+    <!-- Top bar -->
+    <header class="topbar">
+      <div>
+        <p class="eyebrow" id="date-label">MONDAY, 06 OCTOBER 2026 · EAT</p>
+        <h1 id="page-title">Service overview</h1>
+      </div>
+      <div class="top-actions">
+        <span class="connection-pill"><span class="live-dot"></span>Live demo data</span>
+        <button class="ghost-btn" id="theme-toggle" aria-label="Toggle dark theme">◐</button>
+        <button class="ghost-btn" id="admin-controls">Admin · PIN 🔒</button>
+        <button class="primary-btn" id="open-guest">Guest preview <span aria-hidden="true">↗</span></button>
+      </div>
+    </header>
+
+    <!-- ══ STAFF VIEW ══ -->
+    <section id="staff-view" class="view" aria-labelledby="page-title">
+
+      <!-- Hero -->
+      <div class="hero-strip">
+        <div>
+          <span class="eyebrow light">LUNCH SERVICE · QR TABLES · WESTLANDS</span>
+          <h2>Keep the room moving.</h2>
+          <p>Six tables are active. Guests scan, browse, order, and pay without waiting for a waiter.</p>
+        </div>
+        <div class="hero-stat">
+          <strong>18m</strong>
+          <span>avg. ticket time</span>
+          <em>−4m vs yesterday</em>
+        </div>
+      </div>
+
+      <!-- KPIs -->
+      <section class="kpi-grid" aria-label="Service KPIs">
+        <article class="kpi-card">
+          <div class="kpi-top"><span>Open tables</span><span class="kpi-icon teal">⌁</span></div>
+          <strong>06<span>/18</span></strong>
+          <p><b class="positive">+2</b> since 11:30</p>
+        </article>
+        <article class="kpi-card">
+          <div class="kpi-top"><span>Active orders</span><span class="kpi-icon blue">◒</span></div>
+          <strong>14</strong>
+          <p><b class="positive">92%</b> within target</p>
+        </article>
+        <article class="kpi-card">
+          <div class="kpi-top"><span>Today's sales</span><span class="kpi-icon amber">KES</span></div>
+          <strong>86.4k</strong>
+          <p><b class="positive">+12.8%</b> vs last Monday</p>
+        </article>
+        <article class="kpi-card">
+          <div class="kpi-top"><span>Avg. rating</span><span class="kpi-icon teal">★</span></div>
+          <strong>4.7</strong>
+          <p><b class="positive">23</b> reviews today</p>
+        </article>
+      </section>
+
+      <!-- Floor + Kitchen -->
+      <div class="content-grid">
+        <section class="panel floor-panel" id="floor">
+          <div class="section-head">
+            <div>
+              <span class="eyebrow">ROOM PULSE</span>
+              <h2>Floor map</h2>
+            </div>
+            <button class="text-btn" id="add-table">+ Add table</button>
+          </div>
+          <div class="floor-grid" id="floor-grid"></div>
+          <div class="legend">
+            <span><i class="available"></i>Available</span>
+            <span><i class="occupied"></i>Occupied</span>
+            <span><i class="billing"></i>Billing</span>
+            <span><i class="attention"></i>Attention</span>
+          </div>
+        </section>
+
+        <section class="panel queue-panel" id="kitchen">
+          <div class="section-head">
+            <div>
+              <span class="eyebrow">KITCHEN + BAR</span>
+              <h2>Ticket queue <span class="count-badge">6</span></h2>
+            </div>
+            <div class="segmented" role="group" aria-label="Filter queue">
+              <button class="seg active" data-queue="all">All</button>
+              <button class="seg" data-queue="kitchen">Kitchen</button>
+              <button class="seg" data-queue="bar">Bar</button>
+            </div>
+          </div>
+          <div id="ticket-list" class="ticket-list" aria-live="polite"></div>
+        </section>
+      </div>
+
+      <!-- Menu availability + Payments -->
+      <div class="lower-grid">
+        <section class="panel" id="menu">
+          <div class="section-head">
+            <div>
+              <span class="eyebrow">SINGLE SOURCE OF TRUTH</span>
+              <h2>Menu availability</h2>
+            </div>
+            <button class="text-btn" data-view="studio">Open menu studio ↗</button>
+          </div>
+          <div class="availability-list" id="availability-list" aria-live="polite"></div>
+        </section>
+
+        <section class="panel" id="payments">
+          <div class="section-head">
+            <div>
+              <span class="eyebrow">RECONCILIATION</span>
+              <h2>Payment watch</h2>
+            </div>
+            <button class="text-btn" id="open-payments-admin">View all ↗</button>
+          </div>
+          <div class="payment-list" id="payment-list"></div>
+        </section>
+      </div>
+
+    </section><!-- /staff-view -->
+
+    <!-- ══ ANALYTICS VIEW ══ -->
+    <section id="analytics-view" class="view hidden" aria-labelledby="analytics-title">
+      <div class="studio-header">
+        <div>
+          <p class="eyebrow">PERFORMANCE · LIVE DATA</p>
+          <h2 id="analytics-title">Analytics</h2>
+          <p>Sales, ratings, queue times, and menu performance at a glance.</p>
+        </div>
+      </div>
+      <section class="kpi-grid" aria-label="Analytics KPIs">
+        <article class="kpi-card">
+          <div class="kpi-top"><span>Total orders</span><span class="kpi-icon teal">◒</span></div>
+          <strong>142</strong><p><b class="positive">+18%</b> this week</p>
+        </article>
+        <article class="kpi-card">
+          <div class="kpi-top"><span>Revenue</span><span class="kpi-icon amber">KES</span></div>
+          <strong>312k</strong><p><b class="positive">+9%</b> vs last week</p>
+        </article>
+        <article class="kpi-card">
+          <div class="kpi-top"><span>Avg. rating</span><span class="kpi-icon teal">★</span></div>
+          <strong>4.7</strong><p><b class="positive">98</b> total ratings</p>
+        </article>
+        <article class="kpi-card">
+          <div class="kpi-top"><span>Repeat guests</span><span class="kpi-icon blue">♻</span></div>
+          <strong>34%</strong><p><b class="positive">+5pts</b> vs last month</p>
+        </article>
+      </section>
+      <div class="lower-grid" style="margin-top:16px">
+        <section class="panel">
+          <div class="section-head"><div><span class="eyebrow">TOP SELLERS</span><h2>Best dishes</h2></div></div>
+          <div id="analytics-top-dishes"></div>
+        </section>
+        <section class="panel">
+          <div class="section-head"><div><span class="eyebrow">GUEST FEEDBACK</span><h2>Recent ratings</h2></div></div>
+          <div id="analytics-ratings"></div>
+        </section>
+      </div>
+    </section>
+
+    <!-- ══ GUEST PWA VIEW ══ -->
+    <section id="guest-view" class="view guest-view hidden" aria-labelledby="guest-title">
+
+      <!-- Guest header -->
+      <div class="guest-header">
+        <button class="back-btn" id="back-staff">← Staff console</button>
+        <div class="guest-brand">
+          <span class="brand-mini" aria-hidden="true">SH</span>
+          <div>
+            <strong>Shamba House</strong>
+            <small>Table 07 · 4 seats · QR active</small>
+          </div>
+        </div>
+        <button class="icon-btn" aria-label="Open cart, 2 items">
+          🛒<b id="cart-count">2</b>
+        </button>
+      </div>
+
+      <!-- Hero poster -->
+      <div class="menu-poster">
+        <div class="poster-kicker">SOCIAL HOUSE · WESTLANDS</div>
+        <h2 id="guest-title">Our<br><em>menu.</em></h2>
+        <p>Scan. Choose. Stay awhile.</p>
+        <div class="poster-orbit orbit-a" aria-hidden="true"></div>
+        <div class="poster-orbit orbit-b" aria-hidden="true"></div>
+        <!-- Floating dish circles -->
+        <div class="poster-dish dish-a" aria-hidden="true">
+          <div class="poster-dish-emoji">🍖</div>
+        </div>
+        <div class="poster-dish dish-b" aria-hidden="true">
+          <div class="poster-dish-emoji">🍹</div>
+        </div>
+        <div class="poster-dish dish-c" aria-hidden="true">
+          <div class="poster-dish-emoji">🍛</div>
+        </div>
+        <button class="poster-cta" id="poster-scroll">
+          Explore the table <span aria-hidden="true">↓</span>
+        </button>
+      </div>
+
+      <!-- Guest intro controls -->
+      <div class="guest-intro">
+        <span class="eyebrow">TABLE 07 · PARTY OF <span id="party-size-label">4</span></span>
+        <h3>Pick your first plate.</h3>
+        <p>Fresh from the kitchen. Unavailable items stay visible so you always know what's happening.</p>
+        <div class="party-stepper">
+          <span>Party size</span>
+          <button id="party-minus" aria-label="Decrease party size">−</button>
+          <strong id="party-size">4</strong>
+          <button id="party-plus" aria-label="Increase party size">+</button>
+        </div>
+        <div class="order-policy">
+          <span>Order mode</span>
+          <button class="mode-btn active" data-order-mode="dine-in">Dine in</button>
+          <button class="mode-btn" data-order-mode="takeaway">Takeaway</button>
+          <small id="change-window">Changes allowed for 10 minutes after ordering</small>
+        </div>
+        <div class="split-order">
+          <strong>Ordering for</strong>
+          <button class="person-btn active" data-person="A">A · You</button>
+          <button class="person-btn" data-person="B">B · Guest</button>
+          <button class="person-btn" data-person="C">C · Guest</button>
+          <button class="person-btn" data-person="D">D · Guest</button>
+        </div>
+      </div>
+
+      <!-- Category tabs -->
+      <div class="category-tabs" role="tablist" aria-label="Menu categories">
+        <button class="category active" data-category="Popular" role="tab" aria-selected="true">🔥 Popular</button>
+        <button class="category" data-category="Mains" role="tab" aria-selected="false">🍽️ Mains</button>
+        <button class="category" data-category="Smallplates" role="tab" aria-selected="false">🥟 Small plates</button>
+        <button class="category" data-category="Drinks" role="tab" aria-selected="false">🍹 Drinks</button>
+        <button class="category" data-category="Juices" role="tab" aria-selected="false">🥤 Fresh juices</button>
+      </div>
+
+      <!-- Menu grid -->
+      <div class="menu-grid" id="guest-menu" role="list"></div>
+
+      <!-- Rating section (shown after order) -->
+      <div id="rating-section" class="rating-panel hidden">
+        <span class="eyebrow">HOW WAS YOUR EXPERIENCE?</span>
+        <h3>Rate your visit</h3>
+        <p>Your feedback helps the kitchen and team improve every service.</p>
+        <div class="star-row" role="group" aria-label="Star rating">
+          <button class="star-btn" data-star="1" aria-label="1 star">⭐</button>
+          <button class="star-btn" data-star="2" aria-label="2 stars">⭐</button>
+          <button class="star-btn" data-star="3" aria-label="3 stars">⭐</button>
+          <button class="star-btn" data-star="4" aria-label="4 stars">⭐</button>
+          <button class="star-btn" data-star="5" aria-label="5 stars">⭐</button>
+        </div>
+        <p class="rating-label" id="rating-label" aria-live="polite"></p>
+        <textarea class="rating-comment" id="rating-comment" placeholder="Any comments? (optional)" aria-label="Leave a comment"></textarea>
+        <button class="primary-btn rating-submit" id="submit-rating">Submit rating</button>
+      </div>
+
+      <!-- Cart bar -->
+      <div class="cart-bar" role="region" aria-label="Cart summary">
+        <div>
+          <span id="cart-item-label">2 items · server-priced</span>
+          <strong id="cart-total">KES 2,180</strong>
+        </div>
+        <button class="primary-btn" id="view-cart">Review order <span aria-hidden="true">→</span></button>
+      </div>
+
+    </section><!-- /guest-view -->
+
+    <!-- ══ MENU STUDIO VIEW ══ -->
+    <section id="studio-view" class="view hidden" aria-labelledby="studio-title">
+      <div class="studio-header">
+        <div>
+          <p class="eyebrow">CONTENT CONTROL · ADMIN + MANAGERS</p>
+          <h2 id="studio-title">Menu studio</h2>
+          <p>Keep the QR menu fresh without touching code. Changes publish to guests through Supabase Realtime.</p>
+        </div>
+        <button class="primary-btn" id="add-dish-top">+ Add new dish</button>
+      </div>
+      <div class="studio-layout">
+        <aside class="studio-nav" aria-label="Menu studio sections">
+          <button class="studio-tab active" data-studio-tab="dishes">Dishes <b id="dish-count-tab">24</b></button>
+          <button class="studio-tab" data-studio-tab="categories">Categories <b>6</b></button>
+          <button class="studio-tab" data-studio-tab="offers">Offers &amp; Discounts <b id="offer-count-tab">0</b></button>
+          <button class="studio-tab" data-studio-tab="media">Media library <b>38</b></button>
+          <div class="publish-card">
+            <span class="live-dot"></span>
+            <strong>Published to QR menu</strong>
+            <small>Last change 42 sec ago</small>
+            <button class="text-btn" data-view="guest">View live menu ↗</button>
+          </div>
+        </aside>
+
+        <div class="studio-main">
+
+          <!-- Dishes panel -->
+          <div id="dishes-panel" class="studio-panel">
+            <div class="toolbar">
+              <div class="search-box">
+                ⌕ <input id="dish-search" aria-label="Search dishes" placeholder="Search dishes, drinks, or tags" />
+              </div>
+              <select id="station-filter" aria-label="Filter by station">
+                <option value="all">All stations</option>
+                <option value="kitchen">Kitchen</option>
+                <option value="bar">Bar</option>
+              </select>
+              <button class="ghost-btn" id="sort-dishes">Recently edited ↓</button>
+            </div>
+            <div class="dish-table" id="dish-table" aria-live="polite"></div>
+          </div>
+
+          <!-- Categories panel -->
+          <div id="categories-panel" class="studio-panel hidden">
+            <div class="category-editor">
+              <div>
+                <span class="eyebrow">MENU ARCHITECTURE</span>
+                <h3>Categories &amp; sub-categories</h3>
+                <p>Build the same rhythm guests see in the pinned menu tabs.</p>
+              </div>
+              <button class="primary-btn" id="add-category">+ New category</button>
+            </div>
+            <div class="category-list" id="category-list"></div>
+          </div>
+
+          <!-- Offers & Discounts panel -->
+          <div id="offers-panel" class="studio-panel hidden">
+            <div class="category-editor">
+              <div>
+                <span class="eyebrow">PROMOTIONS · PIN PROTECTED</span>
+                <h3>Offers &amp; Discounts</h3>
+                <p>Set dish-level offers. PIN required to publish. Guests see the offer badge and crossed-out original price.</p>
+              </div>
+            </div>
+            <div class="offer-form" id="offer-form">
+              <select id="offer-dish-select" aria-label="Select dish for offer">
+                <option value="">Select dish…</option>
+              </select>
+              <input id="offer-label" placeholder="Label e.g. 20% OFF" aria-label="Offer label" />
+              <input id="offer-price" type="number" min="1" placeholder="New KES price" aria-label="New price" />
+              <button class="primary-btn" id="add-offer">Apply offer</button>
+            </div>
+            <div class="offer-list" id="offer-list" aria-live="polite"></div>
+          </div>
+
+          <!-- Media panel -->
+          <div id="media-panel" class="studio-panel hidden">
+            <div class="category-editor">
+              <div>
+                <span class="eyebrow">R2 MEDIA LIBRARY</span>
+                <h3>Dish imagery</h3>
+                <p>Optimised WebP images served from Cloudflare R2 with CDN edge cache.</p>
+              </div>
+              <label class="upload-btn">
+                Upload images
+                <input type="file" id="media-upload" accept="image/*" multiple />
+              </label>
+            </div>
+            <div class="media-grid" id="media-grid"></div>
+          </div>
+
+        </div>
+      </div>
+    </section><!-- /studio-view -->
+
+  </main>
+</div>
+
+<!-- ══ TOAST ══ -->
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<!-- ══ ADMIN MODAL ══ -->
+<div class="modal-backdrop hidden" id="admin-modal"
+     role="dialog" aria-modal="true" aria-labelledby="admin-modal-title">
+  <div class="admin-modal">
+    <button class="modal-close" id="close-admin" aria-label="Close admin controls">×</button>
+    <p class="eyebrow">RESTRICTED OPERATIONS</p>
+    <h2 id="admin-modal-title">Admin controls</h2>
+    <p class="modal-note">High-impact changes require the venue PIN. Max two authorised operators hold it.</p>
+
+    <!-- PIN gate -->
+    <div id="pin-gate">
+      <label>
+        Venue PIN
+        <input id="venue-pin" inputmode="numeric" type="password" maxlength="6"
+               placeholder="••••••" autocomplete="one-time-code" />
+      </label>
+      <button class="primary-btn" id="unlock-admin">Unlock controls</button>
+      <small id="pin-error" class="form-error" role="alert"></small>
+    </div>
+
+    <!-- Admin tools (shown after PIN) -->
+    <div id="admin-tools" class="hidden">
+
+      <!-- Add dish -->
+      <div class="admin-section">
+        <h3>Add a new dish or drink</h3>
+        <form id="dish-form" class="admin-form" novalidate>
+          <input id="dish-name" required placeholder="Dish or drink name" aria-label="Dish name" />
+          <input id="dish-price" required type="number" min="1" placeholder="Price KES" aria-label="Price in KES" />
+          <select id="dish-category" aria-label="Category">
+            <option value="Popular">Popular</option>
+            <option value="Mains">Mains</option>
+            <option value="Smallplates">Small plates</option>
+            <option value="Drinks">Drinks</option>
+            <option value="Juices">Fresh juices</option>
+          </select>
+          <select id="dish-station" aria-label="Station">
+            <option value="kitchen">Kitchen</option>
+            <option value="bar">Bar</option>
+          </select>
+          <button class="primary-btn" type="submit">Add dish</button>
+        </form>
+        <div id="admin-dish-list" class="admin-list" aria-live="polite"></div>
+      </div>
+
+      <!-- Offers / Discounts -->
+      <div class="admin-section">
+        <h3>Offers &amp; Discounts</h3>
+        <p style="font-size:12px;color:var(--muted);margin-bottom:14px">Apply a discount or limited-time offer to any dish. Shows on guest menu with a badge and crossed-out price.</p>
+        <div class="offer-form">
+          <select id="admin-offer-dish" aria-label="Dish to discount">
+            <option value="">Select dish…</option>
+          </select>
+          <input id="admin-offer-label" placeholder="e.g. Happy Hour" aria-label="Offer label" />
+          <input id="admin-offer-price" type="number" min="1" placeholder="New KES price" aria-label="Discounted price" />
+          <button class="primary-btn" id="admin-add-offer">Apply</button>
+        </div>
+        <div class="offer-list" id="admin-offer-list" aria-live="polite"></div>
+      </div>
+
+      <!-- Payment policies -->
+      <div class="admin-section">
+        <h3>Payment &amp; order policies</h3>
+        <label class="policy-row">
+          Payment timing
+          <select id="payment-timing">
+            <option value="after">Pay after food</option>
+            <option value="before">Pay before kitchen release</option>
+          </select>
+        </label>
+        <label class="policy-row" style="margin-top:12px">
+          Customer change window
+          <select id="change-policy">
+            <option value="10">10 minutes</option>
+            <option value="5">5 minutes</option>
+            <option value="0">No changes after submit</option>
+          </select>
+        </label>
+        <button class="ghost-btn" id="save-policies" style="margin-top:14px">Save protected policy</button>
+      </div>
+
+      <!-- Payment flow -->
+      <div class="admin-section">
+        <h3>Payment flow &amp; SambaPOS bridge</h3>
+        <div class="payment-flow-panel">
+          <p style="font-size:12px;color:var(--muted);margin-bottom:14px">
+            Payment is server-authoritative. Client initiates; Supabase Edge Function calls Daraja / card provider; callback verifies amount before marking success.
+          </p>
+          <div class="payment-method-grid">
+            <button class="pay-method-btn active" data-method="mpesa">
+              <div class="pay-method-icon">📱</div>
+              <strong>M-Pesa STK</strong>
+              <small>Daraja API · Safaricom</small>
+            </button>
+            <button class="pay-method-btn" data-method="card">
+              <div class="pay-method-icon">💳</div>
+              <strong>Card / hosted</strong>
+              <small>Flutterwave / Stripe</small>
+            </button>
+          </div>
+          <div class="pay-total-row">
+            <span>Demo order total</span>
+            <span>KES 4,860</span>
+          </div>
+          <button class="primary-btn" id="sim-payment" style="width:100%">Simulate payment initiation</button>
+          <div class="pay-status-indicator pending" id="pay-status" style="display:none">
+            <span class="live-dot"></span>
+            <span id="pay-status-text">Awaiting STK push…</span>
+          </div>
+          <p style="font-size:10px;color:var(--muted);margin-top:10px">
+            SambaPOS bridge stub: <code>pos-bridge</code> watches <code>pos_sync_log</code> → claims row → calls MockConnector → writes success/failed. Live connector requires SambaPOS V5 + Message Server token.
+          </p>
+        </div>
+      </div>
+
+      <!-- QR management -->
+      <div class="admin-section">
+        <h3>Table &amp; QR management</h3>
+        <div class="qr-panel">
+          <div id="qr-visual" class="qr-visual">
+            <img src="/table-07-qr.png" alt="QR code for Shamba House Table 07" />
+          </div>
+          <div>
+            <strong>Table 07 · QR active</strong>
+            <small>Receipt code: SH-07-2026</small>
+            <button class="ghost-btn" id="download-qr">Download QR flyer ↓</button>
+          </div>
+        </div>
+        <button class="ghost-btn" id="add-table-admin" style="margin-top:8px">+ Add table and generate QR</button>
+      </div>
+
+    </div><!-- /admin-tools -->
+  </div>
+</div><!-- /admin-modal -->
+
+<script src="/app.js"></script>
+</body>
+</html>

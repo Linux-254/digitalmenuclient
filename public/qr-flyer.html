@@ -1,0 +1,345 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Shamba House · Table QR Flyer</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap" rel="stylesheet" />
+  <style>
+    @font-face {
+      font-family: 'Fanfarron';
+      src: url('/fonts/Fanfarron.otf') format('opentype');
+      font-weight: 700 900;
+      font-display: swap;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { height: 100%; background: #1a1a1a; display: grid; place-items: center; padding: 32px 16px; }
+    body {
+      font-family: 'Inter', sans-serif;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ── FLYER CARD ── */
+    .flyer {
+      width: 390px;
+      min-height: 680px;
+      background: #07382d;
+      border-radius: 32px;
+      overflow: hidden;
+      position: relative;
+      box-shadow: 0 40px 100px rgba(0,0,0,.5);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 0 0 36px;
+      color: #e7dfb8;
+    }
+
+    /* ── TOP BAND ── */
+    .flyer-top {
+      width: 100%;
+      background: linear-gradient(135deg, #0e5744, #07382d);
+      padding: 36px 32px 28px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .flyer-top::before {
+      content: '';
+      position: absolute;
+      width: 260px; height: 260px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(185,214,138,.18), transparent 70%);
+      left: -80px; top: -80px;
+    }
+    .flyer-top::after {
+      content: '';
+      position: absolute;
+      width: 200px; height: 200px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(231,223,184,.12), transparent 70%);
+      right: -60px; bottom: -60px;
+    }
+    .venue-label {
+      font-size: 10px; letter-spacing: .22em; font-weight: 700;
+      opacity: .65; text-transform: uppercase;
+      position: relative; z-index: 2;
+    }
+    .venue-name {
+      font-family: 'Fanfarron', Georgia, serif;
+      font-size: 52px; font-weight: 900;
+      line-height: .88; letter-spacing: -.06em;
+      margin: 12px 0 6px;
+      position: relative; z-index: 2;
+    }
+    .venue-name em { font-style: normal; color: #b9d68a; }
+    .venue-sub {
+      font-size: 11px; opacity: .65; letter-spacing: .12em;
+      position: relative; z-index: 2;
+    }
+
+    /* ── DIVIDER ── */
+    .divider {
+      width: 100%; height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(231,223,184,.25) 30%, rgba(231,223,184,.25) 70%, transparent);
+      margin: 0;
+    }
+
+    /* ── CTA STRIP ── */
+    .cta-strip {
+      padding: 22px 32px 18px;
+      text-align: center;
+    }
+    .cta-heading {
+      font-family: 'Fanfarron', Georgia, serif;
+      font-size: 28px; font-weight: 900;
+      line-height: 1.05; letter-spacing: -.04em;
+      margin-bottom: 8px;
+    }
+    .cta-sub {
+      font-size: 12px; opacity: .7; line-height: 1.5; max-width: 280px; margin: 0 auto;
+    }
+
+    /* ── QR WRAPPER ── */
+    .qr-wrapper {
+      position: relative;
+      margin: 16px 0 20px;
+    }
+    /* Decorative arcs around QR */
+    .qr-arc {
+      position: absolute;
+      border-radius: 50%;
+      border: 2px solid rgba(185,214,138,.25);
+      pointer-events: none;
+    }
+    .arc-1 { width: 200px; height: 200px; top: 50%; left: 50%; transform: translate(-50%,-50%); }
+    .arc-2 { width: 240px; height: 240px; top: 50%; left: 50%; transform: translate(-50%,-50%); border-color: rgba(231,223,184,.12); }
+    .arc-3 { width: 280px; height: 280px; top: 50%; left: 50%; transform: translate(-50%,-50%); border-color: rgba(185,214,138,.07); }
+
+    /* Corner accent dots */
+    .qr-corner {
+      position: absolute; width: 12px; height: 12px;
+      border-radius: 50%; background: #b9d68a; opacity: .6;
+    }
+    .qr-corner.tl { top: -6px; left: -6px; }
+    .qr-corner.tr { top: -6px; right: -6px; }
+    .qr-corner.bl { bottom: -6px; left: -6px; }
+    .qr-corner.br { bottom: -6px; right: -6px; }
+
+    /* QR box itself */
+    .qr-box {
+      width: 164px; height: 164px;
+      background: #fff;
+      border-radius: 18px;
+      padding: 12px;
+      box-shadow:
+        0 0 0 6px rgba(231,223,184,.18),
+        0 20px 50px rgba(0,0,0,.35);
+      position: relative; z-index: 2;
+    }
+    .qr-inner {
+      width: 100%; height: 100%;
+      background: repeating-conic-gradient(#07382d 0 25%, #fff 0 50%) 0 / 14px 14px;
+      border-radius: 8px;
+      position: relative;
+    }
+    /* QR finder pattern corners */
+    .qr-finder {
+      position: absolute;
+      width: 36px; height: 36px;
+      border: 5px solid #07382d;
+      border-radius: 5px;
+      background: #fff;
+    }
+    .qr-finder::after {
+      content: ''; position: absolute;
+      width: 16px; height: 16px;
+      background: #07382d;
+      border-radius: 2px;
+      top: 50%; left: 50%;
+      transform: translate(-50%,-50%);
+    }
+    .qr-finder.tl { top: 4px; left: 4px; }
+    .qr-finder.tr { top: 4px; right: 4px; }
+    .qr-finder.bl { bottom: 4px; left: 4px; }
+
+    /* Table number overlay on QR */
+    .qr-table-label {
+      position: absolute;
+      bottom: -14px; left: 50%; transform: translateX(-50%);
+      background: #07382d;
+      border: 2px solid #b9d68a;
+      color: #e7dfb8;
+      font-size: 10px; font-weight: 800; letter-spacing: .12em;
+      padding: 4px 12px; border-radius: 99px;
+      white-space: nowrap; z-index: 3;
+    }
+
+    /* ── TABLE NUMBER DISPLAY ── */
+    .table-badge {
+      display: flex; align-items: center; gap: 10px;
+      margin-top: 24px; padding: 10px 20px;
+      background: rgba(185,214,138,.1);
+      border: 1px solid rgba(185,214,138,.22);
+      border-radius: 12px;
+    }
+    .table-number {
+      font-family: 'Fanfarron', Georgia, serif;
+      font-size: 36px; font-weight: 900;
+      color: #b9d68a; line-height: 1;
+    }
+    .table-info { text-align: left; }
+    .table-info strong { display: block; font-size: 12px; font-weight: 700; }
+    .table-info small { font-size: 10px; opacity: .6; }
+
+    /* ── STEPS ── */
+    .steps {
+      display: flex; gap: 0; margin: 20px 32px 0; width: calc(100% - 64px);
+    }
+    .step {
+      flex: 1; text-align: center; position: relative;
+    }
+    .step::after {
+      content: '';
+      position: absolute; top: 14px; left: 60%; width: 80%; height: 1px;
+      background: rgba(185,214,138,.2);
+    }
+    .step:last-child::after { display: none; }
+    .step-icon {
+      width: 28px; height: 28px; border-radius: 50%;
+      background: rgba(185,214,138,.15);
+      border: 1px solid rgba(185,214,138,.3);
+      display: grid; place-items: center;
+      font-size: 13px; margin: 0 auto 6px;
+      position: relative; z-index: 1;
+    }
+    .step-label { font-size: 9px; opacity: .65; font-weight: 700; letter-spacing: .06em; }
+
+    /* ── FOOTER ── */
+    .flyer-footer {
+      margin-top: 24px;
+      text-align: center;
+      font-size: 10px; opacity: .5; letter-spacing: .1em;
+      padding: 0 32px;
+    }
+    .flyer-footer a { color: inherit; text-decoration: none; }
+    .wifi-strip {
+      margin-top: 14px;
+      display: flex; align-items: center; gap: 8px;
+      background: rgba(255,255,255,.05);
+      border: 1px solid rgba(255,255,255,.08);
+      border-radius: 8px; padding: 8px 14px;
+      font-size: 10px;
+    }
+    .wifi-strip span { opacity: .6; }
+    .wifi-strip strong { font-weight: 800; font-size: 11px; }
+
+    /* ── Print & dark bg ── */
+    @media print {
+      html { background: white; padding: 0; }
+      .flyer {
+        box-shadow: none; border-radius: 0;
+        width: 100vw; min-height: 100vh;
+        page-break-inside: avoid;
+      }
+      .print-btn { display: none; }
+    }
+
+    .print-btn {
+      position: fixed; bottom: 24px; right: 24px;
+      background: #b9d68a; color: #07382d;
+      border: 0; border-radius: 99px;
+      padding: 12px 20px; font-size: 13px; font-weight: 800;
+      cursor: pointer; box-shadow: 0 8px 20px rgba(0,0,0,.3);
+      font-family: inherit;
+    }
+    .print-btn:hover { background: #c9e89a; }
+  </style>
+</head>
+<body>
+
+<div class="flyer">
+
+  <!-- Top hero section -->
+  <div class="flyer-top">
+    <p class="venue-label">Westlands · Nairobi · Est. 2024</p>
+    <h1 class="venue-name">Shamba<br><em>House.</em></h1>
+    <p class="venue-sub">SOCIAL HOUSE &amp; KITCHEN</p>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- CTA -->
+  <div class="cta-strip">
+    <h2 class="cta-heading">Scan to order<br>from your table</h2>
+    <p class="cta-sub">No waiting for a waiter. Browse the full menu, add to your order, and pay — all from your phone.</p>
+  </div>
+
+  <!-- QR Code -->
+  <div class="qr-wrapper">
+    <div class="qr-arc arc-1"></div>
+    <div class="qr-arc arc-2"></div>
+    <div class="qr-arc arc-3"></div>
+    <div class="qr-box">
+      <div class="qr-corner tl"></div>
+      <div class="qr-corner tr"></div>
+      <div class="qr-corner bl"></div>
+      <div class="qr-corner br"></div>
+      <div class="qr-inner">
+        <div class="qr-finder tl"></div>
+        <div class="qr-finder tr"></div>
+        <div class="qr-finder bl"></div>
+      </div>
+    </div>
+    <div class="qr-table-label">📍 TABLE 07</div>
+  </div>
+
+  <!-- Table badge -->
+  <div class="table-badge">
+    <div class="table-number">07</div>
+    <div class="table-info">
+      <strong>Your table number</strong>
+      <small>Scan once — session stays open all meal</small>
+    </div>
+  </div>
+
+  <!-- Steps -->
+  <div class="steps">
+    <div class="step">
+      <div class="step-icon">📷</div>
+      <p class="step-label">SCAN</p>
+    </div>
+    <div class="step">
+      <div class="step-icon">🍽️</div>
+      <p class="step-label">BROWSE</p>
+    </div>
+    <div class="step">
+      <div class="step-icon">🛒</div>
+      <p class="step-label">ORDER</p>
+    </div>
+    <div class="step">
+      <div class="step-icon">📱</div>
+      <p class="step-label">PAY</p>
+    </div>
+  </div>
+
+  <!-- WiFi (optional) -->
+  <div class="wifi-strip" style="margin: 16px 32px 0; width: calc(100% - 64px)">
+    <span>📶 Free Wi-Fi</span>
+    <strong>ShambaHouse_Guest</strong>
+    <span>· No password</span>
+  </div>
+
+  <!-- Footer -->
+  <div class="flyer-footer">
+    <p>menu.shambahouse.co.ke</p>
+    <p style="margin-top:6px">Westlands, Nairobi · Open daily 11am – 11pm</p>
+  </div>
+
+</div>
+
+<button class="print-btn" onclick="window.print()">🖨 Print flyer</button>
+
+</body>
+</html>

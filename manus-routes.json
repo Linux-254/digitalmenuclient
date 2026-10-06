@@ -1,0 +1,18 @@
+{
+  "routes": [
+    { "path": "/", "file": "index.html" },
+    { "path": "/qr-flyer", "file": "public/qr-flyer.html" },
+    { "path": "/styles.css", "file": "styles.css" },
+    { "path": "/app.js", "file": "app.js" },
+    { "path": "/fonts/*", "dir": "public/fonts" },
+    { "path": "/favicon.svg", "file": "public/favicon.svg" },
+    { "path": "/favicon.ico", "file": "public/favicon.ico" },
+    { "path": "/apple-touch-icon.png", "file": "public/apple-touch-icon.png" },
+    { "path": "/icon-192.png", "file": "public/icon-192.png" },
+    { "path": "/icon-512.png", "file": "public/icon-512.png" },
+    { "path": "/site.webmanifest", "file": "public/site.webmanifest" },
+    { "path": "/table-07-qr.png", "file": "public/table-07-qr.png" }
+  ],
+  "static": "public",
+  "entry": "index.html"
+}

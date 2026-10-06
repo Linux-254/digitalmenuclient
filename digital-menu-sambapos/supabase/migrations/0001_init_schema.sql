@@ -1,0 +1,1 @@
+-- Supabase/Postgres schema scaffold. Production migration should create venues, staff, tables, table_sessions, categories, menu_items, availability_events, orders, order_items, pos_sync_log, pos_connector_config, payments, and payment_audit_events.

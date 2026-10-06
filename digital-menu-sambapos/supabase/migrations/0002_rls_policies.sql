@@ -1,0 +1,4 @@
+-- RLS intent: guests read/write only rows scoped to their table_session_id claim.
+-- Staff access is limited by matching venue_id and role.
+-- pos_sync_log and pos_connector_config are service-role only.
+-- Payments are guest-select only; status transitions must use service-role functions.

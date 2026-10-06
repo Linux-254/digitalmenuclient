@@ -1,0 +1,3 @@
+@import "tailwindcss";
+@theme { --color-primary: #08B6A4; --color-primary-foreground: #082A28; --color-background: #F7F7F3; --color-foreground: #15182E; --color-card: #FFFFFF; --color-border: #E7E8ED; --color-muted: #727890; --radius-xl: 18px; }
+.dark { --color-background: #101326; --color-foreground: #F4F5FB; --color-card: #191D37; --color-border: #2C3150; }
