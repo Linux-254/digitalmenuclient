@@ -1,9 +1,3 @@
-<<<<<<< HEAD
--- RLS intent: guests read/write only rows scoped to their table_session_id claim.
--- Staff access is limited by matching venue_id and role.
--- pos_sync_log and pos_connector_config are service-role only.
--- Payments are guest-select only; status transitions must use service-role functions.
-=======
 -- Row Level Security (RLS) Policies for Digital Menu & Tableside OS
 -- Principle: Guests get scoped access via table_session_id claim; staff access is bounded by venue_id; service-role owns pos_sync_log and payments state transitions.
 
@@ -139,4 +133,3 @@ create policy "Staff admin payment audit events select"
 create policy "Service role payment audit events write"
   on payment_audit_events for insert
   with check (auth.jwt() ->> 'role' = 'service_role');
->>>>>>> 8f7b31d (feat: digital tableside menu system with dynamic category rail, drinks catalog, and responsive layouts)

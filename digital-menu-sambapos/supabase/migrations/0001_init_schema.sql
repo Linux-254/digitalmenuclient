@@ -1,6 +1,3 @@
-<<<<<<< HEAD
--- Supabase/Postgres schema scaffold. Production migration should create venues, staff, tables, table_sessions, categories, menu_items, availability_events, orders, order_items, pos_sync_log, pos_connector_config, payments, and payment_audit_events.
-=======
 -- Supabase/Postgres schema for Digital Menu & Tableside OS
 -- Core Tables: venues, staff, tables, table_sessions, categories, menu_items, availability_events, orders, order_items, pos_sync_log, pos_connector_config, payments, payment_audit_events
 
@@ -143,4 +140,3 @@ create table if not exists payment_audit_events (
   actor_staff_id uuid references staff(id),
   created_at timestamptz default now()
 );
->>>>>>> 8f7b31d (feat: digital tableside menu system with dynamic category rail, drinks catalog, and responsive layouts)

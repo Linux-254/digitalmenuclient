@@ -201,27 +201,16 @@ let menuItems = [
     offer_price: null
   },
 
-<<<<<<< HEAD
-  // ── Juices & Refreshing Drinks ──
-=======
   // ── Drinks & Beverages (Refreshing juices, house cocktails, artisan coffees) ──
->>>>>>> 8f7b31d (feat: digital tableside menu system with dynamic category rail, drinks catalog, and responsive layouts)
   {
     id: 'mango-passion-cooler',
     name: 'Cold-Pressed Passion Mango',
     desc: 'Pure cold-pressed coastal mango pulp blended with tart wild passion fruit, sparkling water, and fresh garden mint leaves.',
     price: 450,
-<<<<<<< HEAD
-    category: 'Juices & Drinks',
-    image: '/images/hero-banner.jpg',
-    is_available: true,
-    prep_time: '5 min',
-=======
     category: 'Drinks & Beverages',
     image: '/images/hero-banner.jpg',
     is_available: true,
     prep_time: '4 min',
->>>>>>> 8f7b31d (feat: digital tableside menu system with dynamic category rail, drinks catalog, and responsive layouts)
     rating: 4.9,
     station: 'bar',
     is_new: false,
@@ -233,11 +222,7 @@ let menuItems = [
     name: 'Traditional Kenyan Dawa',
     desc: 'Hot natural wild forest honey, crushed organic ginger, fresh lime wedges, served with a natural Kenyan sugarcane stirring wand.',
     price: 400,
-<<<<<<< HEAD
-    category: 'Juices & Drinks',
-=======
     category: 'Drinks & Beverages',
->>>>>>> 8f7b31d (feat: digital tableside menu system with dynamic category rail, drinks catalog, and responsive layouts)
     image: '/images/hero-banner.jpg',
     is_available: true,
     prep_time: '5 min',
@@ -252,17 +237,10 @@ let menuItems = [
     name: 'Hibiscus Mint Iced Cooler',
     desc: 'Chilled crimson roselle hibiscus flower brew, crushed spearmint, a squeeze of fresh lime, and organic cane nectar.',
     price: 380,
-<<<<<<< HEAD
-    category: 'Juices & Drinks',
-    image: '/images/hero-banner.jpg',
-    is_available: true,
-    prep_time: '5 min',
-=======
     category: 'Drinks & Beverages',
     image: '/images/hero-banner.jpg',
     is_available: true,
     prep_time: '3 min',
->>>>>>> 8f7b31d (feat: digital tableside menu system with dynamic category rail, drinks catalog, and responsive layouts)
     rating: 4.7,
     station: 'bar',
     is_new: false,
@@ -274,17 +252,10 @@ let menuItems = [
     name: 'Coastal Tamarind Sparkler',
     desc: 'Tangy artisanal tamarind syrup pressed in-house, sparkling mineral water, crushed ice, and a roasted chili salt rim.',
     price: 390,
-<<<<<<< HEAD
-    category: 'Juices & Drinks',
-    image: '/images/hero-banner.jpg',
-    is_available: true,
-    prep_time: '5 min',
-=======
     category: 'Drinks & Beverages',
     image: '/images/hero-banner.jpg',
     is_available: true,
     prep_time: '4 min',
->>>>>>> 8f7b31d (feat: digital tableside menu system with dynamic category rail, drinks catalog, and responsive layouts)
     rating: 4.7,
     station: 'bar',
     is_new: false,
@@ -296,17 +267,10 @@ let menuItems = [
     name: 'Kenyan Crisp Apple Cider (500ml)',
     desc: 'Crisp, chilled premium Kenyan cider made with real apples. Served in an ice-frosted glass with a slice of fresh green apple.',
     price: 480,
-<<<<<<< HEAD
-    category: 'Juices & Drinks',
-    image: '/images/hero-banner.jpg',
-    is_available: true,
-    prep_time: '3 min',
-=======
     category: 'Drinks & Beverages',
     image: '/images/hero-banner.jpg',
     is_available: true,
     prep_time: '2 min',
->>>>>>> 8f7b31d (feat: digital tableside menu system with dynamic category rail, drinks catalog, and responsive layouts)
     rating: 4.8,
     station: 'bar',
     is_new: false,
@@ -318,9 +282,6 @@ let menuItems = [
     name: 'Single Origin AA Cold Brew Espresso',
     desc: 'Nyeri high-altitude single estate arabica, slow cold-extracted for 18 hours with bright citrus undertones and silky crema.',
     price: 350,
-<<<<<<< HEAD
-    category: 'Juices & Drinks',
-=======
     category: 'Drinks & Beverages',
     image: '/images/hero-banner.jpg',
     is_available: true,
@@ -337,14 +298,11 @@ let menuItems = [
     desc: 'Muddled fresh garden mint, Persian lime juice, raw cane syrup, sparkling club soda, and crushed ice.',
     price: 420,
     category: 'Drinks & Beverages',
->>>>>>> 8f7b31d (feat: digital tableside menu system with dynamic category rail, drinks catalog, and responsive layouts)
     image: '/images/hero-banner.jpg',
     is_available: true,
     prep_time: '4 min',
     rating: 4.9,
     station: 'bar',
-<<<<<<< HEAD
-=======
     is_new: true,
     offer_label: 'Popular',
     offer_price: null
@@ -360,7 +318,6 @@ let menuItems = [
     prep_time: '5 min',
     rating: 4.8,
     station: 'bar',
->>>>>>> 8f7b31d (feat: digital tableside menu system with dynamic category rail, drinks catalog, and responsive layouts)
     is_new: false,
     offer_label: '',
     offer_price: null
@@ -406,11 +363,7 @@ const categoryNames = [
   'Grill & Steaks',
   'Pizzas & Burgers',
   'Pasta & Coastal',
-<<<<<<< HEAD
-  'Juices & Drinks',
-=======
   'Drinks & Beverages',
->>>>>>> 8f7b31d (feat: digital tableside menu system with dynamic category rail, drinks catalog, and responsive layouts)
   'Desserts'
 ];
 
@@ -557,21 +510,15 @@ function setView(viewName) {
     if (dashTopbar) dashTopbar.style.display = 'none';
     if (guestTopbar) guestTopbar.style.display = 'flex';
 
-<<<<<<< HEAD
-=======
     const staffNav = $('#staff-bottom-nav');
     if (staffNav) staffNav.style.display = 'none';
 
->>>>>>> 8f7b31d (feat: digital tableside menu system with dynamic category rail, drinks catalog, and responsive layouts)
     $('#tab-dash-view')?.classList.remove('active');
     $('#tab-guest-view')?.classList.add('active');
 
     renderGuestCategories();
     renderGuestDishes();
-<<<<<<< HEAD
-=======
     updateCartUI();
->>>>>>> 8f7b31d (feat: digital tableside menu system with dynamic category rail, drinks catalog, and responsive layouts)
     window.scrollTo({ top: 0, behavior: 'smooth' });
     showToast(`Tableside Guest Menu Active · Table ${activeTableSession.num} (${activeTableSession.zone})`);
   } else {
@@ -581,15 +528,12 @@ function setView(viewName) {
     if (dashTopbar) dashTopbar.style.display = 'flex';
     if (guestTopbar) guestTopbar.style.display = 'none';
 
-<<<<<<< HEAD
-=======
     const staffNav = $('#staff-bottom-nav');
     if (staffNav) staffNav.style.display = '';
 
     const floatingOrder = $('#guest-floating-order-container');
     if (floatingOrder) floatingOrder.style.display = 'none';
 
->>>>>>> 8f7b31d (feat: digital tableside menu system with dynamic category rail, drinks catalog, and responsive layouts)
     $('#tab-dash-view')?.classList.add('active');
     $('#tab-guest-view')?.classList.remove('active');
 
@@ -608,12 +552,6 @@ function renderDashboardCategories() {
   const container = $('#category-rail');
   if (!container) return;
 
-<<<<<<< HEAD
-  const cats = categoryNames.map(name => {
-    const count = name === 'All' 
-      ? menuItems.length 
-      : menuItems.filter(i => i.category === name).length;
-=======
   const dynamicCategories = getDynamicCategoryList();
   const cats = dynamicCategories.map(name => {
     const count = name === 'All' 
@@ -624,17 +562,12 @@ function renderDashboardCategories() {
           }
           return i.category === name;
         }).length;
->>>>>>> 8f7b31d (feat: digital tableside menu system with dynamic category rail, drinks catalog, and responsive layouts)
     let thumb = '/images/hero-banner.jpg';
     if (name === 'Pizzas & Burgers') thumb = '/images/beef-pizza.jpg';
     if (name === 'Grill & Steaks') thumb = '/images/chicken-steak.jpg';
     if (name === 'Pasta & Coastal') thumb = '/images/spaghetti.jpg';
     if (name === 'Starters') thumb = '/images/beef-pizza.jpg';
-<<<<<<< HEAD
-    if (name === 'Juices & Drinks') thumb = '/images/hero-banner.jpg';
-=======
     if (name === 'Drinks & Beverages' || name === 'Juices & Drinks' || name === 'Drinks') thumb = '/images/hero-banner.jpg';
->>>>>>> 8f7b31d (feat: digital tableside menu system with dynamic category rail, drinks catalog, and responsive layouts)
     if (name === 'Desserts') thumb = '/images/black-burger.jpg';
 
     return { name, count, thumb };
@@ -750,24 +683,6 @@ function renderStaffRoster() {
 }
 
 // ═══════════════════════════════════════════
-<<<<<<< HEAD
-//  GUEST MENU & ORDERING FLOW (CLEAN & MINIMALISTIC)
-// ═══════════════════════════════════════════
-
-function renderGuestCategories() {
-  const bar = $('#guest-category-bar');
-  if (!bar) return;
-
-  bar.innerHTML = categoryNames.map(catName => {
-    const count = catName === 'All'
-      ? menuItems.length
-      : menuItems.filter(i => i.category === catName).length;
-
-    return `
-      <button class="guest-cat-pill ${catName === guestActiveCategory ? 'active' : ''}" data-cat="${catName}" role="tab" aria-selected="${catName === guestActiveCategory}">
-        <span>${catName}</span>
-        <span class="guest-cat-count">${count}</span>
-=======
 //  GUEST MENU & ORDERING FLOW (SECTION + CARD RHYTHM)
 // ═══════════════════════════════════════════
 
@@ -841,18 +756,10 @@ function renderGuestCategories() {
         ${iconSvg}
         <span>${catName}</span>
         <span class="guest-cat-count">${count} item${count === 1 ? '' : 's'}</span>
->>>>>>> 8f7b31d (feat: digital tableside menu system with dynamic category rail, drinks catalog, and responsive layouts)
       </button>
     `;
   }).join('');
 
-<<<<<<< HEAD
-  $$('.guest-cat-pill').forEach(pill => {
-    pill.addEventListener('click', () => {
-      guestActiveCategory = pill.getAttribute('data-cat');
-      renderGuestCategories();
-      renderGuestDishes();
-=======
   bar.querySelectorAll('.guest-cat-card').forEach(card => {
     card.addEventListener('click', () => {
       guestActiveCategory = card.getAttribute('data-cat');
@@ -865,78 +772,11 @@ function renderGuestCategories() {
           sec.scrollIntoView({ behavior: 'smooth', block: 'start' });
         }
       }
->>>>>>> 8f7b31d (feat: digital tableside menu system with dynamic category rail, drinks catalog, and responsive layouts)
     });
   });
 }
 
 function renderGuestDishes() {
-<<<<<<< HEAD
-  const grid = $('#guest-dishes-grid');
-  if (!grid) return;
-
-  const searchInput = $('#guest-search-input');
-  const query = (searchInput?.value || '').toLowerCase();
-
-  const filtered = menuItems.filter(item => {
-    const matchesCat = guestActiveCategory === 'All' || item.category === guestActiveCategory;
-    const matchesQuery = item.name.toLowerCase().includes(query) || item.desc.toLowerCase().includes(query);
-    return matchesCat && matchesQuery;
-  });
-
-  $('#guest-category-heading').textContent = guestActiveCategory === 'All' ? 'All Dishes & Drinks' : guestActiveCategory;
-  $('#guest-items-counter').textContent = `${filtered.length} items`;
-
-  if (filtered.length === 0) {
-    grid.innerHTML = `
-      <div style="grid-column:1/-1;text-align:center;padding:48px 20px;background:#ffffff;border-radius:16px;border:1px dashed var(--dash-border);">
-        <p style="font-size:16px;font-weight:700;color:var(--dash-ink);">No items found</p>
-        <p style="font-size:13px;color:var(--dash-muted);margin-top:4px;">Try searching for a different dish, drink, or category</p>
-      </div>
-    `;
-    return;
-  }
-
-  grid.innerHTML = filtered.map(item => {
-    const effectivePrice = item.offer_price ? item.offer_price : item.price;
-    const cartItem = cart.find(c => c.id === item.id);
-    const cartQty = cartItem ? cartItem.qty : 0;
-
-    return `
-      <article class="guest-dish-card" data-id="${item.id}">
-        <div class="guest-card-media" onclick="openDishCustomization('${item.id}')">
-          <img src="${item.image}" alt="${item.name}" loading="lazy" />
-          ${item.offer_label ? `<span class="guest-card-tag offer">${item.offer_label}</span>` : `<span class="guest-card-tag">${item.category}</span>`}
-          <div class="guest-card-rating">
-            <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-            <span>${item.rating}</span>
-          </div>
-        </div>
-
-        <div class="guest-card-body" onclick="openDishCustomization('${item.id}')">
-          <h4>${item.name}</h4>
-          <p>${item.desc}</p>
-          <div class="guest-card-bottom">
-            <div class="guest-card-price-box">
-              <span class="guest-card-price">KES ${effectivePrice.toLocaleString()}</span>
-              <span class="guest-card-prep">
-                <svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
-                ${item.prep_time}
-              </span>
-            </div>
-
-            ${item.is_available ? `
-              <button class="btn-card-add ${cartQty > 0 ? 'in-cart' : ''}" onclick="event.stopPropagation(); quickAddToCart('${item.id}')" aria-label="Add ${item.name} to order">
-                <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
-                <span>${cartQty > 0 ? `${cartQty} Added` : 'Add'}</span>
-              </button>
-            ` : `
-              <span style="font-size:11px;font-weight:700;color:#ef4444;">Sold Out</span>
-            `}
-          </div>
-        </div>
-      </article>
-=======
   const column = $('#guest-sections-column');
   if (!column) return;
 
@@ -1053,13 +893,10 @@ function renderGuestDishes() {
           ${cardsHtml}
         </div>
       </section>
->>>>>>> 8f7b31d (feat: digital tableside menu system with dynamic category rail, drinks catalog, and responsive layouts)
     `;
   }).join('');
 }
 
-<<<<<<< HEAD
-=======
 window.filterToCategory = function(catName) {
   guestActiveCategory = catName;
   renderGuestCategories();
@@ -1067,16 +904,12 @@ window.filterToCategory = function(catName) {
   window.scrollTo({ top: 120, behavior: 'smooth' });
 };
 
->>>>>>> 8f7b31d (feat: digital tableside menu system with dynamic category rail, drinks catalog, and responsive layouts)
 // ── Quick Add to Cart ──
 function quickAddToCart(itemId) {
   const item = menuItems.find(i => i.id === itemId);
   if (!item || !item.is_available) return;
 
-<<<<<<< HEAD
-=======
   const isDrink = item.category === 'Drinks & Beverages' || item.station === 'bar';
->>>>>>> 8f7b31d (feat: digital tableside menu system with dynamic category rail, drinks catalog, and responsive layouts)
   const existing = cart.find(c => c.id === itemId);
   const effectivePrice = item.offer_price ? item.offer_price : item.price;
 
@@ -1088,13 +921,8 @@ function quickAddToCart(itemId) {
       name: item.name,
       price: effectivePrice,
       qty: 1,
-<<<<<<< HEAD
-      spice: 'Medium',
-      side: 'Hand-Cut Fries',
-=======
       spice: isDrink ? 'Chilled' : 'Medium',
       side: isDrink ? 'Standard' : 'Hand-Cut Fries',
->>>>>>> 8f7b31d (feat: digital tableside menu system with dynamic category rail, drinks catalog, and responsive layouts)
       notes: ''
     });
   }
@@ -1104,25 +932,16 @@ function quickAddToCart(itemId) {
   renderGuestDishes();
 }
 
-<<<<<<< HEAD
-// ── Open Dish Customization Modal ──
-=======
 // ── Open Dish & Drink Customization Modal ──
->>>>>>> 8f7b31d (feat: digital tableside menu system with dynamic category rail, drinks catalog, and responsive layouts)
 window.openDishCustomization = function(itemId) {
   const item = menuItems.find(i => i.id === itemId);
   if (!item) return;
 
   selectedDishForCustomization = item;
-<<<<<<< HEAD
-  currentCustomSpice = 'Medium';
-  currentCustomSide = 'Hand-Cut Fries';
-=======
   const isDrink = item.category === 'Drinks & Beverages' || item.station === 'bar';
   currentCustomSpice = isDrink ? 'Chilled with Ice' : 'Medium';
   currentCustomSide = isDrink ? 'Natural Cane' : 'Hand-Cut Fries';
   customQty = 1;
->>>>>>> 8f7b31d (feat: digital tableside menu system with dynamic category rail, drinks catalog, and responsive layouts)
 
   const effectivePrice = item.offer_price ? item.offer_price : item.price;
   const container = $('#customization-container');
@@ -1139,33 +958,6 @@ window.openDishCustomization = function(itemId) {
       </div>
     </div>
 
-<<<<<<< HEAD
-    <!-- Spice Level Selection -->
-    <div class="custom-option-group">
-      <label class="custom-option-label">Spice Level</label>
-      <div class="custom-pill-row">
-        <button type="button" class="custom-option-pill ${currentCustomSpice === 'Mild' ? 'active' : ''}" onclick="selectSpice('Mild')">Mild</button>
-        <button type="button" class="custom-option-pill ${currentCustomSpice === 'Medium' ? 'active' : ''}" onclick="selectSpice('Medium')">Medium Spiced</button>
-        <button type="button" class="custom-option-pill ${currentCustomSpice === 'Hot' ? 'active' : ''}" onclick="selectSpice('Hot')">Extra Hot &amp; Chili</button>
-      </div>
-    </div>
-
-    <!-- Choice of Side Selection -->
-    <div class="custom-option-group">
-      <label class="custom-option-label">Choice of Side</label>
-      <div class="custom-pill-row">
-        <button type="button" class="custom-option-pill ${currentCustomSide === 'Hand-Cut Fries' ? 'active' : ''}" onclick="selectSide('Hand-Cut Fries')">Hand-Cut Fries</button>
-        <button type="button" class="custom-option-pill ${currentCustomSide === 'Steamed Jasmine Rice' ? 'active' : ''}" onclick="selectSide('Steamed Jasmine Rice')">Steamed Rice</button>
-        <button type="button" class="custom-option-pill ${currentCustomSide === 'Ugali' ? 'active' : ''}" onclick="selectSide('Ugali')">White Ugali</button>
-        <button type="button" class="custom-option-pill ${currentCustomSide === 'Fresh Garden Salad' ? 'active' : ''}" onclick="selectSide('Fresh Garden Salad')">Garden Salad</button>
-      </div>
-    </div>
-
-    <!-- Special Dietary or Kitchen Instructions -->
-    <div class="form-group">
-      <label class="custom-option-label" for="custom-dish-notes">Special Kitchen Notes</label>
-      <input type="text" class="form-control" id="custom-dish-notes" placeholder="e.g. No onions, sauce on the side, allergies..." />
-=======
     ${isDrink ? `
       <!-- Temperature & Serving Style -->
       <div class="custom-option-group">
@@ -1215,7 +1007,6 @@ window.openDishCustomization = function(itemId) {
     <div class="form-group">
       <label class="custom-option-label" for="custom-dish-notes">${isDrink ? 'Bar Special Instructions' : 'Special Kitchen Notes'}</label>
       <input type="text" class="form-control" id="custom-dish-notes" placeholder="${isDrink ? 'e.g. Glass of ice on the side, extra lime wedge...' : 'e.g. No onions, sauce on the side, allergies...'}" />
->>>>>>> 8f7b31d (feat: digital tableside menu system with dynamic category rail, drinks catalog, and responsive layouts)
     </div>
 
     <!-- Quantity & Submit -->
@@ -1246,38 +1037,22 @@ window.adjustCustomQty = function(delta) {
 
 window.selectSpice = function(level) {
   currentCustomSpice = level;
-<<<<<<< HEAD
-  $$('.custom-pill-row button').forEach(b => {
-    if (['Mild', 'Medium Spiced', 'Extra Hot & Chili'].includes(b.textContent.trim())) {
-      b.classList.toggle('active', b.textContent.includes(level));
-    }
-  });
-=======
   const row = $$('#customization-container .custom-option-group')[0]?.querySelectorAll('.custom-pill-row button');
   if (row) {
     row.forEach(b => {
       b.classList.toggle('active', b.textContent.trim().toLowerCase().includes(level.toLowerCase().split(' ')[0]));
     });
   }
->>>>>>> 8f7b31d (feat: digital tableside menu system with dynamic category rail, drinks catalog, and responsive layouts)
 };
 
 window.selectSide = function(side) {
   currentCustomSide = side;
-<<<<<<< HEAD
-  $$('.custom-pill-row button').forEach(b => {
-    if (['Hand-Cut Fries', 'Steamed Rice', 'White Ugali', 'Garden Salad'].includes(b.textContent.trim())) {
-      b.classList.toggle('active', b.textContent.includes(side.split(' ')[0]));
-    }
-  });
-=======
   const row = $$('#customization-container .custom-option-group')[1]?.querySelectorAll('.custom-pill-row button');
   if (row) {
     row.forEach(b => {
       b.classList.toggle('active', b.textContent.trim().toLowerCase().includes(side.toLowerCase().split(' ')[0]));
     });
   }
->>>>>>> 8f7b31d (feat: digital tableside menu system with dynamic category rail, drinks catalog, and responsive layouts)
 };
 
 window.confirmDishCustomization = function() {
@@ -1302,8 +1077,6 @@ window.confirmDishCustomization = function() {
   renderGuestDishes();
 };
 
-<<<<<<< HEAD
-=======
 // ── Cart Modal Toggle Helper ──
 window.toggleCartModal = function(forceState) {
   const modal = $('#modal-cart');
@@ -1317,15 +1090,11 @@ window.toggleCartModal = function(forceState) {
   }
 };
 
->>>>>>> 8f7b31d (feat: digital tableside menu system with dynamic category rail, drinks catalog, and responsive layouts)
 // ── Update Cart UI & Floating Pill ──
 function updateCartUI() {
   const totalCount = cart.reduce((sum, item) => sum + item.qty, 0);
   const totalPrice = cart.reduce((sum, item) => sum + (item.price * item.qty), 0);
-<<<<<<< HEAD
-=======
   const hasItems = cart.length > 0;
->>>>>>> 8f7b31d (feat: digital tableside menu system with dynamic category rail, drinks catalog, and responsive layouts)
 
   // Topbar badges
   const topCartCount = $('#topbar-cart-count');
@@ -1337,15 +1106,6 @@ function updateCartUI() {
   const guestCartSum = $('#guest-cart-sum');
   if (guestCartSum) guestCartSum.textContent = `KES ${totalPrice.toLocaleString()}`;
 
-<<<<<<< HEAD
-  // Floating sticky order pill
-  const pill = $('#guest-order-pill');
-  if (pill) {
-    if (totalCount > 0) {
-      pill.style.display = 'flex';
-      $('#order-pill-qty').textContent = `${totalCount} item${totalCount > 1 ? 's' : ''}`;
-      $('#order-pill-price').textContent = `KES ${totalPrice.toLocaleString()}`;
-=======
   // Floating rounded order button (.guest-floating-order-container only sets display to block when cart is not empty)
   const floatingContainers = document.querySelectorAll('.guest-floating-order-container, #guest-floating-order-container');
   floatingContainers.forEach(container => {
@@ -1369,7 +1129,6 @@ function updateCartUI() {
       if (pQty) pQty.textContent = `${totalCount} item${totalCount > 1 ? 's' : ''}`;
       const pPrice = $('#order-pill-price');
       if (pPrice) pPrice.textContent = `KES ${totalPrice.toLocaleString()}`;
->>>>>>> 8f7b31d (feat: digital tableside menu system with dynamic category rail, drinks catalog, and responsive layouts)
     } else {
       pill.style.display = 'none';
     }
@@ -1450,11 +1209,6 @@ function submitTableOrder() {
   // Close cart modal
   $('#modal-cart')?.classList.remove('active');
 
-<<<<<<< HEAD
-  // Populate Live Tracker Modal
-  $('#tracker-order-title').textContent = `Order #${orderNum}`;
-  $('#tracker-total-amount').textContent = `KES ${totalAmount.toLocaleString()}`;
-=======
   // Populate Live Tracker Modal safely
   const orderTitleEl = $('#tracker-order-title');
   if (orderTitleEl) orderTitleEl.textContent = `Order #${orderNum}`;
@@ -1467,7 +1221,6 @@ function submitTableOrder() {
 
   const tableSubEl = $('#tracker-table-sub');
   if (tableSubEl) tableSubEl.textContent = `Table ${activeTableSession.num} · ${activeTableSession.zone} · Live Order`;
->>>>>>> 8f7b31d (feat: digital tableside menu system with dynamic category rail, drinks catalog, and responsive layouts)
 
   const listContainer = $('#tracker-items-list');
   if (listContainer) {
@@ -1517,10 +1270,6 @@ function setupEventListeners() {
     $('#modal-cart')?.classList.add('active');
   });
 
-<<<<<<< HEAD
-  // Guest search filter
-  $('#guest-search-input')?.addEventListener('input', () => {
-=======
   // Guest search filter (synced across banner and topbar)
   $('#guest-search-input')?.addEventListener('input', (e) => {
     const val = e.target.value;
@@ -1533,7 +1282,6 @@ function setupEventListeners() {
     const val = e.target.value;
     const bannerInput = $('#guest-search-input');
     if (bannerInput && bannerInput.value !== val) bannerInput.value = val;
->>>>>>> 8f7b31d (feat: digital tableside menu system with dynamic category rail, drinks catalog, and responsive layouts)
     renderGuestDishes();
   });
 
@@ -1580,10 +1328,7 @@ function setupEventListeners() {
 
   // Order submission
   $('#btn-submit-order')?.addEventListener('click', submitTableOrder);
-<<<<<<< HEAD
-=======
   $('#btn-desktop-cart-checkout')?.addEventListener('click', submitTableOrder);
->>>>>>> 8f7b31d (feat: digital tableside menu system with dynamic category rail, drinks catalog, and responsive layouts)
 
   // Call Attendant actions
   const callAttendant = () => {
@@ -1766,10 +1511,6 @@ function setupEventListeners() {
   function renderMenuCatalogCategories() {
     const rail = document.getElementById('category-rail-menu');
     if (!rail) return;
-<<<<<<< HEAD
-    const cats = categoryNames.map(name => {
-      const count = name === 'All' ? menuItems.length : menuItems.filter(i => i.category === name).length;
-=======
     const dynamicCategories = getDynamicCategoryList();
     const cats = dynamicCategories.map(name => {
       const count = name === 'All' 
@@ -1780,7 +1521,6 @@ function setupEventListeners() {
             }
             return i.category === name;
           }).length;
->>>>>>> 8f7b31d (feat: digital tableside menu system with dynamic category rail, drinks catalog, and responsive layouts)
       return { name, count };
     });
     rail.innerHTML = cats.map(cat => `
@@ -2137,8 +1877,6 @@ function setupEventListeners() {
       }
     });
   });
-<<<<<<< HEAD
-=======
 
   // ── Staff Sidebar Drawer (Mobile & Tablet) ──
   const sidebarEl = $('#main-sidebar');
@@ -2220,5 +1958,4 @@ function setupEventListeners() {
       advanceKanbanTicket(moveBtn);
     }
   });
->>>>>>> 8f7b31d (feat: digital tableside menu system with dynamic category rail, drinks catalog, and responsive layouts)
 }

@@ -1,8 +1,5 @@
 export type PaymentStatus = 'pending' | 'success' | 'failed' | 'cancelled' | 'refunded';
 export type PaymentMethod = 'mpesa' | 'cash' | 'card';
-<<<<<<< HEAD
-export type Payment = { id: string; order_id: string; session_id: string; amount: number; currency: 'KES'; method: PaymentMethod; status: PaymentStatus; phone_number_masked?: string; verified_at?: string };
-=======
 
 export interface Payment {
   id: string;
@@ -34,4 +31,3 @@ export interface PaymentAuditEvent {
   created_at: string;
 }
 
->>>>>>> 8f7b31d (feat: digital tableside menu system with dynamic category rail, drinks catalog, and responsive layouts)
