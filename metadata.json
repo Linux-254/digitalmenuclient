@@ -1,0 +1,8 @@
+{
+  "name": "Shamba House · Tableside OS & Digital Menu",
+  "description": "Modern tableside dining with live kitchen routing, QR-first guest menu, and SambaPOS bridge.",
+  "permissions": [],
+  "capabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}

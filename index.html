@@ -3,8 +3,15 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<<<<<<< HEAD
   <meta name="theme-color" content="#0d382d" />
   <meta name="description" content="Shamba House — Modern tableside dining with live kitchen routing, QR-first guest menu, and SambaPOS bridge." />
+=======
+  <meta name="theme-color" content="#071f18" />
+  <meta name="description" content="Shamba House — Modern tableside dining with live kitchen routing, QR-first guest menu, and SambaPOS bridge." />
+  <meta property="og:title" content="Shamba House · Tableside OS &amp; Digital Menu" />
+  <meta property="og:description" content="Shamba House — Modern tableside dining with live kitchen routing, QR-first guest menu, and SambaPOS bridge." />
+>>>>>>> 8f7b31d (feat: digital tableside menu system with dynamic category rail, drinks catalog, and responsive layouts)
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -18,6 +25,7 @@
 
 <div class="app-shell">
 
+<<<<<<< HEAD
   <!-- ═══════════════════════════════════════════
        SIDEBAR NAVIGATION (IMAGE 2)
        ═══════════════════════════════════════════ -->
@@ -25,6 +33,24 @@
     <div class="brand-badge">
       <div class="brand-icon">
         <!-- Fork & Knife SVG Icon -->
+=======
+  <!-- Mobile Drawer Backdrop for Staff Navigation -->
+  <div class="sidebar-backdrop" id="sidebar-backdrop"></div>
+
+  <!-- ═══════════════════════════════════════════
+       STAFF SIDEBAR NAVIGATION (DESKTOP & TABLET DRAWER)
+       ═══════════════════════════════════════════ -->
+  <aside class="sidebar" id="app-sidebar" aria-label="Staff Navigation">
+    <div class="sidebar-drawer-header">
+      <strong>Staff OS Menu</strong>
+      <button class="modal-close-btn" id="btn-close-sidebar" aria-label="Close Navigation">
+        <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+      </button>
+    </div>
+
+    <div class="brand-badge">
+      <div class="brand-icon">
+>>>>>>> 8f7b31d (feat: digital tableside menu system with dynamic category rail, drinks catalog, and responsive layouts)
         <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
           <path d="M18 2v6a3 3 0 0 1-3 3 3 3 0 0 1-3-3V2" />
           <path d="M15 11v11" />
@@ -42,60 +68,98 @@
       <ul class="nav-group">
         <li>
           <button class="nav-link active" data-dash-nav="home">
+<<<<<<< HEAD
             <svg viewBox="0 0 24 24" stroke-width="2"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+=======
+            <svg viewBox="0 0 24 24"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+>>>>>>> 8f7b31d (feat: digital tableside menu system with dynamic category rail, drinks catalog, and responsive layouts)
             Home
           </button>
         </li>
         <li>
           <button class="nav-link" data-dash-nav="menu">
+<<<<<<< HEAD
             <svg viewBox="0 0 24 24" stroke-width="2"><rect width="18" height="18" x="3" y="3" rx="2"/><path d="M7 8h10"/><path d="M7 12h10"/><path d="M7 16h6"/></svg>
+=======
+            <svg viewBox="0 0 24 24"><rect width="18" height="18" x="3" y="3" rx="2"/><path d="M7 8h10"/><path d="M7 12h10"/><path d="M7 16h6"/></svg>
+>>>>>>> 8f7b31d (feat: digital tableside menu system with dynamic category rail, drinks catalog, and responsive layouts)
             Menu Catalog
             <span class="nav-badge" id="menu-badge-count">12</span>
           </button>
         </li>
         <li>
           <button class="nav-link" data-dash-nav="orders">
+<<<<<<< HEAD
             <svg viewBox="0 0 24 24" stroke-width="2"><circle cx="8" cy="21" r="1"/><circle cx="19" cy="21" r="1"/><path d="M2.05 2.05h2l2.66 12.42a2 2 0 0 0 2 1.58h9.78a2 2 0 0 0 1.95-1.57l1.65-7.43H5.12"/></svg>
             Orders &amp; Kitchen
             <span class="nav-badge" style="background:#fee2e2;color:#b91c1c;">4</span>
+=======
+            <svg viewBox="0 0 24 24"><circle cx="8" cy="21" r="1"/><circle cx="19" cy="21" r="1"/><path d="M2.05 2.05h2l2.66 12.42a2 2 0 0 0 2 1.58h9.78a2 2 0 0 0 1.95-1.57l1.65-7.43H5.12"/></svg>
+            Orders &amp; Kitchen
+            <span class="nav-badge" id="orders-badge-count">4</span>
+>>>>>>> 8f7b31d (feat: digital tableside menu system with dynamic category rail, drinks catalog, and responsive layouts)
           </button>
         </li>
         <li>
           <button class="nav-link" data-dash-nav="floor">
+<<<<<<< HEAD
             <svg viewBox="0 0 24 24" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+=======
+            <svg viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+>>>>>>> 8f7b31d (feat: digital tableside menu system with dynamic category rail, drinks catalog, and responsive layouts)
             Floor Map
             <span class="nav-badge">6</span>
           </button>
         </li>
         <li>
           <button class="nav-link" data-dash-nav="staff">
+<<<<<<< HEAD
             <svg viewBox="0 0 24 24" stroke-width="2"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+=======
+            <svg viewBox="0 0 24 24"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+>>>>>>> 8f7b31d (feat: digital tableside menu system with dynamic category rail, drinks catalog, and responsive layouts)
             Staff Team
             <span class="nav-badge" id="staff-badge-count">5</span>
           </button>
         </li>
         <li>
           <button class="nav-link" data-dash-nav="offers">
+<<<<<<< HEAD
             <svg viewBox="0 0 24 24" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+=======
+            <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+>>>>>>> 8f7b31d (feat: digital tableside menu system with dynamic category rail, drinks catalog, and responsive layouts)
             Offers &amp; Promos
           </button>
         </li>
         <li>
           <button class="nav-link" data-dash-nav="analytics">
+<<<<<<< HEAD
             <svg viewBox="0 0 24 24" stroke-width="2"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
+=======
+            <svg viewBox="0 0 24 24"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
+>>>>>>> 8f7b31d (feat: digital tableside menu system with dynamic category rail, drinks catalog, and responsive layouts)
             Analytics
           </button>
         </li>
         <li>
           <button class="nav-link" data-dash-nav="settings">
+<<<<<<< HEAD
             <svg viewBox="0 0 24 24" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
+=======
+            <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
+>>>>>>> 8f7b31d (feat: digital tableside menu system with dynamic category rail, drinks catalog, and responsive layouts)
             POS Bridge
           </button>
         </li>
       </ul>
     </nav>
 
+<<<<<<< HEAD
     <!-- Sidebar Promo Card (from Image 2) -->
+=======
+    <!-- Sidebar Promo Card -->
+>>>>>>> 8f7b31d (feat: digital tableside menu system with dynamic category rail, drinks catalog, and responsive layouts)
     <div class="sidebar-promo">
       <h3>Get 30% OFF</h3>
       <p>Special deal on all grill &amp; steak platters</p>
@@ -105,6 +169,7 @@
   </aside>
 
   <!-- ═══════════════════════════════════════════
+<<<<<<< HEAD
        MAIN WRAPPER
        ═══════════════════════════════════════════ -->
   <main id="main-content" class="main-wrapper">
@@ -114,6 +179,17 @@
       <div class="guest-topbar-brand">
         <div class="guest-brand-logo">
           <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+=======
+       MAIN VIEW WRAPPER
+       ═══════════════════════════════════════════ -->
+  <main id="main-content" class="main-wrapper">
+
+    <!-- Dedicated Guest Topbar (Clean tableside header) -->
+    <header class="guest-topbar" id="guest-topbar" style="display:none;" aria-label="Tableside Guest Header">
+      <div class="guest-topbar-brand">
+        <div class="guest-brand-logo">
+          <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+>>>>>>> 8f7b31d (feat: digital tableside menu system with dynamic category rail, drinks catalog, and responsive layouts)
             <path d="M18 2v6a3 3 0 0 1-3 3 3 3 0 0 1-3-3V2" />
             <path d="M15 11v11" />
             <path d="M5 2v10a3 3 0 0 0 3 3 3 3 0 0 0 3-3V2" />
@@ -133,18 +209,31 @@
         </div>
         <div class="guest-search-box">
           <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+<<<<<<< HEAD
           <input type="text" id="guest-search-input" placeholder="Search dishes, drinks, ingredients..." aria-label="Search Guest Menu" />
+=======
+          <input type="text" id="guest-search-input-top" placeholder="Search dishes, drinks..." aria-label="Search Guest Menu" />
+>>>>>>> 8f7b31d (feat: digital tableside menu system with dynamic category rail, drinks catalog, and responsive layouts)
         </div>
       </div>
 
       <div class="guest-topbar-actions">
         <button class="guest-cart-trigger" id="guest-cart-btn" aria-label="View Order Cart">
+<<<<<<< HEAD
           <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z"/><path d="M3 6h18"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
           <span class="guest-cart-count" id="guest-cart-count">0</span>
           <span class="guest-cart-sum" id="guest-cart-sum">KES 0</span>
         </button>
         <button class="btn-staff-gate" id="btn-staff-gate" title="Staff & Admin OS Login">
           <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+=======
+          <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z"/><path d="M3 6h18"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
+          <span class="guest-cart-count" id="guest-cart-count">0</span>
+          <span id="guest-cart-sum">KES 0</span>
+        </button>
+        <button class="btn-staff-gate" id="btn-staff-gate" title="Staff & Admin OS Login">
+          <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+>>>>>>> 8f7b31d (feat: digital tableside menu system with dynamic category rail, drinks catalog, and responsive layouts)
           <span>Staff OS</span>
         </button>
       </div>
@@ -153,6 +242,7 @@
     <!-- Staff & Admin Dashboard Topbar -->
     <header class="dash-topbar" id="dash-topbar">
       <div class="topbar-left">
+<<<<<<< HEAD
         <div class="table-pill">
           <!-- Pin Map SVG Icon -->
           <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
@@ -162,6 +252,18 @@
           <!-- Search SVG Icon -->
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
           <input type="text" id="global-search" placeholder="Search dishes, drinks, ingredients, or orders..." aria-label="Search" />
+=======
+        <button class="btn-hamburger" id="btn-toggle-sidebar" aria-label="Open Navigation Drawer">
+          <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+        </button>
+        <div class="table-pill" id="btn-dash-table-select">
+          <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          <span id="active-table-display">Table 04 · Terrace</span>
+        </div>
+        <div class="search-field">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+          <input type="text" id="global-search" placeholder="Search dishes, drinks, ingredients, or tickets..." aria-label="Search" />
+>>>>>>> 8f7b31d (feat: digital tableside menu system with dynamic category rail, drinks catalog, and responsive layouts)
         </div>
       </div>
 
@@ -169,7 +271,11 @@
         <!-- View Mode Switcher -->
         <div class="view-mode-bar" role="tablist" aria-label="View switch">
           <button class="mode-pill active" id="tab-dash-view" role="tab" aria-selected="true">Dashboard</button>
+<<<<<<< HEAD
           <button class="mode-pill" id="tab-guest-view" role="tab" aria-selected="false">Guest Tableside Menu</button>
+=======
+          <button class="mode-pill" id="tab-guest-view" role="tab" aria-selected="false">Guest Menu</button>
+>>>>>>> 8f7b31d (feat: digital tableside menu system with dynamic category rail, drinks catalog, and responsive layouts)
         </div>
 
         <button class="btn-icon-cart" id="topbar-cart-btn" aria-label="View Cart">
@@ -188,18 +294,29 @@
     </header>
 
     <!-- ═══════════════════════════════════════════
+<<<<<<< HEAD
          VIEW 1: ADMIN & STAFF DASHBOARD (IMAGE 2)
          ═══════════════════════════════════════════ -->
     <div id="view-dashboard" class="dash-container">
 
       <!-- Hero Card Banner (Image 2) -->
+=======
+         VIEW 1: ADMIN & STAFF DASHBOARD
+         ═══════════════════════════════════════════ -->
+    <div id="view-dashboard" class="dash-container">
+
+      <!-- Hero Card Banner -->
+>>>>>>> 8f7b31d (feat: digital tableside menu system with dynamic category rail, drinks catalog, and responsive layouts)
       <section class="hero-card" aria-label="Promotional Highlight">
         <div class="hero-text">
           <h2>Delicious food, <span>delivered fast</span></h2>
           <p>Table-side ordering for Shamba House. Realtime kitchen ticket routing with automated SambaPOS bridge integration.</p>
           <div class="hero-actions">
             <button class="btn-primary" id="btn-hero-add-dish">
+<<<<<<< HEAD
               <!-- Plus SVG -->
+=======
+>>>>>>> 8f7b31d (feat: digital tableside menu system with dynamic category rail, drinks catalog, and responsive layouts)
               <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
               Add New Dish
             </button>
@@ -210,18 +327,30 @@
           <img src="/images/hero-banner.jpg" alt="Vibrant restaurant food spread" />
           <div class="hero-deal-badge">
             <small>
+<<<<<<< HEAD
               <!-- Flame SVG -->
+=======
+>>>>>>> 8f7b31d (feat: digital tableside menu system with dynamic category rail, drinks catalog, and responsive layouts)
               <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><path d="M8.5 14.5A2.5 2.5 0 0 0 11 12c0-1.38-.5-2-1-3-1.072-2.143-.224-4.054 2-6 .5 2.5 2 4.9 4 6.5 2 1.6 3 3.5 3 5.5a7 7 0 1 1-14 0c0-1.153.433-2.294 1-3a2.5 2.5 0 0 0 2.5 2.5z"/></svg>
               Hot Deal
             </small>
             <strong>30% OFF</strong>
+<<<<<<< HEAD
             <span style="font-size:11px;color:var(--dash-muted);">on all grill platters</span>
+=======
+            <span style="font-size:10px;color:var(--dash-muted);">on grill platters</span>
+>>>>>>> 8f7b31d (feat: digital tableside menu system with dynamic category rail, drinks catalog, and responsive layouts)
           </div>
         </div>
       </section>
 
+<<<<<<< HEAD
       <!-- KPI Summary Cards (build-dashboard skill) -->
       <section class="kpi-row" aria-label="Service Metrics">
+=======
+      <!-- KPI Summary Cards (Explicitly: 4-col Desktop, 2x2 Tablet, Swipeable Carousel Mobile) -->
+      <section class="kpi-row" id="dash-kpi-row" aria-label="Service Metrics">
+>>>>>>> 8f7b31d (feat: digital tableside menu system with dynamic category rail, drinks catalog, and responsive layouts)
         <article class="kpi-box">
           <div class="kpi-top">
             <span>Occupied Tables</span>
@@ -232,6 +361,7 @@
         </article>
         <article class="kpi-box">
           <div class="kpi-top">
+<<<<<<< HEAD
             <span>Active Orders</span>
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
           </div>
@@ -447,10 +577,263 @@
           </div>
         </div>
       </div><!-- /panel-settings -->
+=======
+            <span>Pending Tickets</span>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+          </div>
+          <strong id="kpi-orders">4</strong>
+          <span class="kpi-sub">Kitchen queue active</span>
+        </article>
+        <article class="kpi-box">
+          <div class="kpi-top">
+            <span>Today's Orders</span>
+            <span style="font-weight:700;font-size:11px;color:var(--primary);">ORD</span>
+          </div>
+          <strong id="kpi-sales">28 Orders</strong>
+          <span class="kpi-sub">KES 86,400 revenue</span>
+        </article>
+        <article class="kpi-box">
+          <div class="kpi-top">
+            <span>Payment Reconciled</span>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+          </div>
+          <strong id="kpi-rating">100%</strong>
+          <span class="kpi-sub">0 unsynced payments</span>
+        </article>
+      </section>
+
+      <!-- Staff Layout Columns (Main Panel + Desktop Persistent Side Inspector) -->
+      <div class="dash-layout-columns">
+
+        <div class="dash-main-column">
+
+          <!-- PANEL: Home (default) -->
+          <div id="panel-home" class="dash-panel">
+            <section aria-label="Menu Categories">
+              <div class="section-header">
+                <h3>Categories</h3>
+                <span style="font-size:12px;font-weight:600;color:var(--primary);cursor:pointer;" id="filter-all-cat">View All</span>
+              </div>
+              <div class="category-rail" id="category-rail" role="tablist"></div>
+            </section>
+            <section aria-label="Popular Dishes &amp; Inventory">
+              <div class="section-header">
+                <h3>Dishes &amp; Live Availability</h3>
+                <span style="font-size:13px;color:var(--dash-muted);" id="dish-total-indicator">Showing 12 dishes</span>
+              </div>
+              <div class="dishes-grid" id="dishes-grid-dash"></div>
+            </section>
+            <section id="section-staff-team" class="staff-team-section" aria-label="Staff Team Roster">
+              <div class="section-header">
+                <div>
+                  <h3>Staff &amp; Service Roster</h3>
+                  <p style="font-size:13px;color:var(--dash-muted);margin-top:2px;">Floor waiters, kitchen brigade, and bar service attendants</p>
+                </div>
+                <button class="btn-primary" id="btn-open-add-staff">
+                  <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+                  Add Staff Member
+                </button>
+              </div>
+              <div class="staff-roster-grid" id="staff-roster-grid"></div>
+            </section>
+          </div><!-- /panel-home -->
+
+          <!-- PANEL: Menu Catalog -->
+          <div id="panel-menu" class="dash-panel" style="display:none;">
+            <div class="section-header">
+              <div><h3>Full Menu Catalog</h3><p style="font-size:13px;color:var(--dash-muted);margin-top:2px;">All dishes, drinks, and specials</p></div>
+              <button class="btn-primary" id="btn-menu-add-dish">
+                <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+                Add New Dish
+              </button>
+            </div>
+            <div class="category-rail" id="category-rail-menu" role="tablist" style="margin-top:16px;"></div>
+            <div class="dishes-grid" id="dishes-grid-menu" style="margin-top:20px;"></div>
+          </div><!-- /panel-menu -->
+
+          <!-- PANEL: Orders & Kitchen Kanban -->
+          <div id="panel-orders" class="dash-panel" style="display:none;">
+            <div class="section-header" style="margin-bottom:18px;">
+              <div>
+                <h3>Orders &amp; Kitchen Queue</h3>
+                <p style="font-size:13px;color:var(--dash-muted);margin-top:2px;">Live ticket status — realtime kitchen routing</p>
+              </div>
+              <button class="btn-secondary" id="btn-refresh-orders">
+                <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2"><polyline points="23 4 23 10 17 10"/><polyline points="1 20 1 14 7 14"/><path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"/></svg>
+                Refresh
+              </button>
+            </div>
+
+            <!-- Mobile Kanban Stage Tabs (Switch stages easily with one thumb on mobile) -->
+            <div class="kanban-mobile-tabs" id="kanban-mobile-tabs" role="tablist">
+              <button class="kanban-tab-btn active" data-stage="incoming">Incoming (3)</button>
+              <button class="kanban-tab-btn" data-stage="cooking">In Kitchen (2)</button>
+              <button class="kanban-tab-btn" data-stage="ready">Ready (1)</button>
+              <button class="kanban-tab-btn" data-stage="served">Served (8)</button>
+            </div>
+
+            <div class="orders-kanban" id="orders-kanban-board">
+              <div class="kanban-col mobile-active-stage" data-col="incoming">
+                <div class="kanban-col-header"><span class="kanban-dot" style="background:var(--status-warning);"></span><strong>Incoming</strong><span class="kanban-count">3</span></div>
+                <div class="kanban-cards">
+                  <div class="kanban-ticket"><div class="ticket-top"><strong>Table 04</strong><span class="ticket-time">2 min ago</span></div><p>Nyama Choma Platter · Swahili Samosa Trio</p><button class="btn-ticket-move">Move to Kitchen</button></div>
+                  <div class="kanban-ticket"><div class="ticket-top"><strong>Table 09</strong><span class="ticket-time">4 min ago</span></div><p>Tilapia Coconut Curry · Passion Fruit Juice</p><button class="btn-ticket-move">Move to Kitchen</button></div>
+                  <div class="kanban-ticket"><div class="ticket-top"><strong>Table 02</strong><span class="ticket-time">6 min ago</span></div><p>Salt &amp; Pepper Calamari · Black Lager</p><button class="btn-ticket-move">Move to Kitchen</button></div>
+                </div>
+              </div>
+              <div class="kanban-col" data-col="cooking">
+                <div class="kanban-col-header"><span class="kanban-dot" style="background:var(--status-info);"></span><strong>In Kitchen</strong><span class="kanban-count">2</span></div>
+                <div class="kanban-cards">
+                  <div class="kanban-ticket"><div class="ticket-top"><strong>Table 07</strong><span class="ticket-time">11 min</span></div><p>Chicken Steak · Grilled Tilapia · 2x Chapati</p><button class="btn-ticket-move">Ready to Serve</button></div>
+                  <div class="kanban-ticket"><div class="ticket-top"><strong>Table 11</strong><span class="ticket-time">8 min</span></div><p>Spaghetti Bolognese · Woodfire Pizza</p><button class="btn-ticket-move">Ready to Serve</button></div>
+                </div>
+              </div>
+              <div class="kanban-col" data-col="ready">
+                <div class="kanban-col-header"><span class="kanban-dot" style="background:var(--status-success);"></span><strong>Ready to Serve</strong><span class="kanban-count">1</span></div>
+                <div class="kanban-cards">
+                  <div class="kanban-ticket"><div class="ticket-top"><strong>Table 03</strong><span class="ticket-time">Done</span></div><p>Black Burger · Mango Smoothie</p><button class="btn-ticket-move">Mark Served</button></div>
+                </div>
+              </div>
+              <div class="kanban-col" data-col="served">
+                <div class="kanban-col-header"><span class="kanban-dot" style="background:var(--status-neutral);"></span><strong>Served Today</strong><span class="kanban-count">8</span></div>
+                <div class="kanban-cards">
+                  <div class="kanban-ticket"><div class="ticket-top"><strong>Table 01</strong><span class="ticket-time">34 min ago</span></div><p>Nyama Choma · 4x Tusker Lager</p></div>
+                  <div class="kanban-ticket"><div class="ticket-top"><strong>Table 05</strong><span class="ticket-time">51 min ago</span></div><p>Woodfire Pizza · Hibiscus Cooler</p></div>
+                  <div class="kanban-ticket"><div class="ticket-top"><strong>Table 08</strong><span class="ticket-time">62 min ago</span></div><p>Beef Pizza · Coconut Tilapia</p></div>
+                </div>
+              </div>
+            </div>
+          </div><!-- /panel-orders -->
+
+          <!-- PANEL: Floor Map & QR Tableside OS -->
+          <div id="panel-floor" class="dash-panel" style="display:none;">
+            <div class="section-header" style="margin-bottom:20px;flex-wrap:wrap;gap:14px;">
+              <div>
+                <h3>Floor Map &amp; Table QR Codes</h3>
+                <p style="font-size:13px;color:var(--dash-muted);margin-top:2px;">Real-time table sessions, waiter routing, and scannable QR codes per table</p>
+              </div>
+              <div style="display:flex;gap:10px;align-items:center;flex-wrap:wrap;">
+                <button class="btn-primary" id="btn-print-all-qr" title="Print QR tent stands for all 12 tables">
+                  <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 6 2 18 2 18 9"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect x="6" y="14" width="12" height="8"/></svg>
+                  Print All 12 Table QR Tents
+                </button>
+              </div>
+            </div>
+            <div class="floor-map-grid" id="floor-map-grid"></div>
+          </div><!-- /panel-floor -->
+
+          <!-- PANEL: Staff Team -->
+          <div id="panel-staff" class="dash-panel" style="display:none;">
+            <div class="section-header" style="margin-bottom:24px;">
+              <div>
+                <h3>Staff Team</h3>
+                <p style="font-size:13px;color:var(--dash-muted);margin-top:2px;">Manage floor waiters, kitchen brigade, and bar attendants</p>
+              </div>
+              <button class="btn-primary" id="btn-open-add-staff-panel">
+                <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+                Add Staff Member
+              </button>
+            </div>
+            <div class="staff-roster-grid" id="staff-roster-grid-panel"></div>
+          </div><!-- /panel-staff -->
+
+          <!-- PANEL: Offers & Promos -->
+          <div id="panel-offers" class="dash-panel" style="display:none;">
+            <div class="section-header" style="margin-bottom:24px;">
+              <div>
+                <h3>Offers &amp; Promotions</h3>
+                <p style="font-size:13px;color:var(--dash-muted);margin-top:2px;">Active deals, discount codes, and seasonal specials</p>
+              </div>
+              <button class="btn-primary" id="btn-new-offer">
+                <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+                New Offer
+              </button>
+            </div>
+            <div class="offers-grid">
+              <div class="offer-card"><div class="offer-card-badge">Active</div><h4>SHAMBA30</h4><p>30% off all grill &amp; steak platters</p><div class="offer-meta"><span>Expires: 31 Oct 2026</span><span>Used: 47 times</span></div></div>
+              <div class="offer-card"><div class="offer-card-badge">Active</div><h4>HAPPY HOUR</h4><p>25% off all drinks — Mon–Thu 4–7 PM</p><div class="offer-meta"><span>Recurring</span><span>Used: 134 times</span></div></div>
+            </div>
+          </div><!-- /panel-offers -->
+
+          <!-- PANEL: Analytics -->
+          <div id="panel-analytics" class="dash-panel" style="display:none;">
+            <div class="section-header" style="margin-bottom:24px;">
+              <h3>Analytics &amp; Reports</h3>
+              <select class="form-control" style="width:auto;padding:8px 12px;font-size:13px;">
+                <option>Today</option><option selected>This Week</option><option>This Month</option>
+              </select>
+            </div>
+            <div class="analytics-kpi-row">
+              <div class="an-kpi"><span>Revenue</span><strong>KES 412,800</strong><small>+8.4% vs last week</small></div>
+              <div class="an-kpi"><span>Total Orders</span><strong>348</strong><small>+12 vs target</small></div>
+              <div class="an-kpi"><span>Avg Order Value</span><strong>KES 1,186</strong><small>+5.2%</small></div>
+              <div class="an-kpi"><span>Top Table</span><strong>Table 07 · VIP</strong><small>KES 42,000</small></div>
+            </div>
+          </div><!-- /panel-analytics -->
+
+          <!-- PANEL: POS Bridge / Settings -->
+          <div id="panel-settings" class="dash-panel" style="display:none;">
+            <div class="section-header" style="margin-bottom:24px;">
+              <div>
+                <h3>SambaPOS Bridge</h3>
+                <p style="font-size:13px;color:var(--dash-muted);margin-top:2px;">Connect, sync, and configure the SambaPOS integration layer</p>
+              </div>
+              <span class="bridge-status bridge-status--offline">Offline</span>
+            </div>
+            <div class="bridge-config-grid">
+              <div class="bridge-config-card">
+                <div class="bridge-config-icon"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12.55a11 11 0 0 1 14.08 0"/><path d="M1.42 9a16 16 0 0 1 21.16 0"/><path d="M8.53 16.11a6 6 0 0 1 6.95 0"/><line x1="12" y1="20" x2="12.01" y2="20"/></svg></div>
+                <div><strong>Connection</strong><p>SambaPOS GraphQL endpoint not configured</p><button class="btn-secondary" style="margin-top:10px;" id="btn-configure-pos">Configure Endpoint</button></div>
+              </div>
+              <div class="bridge-config-card">
+                <div class="bridge-config-icon"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2"><polyline points="23 4 23 10 17 10"/><polyline points="1 20 1 14 7 14"/><path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"/></svg></div>
+                <div><strong>Menu Sync</strong><p>Push catalog &amp; pricing to SambaPOS registers</p><button class="btn-secondary" style="margin-top:10px;" id="btn-sync-pos">Sync Now</button></div>
+              </div>
+            </div>
+          </div><!-- /panel-settings -->
+
+        </div><!-- /dash-main-column -->
+
+        <!-- Staff Persistent Side Inspector Panel (Desktop & Tablet Landscape) -->
+        <aside class="dash-side-inspector" id="dash-side-inspector" aria-label="Active Ticket Inspector">
+          <div class="inspector-header">
+            <h3>Active Ticket Inspector</h3>
+            <span class="table-zone-tag">Table 04</span>
+          </div>
+          <div class="inspector-card">
+            <h4>Live Order #842</h4>
+            <p>Seated at Terrace · Amina Mwangi</p>
+            <div style="font-size:12px;margin-bottom:8px;">
+              <strong>1x</strong> Nyama Choma Platter (KES 1,365)<br />
+              <strong>2x</strong> Swahili Samosa Trio (KES 1,300)
+            </div>
+            <div style="font-size:13px;font-weight:800;color:var(--primary);margin-top:6px;">
+              Total: KES 2,665
+            </div>
+          </div>
+          <div class="quick-action-list">
+            <button class="btn-inspector-action" id="btn-inspector-kitchen">
+              <span>Send Next Course</span>
+              <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+            </button>
+            <button class="btn-inspector-action" id="btn-inspector-print">
+              <span>Print Bill Slip</span>
+              <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 6 2 18 2 18 9"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect x="6" y="14" width="12" height="8"/></svg>
+            </button>
+            <button class="btn-inspector-action" id="btn-inspector-clear">
+              <span>Close Table Session</span>
+              <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+            </button>
+          </div>
+        </aside>
+
+      </div><!-- /dash-layout-columns -->
+>>>>>>> 8f7b31d (feat: digital tableside menu system with dynamic category rail, drinks catalog, and responsive layouts)
 
     </div><!-- /view-dashboard -->
 
     <!-- ═══════════════════════════════════════════
+<<<<<<< HEAD
          VIEW 2: GUEST TABLESIDE MENU (CLEAN, MINIMALISTIC, BRAND-COORDINATED)
          ═══════════════════════════════════════════ -->
     <div id="view-guest-menu" class="guest-menu-container" style="display:none;">
@@ -512,11 +895,108 @@
         <button class="btn-review-order" id="btn-pill-review-order">
           <span>Review Order &amp; Send</span>
           <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+=======
+         VIEW 2: GUEST TABLESIDE MENU (THE DARK CHALKBOARD LUXURY MENU)
+         ═══════════════════════════════════════════ -->
+    <div id="view-guest-menu" class="guest-menu-container" style="display:none;">
+
+      <!-- Header Pattern: Compact top context + greeting line -->
+      <section class="guest-header-banner">
+        <div class="guest-context-row">
+          <div class="guest-greeting-block">
+            <h2 id="guest-header-table-title">Table 04 · Garden Terrace</h2>
+            <p>Welcome to Shamba House — Handcrafted fresh dining</p>
+          </div>
+          <button class="btn-staff-gate" id="btn-guest-staff-gate" title="Staff OS Access">
+            <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+            <span>Staff OS</span>
+          </button>
+        </div>
+
+        <!-- Full-width rounded search bar sitting directly under header -->
+        <div class="guest-search-row">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+          <input type="text" id="guest-search-input" placeholder="Search dishes, drinks, ingredients..." aria-label="Search Guest Menu" />
+        </div>
+      </section>
+
+      <!-- Horizontally scrollable dynamic category filter row (from actual categories table) -->
+      <section class="guest-category-section" aria-label="Menu Categories">
+        <div class="guest-category-bar" id="guest-category-bar" role="tablist">
+          <!-- Populated dynamically from venueCategories -->
+        </div>
+      </section>
+
+      <!-- Guest Layout Columns (Section + Card Rhythm on Mobile/Tablet, Grid + Persistent Cart on Desktop) -->
+      <div class="guest-content-wrap">
+
+        <!-- Main Column: Section + Card Rhythm -->
+        <div class="guest-sections-column" id="guest-sections-column">
+          <!-- Populated dynamically by JavaScript -->
+        </div>
+
+        <!-- Persistent Cart Side Panel (Desktop & Tablet Landscape) -->
+        <aside class="guest-desktop-cart" id="guest-desktop-cart" aria-label="Order Cart Summary">
+          <div class="desktop-cart-header">
+            <h3>Your Order</h3>
+            <span class="guest-table-badge" id="btn-desktop-cart-table">Table 04</span>
+          </div>
+          <div class="desktop-cart-items" id="desktop-cart-items-container">
+            <!-- Populated dynamically by updateCartUI -->
+          </div>
+          <div class="desktop-cart-footer">
+            <div class="desktop-cart-total-row">
+              <span>Total Payable:</span>
+              <strong id="desktop-cart-total-sum">KES 0</strong>
+            </div>
+            <button class="btn-primary" style="width:100%;justify-content:center;" id="btn-desktop-cart-checkout">
+              Send Order to Kitchen
+            </button>
+          </div>
+        </aside>
+
+      </div><!-- /guest-content-wrap -->
+
+      <!-- Floating Rounded Order Button (Only appears once someone has picked what they'd like to order) -->
+      <div class="guest-floating-order-container" id="guest-floating-order-container" style="display: none;">
+        <button class="guest-floating-order-btn" id="btn-guest-floating-order" aria-label="View Order and Checkout">
+          <span class="guest-order-pill-badge" id="guest-order-pill-qty">1 item</span>
+          <span class="guest-order-pill-text">View Order</span>
+          <span class="guest-order-pill-total" id="guest-order-pill-price">KES 0</span>
+          <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg>
+>>>>>>> 8f7b31d (feat: digital tableside menu system with dynamic category rail, drinks catalog, and responsive layouts)
         </button>
       </div>
 
     </div><!-- /view-guest-menu -->
 
+<<<<<<< HEAD
+=======
+    <!-- Staff Mobile Bottom Navigation Bar (Home, Orders, Menu, Tables, Settings) -->
+    <nav class="staff-bottom-nav" id="staff-bottom-nav" aria-label="Staff Bottom Navigation">
+      <button class="staff-bottom-nav-item active" data-dash-nav="home">
+        <svg viewBox="0 0 24 24"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+        <span>Home</span>
+      </button>
+      <button class="staff-bottom-nav-item" data-dash-nav="orders">
+        <svg viewBox="0 0 24 24"><circle cx="8" cy="21" r="1"/><circle cx="19" cy="21" r="1"/><path d="M2.05 2.05h2l2.66 12.42a2 2 0 0 0 2 1.58h9.78a2 2 0 0 0 1.95-1.57l1.65-7.43H5.12"/></svg>
+        <span>Orders</span>
+      </button>
+      <button class="staff-bottom-nav-item" data-dash-nav="menu">
+        <svg viewBox="0 0 24 24"><rect width="18" height="18" x="3" y="3" rx="2"/><path d="M7 8h10"/><path d="M7 12h10"/><path d="M7 16h6"/></svg>
+        <span>Menu</span>
+      </button>
+      <button class="staff-bottom-nav-item" data-dash-nav="floor">
+        <svg viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+        <span>Floor</span>
+      </button>
+      <button class="staff-bottom-nav-item" id="btn-staff-more-nav">
+        <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="1"/><circle cx="19" cy="12" r="1"/><circle cx="5" cy="12" r="1"/></svg>
+        <span>More</span>
+      </button>
+    </nav>
+
+>>>>>>> 8f7b31d (feat: digital tableside menu system with dynamic category rail, drinks catalog, and responsive layouts)
   </main>
 </div>
 
@@ -531,21 +1011,33 @@
     <h3 class="modal-title">Your Table Order</h3>
     <p class="modal-subtitle">Review items before sending to the kitchen</p>
 
+<<<<<<< HEAD
     <div id="cart-items-container" style="max-height:220px;overflow-y:auto;margin-bottom:16px;">
+=======
+    <div id="cart-items-container" style="max-height:240px;overflow-y:auto;margin-bottom:16px;">
+>>>>>>> 8f7b31d (feat: digital tableside menu system with dynamic category rail, drinks catalog, and responsive layouts)
       <!-- Populated by JS -->
     </div>
 
     <div style="border-top:1px solid var(--dash-border);padding-top:14px;margin-bottom:18px;">
       <div style="display:flex;justify-content:space-between;font-size:16px;font-weight:800;">
         <span>Total Payable:</span>
+<<<<<<< HEAD
         <span id="cart-modal-total" style="color:var(--orange);">KES 0</span>
+=======
+        <span id="cart-modal-total" style="color:var(--primary);">KES 0</span>
+>>>>>>> 8f7b31d (feat: digital tableside menu system with dynamic category rail, drinks catalog, and responsive layouts)
       </div>
     </div>
 
     <div class="form-group">
       <label>Payment Method</label>
       <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;">
+<<<<<<< HEAD
         <button class="btn-secondary" style="border:2px solid var(--orange);font-weight:700;" id="pay-method-mpesa">M-Pesa STK</button>
+=======
+        <button class="btn-secondary" style="border:2px solid var(--primary);font-weight:700;" id="pay-method-mpesa">M-Pesa STK</button>
+>>>>>>> 8f7b31d (feat: digital tableside menu system with dynamic category rail, drinks catalog, and responsive layouts)
         <button class="btn-secondary" id="pay-method-card">Card / POS</button>
       </div>
     </div>
@@ -563,13 +1055,18 @@
 </div>
 
 <!-- ═══════════════════════════════════════════
+<<<<<<< HEAD
      MODAL: POST-ORDER 5-STAR RATING FEEDBACK
+=======
+     MODAL: CUSTOMER-FACING PAYMENT CONFIRMATION SCREEN
+>>>>>>> 8f7b31d (feat: digital tableside menu system with dynamic category rail, drinks catalog, and responsive layouts)
      ═══════════════════════════════════════════ -->
 <div class="modal-overlay" id="modal-rating">
   <div class="modal-window" style="text-align:center;">
     <button class="modal-close-btn" id="btn-close-rating" aria-label="Close">
       <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
     </button>
+<<<<<<< HEAD
     <div style="width:50px;height:50px;border-radius:50%;background:#ecfdf5;color:#10b981;margin:0 auto 12px;display:grid;place-items:center;">
       <svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
     </div>
@@ -591,6 +1088,28 @@
         <svg viewBox="0 0 24 24" width="32" height="32" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
       </button>
       <button class="star-click" data-star="5" style="color:#d1d5db;" aria-label="5 stars">
+=======
+    <div style="width:52px;height:52px;border-radius:50%;background:var(--status-success-soft);color:var(--status-success);margin:0 auto 12px;display:grid;place-items:center;">
+      <svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+    </div>
+    <h3 class="modal-title">Payment Confirmed</h3>
+    <p class="modal-subtitle" id="payment-receipt-summary">Payment received · How was your dining experience?</p>
+
+    <div style="display:flex;justify-content:center;gap:10px;margin-bottom:18px;" id="star-rating-row">
+      <button class="star-click" data-star="1" style="color:var(--dash-border-strong);" aria-label="1 star">
+        <svg viewBox="0 0 24 24" width="32" height="32" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+      </button>
+      <button class="star-click" data-star="2" style="color:var(--dash-border-strong);" aria-label="2 stars">
+        <svg viewBox="0 0 24 24" width="32" height="32" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+      </button>
+      <button class="star-click" data-star="3" style="color:var(--dash-border-strong);" aria-label="3 stars">
+        <svg viewBox="0 0 24 24" width="32" height="32" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+      </button>
+      <button class="star-click" data-star="4" style="color:var(--dash-border-strong);" aria-label="4 stars">
+        <svg viewBox="0 0 24 24" width="32" height="32" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+      </button>
+      <button class="star-click" data-star="5" style="color:var(--dash-border-strong);" aria-label="5 stars">
+>>>>>>> 8f7b31d (feat: digital tableside menu system with dynamic category rail, drinks catalog, and responsive layouts)
         <svg viewBox="0 0 24 24" width="32" height="32" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
       </button>
     </div>
@@ -601,6 +1120,7 @@
 </div>
 
 <!-- ═══════════════════════════════════════════
+<<<<<<< HEAD
      MODAL: ADD NEW DISH (ADMIN PIN PROTECTED)
      ═══════════════════════════════════════════ -->
 <div class="modal-overlay" id="modal-add-dish">
@@ -670,23 +1190,43 @@
     </button>
     <div id="customization-container">
       <!-- Injected by JavaScript dynamically -->
+=======
+     MODAL: DISH CUSTOMIZATION
+     ═══════════════════════════════════════════ -->
+<div class="modal-overlay" id="modal-dish-customization">
+  <div class="modal-window">
+    <button class="modal-close-btn" id="btn-close-customization" aria-label="Close">
+      <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+    </button>
+    <div id="customization-dish-content">
+      <!-- Populated dynamically -->
+>>>>>>> 8f7b31d (feat: digital tableside menu system with dynamic category rail, drinks catalog, and responsive layouts)
     </div>
   </div>
 </div>
 
 <!-- ═══════════════════════════════════════════
+<<<<<<< HEAD
      MODAL: LIVE KITCHEN ORDER TRACKER & RECEIPT
+=======
+     MODAL: REALTIME ORDER TRACKER (KITCHEN ROUTING STATUS)
+>>>>>>> 8f7b31d (feat: digital tableside menu system with dynamic category rail, drinks catalog, and responsive layouts)
      ═══════════════════════════════════════════ -->
 <div class="modal-overlay" id="modal-order-tracker">
   <div class="modal-window tracker-modal-window">
     <button class="modal-close-btn" id="btn-close-tracker" aria-label="Close">
+<<<<<<< HEAD
       <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+=======
+      <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+>>>>>>> 8f7b31d (feat: digital tableside menu system with dynamic category rail, drinks catalog, and responsive layouts)
     </button>
     <div class="tracker-header">
       <div class="live-status-pill">
         <span class="live-dot pulse"></span>
         <span id="tracker-status-label">Order Received by Kitchen</span>
       </div>
+<<<<<<< HEAD
       <h3 class="modal-title" id="tracker-order-title">Order #SH-104</h3>
       <p class="modal-subtitle" id="tracker-table-sub">Table 04 · Garden Terrace · 2 Guests</p>
     </div>
@@ -718,6 +1258,32 @@
         <div class="step-desc">
           <strong>Ready for Serving</strong>
           <small>Attendant brings to Table 04</small>
+=======
+      <h3 class="modal-title" id="tracker-order-title">Live Kitchen Tracker</h3>
+      <p class="modal-subtitle" id="tracker-table-sub">Table 04 · Garden Terrace · Live Order</p>
+    </div>
+
+    <div class="order-progress-stepper">
+      <div class="stepper-step completed" id="step-sent">
+        <div class="step-bullet">✓</div>
+        <div class="step-desc">
+          <strong>Order Sent</strong>
+          <small>Validated &amp; sent to POS bridge</small>
+        </div>
+      </div>
+      <div class="stepper-step active" id="step-prep">
+        <div class="step-bullet">2</div>
+        <div class="step-desc">
+          <strong>Kitchen Preparing</strong>
+          <small id="tracker-prep-time">Chef is cooking on charcoal embers</small>
+        </div>
+      </div>
+      <div class="stepper-step" id="step-ready">
+        <div class="step-bullet">3</div>
+        <div class="step-desc">
+          <strong>Ready &amp; Serving</strong>
+          <small>Waiter assigned to Table</small>
+>>>>>>> 8f7b31d (feat: digital tableside menu system with dynamic category rail, drinks catalog, and responsive layouts)
         </div>
       </div>
     </div>
@@ -729,11 +1295,16 @@
         <!-- Rendered by JS -->
       </div>
       <div class="tracker-receipt-total">
+<<<<<<< HEAD
         <span>Total Amount</span>
+=======
+        <span>Total Payable</span>
+>>>>>>> 8f7b31d (feat: digital tableside menu system with dynamic category rail, drinks catalog, and responsive layouts)
         <strong id="tracker-total-amount">KES 0</strong>
       </div>
     </div>
 
+<<<<<<< HEAD
     <div class="tracker-actions">
       <button class="btn-primary" style="width:100%;justify-content:center;" id="btn-tracker-call-waiter">
         <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg>
@@ -801,11 +1372,17 @@
 
     <button class="btn-primary" style="width:100%;justify-content:center;margin-top:4px;" id="btn-save-new-staff">
       Save &amp; Activate Staff
+=======
+    <button class="btn-secondary" style="width:100%;justify-content:center;" id="btn-tracker-call-waiter">
+      <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg>
+      Call Floor Attendant
+>>>>>>> 8f7b31d (feat: digital tableside menu system with dynamic category rail, drinks catalog, and responsive layouts)
     </button>
   </div>
 </div>
 
 <!-- ═══════════════════════════════════════════
+<<<<<<< HEAD
      MODAL: STAFF OS PIN GATE (FROM GUEST VIEW)
      ═══════════════════════════════════════════ -->
 <div class="modal-overlay" id="modal-staff-pin">
@@ -825,6 +1402,25 @@
       <input type="password" class="form-control" id="gate-pin-input" placeholder="••••" maxlength="4" style="text-align:center;font-size:24px;letter-spacing:10px;" />
     </div>
     <div id="gate-pin-error" style="color:#ef4444;font-size:12px;text-align:center;margin-bottom:12px;display:none;">Incorrect PIN. Try 2407.</div>
+=======
+     MODAL: STAFF GATE PIN AUTHENTICATION
+     ═══════════════════════════════════════════ -->
+<div class="modal-overlay" id="modal-staff-pin">
+  <div class="modal-window" style="max-width:380px;text-align:center;">
+    <button class="modal-close-btn" id="btn-close-staff-pin" aria-label="Close">
+      <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+    </button>
+    <div style="width:48px;height:48px;border-radius:50%;background:var(--primary-soft);color:var(--primary);margin:0 auto 12px;display:grid;place-items:center;">
+      <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+    </div>
+    <h3 class="modal-title">Staff &amp; Admin Gateway</h3>
+    <p class="modal-subtitle">Enter 4-digit venue PIN to access the Staff OS</p>
+
+    <div class="form-group" style="margin-bottom:12px;">
+      <input type="password" class="form-control" id="gate-pin-input" placeholder="Enter PIN (e.g. 2407)" maxlength="4" style="text-align:center;font-size:22px;letter-spacing:6px;font-weight:800;" />
+      <small style="color:var(--status-danger);font-size:11px;display:none;margin-top:6px;" id="gate-pin-error">Incorrect PIN. Try default: 2407</small>
+    </div>
+>>>>>>> 8f7b31d (feat: digital tableside menu system with dynamic category rail, drinks catalog, and responsive layouts)
 
     <button class="btn-primary" style="width:100%;justify-content:center;" id="btn-unlock-staff-gate">
       Unlock Staff Dashboard
@@ -833,6 +1429,7 @@
 </div>
 
 <!-- ═══════════════════════════════════════════
+<<<<<<< HEAD
      MODAL: SINGLE TABLE QR CODE & SESSION (FLOOR MAP)
      ═══════════════════════════════════════════ -->
 <div class="modal-overlay" id="modal-table-qr">
@@ -877,6 +1474,139 @@
       <button class="btn-secondary" id="btn-qr-toggle-status" style="justify-content:center;font-size:12px;padding:10px 14px;">
         <span class="floor-dot" id="qr-modal-status-dot" style="background:#10b981;margin-right:4px;"></span>
         <span id="qr-modal-status-btn-text">Toggle Status</span>
+=======
+     MODAL: ADD NEW DISH (ADMIN)
+     ═══════════════════════════════════════════ -->
+<div class="modal-overlay" id="modal-add-dish">
+  <div class="modal-window">
+    <button class="modal-close-btn" id="btn-close-add-dish" aria-label="Close">
+      <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+    </button>
+    <h3 class="modal-title">Add Dish to Menu</h3>
+    <p class="modal-subtitle">Publish a new item instantly across guest &amp; staff catalogs</p>
+
+    <div class="form-group">
+      <label for="new-dish-name">Dish / Drink Name</label>
+      <input type="text" class="form-control" id="new-dish-name" placeholder="e.g. Grilled King Prawns" />
+    </div>
+
+    <div class="form-group">
+      <label for="new-dish-cat">Category</label>
+      <select class="form-control" id="new-dish-cat">
+        <option>Starters</option>
+        <option selected>Grill &amp; Steaks</option>
+        <option>Pizzas &amp; Burgers</option>
+        <option>Pasta &amp; Coastal</option>
+        <option>Drinks &amp; Beverages</option>
+        <option>Desserts</option>
+      </select>
+    </div>
+
+    <div class="form-group">
+      <label for="new-dish-price">Price (KES)</label>
+      <input type="number" class="form-control" id="new-dish-price" placeholder="e.g. 1850" />
+    </div>
+
+    <div class="form-group">
+      <label for="new-dish-desc">Description</label>
+      <textarea class="form-control" id="new-dish-desc" rows="2" placeholder="Fresh ingredients, flavor profile, sauces..."></textarea>
+    </div>
+
+    <div class="form-group">
+      <label for="admin-pin-input">Admin Verification PIN</label>
+      <input type="password" class="form-control" id="admin-pin-input" placeholder="Enter PIN 2407" maxlength="4" />
+    </div>
+
+    <button class="btn-primary" style="width:100%;justify-content:center;" id="btn-save-new-dish">
+      Publish Dish to Live Menu
+    </button>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════
+     MODAL: ADD STAFF MEMBER (ADMIN)
+     ═══════════════════════════════════════════ -->
+<div class="modal-overlay" id="modal-add-staff">
+  <div class="modal-window">
+    <button class="modal-close-btn" id="btn-close-add-staff" aria-label="Close">
+      <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+    </button>
+    <h3 class="modal-title">Add Staff Member</h3>
+    <p class="modal-subtitle">Assign service roles, stations, and personal PINs</p>
+
+    <div class="form-group">
+      <label for="new-staff-name">Full Name</label>
+      <input type="text" class="form-control" id="new-staff-name" placeholder="e.g. Samuel Ochieng" />
+    </div>
+
+    <div class="form-group">
+      <label for="new-staff-role">Role</label>
+      <select class="form-control" id="new-staff-role">
+        <option>Floor Waiter</option>
+        <option>Kitchen Chef</option>
+        <option>Bar Attendant</option>
+        <option>Cashier</option>
+      </select>
+    </div>
+
+    <div class="form-group">
+      <label for="new-staff-station">Station</label>
+      <select class="form-control" id="new-staff-station">
+        <option>Terrace Section</option>
+        <option>Garden Section</option>
+        <option>Indoor Dining</option>
+        <option>Grill Station</option>
+        <option>Main Bar</option>
+      </select>
+    </div>
+
+    <div class="form-group">
+      <label for="new-staff-pin">Personal 4-Digit PIN</label>
+      <input type="password" class="form-control" id="new-staff-pin" placeholder="e.g. 1042" maxlength="4" />
+    </div>
+
+    <div class="form-group">
+      <label for="new-staff-phone">Phone Number (M-Pesa / SMS)</label>
+      <input type="tel" class="form-control" id="new-staff-phone" placeholder="+254 712 345 678" />
+    </div>
+
+    <div class="form-group">
+      <label for="staff-admin-pin-verify">Admin Verification PIN</label>
+      <input type="password" class="form-control" id="staff-admin-pin-verify" placeholder="Enter PIN 2407" maxlength="4" />
+    </div>
+
+    <button class="btn-primary" style="width:100%;justify-content:center;" id="btn-save-new-staff">
+      Register Staff Member
+    </button>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════
+     MODAL: TABLE QR CODE & SESSION VIEW
+     ═══════════════════════════════════════════ -->
+<div class="modal-overlay" id="modal-table-qr">
+  <div class="modal-window" style="text-align:center;max-width:400px;">
+    <button class="modal-close-btn" id="btn-close-table-qr" aria-label="Close">
+      <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+    </button>
+    <h3 class="modal-title" id="qr-modal-title">Table 04 · Garden Terrace</h3>
+    <p class="modal-subtitle">Live QR code for instant tableside guest ordering</p>
+
+    <div style="background:var(--dash-surface);padding:18px;border-radius:var(--radius-lg);display:inline-block;border:2px solid var(--brand-cream);margin-bottom:14px;box-shadow:var(--shadow-md);">
+      <div id="modal-qr-container" style="display:flex;justify-content:center;"></div>
+    </div>
+
+    <div style="background:var(--dash-bg);padding:10px 14px;border-radius:var(--radius-md);margin-bottom:18px;font-size:12px;color:var(--dash-muted);word-break:break-all;">
+      <span id="qr-url-text">https://shamba.house/menu?table=04</span>
+    </div>
+
+    <div style="display:flex;gap:10px;">
+      <button class="btn-primary" style="flex:1;justify-content:center;" id="btn-open-guest-for-table">
+        Open as Guest
+      </button>
+      <button class="btn-secondary" style="flex:1;justify-content:center;" id="btn-copy-qr-link">
+        Copy Link
+>>>>>>> 8f7b31d (feat: digital tableside menu system with dynamic category rail, drinks catalog, and responsive layouts)
       </button>
     </div>
   </div>
@@ -886,6 +1616,7 @@
      MODAL: PRINT ALL 12 TABLE QR TENTS
      ═══════════════════════════════════════════ -->
 <div class="modal-overlay" id="modal-print-all-qr">
+<<<<<<< HEAD
   <div class="modal-window" style="max-width:860px;max-height:90vh;overflow-y:auto;">
     <button class="modal-close-btn" id="btn-close-print-all-qr" aria-label="Close">
       <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
@@ -894,6 +1625,16 @@
       <div>
         <h3 class="modal-title">Table QR Stands · Print Center</h3>
         <p class="modal-subtitle">Ready-to-cut acrylic stands and table tents for all 12 dining tables</p>
+=======
+  <div class="modal-window" style="max-width:720px;max-height:85vh;overflow-y:auto;">
+    <button class="modal-close-btn" id="btn-close-print-all-qr" aria-label="Close">
+      <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+    </button>
+    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:16px;">
+      <div>
+        <h3 class="modal-title">Print 12 Table QR Stands</h3>
+        <p class="modal-subtitle" style="margin-bottom:0;">Printable table tent QR cards for Shamba House</p>
+>>>>>>> 8f7b31d (feat: digital tableside menu system with dynamic category rail, drinks catalog, and responsive layouts)
       </div>
       <button class="btn-primary" id="btn-trigger-browser-print">
         <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 6 2 18 2 18 9"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect x="6" y="14" width="12" height="8"/></svg>
@@ -927,7 +1668,10 @@
 
 <!-- Toast Notification -->
 <div class="app-toast" id="toast-element">
+<<<<<<< HEAD
   <!-- Checkmark SVG -->
+=======
+>>>>>>> 8f7b31d (feat: digital tableside menu system with dynamic category rail, drinks catalog, and responsive layouts)
   <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
   <span id="toast-message">Action successful</span>
 </div>

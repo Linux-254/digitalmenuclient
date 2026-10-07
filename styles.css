@@ -1,4 +1,5 @@
 /* ═══════════════════════════════════════════════
+<<<<<<< HEAD
    DIGITAL MENU — SHAMBA HOUSE
    Typography: Fanfarrón (Display) · Milano Perla (Editorial Accent) · Inter (UI)
    Design System:
@@ -8,6 +9,17 @@
    ═══════════════════════════════════════════════ */
 
 /* ── Custom Fonts (served from /public/fonts/ or /fonts/) ── */
+=======
+   DIGITAL MENU — SHAMBA HOUSE TABLESIDE OS
+   Typography: Fanfarrón (Display) · Milano Perla (Editorial Accent) · Inter (UI)
+   Design System:
+     - 100% Tokenized CSS Variables (Zero hardcoded colors outside token block)
+     - Explicit 3-Tier Layout Architecture (Mobile <=480px, Tablet Portrait 481px-834px, Tablet Landscape 835px-1180px, Desktop 1181px+)
+     - 100% SVG Icons · Zero Emojis · WCAG AA Contrast · Safe-Area Notch Insets
+   ═══════════════════════════════════════════════ */
+
+/* ── Custom Fonts ── */
+>>>>>>> 8f7b31d (feat: digital tableside menu system with dynamic category rail, drinks catalog, and responsive layouts)
 @font-face {
   font-family: 'Fanfarron';
   src: url('/public/fonts/Fanfarron.otf') format('opentype'),
@@ -28,6 +40,7 @@
   font-display: swap;
 }
 
+<<<<<<< HEAD
 :root {
   /* Brand Tokens */
   --forest-dark: #08281e;
@@ -59,6 +72,137 @@
 }
 
 /* ── Reset & Baseline ── */
+=======
+/* ═══════════════════════════════════════════════
+   DESIGN TOKENS & SYSTEM VARIABLES
+   (All colors MUST be declared here. No raw hex/rgb outside this block)
+   ═══════════════════════════════════════════════ */
+:root {
+  /* ── Brand Palette ── */
+  --brand-forest: #0d4b3c;
+  --brand-forest-deep: #07382d;
+  --brand-forest-surface: #124437;
+  --brand-forest-soft: #195243;
+  --brand-forest-subtle: #236553;
+  --brand-cream: #e7dfb8;
+  --brand-cream-soft: #f6f3e8;
+  --brand-cream-tint: #faf7ef;
+  --brand-lime: #b9d68a;
+  --brand-teal: #82c9a7;
+  --brand-coral: #d66a51;
+  --brand-amber: #bd873d;
+  --brand-gold: #d4af37;
+  --brand-gold-glow: rgba(212, 175, 55, 0.25);
+
+  /* ── Accent & Primary Action ── */
+  --primary: #ff5a1f;
+  --primary-hover: #e04b16;
+  --primary-active: #c73d0f;
+  --primary-soft: #fff1eb;
+  --primary-border: #ffd5c4;
+  --primary-contrast: #ffffff;
+
+  /* ── Staff OS / Light Dashboard Palette ── */
+  --dash-bg: #f8f9fa;
+  --dash-surface: #ffffff;
+  --dash-card: #ffffff;
+  --dash-card-subtle: #fcfdfd;
+  --dash-border: #eaedf0;
+  --dash-border-subtle: #f1f3f5;
+  --dash-border-strong: #d5dbe1;
+  --dash-ink: #1a1d20;
+  --dash-muted: #717b86;
+  --dash-subtle: #9aa2ab;
+  --dash-hover: #f3f5f8;
+  --dash-badge-bg: #edf0f5;
+  --dash-promo-bg: #fdf5f0;
+  --dash-promo-border: #f9e2d5;
+
+  /* ── Guest Tableside Dark Chalkboard Palette ── */
+  --guest-bg: #071f18;
+  --guest-surface: #0c2d24;
+  --guest-card: #11382e;
+  --guest-card-hover: #164639;
+  --guest-border: rgba(231, 223, 184, 0.16);
+  --guest-border-subtle: rgba(255, 255, 255, 0.08);
+  --guest-border-strong: rgba(231, 223, 184, 0.32);
+  --guest-ink: #f6f3e8;
+  --guest-muted: #a3b8b0;
+  --guest-subtle: #7a938a;
+  --guest-accent: #e7dfb8;
+  --guest-accent-soft: rgba(231, 223, 184, 0.12);
+  --guest-pill-bg: rgba(255, 255, 255, 0.08);
+  --guest-pill-hover: rgba(255, 255, 255, 0.14);
+  --guest-pill-active: #e7dfb8;
+  --guest-pill-active-ink: #072e24;
+  --guest-scallop-accent: #b9d68a;
+
+  /* ── Status & Feedback Semantics ── */
+  --status-success: #10b981;
+  --status-success-soft: #ecfdf5;
+  --status-success-border: #a7f3d0;
+  --status-success-text: #047857;
+  --status-warning: #f59e0b;
+  --status-warning-soft: #fffbeb;
+  --status-warning-border: #fde68a;
+  --status-warning-text: #b45309;
+  --status-danger: #ef4444;
+  --status-danger-dark: #b91c1c;
+  --status-danger-soft: #fee2e2;
+  --status-danger-border: #fca5a5;
+  --status-info: #3b82f6;
+  --status-info-soft: #eff6ff;
+  --status-info-border: #bfdbfe;
+  --status-neutral: #6b7280;
+  --status-neutral-soft: #f3f4f6;
+
+  /* ── Print Tokens ── */
+  --print-bg: #ffffff;
+  --print-ink: #000000;
+
+  /* ── Overlays, Shadows & Blurs ── */
+  --overlay-backdrop: rgba(0, 0, 0, 0.65);
+  --overlay-light: rgba(255, 255, 255, 0.85);
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.05);
+  --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.08);
+  --shadow-lg: 0 10px 30px rgba(0, 0, 0, 0.12);
+  --shadow-float: 0 16px 40px rgba(0, 0, 0, 0.28);
+  --shadow-guest-card: 0 8px 24px rgba(0, 0, 0, 0.25);
+  --glass-blur: blur(14px);
+
+  /* ── Typography Families ── */
+  --font-display: 'Fanfarron', Georgia, serif;
+  --font-serif: 'MilanoPerla', Georgia, serif;
+  --font-ui: 'Inter', system-ui, -apple-system, sans-serif;
+
+  /* ── Spacing Scale ── */
+  --space-2xs: 4px;
+  --space-xs: 8px;
+  --space-sm: 12px;
+  --space-md: 16px;
+  --space-lg: 24px;
+  --space-xl: 32px;
+  --space-2xl: 48px;
+
+  /* ── Radius Scale ── */
+  --radius-xs: 4px;
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 18px;
+  --radius-xl: 24px;
+  --radius-2xl: 32px;
+  --radius-full: 9999px;
+
+  /* ── Transitions ── */
+  --ease: cubic-bezier(0.16, 1, 0.3, 1);
+  --fast: 160ms ease-out;
+  --medium: 260ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* ═══════════════════════════════════════════════
+   RESET & BASELINE
+   ═══════════════════════════════════════════════ */
+>>>>>>> 8f7b31d (feat: digital tableside menu system with dynamic category rail, drinks catalog, and responsive layouts)
 *, *::before, *::after {
   box-sizing: border-box;
   margin: 0;
@@ -76,6 +220,10 @@ body {
   color: var(--dash-ink);
   line-height: 1.5;
   -webkit-font-smoothing: antialiased;
+<<<<<<< HEAD
+=======
+  min-height: 100vh;
+>>>>>>> 8f7b31d (feat: digital tableside menu system with dynamic category rail, drinks catalog, and responsive layouts)
 }
 
 button {
@@ -83,10 +231,18 @@ button {
   border: none;
   cursor: pointer;
   background: transparent;
+<<<<<<< HEAD
+=======
+  color: inherit;
+>>>>>>> 8f7b31d (feat: digital tableside menu system with dynamic category rail, drinks catalog, and responsive layouts)
 }
 
 input, select, textarea {
   font: inherit;
+<<<<<<< HEAD
+=======
+  color: inherit;
+>>>>>>> 8f7b31d (feat: digital tableside menu system with dynamic category rail, drinks catalog, and responsive layouts)
 }
 
 img {
@@ -94,9 +250,14 @@ img {
   display: block;
 }
 
+<<<<<<< HEAD
 /* Accessibility */
 :focus-visible {
   outline: 2px solid var(--orange);
+=======
+:focus-visible {
+  outline: 2px solid var(--primary);
+>>>>>>> 8f7b31d (feat: digital tableside menu system with dynamic category rail, drinks catalog, and responsive layouts)
   outline-offset: 2px;
 }
 
@@ -105,9 +266,15 @@ img {
   top: -60px;
   left: 16px;
   background: var(--dash-ink);
+<<<<<<< HEAD
   color: #fff;
   padding: 10px 18px;
   border-radius: 8px;
+=======
+  color: var(--dash-surface);
+  padding: 10px 18px;
+  border-radius: var(--radius-sm);
+>>>>>>> 8f7b31d (feat: digital tableside menu system with dynamic category rail, drinks catalog, and responsive layouts)
   z-index: 9999;
   font-weight: 600;
   transition: top var(--fast);
@@ -117,11 +284,16 @@ img {
 }
 
 /* ═══════════════════════════════════════════════
+<<<<<<< HEAD
    APP CONTAINER & LAYOUT MODES
+=======
+   APP CONTAINER & VIEW SHELL
+>>>>>>> 8f7b31d (feat: digital tableside menu system with dynamic category rail, drinks catalog, and responsive layouts)
    ═══════════════════════════════════════════════ */
 .app-shell {
   display: flex;
   min-height: 100vh;
+<<<<<<< HEAD
 }
 
 /* ── Sidebar (Image 2 Style) ── */
@@ -130,6 +302,39 @@ img {
   background: #ffffff;
   border-right: 1px solid var(--dash-border);
   padding: 24px 20px;
+=======
+  position: relative;
+  background: var(--dash-bg);
+}
+
+.main-wrapper {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  background: var(--dash-bg);
+}
+
+/* Guest Mode Override for Shell */
+.app-shell.guest-mode {
+  background: var(--guest-bg);
+}
+.app-shell.guest-mode .sidebar {
+  display: none !important;
+}
+.app-shell.guest-mode .main-wrapper {
+  background: var(--guest-bg);
+}
+
+/* ═══════════════════════════════════════════════
+   STAFF SIDEBAR (DESKTOP STATE)
+   ═══════════════════════════════════════════ */
+.sidebar {
+  width: 260px;
+  background: var(--dash-surface);
+  border-right: 1px solid var(--dash-border);
+  padding: 24px 18px;
+>>>>>>> 8f7b31d (feat: digital tableside menu system with dynamic category rail, drinks catalog, and responsive layouts)
   display: flex;
   flex-direction: column;
   position: sticky;
@@ -137,13 +342,21 @@ img {
   height: 100vh;
   z-index: 40;
   flex-shrink: 0;
+<<<<<<< HEAD
+=======
+  transition: transform var(--medium);
+>>>>>>> 8f7b31d (feat: digital tableside menu system with dynamic category rail, drinks catalog, and responsive layouts)
 }
 
 .brand-badge {
   display: flex;
   align-items: center;
   gap: 12px;
+<<<<<<< HEAD
   margin-bottom: 28px;
+=======
+  margin-bottom: 26px;
+>>>>>>> 8f7b31d (feat: digital tableside menu system with dynamic category rail, drinks catalog, and responsive layouts)
   text-decoration: none;
   color: var(--dash-ink);
 }
@@ -151,9 +364,15 @@ img {
 .brand-icon {
   width: 40px;
   height: 40px;
+<<<<<<< HEAD
   border-radius: 12px;
   background: var(--orange-soft);
   color: var(--orange);
+=======
+  border-radius: var(--radius-md);
+  background: var(--primary-soft);
+  color: var(--primary);
+>>>>>>> 8f7b31d (feat: digital tableside menu system with dynamic category rail, drinks catalog, and responsive layouts)
   display: grid;
   place-items: center;
   flex-shrink: 0;
@@ -175,6 +394,13 @@ img {
   font-weight: 600;
 }
 
+<<<<<<< HEAD
+=======
+.sidebar-drawer-header {
+  display: none; /* Only visible in mobile drawer mode */
+}
+
+>>>>>>> 8f7b31d (feat: digital tableside menu system with dynamic category rail, drinks catalog, and responsive layouts)
 .nav-group {
   display: flex;
   flex-direction: column;
@@ -186,8 +412,13 @@ img {
   display: flex;
   align-items: center;
   gap: 14px;
+<<<<<<< HEAD
   padding: 11px 16px;
   border-radius: 12px;
+=======
+  padding: 11px 14px;
+  border-radius: var(--radius-md);
+>>>>>>> 8f7b31d (feat: digital tableside menu system with dynamic category rail, drinks catalog, and responsive layouts)
   color: var(--dash-muted);
   font-weight: 500;
   font-size: 14px;
@@ -205,11 +436,16 @@ img {
 }
 
 .nav-link:hover {
+<<<<<<< HEAD
   background: #f3f5f8;
+=======
+  background: var(--dash-hover);
+>>>>>>> 8f7b31d (feat: digital tableside menu system with dynamic category rail, drinks catalog, and responsive layouts)
   color: var(--dash-ink);
 }
 
 .nav-link.active {
+<<<<<<< HEAD
   background: var(--orange-soft);
   color: var(--orange);
   font-weight: 600;
@@ -217,6 +453,14 @@ img {
 
 .nav-link.active svg {
   stroke: var(--orange);
+=======
+  background: var(--primary-soft);
+  color: var(--primary);
+  font-weight: 600;
+}
+.nav-link.active svg {
+  stroke: var(--primary);
+>>>>>>> 8f7b31d (feat: digital tableside menu system with dynamic category rail, drinks catalog, and responsive layouts)
 }
 
 .nav-badge {
@@ -224,6 +468,7 @@ img {
   font-size: 11px;
   font-weight: 700;
   padding: 2px 8px;
+<<<<<<< HEAD
   border-radius: 20px;
   background: #edf0f5;
   color: var(--dash-ink);
@@ -236,6 +481,19 @@ img {
   border: 1px solid #f9e2d5;
   border-radius: 16px;
   padding: 18px 16px;
+=======
+  border-radius: var(--radius-full);
+  background: var(--dash-badge-bg);
+  color: var(--dash-ink);
+}
+
+.sidebar-promo {
+  margin-top: auto;
+  background: var(--dash-promo-bg);
+  border: 1px solid var(--dash-promo-border);
+  border-radius: var(--radius-lg);
+  padding: 16px 14px;
+>>>>>>> 8f7b31d (feat: digital tableside menu system with dynamic category rail, drinks catalog, and responsive layouts)
   position: relative;
   overflow: hidden;
 }
@@ -248,6 +506,7 @@ img {
 }
 
 .sidebar-promo p {
+<<<<<<< HEAD
   font-size: 11px;
   color: var(--dash-muted);
   margin-bottom: 12px;
@@ -262,10 +521,25 @@ img {
   border-radius: 6px;
   display: inline-block;
   margin-bottom: 12px;
+=======
+  font-size: 12px;
+  color: var(--dash-muted);
+  line-height: 1.4;
+  margin-bottom: 12px;
+}
+
+.promo-code {
+  font-size: 11px;
+  font-weight: 800;
+  color: var(--primary);
+  letter-spacing: 0.5px;
+  margin-bottom: 10px;
+>>>>>>> 8f7b31d (feat: digital tableside menu system with dynamic category rail, drinks catalog, and responsive layouts)
 }
 
 .sidebar-promo button {
   width: 100%;
+<<<<<<< HEAD
   background: var(--orange);
   color: #fff;
   font-size: 12px;
@@ -300,11 +574,62 @@ img {
   position: sticky;
   top: 0;
   z-index: 30;
+=======
+  padding: 8px 12px;
+  background: var(--primary);
+  color: var(--primary-contrast);
+  font-size: 12px;
+  font-weight: 600;
+  border-radius: var(--radius-sm);
+  transition: background var(--fast);
+}
+.sidebar-promo button:hover {
+  background: var(--primary-hover);
+}
+
+/* Sidebar Backdrop for Mobile Drawer */
+.sidebar-backdrop {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: var(--overlay-backdrop);
+  z-index: 45;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity var(--medium);
+}
+.sidebar-backdrop.active {
+  display: block;
+  opacity: 1;
+  pointer-events: auto;
+}
+
+/* ═══════════════════════════════════════════════
+   STAFF TOPBAR (DASHBOARD HEADER)
+   ═══════════════════════════════════════════════ */
+.dash-topbar,
+#dash-topbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  min-height: 72px;
+  padding: 12px 28px;
+  background: var(--dash-surface);
+  border-bottom: 1px solid var(--dash-border);
+  position: sticky;
+  top: 0;
+  z-index: 30;
+  gap: 24px;
+  backdrop-filter: var(--glass-blur);
+  -webkit-backdrop-filter: var(--glass-blur);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
+>>>>>>> 8f7b31d (feat: digital tableside menu system with dynamic category rail, drinks catalog, and responsive layouts)
 }
 
 .topbar-left {
   display: flex;
   align-items: center;
+<<<<<<< HEAD
   gap: 24px;
   flex: 1;
 }
@@ -355,11 +680,96 @@ img {
   background: #fff;
   border-color: var(--orange);
   outline: none;
+=======
+  gap: 14px;
+  flex: 1;
+  max-width: 640px;
+}
+
+#btn-toggle-sidebar,
+.btn-hamburger {
+  display: none;
+  width: 42px;
+  height: 42px;
+  min-width: 42px;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--dash-border);
+  color: var(--dash-ink);
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  background: var(--dash-surface);
+  cursor: pointer;
+  transition: all var(--fast);
+  padding: 0;
+}
+
+#btn-toggle-sidebar:hover,
+.btn-hamburger:hover {
+  background: var(--dash-hover);
+  border-color: var(--dash-border-strong);
+  color: var(--brand-forest-deep);
+}
+
+#btn-toggle-sidebar:active,
+.btn-hamburger:active {
+  transform: scale(0.96);
+  background: var(--brand-forest-soft);
+}
+
+.table-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 16px;
+  background: var(--brand-forest-surface);
+  color: var(--brand-cream);
+  border-radius: var(--radius-full);
+  font-size: 12px;
+  font-weight: 600;
+  flex-shrink: 0;
+  cursor: pointer;
+  transition: opacity var(--fast);
+}
+.table-pill:hover {
+  opacity: 0.92;
+}
+
+.search-field {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background: var(--dash-bg);
+  border: 1px solid var(--dash-border);
+  border-radius: var(--radius-full);
+  padding: 10px 18px;
+  flex: 1;
+  transition: border-color var(--fast);
+}
+.search-field:focus-within {
+  border-color: var(--primary);
+  background: var(--dash-surface);
+}
+.search-field svg {
+  width: 16px;
+  height: 16px;
+  stroke: var(--dash-muted);
+  flex-shrink: 0;
+}
+.search-field input {
+  border: none;
+  background: transparent;
+  outline: none;
+  font-size: 13.5px;
+  width: 100%;
+  color: var(--dash-ink);
+>>>>>>> 8f7b31d (feat: digital tableside menu system with dynamic category rail, drinks catalog, and responsive layouts)
 }
 
 .topbar-right {
   display: flex;
   align-items: center;
+<<<<<<< HEAD
   gap: 14px;
 }
 
@@ -377,12 +787,55 @@ img {
 
 .btn-icon-cart:hover {
   background: #e9ecef;
+=======
+  gap: 16px;
+}
+
+.view-mode-bar {
+  display: inline-flex;
+  padding: 4px;
+  background: var(--dash-bg);
+  border: 1px solid var(--dash-border);
+  border-radius: var(--radius-full);
+  gap: 4px;
+}
+
+.mode-pill {
+  padding: 7px 16px;
+  font-size: 12.5px;
+  font-weight: 700;
+  border-radius: var(--radius-full);
+  color: var(--dash-muted);
+  transition: all var(--fast);
+}
+.mode-pill.active {
+  background: var(--brand-forest-deep);
+  color: var(--brand-cream);
+  box-shadow: var(--shadow-sm);
+}
+
+.btn-icon-cart {
+  width: 42px;
+  height: 42px;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--dash-border);
+  display: grid;
+  place-items: center;
+  color: var(--dash-ink);
+  position: relative;
+  background: var(--dash-surface);
+  transition: background var(--fast);
+}
+.btn-icon-cart:hover {
+  background: var(--dash-hover);
+>>>>>>> 8f7b31d (feat: digital tableside menu system with dynamic category rail, drinks catalog, and responsive layouts)
 }
 
 .cart-bubble {
   position: absolute;
   top: -4px;
   right: -4px;
+<<<<<<< HEAD
   background: var(--orange);
   color: #fff;
   font-size: 11px;
@@ -393,11 +846,22 @@ img {
   display: grid;
   place-items: center;
   border: 2px solid #fff;
+=======
+  background: var(--primary);
+  color: var(--primary-contrast);
+  font-size: 10px;
+  font-weight: 800;
+  padding: 2px 6px;
+  border-radius: var(--radius-full);
+  min-width: 18px;
+  text-align: center;
+>>>>>>> 8f7b31d (feat: digital tableside menu system with dynamic category rail, drinks catalog, and responsive layouts)
 }
 
 .user-profile {
   display: flex;
   align-items: center;
+<<<<<<< HEAD
   gap: 10px;
   background: #f4f6f8;
   padding: 6px 14px 6px 8px;
@@ -451,10 +915,41 @@ img {
   flex-direction: column;
   gap: 28px;
   max-width: 1400px;
+=======
+  gap: 12px;
+  padding-left: 16px;
+  border-left: 1.5px solid var(--dash-border);
+}
+
+.user-avatar {
+  width: 36px;
+  height: 36px;
+  border-radius: var(--radius-full);
+  background: var(--brand-forest-soft);
+  color: var(--brand-cream);
+  display: grid;
+  place-items: center;
+  font-size: 12px;
+  font-weight: 700;
+}
+.user-profile strong {
+  font-size: 13px;
+  display: block;
+  line-height: 1.2;
+}
+
+/* ═══════════════════════════════════════════
+   STAFF DASHBOARD CONTENT & LAYOUT COLUMNS
+   ═══════════════════════════════════════════ */
+.dash-container {
+  padding: 24px;
+  max-width: 1440px;
+>>>>>>> 8f7b31d (feat: digital tableside menu system with dynamic category rail, drinks catalog, and responsive layouts)
   margin: 0 auto;
   width: 100%;
 }
 
+<<<<<<< HEAD
 /* Hero Food Banner (from Image 2) */
 .hero-card {
   background: #ffffff;
@@ -468,10 +963,42 @@ img {
   position: relative;
   overflow: hidden;
   box-shadow: 0 8px 30px rgba(0,0,0,0.03);
+=======
+.dash-layout-columns {
+  display: grid;
+  grid-template-columns: 1fr 340px;
+  gap: 24px;
+  align-items: start;
+}
+
+.dash-main-column {
+  min-width: 0;
+}
+
+/* ── Hero Banner Card (Staff) ── */
+.hero-card {
+  background: var(--brand-forest-deep);
+  color: var(--brand-cream);
+  border-radius: var(--radius-xl);
+  padding: 28px 32px;
+  margin-bottom: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  position: relative;
+  overflow: hidden;
+}
+
+.hero-text {
+  max-width: 520px;
+  z-index: 2;
+>>>>>>> 8f7b31d (feat: digital tableside menu system with dynamic category rail, drinks catalog, and responsive layouts)
 }
 
 .hero-text h2 {
   font-family: var(--font-display);
+<<<<<<< HEAD
   font-size: 34px;
   line-height: 1.15;
   color: var(--dash-ink);
@@ -489,11 +1016,28 @@ img {
   line-height: 1.6;
   margin-bottom: 24px;
   max-width: 440px;
+=======
+  font-size: 30px;
+  line-height: 1.15;
+  margin-bottom: 10px;
+  letter-spacing: -0.5px;
+}
+.hero-text h2 span {
+  color: var(--primary);
+}
+
+.hero-text p {
+  font-size: 13px;
+  color: var(--guest-muted);
+  line-height: 1.5;
+  margin-bottom: 18px;
+>>>>>>> 8f7b31d (feat: digital tableside menu system with dynamic category rail, drinks catalog, and responsive layouts)
 }
 
 .hero-actions {
   display: flex;
   gap: 12px;
+<<<<<<< HEAD
 }
 
 .btn-primary {
@@ -535,6 +1079,53 @@ img {
   height: 240px;
 }
 
+=======
+  flex-wrap: wrap;
+}
+
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--primary);
+  color: var(--primary-contrast);
+  padding: 10px 20px;
+  border-radius: var(--radius-md);
+  font-size: 13px;
+  font-weight: 600;
+  transition: background var(--fast);
+}
+.btn-primary:hover {
+  background: var(--primary-hover);
+}
+
+.btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--dash-surface);
+  color: var(--dash-ink);
+  border: 1px solid var(--dash-border);
+  padding: 10px 18px;
+  border-radius: var(--radius-md);
+  font-size: 13px;
+  font-weight: 600;
+  transition: all var(--fast);
+}
+.btn-secondary:hover {
+  background: var(--dash-hover);
+}
+
+.hero-visual {
+  width: 220px;
+  height: 140px;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  position: relative;
+  flex-shrink: 0;
+  box-shadow: var(--shadow-lg);
+}
+>>>>>>> 8f7b31d (feat: digital tableside menu system with dynamic category rail, drinks catalog, and responsive layouts)
 .hero-visual img {
   width: 100%;
   height: 100%;
@@ -543,6 +1134,7 @@ img {
 
 .hero-deal-badge {
   position: absolute;
+<<<<<<< HEAD
   top: 16px;
   right: 16px;
   background: rgba(255, 255, 255, 0.95);
@@ -571,10 +1163,31 @@ img {
 }
 
 /* KPI Summary Cards */
+=======
+  bottom: 8px;
+  right: 8px;
+  background: var(--overlay-light);
+  backdrop-filter: var(--glass-blur);
+  padding: 6px 10px;
+  border-radius: var(--radius-sm);
+  color: var(--dash-ink);
+  font-size: 10px;
+  text-align: right;
+  line-height: 1.2;
+}
+.hero-deal-badge strong {
+  display: block;
+  font-size: 13px;
+  color: var(--primary);
+}
+
+/* ── KPI Stat Cards Row (Desktop 4-col, Tablet 2x2, Mobile Carousel) ── */
+>>>>>>> 8f7b31d (feat: digital tableside menu system with dynamic category rail, drinks catalog, and responsive layouts)
 .kpi-row {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 16px;
+<<<<<<< HEAD
 }
 
 .kpi-box {
@@ -583,12 +1196,29 @@ img {
   border-radius: 16px;
   padding: 18px 20px;
   box-shadow: 0 4px 16px rgba(0,0,0,0.02);
+=======
+  margin-bottom: 24px;
+}
+
+.kpi-box {
+  background: var(--dash-surface);
+  border: 1px solid var(--dash-border);
+  border-radius: var(--radius-lg);
+  padding: 18px 20px;
+  display: flex;
+  flex-direction: column;
+  transition: box-shadow var(--fast);
+}
+.kpi-box:hover {
+  box-shadow: var(--shadow-md);
+>>>>>>> 8f7b31d (feat: digital tableside menu system with dynamic category rail, drinks catalog, and responsive layouts)
 }
 
 .kpi-top {
   display: flex;
   align-items: center;
   justify-content: space-between;
+<<<<<<< HEAD
   color: var(--dash-muted);
   font-size: 12px;
   font-weight: 600;
@@ -605,27 +1235,129 @@ img {
   font-size: 24px;
   font-weight: 800;
   color: var(--dash-ink);
+=======
+  margin-bottom: 10px;
+  color: var(--dash-muted);
+  font-size: 12px;
+  font-weight: 500;
+}
+.kpi-top svg {
+  width: 18px;
+  height: 18px;
+  stroke: var(--dash-muted);
+}
+
+.kpi-box strong {
+  font-size: 24px;
+  font-weight: 800;
+  color: var(--dash-ink);
+  line-height: 1.1;
+  margin-bottom: 6px;
+  font-family: var(--font-ui);
+>>>>>>> 8f7b31d (feat: digital tableside menu system with dynamic category rail, drinks catalog, and responsive layouts)
 }
 
 .kpi-sub {
   font-size: 11px;
+<<<<<<< HEAD
   color: #10b981;
   font-weight: 600;
   margin-top: 4px;
 }
 
 /* Categories Rail (Image 2) */
+=======
+  color: var(--status-success);
+  font-weight: 600;
+}
+
+/* ── Staff Persistent Side Inspector Panel (Desktop) ── */
+.dash-side-inspector {
+  background: var(--dash-surface);
+  border: 1px solid var(--dash-border);
+  border-radius: var(--radius-xl);
+  padding: 20px;
+  position: sticky;
+  top: 90px;
+}
+
+.inspector-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-bottom: 14px;
+  border-bottom: 1px solid var(--dash-border);
+  margin-bottom: 16px;
+}
+.inspector-header h3 {
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--dash-ink);
+}
+
+.inspector-card {
+  background: var(--dash-bg);
+  border: 1px solid var(--dash-border-subtle);
+  border-radius: var(--radius-md);
+  padding: 14px;
+  margin-bottom: 14px;
+}
+.inspector-card h4 {
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--dash-ink);
+  margin-bottom: 4px;
+}
+.inspector-card p {
+  font-size: 12px;
+  color: var(--dash-muted);
+  margin-bottom: 10px;
+}
+
+.quick-action-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.btn-inspector-action {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 9px 12px;
+  background: var(--dash-surface);
+  border: 1px solid var(--dash-border);
+  border-radius: var(--radius-sm);
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--dash-ink);
+  transition: all var(--fast);
+}
+.btn-inspector-action:hover {
+  background: var(--dash-hover);
+  border-color: var(--dash-border-strong);
+}
+
+/* ── Section Headers (Staff) ── */
+>>>>>>> 8f7b31d (feat: digital tableside menu system with dynamic category rail, drinks catalog, and responsive layouts)
 .section-header {
   display: flex;
   align-items: center;
   justify-content: space-between;
   margin-bottom: 16px;
+<<<<<<< HEAD
 }
 
+=======
+  gap: 12px;
+}
+>>>>>>> 8f7b31d (feat: digital tableside menu system with dynamic category rail, drinks catalog, and responsive layouts)
 .section-header h3 {
   font-size: 18px;
   font-weight: 700;
   color: var(--dash-ink);
+<<<<<<< HEAD
 }
 
 .category-rail {
@@ -663,6 +1395,52 @@ img {
   place-items: center;
 }
 
+=======
+  letter-spacing: -0.3px;
+}
+
+/* ── Staff Category Rail ── */
+.category-rail {
+  display: flex;
+  gap: 12px;
+  overflow-x: auto;
+  padding-bottom: 8px;
+  margin-bottom: 24px;
+  scrollbar-width: thin;
+}
+
+.category-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  background: var(--dash-surface);
+  border: 1px solid var(--dash-border);
+  border-radius: var(--radius-lg);
+  padding: 12px 14px;
+  min-width: 110px;
+  cursor: pointer;
+  transition: all var(--fast);
+  text-align: center;
+  flex-shrink: 0;
+}
+.category-card:hover {
+  border-color: var(--dash-border-strong);
+  transform: translateY(-2px);
+}
+.category-card.active {
+  border-color: var(--primary);
+  background: var(--primary-soft);
+}
+
+.cat-thumb {
+  width: 44px;
+  height: 44px;
+  border-radius: var(--radius-full);
+  overflow: hidden;
+  background: var(--dash-hover);
+}
+>>>>>>> 8f7b31d (feat: digital tableside menu system with dynamic category rail, drinks catalog, and responsive layouts)
 .cat-thumb img {
   width: 100%;
   height: 100%;
@@ -670,6 +1448,7 @@ img {
 }
 
 .category-card strong {
+<<<<<<< HEAD
   display: block;
   font-size: 13px;
   font-weight: 700;
@@ -777,17 +1556,62 @@ img {
   background: #eee;
 }
 
+=======
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--dash-ink);
+  white-space: nowrap;
+}
+.category-card span {
+  font-size: 10px;
+  color: var(--dash-muted);
+}
+
+/* ── Staff Dishes Grid ── */
+.dishes-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 16px;
+  margin-bottom: 32px;
+}
+
+.dish-card-dash {
+  background: var(--dash-surface);
+  border: 1px solid var(--dash-border);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  transition: box-shadow var(--fast);
+}
+.dish-card-dash:hover {
+  box-shadow: var(--shadow-md);
+}
+
+.dish-card-image {
+  height: 160px;
+  position: relative;
+  background: var(--dash-hover);
+  overflow: hidden;
+}
+>>>>>>> 8f7b31d (feat: digital tableside menu system with dynamic category rail, drinks catalog, and responsive layouts)
 .dish-card-image img {
   width: 100%;
   height: 100%;
   object-fit: cover;
+<<<<<<< HEAD
   transition: transform 0.4s var(--ease);
 }
 
+=======
+  transition: transform var(--medium);
+}
+>>>>>>> 8f7b31d (feat: digital tableside menu system with dynamic category rail, drinks catalog, and responsive layouts)
 .dish-card-dash:hover .dish-card-image img {
   transform: scale(1.04);
 }
 
+<<<<<<< HEAD
 .rating-pill {
   position: absolute;
   top: 12px;
@@ -814,6 +1638,35 @@ img {
 
 .dish-card-body {
   padding: 16px 18px;
+=======
+.dish-card-dash.sold-out .dish-card-image img {
+  filter: grayscale(85%) opacity(0.65);
+}
+
+.rating-pill {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: var(--overlay-light);
+  backdrop-filter: var(--glass-blur);
+  padding: 4px 8px;
+  border-radius: var(--radius-full);
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--dash-ink);
+}
+.rating-pill svg {
+  width: 12px;
+  height: 12px;
+  fill: var(--status-warning);
+}
+
+.dish-card-body {
+  padding: 16px;
+>>>>>>> 8f7b31d (feat: digital tableside menu system with dynamic category rail, drinks catalog, and responsive layouts)
   display: flex;
   flex-direction: column;
   flex: 1;
@@ -822,12 +1675,18 @@ img {
 .dish-tags {
   display: flex;
   gap: 6px;
+<<<<<<< HEAD
   margin-bottom: 6px;
+=======
+  margin-bottom: 8px;
+  flex-wrap: wrap;
+>>>>>>> 8f7b31d (feat: digital tableside menu system with dynamic category rail, drinks catalog, and responsive layouts)
 }
 
 .dish-tag {
   font-size: 10px;
   font-weight: 700;
+<<<<<<< HEAD
   text-transform: uppercase;
   color: var(--dash-muted);
   background: #f4f6f8;
@@ -840,13 +1699,38 @@ img {
   font-weight: 700;
   color: var(--dash-ink);
   margin-bottom: 4px;
+=======
+  padding: 2px 6px;
+  border-radius: var(--radius-xs);
+  background: var(--dash-badge-bg);
+  color: var(--dash-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.4px;
+}
+
+.dish-card-body h4 {
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--dash-ink);
+  margin-bottom: 6px;
+  line-height: 1.25;
+>>>>>>> 8f7b31d (feat: digital tableside menu system with dynamic category rail, drinks catalog, and responsive layouts)
 }
 
 .dish-card-body p {
   font-size: 12px;
   color: var(--dash-muted);
+<<<<<<< HEAD
   margin-bottom: 14px;
   line-height: 1.4;
+=======
+  line-height: 1.4;
+  margin-bottom: 14px;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+>>>>>>> 8f7b31d (feat: digital tableside menu system with dynamic category rail, drinks catalog, and responsive layouts)
   flex: 1;
 }
 
@@ -855,14 +1739,25 @@ img {
   align-items: center;
   justify-content: space-between;
   padding-top: 12px;
+<<<<<<< HEAD
   border-top: 1px solid var(--dash-border);
+=======
+  border-top: 1px solid var(--dash-border-subtle);
+>>>>>>> 8f7b31d (feat: digital tableside menu system with dynamic category rail, drinks catalog, and responsive layouts)
   margin-top: auto;
 }
 
 .dish-price {
+<<<<<<< HEAD
   font-size: 15px;
   font-weight: 800;
   color: var(--dash-ink);
+=======
+  font-size: 16px;
+  font-weight: 800;
+  color: var(--primary);
+  line-height: 1;
+>>>>>>> 8f7b31d (feat: digital tableside menu system with dynamic category rail, drinks catalog, and responsive layouts)
 }
 
 .dish-prep-time {
@@ -871,14 +1766,21 @@ img {
   display: flex;
   align-items: center;
   gap: 4px;
+<<<<<<< HEAD
 }
 
 /* Availability Toggle Switch */
+=======
+  margin-top: 3px;
+}
+
+>>>>>>> 8f7b31d (feat: digital tableside menu system with dynamic category rail, drinks catalog, and responsive layouts)
 .switch-control {
   display: inline-flex;
   align-items: center;
   gap: 8px;
   cursor: pointer;
+<<<<<<< HEAD
 }
 
 .switch-control input {
@@ -915,10 +1817,44 @@ img {
   transform: translateX(18px);
 }
 
+=======
+  user-select: none;
+}
+.switch-control input {
+  display: none;
+}
+.switch-slider {
+  width: 38px;
+  height: 22px;
+  background: var(--dash-border-strong);
+  border-radius: var(--radius-full);
+  position: relative;
+  transition: background var(--fast);
+}
+.switch-slider::before {
+  content: '';
+  position: absolute;
+  top: 3px;
+  left: 3px;
+  width: 16px;
+  height: 16px;
+  border-radius: var(--radius-full);
+  background: var(--dash-surface);
+  transition: transform var(--fast);
+  box-shadow: var(--shadow-sm);
+}
+.switch-control input:checked + .switch-slider {
+  background: var(--status-success);
+}
+.switch-control input:checked + .switch-slider::before {
+  transform: translateX(16px);
+}
+>>>>>>> 8f7b31d (feat: digital tableside menu system with dynamic category rail, drinks catalog, and responsive layouts)
 .switch-label {
   font-size: 11px;
   font-weight: 700;
 }
+<<<<<<< HEAD
 
 .switch-label.in-stock { color: #10b981; }
 .switch-label.sold-out { color: #ef4444; }
@@ -1624,10 +2560,266 @@ img {
 .staff-member-card {
   border: 1px solid var(--dash-border);
   border-radius: 14px;
+=======
+.switch-label.in-stock {
+  color: var(--status-success-text);
+}
+.switch-label.sold-out {
+  color: var(--status-danger-dark);
+}
+
+/* ── Orders & Kitchen Kanban Queue ── */
+.kanban-mobile-tabs {
+  display: none; /* Only visible on mobile */
+  gap: 6px;
+  overflow-x: auto;
+  margin-bottom: 16px;
+  padding-bottom: 4px;
+}
+
+.kanban-tab-btn {
+  padding: 8px 14px;
+  border-radius: var(--radius-full);
+  font-size: 12px;
+  font-weight: 600;
+  background: var(--dash-surface);
+  border: 1px solid var(--dash-border);
+  color: var(--dash-muted);
+  white-space: nowrap;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+.kanban-tab-btn.active {
+  background: var(--brand-forest-deep);
+  color: var(--brand-cream);
+  border-color: var(--brand-forest-deep);
+}
+
+.orders-kanban {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+  align-items: start;
+}
+
+.kanban-col {
+  background: var(--dash-surface);
+  border: 1px solid var(--dash-border);
+  border-radius: var(--radius-lg);
+  padding: 16px;
+}
+
+.kanban-col-header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid var(--dash-border);
+  margin-bottom: 14px;
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--dash-ink);
+}
+
+.kanban-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: var(--radius-full);
+}
+
+.kanban-count {
+  margin-left: auto;
+  background: var(--dash-badge-bg);
+  color: var(--dash-muted);
+  font-size: 11px;
+  font-weight: 700;
+  padding: 2px 7px;
+  border-radius: var(--radius-full);
+}
+
+.kanban-cards {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.kanban-ticket {
+  background: var(--dash-bg);
+  border: 1px solid var(--dash-border-subtle);
+  border-radius: var(--radius-md);
+  padding: 14px;
+  transition: transform var(--fast);
+}
+.kanban-ticket:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-sm);
+}
+
+.ticket-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 8px;
+}
+.ticket-top strong {
+  font-size: 14px;
+  color: var(--dash-ink);
+}
+.ticket-time {
+  font-size: 11px;
+  color: var(--dash-muted);
+}
+
+.kanban-ticket p {
+  font-size: 12px;
+  color: var(--dash-muted);
+  line-height: 1.4;
+  margin-bottom: 12px;
+}
+
+.btn-ticket-move {
+  width: 100%;
+  padding: 8px 12px;
+  background: var(--brand-forest-soft);
+  color: var(--brand-cream);
+  font-size: 12px;
+  font-weight: 600;
+  border-radius: var(--radius-sm);
+  transition: background var(--fast);
+}
+.btn-ticket-move:hover {
+  background: var(--brand-forest-deep);
+}
+
+/* ── Floor Map Grid ── */
+.floor-map-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 16px;
+  margin-top: 16px;
+}
+
+.table-card {
+  background: var(--dash-surface);
+  border: 1px solid var(--dash-border);
+  border-radius: var(--radius-lg);
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  transition: all var(--fast);
+}
+.table-card:hover {
+  box-shadow: var(--shadow-md);
+  transform: translateY(-2px);
+}
+
+.table-card-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.table-card-top strong {
+  font-size: 16px;
+  color: var(--dash-ink);
+}
+
+.table-zone-tag {
+  font-size: 11px;
+  font-weight: 700;
+  padding: 2px 8px;
+  border-radius: var(--radius-full);
+  background: var(--dash-badge-bg);
+  color: var(--dash-muted);
+}
+
+.table-status-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 11px;
+  font-weight: 700;
+  padding: 4px 10px;
+  border-radius: var(--radius-full);
+  align-self: flex-start;
+}
+.table-status-pill.occupied {
+  background: var(--status-success-soft);
+  color: var(--status-success-text);
+  border: 1px solid var(--status-success-border);
+}
+.table-status-pill.free {
+  background: var(--dash-bg);
+  color: var(--dash-muted);
+  border: 1px solid var(--dash-border);
+}
+.table-status-pill.reserved {
+  background: var(--status-warning-soft);
+  color: var(--status-warning-text);
+  border: 1px solid var(--status-warning-border);
+}
+
+.table-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: var(--radius-full);
+}
+.occupied .table-dot { background: var(--status-success); }
+.free .table-dot { background: var(--dash-muted); }
+.reserved .table-dot { background: var(--status-warning); }
+
+.table-bill-info {
+  display: flex;
+  justify-content: space-between;
+  font-size: 12px;
+  padding-top: 8px;
+  border-top: 1px solid var(--dash-border-subtle);
+  color: var(--dash-muted);
+}
+.table-bill-info strong {
+  color: var(--primary);
+  font-size: 13px;
+}
+
+.table-card-actions {
+  display: flex;
+  gap: 8px;
+  margin-top: 4px;
+}
+.table-card-actions button {
+  flex: 1;
+  padding: 7px 10px;
+  font-size: 11px;
+  font-weight: 600;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--dash-border);
+  background: var(--dash-bg);
+  color: var(--dash-ink);
+  transition: all var(--fast);
+}
+.table-card-actions button:hover {
+  background: var(--dash-hover);
+  border-color: var(--dash-border-strong);
+}
+
+/* ── Staff Roster Grid ── */
+.staff-roster-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 16px;
+}
+
+.staff-member-card {
+  background: var(--dash-surface);
+  border: 1px solid var(--dash-border);
+  border-radius: var(--radius-lg);
+>>>>>>> 8f7b31d (feat: digital tableside menu system with dynamic category rail, drinks catalog, and responsive layouts)
   padding: 16px;
   display: flex;
   align-items: center;
   gap: 14px;
+<<<<<<< HEAD
   background: #fbfcfc;
   transition: all var(--fast);
 }
@@ -1648,11 +2840,36 @@ img {
 }
 .staff-member-info {
   flex: 1;
+=======
+  transition: box-shadow var(--fast);
+}
+.staff-member-card:hover {
+  box-shadow: var(--shadow-sm);
+}
+
+.staff-avatar-initials {
+  width: 44px;
+  height: 44px;
+  border-radius: var(--radius-full);
+  background: var(--brand-forest-surface);
+  color: var(--brand-cream);
+  display: grid;
+  place-items: center;
+  font-size: 14px;
+  font-weight: 800;
+  flex-shrink: 0;
+}
+
+.staff-member-info {
+  flex: 1;
+  min-width: 0;
+>>>>>>> 8f7b31d (feat: digital tableside menu system with dynamic category rail, drinks catalog, and responsive layouts)
 }
 .staff-member-info strong {
   display: block;
   font-size: 14px;
   color: var(--dash-ink);
+<<<<<<< HEAD
   line-height: 1.2;
 }
 .staff-role-badge {
@@ -1681,6 +2898,1037 @@ img {
 }
 
 /* ── Live Order Tracker Modal Window ── */
+=======
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.staff-role-badge {
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--primary);
+}
+
+.staff-station-tag {
+  display: block;
+  font-size: 10px;
+  color: var(--dash-muted);
+  text-transform: uppercase;
+  margin-top: 2px;
+}
+
+.staff-pin-tag {
+  font-size: 11px;
+  font-weight: 700;
+  padding: 3px 8px;
+  border-radius: var(--radius-sm);
+  background: var(--dash-bg);
+  border: 1px solid var(--dash-border);
+  color: var(--dash-ink);
+}
+
+/* ── Offers & Analytics Panels ── */
+.offers-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 16px;
+}
+.offer-card {
+  background: var(--dash-surface);
+  border: 1px solid var(--dash-border);
+  border-radius: var(--radius-lg);
+  padding: 20px;
+  position: relative;
+}
+.offer-card-badge {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  font-size: 10px;
+  font-weight: 800;
+  padding: 2px 8px;
+  border-radius: var(--radius-full);
+  background: var(--status-success-soft);
+  color: var(--status-success-text);
+  border: 1px solid var(--status-success-border);
+}
+.offer-card h4 {
+  font-size: 18px;
+  font-weight: 800;
+  color: var(--primary);
+  margin-bottom: 6px;
+}
+.offer-card p {
+  font-size: 13px;
+  color: var(--dash-muted);
+  margin-bottom: 14px;
+}
+.offer-meta {
+  display: flex;
+  justify-content: space-between;
+  font-size: 11px;
+  color: var(--dash-subtle);
+  border-top: 1px solid var(--dash-border-subtle);
+  padding-top: 10px;
+}
+
+.analytics-kpi-row {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 16px;
+}
+.an-kpi {
+  background: var(--dash-surface);
+  border: 1px solid var(--dash-border);
+  border-radius: var(--radius-lg);
+  padding: 18px;
+}
+.an-kpi span {
+  font-size: 12px;
+  color: var(--dash-muted);
+  display: block;
+  margin-bottom: 6px;
+}
+.an-kpi strong {
+  font-size: 22px;
+  font-weight: 800;
+  color: var(--dash-ink);
+  display: block;
+}
+.an-kpi small {
+  font-size: 11px;
+  color: var(--status-success);
+  font-weight: 600;
+}
+
+/* ── POS Bridge Settings ── */
+.bridge-config-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 16px;
+}
+.bridge-config-card {
+  background: var(--dash-surface);
+  border: 1px solid var(--dash-border);
+  border-radius: var(--radius-lg);
+  padding: 20px;
+  display: flex;
+  gap: 16px;
+}
+.bridge-config-icon {
+  width: 44px;
+  height: 44px;
+  border-radius: var(--radius-md);
+  background: var(--brand-forest-surface);
+  color: var(--brand-cream);
+  display: grid;
+  place-items: center;
+  flex-shrink: 0;
+}
+.bridge-config-card strong {
+  display: block;
+  font-size: 14px;
+  color: var(--dash-ink);
+  margin-bottom: 4px;
+}
+.bridge-config-card p {
+  font-size: 12px;
+  color: var(--dash-muted);
+  line-height: 1.4;
+}
+.bridge-status {
+  padding: 4px 10px;
+  border-radius: var(--radius-full);
+  font-size: 11px;
+  font-weight: 700;
+}
+.bridge-status--offline {
+  background: var(--status-danger-soft);
+  color: var(--status-danger-dark);
+  border: 1px solid var(--status-danger-border);
+}
+
+/* ═══════════════════════════════════════════════
+   GUEST TABLESIDE MENU (THE DARK CHALKBOARD WORLD)
+   ═══════════════════════════════════════════════ */
+.guest-menu-container {
+  min-height: 100vh;
+  background: var(--guest-bg);
+  background-image: var(--guest-bg-gradient);
+  color: var(--guest-ink);
+  padding: 0 0 100px 0; /* Bottom spacing for floating navigation */
+  position: relative;
+}
+
+/* ── Dedicated Guest Topbar ── */
+.guest-topbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 14px 20px;
+  background: var(--guest-surface);
+  border-bottom: 1px solid var(--guest-border);
+  position: sticky;
+  top: 0;
+  z-index: 35;
+  gap: 12px;
+}
+
+.guest-topbar-brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.guest-brand-logo {
+  width: 36px;
+  height: 36px;
+  border-radius: var(--radius-md);
+  background: var(--primary);
+  color: var(--primary-contrast);
+  display: grid;
+  place-items: center;
+  flex-shrink: 0;
+}
+
+.guest-brand-text h1 {
+  font-family: var(--font-display);
+  font-size: 18px;
+  color: var(--guest-accent);
+  letter-spacing: -0.3px;
+  line-height: 1.1;
+}
+.guest-brand-text span {
+  font-size: 10px;
+  text-transform: uppercase;
+  color: var(--guest-muted);
+  letter-spacing: 0.8px;
+  font-weight: 600;
+  display: block;
+}
+
+.guest-topbar-center {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex: 1;
+  max-width: 540px;
+}
+
+.guest-table-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 14px;
+  background: var(--brand-forest-soft);
+  border: 1px solid var(--guest-border-strong);
+  color: var(--guest-accent);
+  border-radius: var(--radius-full);
+  font-size: 12px;
+  font-weight: 700;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: all var(--fast);
+}
+.guest-table-badge:hover {
+  background: var(--brand-forest-deep);
+  border-color: var(--brand-cream);
+}
+
+.guest-search-box {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--guest-pill-bg);
+  border: 1px solid var(--guest-border);
+  border-radius: var(--radius-full);
+  padding: 8px 14px;
+  flex: 1;
+  transition: all var(--fast);
+}
+.guest-search-box:focus-within {
+  border-color: var(--brand-cream);
+  background: var(--guest-card);
+}
+.guest-search-box svg {
+  stroke: var(--guest-muted);
+  flex-shrink: 0;
+}
+.guest-search-box input {
+  border: none;
+  background: transparent;
+  outline: none;
+  font-size: 13px;
+  color: var(--guest-ink);
+  width: 100%;
+}
+.guest-search-box input::placeholder {
+  color: var(--guest-muted);
+}
+
+.guest-topbar-actions {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.guest-cart-trigger {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 7px 14px;
+  border-radius: var(--radius-full);
+  background: var(--primary);
+  color: var(--primary-contrast);
+  font-weight: 700;
+  font-size: 12px;
+  box-shadow: var(--shadow-sm);
+  transition: background var(--fast);
+}
+.guest-cart-trigger:hover {
+  background: var(--primary-hover);
+}
+
+.guest-cart-count {
+  background: var(--primary-contrast);
+  color: var(--primary);
+  font-size: 11px;
+  font-weight: 800;
+  padding: 2px 6px;
+  border-radius: var(--radius-full);
+}
+
+.btn-staff-gate {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 7px 12px;
+  border-radius: var(--radius-full);
+  background: var(--guest-pill-bg);
+  border: 1px solid var(--guest-border);
+  color: var(--guest-muted);
+  font-size: 11px;
+  font-weight: 600;
+  transition: all var(--fast);
+}
+.btn-staff-gate:hover {
+  color: var(--guest-ink);
+  border-color: var(--guest-border-strong);
+}
+
+/* ── Guest App Subheader (Table Context + Greeting Line) ── */
+.guest-header-banner {
+  padding: 24px 24px 16px 24px;
+  max-width: 1280px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.guest-context-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 14px;
+  margin: 0;
+  padding: 0;
+}
+
+.guest-greeting-block {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  margin: 0;
+  padding: 0;
+}
+
+.guest-greeting-block h2 {
+  font-family: var(--font-display);
+  font-size: clamp(22px, 2.5vw, 28px);
+  color: var(--guest-accent);
+  letter-spacing: -0.02em;
+  line-height: 1.2;
+  font-weight: 700;
+  margin: 0;
+  padding: 0;
+}
+.guest-greeting-block p {
+  font-size: clamp(12.5px, 1.2vw, 14px);
+  color: var(--guest-muted);
+  line-height: 1.45;
+  letter-spacing: 0.1px;
+  margin: 0;
+  padding: 0;
+}
+
+/* ── Full-Width Rounded Search Bar Under Header ── */
+.guest-search-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background: var(--guest-surface);
+  border: 1.5px solid var(--guest-border);
+  border-radius: var(--radius-full);
+  padding: 12px 20px;
+  box-shadow: var(--shadow-sm);
+  transition: all var(--fast);
+  min-height: 46px;
+  margin: 0;
+  box-sizing: border-box;
+}
+.guest-search-row:focus-within {
+  border-color: var(--brand-gold);
+  background: var(--guest-card);
+  box-shadow: 0 0 0 3px rgba(212, 163, 89, 0.15);
+}
+.guest-search-row svg {
+  width: 18px;
+  height: 18px;
+  stroke: var(--guest-muted);
+  flex-shrink: 0;
+  transition: stroke var(--fast);
+}
+.guest-search-row:focus-within svg {
+  stroke: var(--brand-gold);
+}
+.guest-search-row input {
+  border: none;
+  background: transparent;
+  outline: none;
+  font-size: 15px;
+  color: var(--guest-ink);
+  width: 100%;
+  font-family: inherit;
+}
+.guest-search-row input::placeholder {
+  color: var(--guest-muted);
+}
+
+/* ── Horizontally Scrollable Dynamic Category Filter Row ── */
+.guest-category-section {
+  padding: 12px 20px;
+  max-width: 1280px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+.guest-category-bar {
+  display: flex;
+  gap: 10px;
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  scrollbar-width: none;
+  -webkit-overflow-scrolling: touch;
+  padding: 4px 2px 8px 2px;
+}
+.guest-category-bar::-webkit-scrollbar {
+  display: none;
+}
+
+.guest-cat-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  min-width: 82px;
+  padding: 10px 12px;
+  border-radius: var(--radius-lg);
+  background: var(--guest-pill-bg);
+  border: 1px solid var(--guest-border);
+  color: var(--guest-muted);
+  cursor: pointer;
+  flex-shrink: 0;
+  transition: all var(--fast);
+  text-align: center;
+  user-select: none;
+}
+.guest-cat-card:hover {
+  background: var(--guest-pill-hover);
+  color: var(--guest-ink);
+  border-color: var(--guest-border-strong);
+}
+
+.guest-cat-card.active {
+  background: var(--guest-pill-active);
+  color: var(--guest-pill-active-ink);
+  border-color: var(--guest-pill-active);
+  box-shadow: var(--shadow-md);
+  transform: translateY(-2px);
+}
+.guest-cat-card.active svg {
+  stroke: var(--guest-pill-active-ink);
+}
+
+.guest-cat-card svg {
+  width: 22px;
+  height: 22px;
+  stroke: currentColor;
+  stroke-width: 2;
+  fill: none;
+  flex-shrink: 0;
+}
+
+.guest-cat-card span {
+  font-size: 11px;
+  font-weight: 700;
+  line-height: 1.1;
+  white-space: nowrap;
+}
+
+.guest-cat-count {
+  font-size: 9px;
+  opacity: 0.8;
+  font-weight: 600;
+}
+
+/* ── Guest Layout Columns (Main Sections + Persistent Desktop Cart) ── */
+.guest-content-wrap {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 10px 20px 40px 20px;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 28px;
+  align-items: start;
+}
+
+/* On Desktop & Tablet-Landscape, cart sits alongside menu */
+@media (min-width: 835px) {
+  .guest-content-wrap {
+    grid-template-columns: 1fr 340px;
+  }
+}
+
+.guest-sections-column {
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 36px;
+}
+
+/* ── Section Header with "See all" affordance ── */
+.guest-section-header {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  margin-bottom: 16px;
+  padding: 0 4px;
+}
+
+.guest-section-header h3 {
+  font-family: var(--font-display);
+  font-size: 22px;
+  color: var(--guest-accent);
+  letter-spacing: -0.3px;
+  line-height: 1.2;
+}
+
+.btn-see-all {
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--brand-lime);
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  transition: opacity var(--fast);
+}
+.btn-see-all:hover {
+  opacity: 0.8;
+}
+
+/* ── Section Card Rhythm (Horizontal Scroll Row on Mobile & Tablet Portrait) ── */
+.guest-cards-scroll-row {
+  display: flex;
+  gap: 16px;
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  scroll-snap-type: x mandatory;
+  padding: 4px 4px 14px 4px;
+  scrollbar-width: thin;
+  -webkit-overflow-scrolling: touch;
+}
+
+/* ── Individual Guest Dish Card Anatomy ── */
+.guest-dish-card {
+  background: var(--guest-card);
+  border: 1px solid var(--guest-border);
+  border-radius: var(--radius-xl);
+  padding: 14px;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  transition: all var(--fast);
+  cursor: pointer;
+  min-width: 240px;
+  max-width: 280px;
+  flex-shrink: 0;
+  scroll-snap-align: start;
+  box-shadow: var(--shadow-guest-card);
+}
+.guest-dish-card:hover {
+  background: var(--guest-card-hover);
+  border-color: var(--guest-border-strong);
+  transform: translateY(-3px);
+}
+
+/* Dish Photo — Circular Treatment with Organic Frame */
+.guest-dish-media {
+  position: relative;
+  width: 100%;
+  padding-top: 85%;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  margin-bottom: 12px;
+  background: var(--guest-surface);
+}
+
+.guest-dish-media img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform var(--medium);
+}
+.guest-dish-card:hover .guest-dish-media img {
+  transform: scale(1.06);
+}
+
+/* Circular Badge Scallop Accent */
+.dish-organic-badge {
+  position: absolute;
+  top: 8px;
+  left: 8px;
+  background: var(--brand-forest-deep);
+  border: 1px solid var(--brand-cream);
+  color: var(--brand-cream);
+  font-size: 10px;
+  font-weight: 800;
+  padding: 3px 8px;
+  border-radius: var(--radius-full);
+  z-index: 2;
+  letter-spacing: 0.3px;
+}
+.dish-organic-badge.offer {
+  background: var(--primary);
+  border-color: var(--primary-contrast);
+  color: var(--primary-contrast);
+}
+
+/* Sold Out / Availability State */
+.guest-dish-card.sold-out {
+  opacity: 0.72;
+}
+.guest-dish-card.sold-out .guest-dish-media img {
+  filter: grayscale(85%) opacity(0.5);
+}
+
+.availability-tag {
+  position: absolute;
+  bottom: 8px;
+  left: 8px;
+  font-size: 10px;
+  font-weight: 700;
+  padding: 3px 8px;
+  border-radius: var(--radius-full);
+  z-index: 2;
+  backdrop-filter: var(--glass-blur);
+}
+.availability-tag.in-stock {
+  background: var(--status-success-soft);
+  color: var(--status-success-text);
+  border: 1px solid var(--status-success-border);
+}
+.availability-tag.sold-out {
+  background: var(--status-danger-soft);
+  color: var(--status-danger-dark);
+  border: 1px solid var(--status-danger-border);
+}
+
+.guest-dish-info {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+.guest-dish-info h4 {
+  font-family: var(--font-display);
+  font-size: 16px;
+  color: var(--guest-ink);
+  margin-bottom: 4px;
+  line-height: 1.25;
+}
+
+.guest-dish-info p {
+  font-size: 12px;
+  color: var(--guest-muted);
+  line-height: 1.4;
+  margin-bottom: 12px;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  flex: 1;
+}
+
+.guest-dish-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: 10px;
+  border-top: 1px solid var(--guest-border-subtle);
+  margin-top: auto;
+}
+
+.guest-price-group {
+  display: flex;
+  flex-direction: column;
+}
+
+.guest-price {
+  font-size: 16px;
+  font-weight: 800;
+  color: var(--brand-lime);
+  font-family: var(--font-ui);
+}
+
+.guest-prep-badge {
+  font-size: 10px;
+  color: var(--guest-muted);
+  display: flex;
+  align-items: center;
+  gap: 3px;
+  margin-top: 2px;
+}
+
+.btn-quick-add {
+  width: 36px;
+  height: 36px;
+  border-radius: var(--radius-full);
+  background: var(--primary);
+  color: var(--primary-contrast);
+  display: grid;
+  place-items: center;
+  box-shadow: var(--shadow-sm);
+  transition: all var(--fast);
+  flex-shrink: 0;
+}
+.btn-quick-add:hover {
+  background: var(--primary-hover);
+  transform: scale(1.08);
+}
+.btn-quick-add.in-cart {
+  background: var(--brand-lime);
+  color: var(--brand-forest-deep);
+}
+
+/* ── Persistent Cart Side Panel (Desktop & Tablet Landscape) ── */
+.guest-desktop-cart {
+  background: var(--guest-surface);
+  border: 1px solid var(--guest-border);
+  border-radius: var(--radius-xl);
+  padding: 20px;
+  position: sticky;
+  top: 90px;
+  display: none; /* Managed by media queries */
+  box-shadow: var(--shadow-float);
+}
+
+.desktop-cart-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-bottom: 14px;
+  border-bottom: 1px solid var(--guest-border);
+  margin-bottom: 16px;
+}
+.desktop-cart-header h3 {
+  font-family: var(--font-display);
+  font-size: 18px;
+  color: var(--guest-accent);
+}
+
+.desktop-cart-items {
+  max-height: 320px;
+  overflow-y: auto;
+  margin-bottom: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.desktop-cart-footer {
+  border-top: 1px solid var(--guest-border);
+  padding-top: 16px;
+}
+
+.desktop-cart-total-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  margin-bottom: 16px;
+  font-size: 14px;
+  color: var(--guest-muted);
+}
+.desktop-cart-total-row strong {
+  font-size: 20px;
+  font-weight: 800;
+  color: var(--brand-lime);
+}
+
+/* ── Floating Rounded Order Button (Guest Tableside Menu) ── */
+.guest-floating-order-container {
+  position: fixed;
+  bottom: calc(20px + env(safe-area-inset-bottom, 0px));
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 60;
+  pointer-events: auto;
+  display: none; /* Controlled dynamically by updateCartUI when items exist */
+  animation: popInOrderBtn 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.guest-floating-order-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 24px;
+  background: linear-gradient(135deg, var(--brand-forest-deep), var(--brand-forest));
+  color: var(--brand-cream);
+  border: 1.5px solid var(--brand-gold);
+  border-radius: var(--radius-full);
+  box-shadow: 0 12px 32px rgba(7, 56, 45, 0.45);
+  cursor: pointer;
+  transition: all var(--fast);
+  font-family: var(--font-body);
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.guest-floating-order-btn:hover {
+  transform: translateY(-2px) scale(1.02);
+  box-shadow: 0 16px 36px rgba(7, 56, 45, 0.55);
+  background: linear-gradient(135deg, var(--brand-forest), var(--brand-forest-deep));
+}
+
+.guest-floating-order-btn:active {
+  transform: translateY(0) scale(0.98);
+}
+
+.guest-order-pill-badge {
+  background: var(--brand-gold);
+  color: var(--brand-forest-deep);
+  font-size: 11px;
+  font-weight: 800;
+  padding: 3px 10px;
+  border-radius: var(--radius-full);
+}
+
+.guest-order-pill-text {
+  font-weight: 700;
+  letter-spacing: 0.3px;
+}
+
+.guest-order-pill-total {
+  font-weight: 800;
+  color: var(--brand-gold-soft);
+  font-size: 14px;
+  padding-left: 8px;
+  border-left: 1px solid rgba(247, 243, 235, 0.25);
+}
+
+@keyframes popInOrderBtn {
+  from {
+    opacity: 0;
+    transform: translateX(-50%) translateY(20px) scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0) scale(1);
+  }
+}
+
+/* ── Staff Mobile Bottom Navigation (Admin/Staff View ONLY) ── */
+.staff-bottom-nav {
+  display: none;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: var(--dash-surface);
+  border-top: 1px solid var(--dash-border);
+  padding: 8px 12px calc(8px + env(safe-area-inset-bottom, 0px)) 12px;
+  justify-content: space-around;
+  z-index: 50;
+  box-shadow: var(--shadow-lg);
+  backdrop-filter: var(--glass-blur);
+}
+
+.staff-bottom-nav-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  padding: 6px 12px;
+  border-radius: var(--radius-sm);
+  color: var(--dash-muted);
+  font-size: 11px;
+  font-weight: 600;
+  transition: color var(--fast);
+  background: transparent;
+  border: none;
+  cursor: pointer;
+}
+.staff-bottom-nav-item svg {
+  width: 20px;
+  height: 20px;
+  stroke: currentColor;
+  stroke-width: 2;
+  fill: none;
+}
+.staff-bottom-nav-item.active {
+  color: var(--primary);
+  font-weight: 700;
+}
+
+/* ── Modals & Drawers ── */
+.modal-overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: var(--overlay-backdrop);
+  z-index: 100;
+  align-items: center;
+  justify-content: center;
+  padding: 16px;
+  backdrop-filter: var(--glass-blur);
+}
+.modal-overlay.active {
+  display: flex;
+}
+
+.modal-window {
+  background: var(--dash-surface);
+  color: var(--dash-ink);
+  border-radius: var(--radius-xl);
+  padding: 24px;
+  max-width: 480px;
+  width: 100%;
+  position: relative;
+  max-height: 90vh;
+  overflow-y: auto;
+  box-shadow: var(--shadow-float);
+  animation: modalFadeIn var(--fast) var(--ease);
+}
+
+@keyframes modalFadeIn {
+  from { opacity: 0; transform: scale(0.96); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+.modal-close-btn {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  width: 32px;
+  height: 32px;
+  border-radius: var(--radius-full);
+  background: var(--dash-bg);
+  border: 1px solid var(--dash-border);
+  color: var(--dash-ink);
+  display: grid;
+  place-items: center;
+  cursor: pointer;
+  transition: all var(--fast);
+}
+.modal-close-btn:hover {
+  background: var(--dash-hover);
+}
+
+.modal-title {
+  font-size: 18px;
+  font-weight: 800;
+  color: var(--dash-ink);
+  margin-bottom: 4px;
+}
+.modal-subtitle {
+  font-size: 13px;
+  color: var(--dash-muted);
+  margin-bottom: 20px;
+}
+
+.form-group {
+  margin-bottom: 16px;
+}
+.form-group label {
+  display: block;
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--dash-ink);
+  margin-bottom: 6px;
+}
+.form-control {
+  width: 100%;
+  padding: 10px 14px;
+  border: 1px solid var(--dash-border);
+  border-radius: var(--radius-md);
+  background: var(--dash-bg);
+  color: var(--dash-ink);
+  font-size: 13px;
+  transition: border-color var(--fast);
+}
+.form-control:focus {
+  outline: none;
+  border-color: var(--primary);
+  background: var(--dash-surface);
+}
+
+/* Dish Customization Pill Rows */
+.custom-option-group {
+  margin-bottom: 16px;
+}
+.custom-option-label {
+  display: block;
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--dash-ink);
+  margin-bottom: 8px;
+}
+.custom-pill-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.custom-option-pill {
+  padding: 8px 14px;
+  border-radius: var(--radius-full);
+  background: var(--dash-bg);
+  border: 1px solid var(--dash-border);
+  color: var(--dash-muted);
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all var(--fast);
+}
+.custom-option-pill:hover {
+  background: var(--dash-hover);
+  color: var(--dash-ink);
+}
+.custom-option-pill.active {
+  background: var(--brand-forest-deep);
+  color: var(--brand-cream);
+  border-color: var(--brand-forest-deep);
+}
+
+/* Live Order Tracker Modal Window & Timeline */
+>>>>>>> 8f7b31d (feat: digital tableside menu system with dynamic category rail, drinks catalog, and responsive layouts)
 .tracker-modal-window {
   max-width: 480px;
 }
@@ -1692,15 +3940,31 @@ img {
   display: inline-flex;
   align-items: center;
   gap: 8px;
+<<<<<<< HEAD
   background: #ecfdf5;
   color: #065f46;
   padding: 5px 14px;
   border-radius: 20px;
+=======
+  background: var(--status-success-soft);
+  color: var(--status-success-text);
+  border: 1px solid var(--status-success-border);
+  padding: 5px 14px;
+  border-radius: var(--radius-full);
+>>>>>>> 8f7b31d (feat: digital tableside menu system with dynamic category rail, drinks catalog, and responsive layouts)
   font-size: 12px;
   font-weight: 700;
   margin-bottom: 10px;
 }
 .live-dot.pulse {
+<<<<<<< HEAD
+=======
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--status-success);
+  display: inline-block;
+>>>>>>> 8f7b31d (feat: digital tableside menu system with dynamic category rail, drinks catalog, and responsive layouts)
   animation: pulseDot 1.5s infinite;
 }
 @keyframes pulseDot {
@@ -1713,10 +3977,17 @@ img {
   flex-direction: column;
   gap: 16px;
   margin-bottom: 22px;
+<<<<<<< HEAD
   background: #f8faf9;
   border-radius: 16px;
   padding: 18px 20px;
   border: 1px solid rgba(13, 56, 45, 0.08);
+=======
+  background: var(--dash-bg);
+  border-radius: var(--radius-lg);
+  padding: 18px 20px;
+  border: 1px solid var(--dash-border);
+>>>>>>> 8f7b31d (feat: digital tableside menu system with dynamic category rail, drinks catalog, and responsive layouts)
 }
 .stepper-step {
   display: flex;
@@ -1731,10 +4002,17 @@ img {
   left: 15px;
   width: 2px;
   height: 22px;
+<<<<<<< HEAD
   background: #e2e8f0;
 }
 .stepper-step.completed:not(:last-child)::after {
   background: #10b981;
+=======
+  background: var(--dash-border);
+}
+.stepper-step.completed:not(:last-child)::after {
+  background: var(--status-success);
+>>>>>>> 8f7b31d (feat: digital tableside menu system with dynamic category rail, drinks catalog, and responsive layouts)
 }
 .step-bullet {
   width: 32px;
@@ -1742,6 +4020,7 @@ img {
   border-radius: 50%;
   display: grid;
   place-items: center;
+<<<<<<< HEAD
   background: #e2e8f0;
   color: #94a3b8;
   z-index: 2;
@@ -1753,6 +4032,21 @@ img {
 .stepper-step.active .step-bullet {
   background: var(--forest);
   color: #ffffff;
+=======
+  background: var(--dash-border);
+  color: var(--dash-muted);
+  font-size: 12px;
+  font-weight: 700;
+  z-index: 2;
+}
+.stepper-step.completed .step-bullet {
+  background: var(--status-success);
+  color: var(--dash-surface);
+}
+.stepper-step.active .step-bullet {
+  background: var(--brand-forest);
+  color: var(--brand-cream);
+>>>>>>> 8f7b31d (feat: digital tableside menu system with dynamic category rail, drinks catalog, and responsive layouts)
 }
 .step-desc strong {
   display: block;
@@ -1764,14 +4058,24 @@ img {
   color: var(--dash-muted);
 }
 .tracker-receipt-box {
+<<<<<<< HEAD
   background: #ffffff;
   border: 1px solid var(--dash-border);
   border-radius: 12px;
+=======
+  background: var(--dash-surface);
+  border: 1px solid var(--dash-border);
+  border-radius: var(--radius-md);
+>>>>>>> 8f7b31d (feat: digital tableside menu system with dynamic category rail, drinks catalog, and responsive layouts)
   padding: 14px;
   margin-bottom: 20px;
 }
 .tracker-receipt-title {
+<<<<<<< HEAD
   font-size: 12px;
+=======
+  font-size: 11px;
+>>>>>>> 8f7b31d (feat: digital tableside menu system with dynamic category rail, drinks catalog, and responsive layouts)
   font-weight: 700;
   color: var(--dash-muted);
   text-transform: uppercase;
@@ -1794,6 +4098,7 @@ img {
   margin-top: 10px;
   font-size: 15px;
   font-weight: 800;
+<<<<<<< HEAD
   color: var(--forest);
 }
 
@@ -2634,3 +4939,492 @@ img {
   }
 }
 
+=======
+  color: var(--brand-forest);
+}
+
+/* Toast Notifications */
+.app-toast {
+  position: fixed;
+  bottom: 84px;
+  right: 20px;
+  background: var(--brand-forest-deep);
+  color: var(--brand-cream);
+  padding: 12px 18px;
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-float);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  z-index: 200;
+  font-size: 13px;
+  font-weight: 600;
+  opacity: 0;
+  transform: translateY(12px);
+  pointer-events: none;
+  transition: all var(--medium);
+}
+.app-toast.visible {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+
+/* ═══════════════════════════════════════════════
+   EXPLICIT 3-TIER BREAKPOINT ARCHITECTURES
+   ═══════════════════════════════════════════════ */
+
+/* ── 1. MOBILE BREAKPOINT (<= 480px) ── */
+@media (max-width: 480px) {
+  /* Staff Shell & Sidebar */
+  .sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    width: 280px;
+    transform: translateX(-100%);
+    box-shadow: var(--shadow-float);
+  }
+  .sidebar.drawer-open {
+    transform: translateX(0);
+  }
+  .sidebar-drawer-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+  }
+  .sidebar-drawer-header strong {
+    font-size: 16px;
+    font-weight: 700;
+  }
+
+  .btn-hamburger {
+    display: flex;
+  }
+
+  .dash-topbar {
+    padding: 12px 14px;
+  }
+  .table-pill {
+    display: none; /* Collapsed on small screens */
+  }
+  .user-profile {
+    display: none;
+  }
+
+  /* Staff Content & Layout */
+  .dash-container {
+    padding: 14px 14px 80px 14px; /* Space for staff bottom nav */
+  }
+  .dash-layout-columns {
+    grid-template-columns: 1fr;
+  }
+  .dash-side-inspector {
+    display: none; /* Moved to modal/tab on mobile */
+  }
+
+  .hero-card {
+    flex-direction: column;
+    padding: 20px;
+    text-align: left;
+    align-items: flex-start;
+  }
+  .hero-visual {
+    width: 100%;
+    height: 120px;
+  }
+
+  /* Stat cards become horizontally swipeable carousel */
+  .kpi-row {
+    display: flex;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    gap: 12px;
+    padding-bottom: 6px;
+    scrollbar-width: none;
+  }
+  .kpi-row::-webkit-scrollbar {
+    display: none;
+  }
+  .kpi-box {
+    min-width: 170px;
+    flex-shrink: 0;
+    scroll-snap-align: start;
+    padding: 14px;
+  }
+  .kpi-box strong {
+    font-size: 20px;
+  }
+
+  /* Staff Kanban Mobile Tabs */
+  .kanban-mobile-tabs {
+    display: flex;
+  }
+  .orders-kanban {
+    grid-template-columns: 1fr;
+  }
+  .kanban-col {
+    display: none;
+  }
+  .kanban-col.mobile-active-stage {
+    display: block;
+  }
+
+  /* Staff Bottom Navigation - visible only in dashboard/staff mode */
+  .staff-bottom-nav {
+    display: flex;
+  }
+  .app-shell.guest-mode .staff-bottom-nav,
+  .guest-mode .staff-bottom-nav,
+  #view-guest-menu:not([style*="display: none"]) ~ #staff-bottom-nav {
+    display: none !important;
+  }
+
+  /* Staff dishes grid */
+  .dishes-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+  }
+  .dish-card-body {
+    padding: 12px;
+  }
+  .dish-card-body h4 {
+    font-size: 13px;
+  }
+  .dish-price {
+    font-size: 14px;
+  }
+  .switch-label {
+    display: none;
+  }
+
+  /* ── Guest App Mobile Architecture ── */
+  .guest-topbar {
+    padding: 10px 14px;
+  }
+  .guest-brand-text h1 {
+    font-size: 16px;
+  }
+  .guest-brand-text span {
+    display: none;
+  }
+  .guest-topbar-center {
+    display: none; /* Table & search live in banner on mobile */
+  }
+
+  .guest-header-banner {
+    padding: 16px 16px 10px 16px;
+    gap: 12px;
+    margin: 0 auto;
+  }
+  .guest-context-row {
+    gap: 10px;
+    align-items: flex-start;
+    justify-content: space-between;
+    margin: 0;
+  }
+  .guest-greeting-block {
+    flex: 1;
+    min-width: 0;
+    gap: 3px;
+    margin: 0;
+  }
+  .guest-greeting-block h2 {
+    font-size: 20px;
+    line-height: 1.25;
+    margin: 0;
+    word-break: break-word;
+  }
+  .guest-greeting-block p {
+    font-size: 12px;
+    line-height: 1.35;
+    margin: 0;
+  }
+  .guest-search-row {
+    padding: 10px 16px;
+    gap: 10px;
+    min-height: 42px;
+    margin: 0;
+  }
+  .guest-search-row input {
+    font-size: 14px;
+    line-height: 1.4;
+  }
+
+  .guest-category-section {
+    padding: 8px 14px;
+  }
+  .guest-content-wrap {
+    padding: 6px 14px 80px 14px;
+  }
+
+  /* Single-column sections with horizontal card carousel */
+  .guest-cards-scroll-row {
+    gap: 12px;
+    padding-bottom: 8px;
+  }
+  .guest-dish-card {
+    min-width: 200px;
+    max-width: 220px;
+    padding: 10px;
+  }
+  .guest-dish-info h4 {
+    font-size: 14px;
+  }
+  .guest-price {
+    font-size: 15px;
+  }
+
+  /* Guest Floating Bottom Nav */
+  .guest-bottom-nav {
+    width: calc(100% - 24px);
+    justify-content: space-around;
+    padding: 4px 8px calc(4px + env(safe-area-inset-bottom, 0px)) 8px;
+  }
+  .guest-bottom-nav-item {
+    min-width: 50px;
+    padding: 6px 8px;
+    font-size: 10px;
+  }
+
+  .guest-desktop-cart {
+    display: none !important;
+  }
+}
+
+/* ── 2. TABLET PORTRAIT BREAKPOINT (481px–834px) ── */
+@media (min-width: 481px) and (max-width: 834px) {
+  /* Staff Shell & Sidebar */
+  .sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    width: 280px;
+    transform: translateX(-100%);
+    box-shadow: var(--shadow-float);
+  }
+  .sidebar.drawer-open {
+    transform: translateX(0);
+  }
+  .sidebar-drawer-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+  }
+
+  .btn-hamburger {
+    display: flex;
+  }
+
+  .dash-container {
+    padding: 20px 20px 80px 20px;
+  }
+  .dash-layout-columns {
+    grid-template-columns: 1fr;
+  }
+  .dash-side-inspector {
+    display: none;
+  }
+
+  /* Stat cards reflow into 2x2 grid */
+  .kpi-row {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 14px;
+  }
+
+  /* Kanban 2-column layout */
+  .orders-kanban {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 14px;
+  }
+
+  .staff-bottom-nav {
+    display: flex;
+  }
+
+  /* Guest App Tablet Portrait */
+  .guest-header-banner {
+    padding: 20px 20px 12px 20px;
+    gap: 14px;
+    margin: 0 auto;
+  }
+  .guest-context-row {
+    gap: 14px;
+    align-items: center;
+    margin: 0;
+  }
+  .guest-greeting-block {
+    gap: 4px;
+    margin: 0;
+  }
+  .guest-greeting-block h2 {
+    font-size: 24px;
+    line-height: 1.22;
+    margin: 0;
+  }
+  .guest-greeting-block p {
+    font-size: 13px;
+    line-height: 1.4;
+    margin: 0;
+  }
+  .guest-search-row {
+    padding: 11px 18px;
+    min-height: 44px;
+    gap: 10px;
+    margin: 0;
+  }
+  .guest-content-wrap {
+    grid-template-columns: 1fr;
+  }
+  .guest-desktop-cart {
+    display: none;
+  }
+
+  /* 2-Column Grid on Tablet Portrait */
+  .guest-cards-scroll-row {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+    overflow-x: visible;
+    padding: 4px 0 12px 0;
+    width: 100%;
+    box-sizing: border-box;
+  }
+  .guest-dish-card {
+    min-width: 0;
+    max-width: none;
+    width: 100%;
+  }
+
+  .guest-bottom-nav {
+    max-width: 440px;
+    width: auto;
+    padding: 8px 18px;
+  }
+}
+
+/* ── 3. TABLET LANDSCAPE / SMALL DESKTOP (835px–1180px) ── */
+@media (min-width: 835px) and (max-width: 1180px) {
+  .sidebar {
+    width: 220px;
+    padding: 20px 14px;
+  }
+  .brand-badge h1 {
+    font-size: 17px;
+  }
+  .nav-link {
+    font-size: 13px;
+    padding: 9px 12px;
+  }
+
+  .dash-layout-columns {
+    grid-template-columns: 1fr 280px;
+  }
+
+  .kpi-row {
+    grid-template-columns: repeat(4, 1fr);
+    gap: 12px;
+  }
+  .kpi-box strong {
+    font-size: 20px;
+  }
+
+  .orders-kanban {
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+  }
+
+  /* Guest Menu moves to Grid Layout with Persistent Cart */
+  .guest-content-wrap {
+    grid-template-columns: 1fr 320px;
+  }
+  .guest-desktop-cart {
+    display: block;
+  }
+
+  .guest-cards-scroll-row {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    overflow-x: visible;
+    gap: 16px;
+    padding: 4px 0 12px 0;
+    width: 100%;
+    box-sizing: border-box;
+  }
+  .guest-dish-card {
+    min-width: 0;
+    max-width: none;
+    width: 100%;
+  }
+
+  .guest-bottom-nav {
+    display: none; /* Cart is persistent on side panel */
+  }
+}
+
+/* ── 4. DESKTOP BREAKPOINT (1181px+) ── */
+@media (min-width: 1181px) {
+  .sidebar {
+    width: 260px;
+  }
+
+  .dash-layout-columns {
+    grid-template-columns: 1fr 340px;
+  }
+
+  .kpi-row {
+    grid-template-columns: repeat(4, 1fr);
+  }
+
+  .guest-content-wrap {
+    grid-template-columns: 1fr 360px;
+  }
+  .guest-desktop-cart {
+    display: block;
+  }
+
+  /* Menu moves to a 3-column responsive grid per category */
+  .guest-cards-scroll-row {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    overflow-x: visible;
+    gap: 16px;
+    padding: 4px 0 12px 0;
+    width: 100%;
+    box-sizing: border-box;
+  }
+  .guest-dish-card {
+    min-width: 0;
+    max-width: none;
+    width: 100%;
+  }
+
+  .guest-bottom-nav {
+    display: none; /* Persistent Cart on side panel */
+  }
+}
+
+/* ═══════════════════════════════════════════════
+   PRINT STYLES FOR TABLE QR FLYERS & TENTS
+   ═══════════════════════════════════════════════ */
+@media print {
+  .sidebar, .dash-topbar, .guest-topbar, .guest-bottom-nav, .staff-bottom-nav,
+  .dash-side-inspector, .hero-card, .btn-primary, .btn-secondary {
+    display: none !important;
+  }
+  body {
+    background: var(--print-bg) !important;
+    color: var(--print-ink) !important;
+  }
+  .print-cards-grid {
+    display: grid !important;
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 20px !important;
+    page-break-inside: avoid;
+  }
+}
+>>>>>>> 8f7b31d (feat: digital tableside menu system with dynamic category rail, drinks catalog, and responsive layouts)
