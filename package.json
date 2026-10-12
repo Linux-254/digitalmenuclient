@@ -2,7 +2,7 @@
   "name": "digitalmenuclient",
   "version": "1.0.0",
   "type": "module",
-  "description": "Testimony Cafeteria — Modern tableside dining with live kitchen routing, QR-first guest menu, and SambaPOS bridge.",
+  "description": "Testimonial Cafe — Modern tableside dining with live kitchen routing, QR-first guest menu, and SambaPOS bridge.",
   "scripts": {
     "dev": "node server.js",
     "build": "echo 'Build successful'",

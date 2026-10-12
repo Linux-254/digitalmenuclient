@@ -1,8 +1,8 @@
-# Testimony Cafeteria Digital Menu Architecture
+# Testimonial Cafe Digital Menu Architecture
 
 ## Recommended platform split
 
-Use Cloudflare as the public edge layer for the multi-tenant Testimony Cafeteria product, not as a replacement for the transactional database. Cloudflare should provide DNS, TLS, WAF, bot/rate protection, CDN caching, Workers for QR/session routing, R2 for dish media, and Queues for resilient POS handoff. Supabase remains the system of record for venues, menus, table sessions, orders, payments, audit events, Auth, RLS, and Realtime.
+Use Cloudflare as the public edge layer for the multi-tenant Testimonial Cafe product, not as a replacement for the transactional database. Cloudflare should provide DNS, TLS, WAF, bot/rate protection, CDN caching, Workers for QR/session routing, R2 for dish media, and Queues for resilient POS handoff. Supabase remains the system of record for venues, menus, table sessions, orders, payments, audit events, Auth, RLS, and Realtime.
 
 ```text
 QR scan → Cloudflare Worker /t/:qrToken → Supabase open-table-session

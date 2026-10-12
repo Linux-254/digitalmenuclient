@@ -1,5 +1,5 @@
 /* ═══════════════════════════════════════════════
-   SHAMBA HOUSE — Tableside OS & Digital Menu
+   SHAMBA HOUSE — Testimony OS & Digital Menu
    Design Principles:
      - Staff OS: Comprehensive service dashboard (dishes, inventory, staff roster, SambaPOS sync)
      - Guest Menu: Clean, luxury tableside menu with zero staff clutter, full categorization, drinks, and seamless ordering
@@ -309,7 +309,7 @@ let menuItems = [
   },
   {
     id: 'masala-chai',
-    name: 'Shamba Spiced Masala Chai',
+    name: 'Spiced Masala Chai',
     desc: 'Fresh Kericho gold tea leaves brewed with whole milk, crushed green cardamom pods, cinnamon bark, and fresh ginger.',
     price: 320,
     category: 'Drinks & Beverages',
@@ -528,7 +528,7 @@ let tables = [
 let activeGuestSessionId = 'sess-04-a';
 let activeTableSession = { num: '04', zone: 'Terrace' };
 
-// Venue Geolocation (Testimony Cafeteria Nairobi: -1.2921, 36.8219)
+// Venue Geolocation (Testimonial Cafe Nairobi: -1.2921, 36.8219)
 const VENUE_COORDS = { lat: -1.2921, lng: 36.8219, allowedRadiusKm: 5.0 };
 let guestGeoStatus = 'unverified'; // 'verified', 'flagged_remote', 'unverified'
 
@@ -664,7 +664,7 @@ function updateGuestArrivalBanner() {
   }
 }
 
-// Optional secondary signal: check guest browser geolocation against Testimony Cafeteria Nairobi coordinates (Item 5)
+// Optional secondary signal: check guest browser geolocation against Testimonial Cafe Nairobi coordinates (Item 5)
 function checkGuestBrowserLocation() {
   if (!navigator.geolocation) return;
   navigator.geolocation.getCurrentPosition(
@@ -683,7 +683,7 @@ function checkGuestBrowserLocation() {
 
       if (distKm > VENUE_COORDS.allowedRadiusKm) {
         guestGeoStatus = 'flagged_remote';
-        console.warn(`[Tableside OS Geolocation] Guest device is ${distKm.toFixed(1)}km away from Testimony Cafeteria. Flagged for staff review.`);
+        console.warn(`[Testimony OS Geolocation] Guest device is ${distKm.toFixed(1)}km away from Testimonial Cafe. Flagged for staff review.`);
       } else {
         guestGeoStatus = 'verified';
       }
@@ -1579,7 +1579,7 @@ function submitTableOrder() {
 
   // Secondary Geolocation warning check (Item 5)
   if (guestGeoStatus === 'flagged_remote') {
-    console.warn(`[Tableside OS] Order placed from flagged remote location for Table ${activeTableSession.num}`);
+    console.warn(`[Testimony OS] Order placed from flagged remote location for Table ${activeTableSession.num}`);
   }
 
   const orderNum = 'SH-' + Math.floor(100 + Math.random() * 900);
@@ -1680,7 +1680,7 @@ function showDedicatedOrderConfirmation(orderRecord) {
   const modal = $('#modal-order-confirmation');
   if (!modal) return;
 
-  $('#conf-order-header-subtitle').textContent = `Order #${orderRecord.orderId} · Sent to Shamba Kitchen & Bar`;
+  $('#conf-order-header-subtitle').textContent = `Order #${orderRecord.orderId} · Sent to Testimonial Cafe Kitchen`;
   $('#conf-table-label').textContent = `Table ${orderRecord.tableNum} (${orderRecord.zone})`;
   $('#conf-dining-type').textContent = orderRecord.diningType === 'takeaway' ? 'Takeaway / To-Go' : 'Dine-In';
   $('#conf-assigned-waiter').textContent = `${orderRecord.waiter}`;
@@ -2362,7 +2362,7 @@ function setupEventListeners() {
 
   window.openCreateDishModal = function() {
     $('#dish-crud-title').textContent = 'Add New Menu Dish';
-    $('#dish-crud-subtitle').textContent = 'Create a new dish or beverage for Testimony Cafeteria';
+    $('#dish-crud-subtitle').textContent = 'Create a new dish or beverage for Testimonial Cafe';
     $('#dish-crud-id').value = '';
     $('#dish-crud-name').value = '';
     $('#dish-crud-price').value = '';
@@ -3666,7 +3666,7 @@ function setupEventListeners() {
 
   $('#btn-submit-feedback')?.addEventListener('click', () => {
     $('#modal-rating')?.classList.remove('active');
-    showToast(`Thank you! Your ${selectedRatingStars}-star rating was submitted to Testimony Cafeteria.`);
+    showToast(`Thank you! Your ${selectedRatingStars}-star rating was submitted to Testimonial Cafe.`);
   });
 
   // Close Order Confirmation Screen

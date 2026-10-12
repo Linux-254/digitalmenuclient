@@ -1,4 +1,4 @@
-// Testimony Cafeteria Tableside OS — Service Worker
+// Testimonial Cafe Testimony OS — Service Worker
 // Offline Menu Caching & Network-Resilient Dining Experience
 
 const CACHE_NAME = 'shamba-tableside-v1.4.0';

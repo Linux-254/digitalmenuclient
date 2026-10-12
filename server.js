@@ -29,10 +29,10 @@ if (isSupabaseConfigured) {
   }
 }
 
-// ── Authoritative Seed Data (Testimony Cafeteria Venue, Actual Dishes & Exact KES Prices) ──
+// ── Authoritative Seed Data (Testimonial Cafe Venue, Actual Dishes & Exact KES Prices) ──
 const VENUE = {
   id: '11111111-1111-1111-1111-111111111111',
-  name: 'Testimony Cafeteria',
+  name: 'Testimonial Cafe',
   timezone: 'Africa/Nairobi',
   currency: 'KES'
 };
@@ -346,7 +346,7 @@ let menuCatalog = [
   },
   {
     id: 'masala-chai',
-    name: 'Shamba Spiced Masala Chai',
+    name: 'Spiced Masala Chai',
     desc: 'Fresh Kericho gold tea leaves brewed with whole milk, crushed green cardamom pods, cinnamon bark, and fresh ginger.',
     price: 320,
     category: 'Drinks & Beverages',
@@ -467,7 +467,7 @@ let staffLoginLogs = [
 app.get('/api/health', (req, res) => {
   res.json({
     status: 'healthy',
-    app: 'Testimony Cafeteria Tableside OS & Digital Menu',
+    app: 'Testimonial Cafe Testimony OS & Digital Menu',
     version: '1.4.0',
     venue: VENUE,
     supabaseConfigured: isSupabaseConfigured,
@@ -942,7 +942,7 @@ app.get(['/guest', '/menu'], (req, res) => {
 app.all('/api/*', (req, res) => {
   res.status(404).json({
     error: 'Endpoint not found',
-    documentation: 'Testimony Cafeteria Tableside OS API v1.4.0'
+    documentation: 'Testimonial Cafe Testimony OS API v1.4.0'
   });
 });
 
@@ -952,5 +952,5 @@ app.get('*', (req, res) => {
 });
 
 app.listen(PORT, HOST, () => {
-  console.log(`Testimony Cafeteria Tableside OS running at http://${HOST}:${PORT}`);
+  console.log(`Testimonial Cafe Testimony OS running at http://${HOST}:${PORT}`);
 });
