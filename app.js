@@ -383,7 +383,9 @@ let cart = []; // Array of { id, name, price, qty, spice, side, notes }
 let currentView = 'dashboard'; // 'dashboard' or 'guest'
 let currentDashPanel = 'home';
 const staffSession = window.__STAFF_SESSION__ || null;
+const DEMO_STAFF = { admin: 'demo-admin', staff: 'demo-staff' };
 const hasAdminSession = () => Boolean(staffSession && ['admin','manager'].includes(staffSession.role));
+const demoRole = pin => pin === DEMO_STAFF.admin ? 'admin' : pin === DEMO_STAFF.staff ? 'staff' : null;
 let selectedDishForCustomization = null;
 let currentCustomSpice = 'Medium';
 let currentCustomSide = 'Hand-Cut Fries';
@@ -1833,10 +1835,10 @@ function setupEventListeners() {
 
   $('#btn-unlock-staff-gate')?.addEventListener('click', () => {
     const pin = $('#gate-pin-input')?.value;
-    if (hasAdminSession()) {
+    if (hasAdminSession() || demoRole(pin)) {
       $('#modal-staff-pin')?.classList.remove('active');
       setView('dashboard');
-      showToast('Staff Dashboard Unlocked');
+      showToast('Demo Staff Dashboard Unlocked');
     } else {
       $('#gate-pin-error').style.display = 'block';
     }
@@ -1911,7 +1913,7 @@ function setupEventListeners() {
     const category = $('#new-dish-cat')?.value;
     const pin = $('#admin-pin-input')?.value.trim();
 
-    if (!hasAdminSession()) {
+    if (!hasAdminSession() && !demoRole(pin)) {
       showToast('Admin authentication required', false);
       return;
     }
@@ -1965,7 +1967,7 @@ function setupEventListeners() {
     const phone = $('#new-staff-phone')?.value.trim();
     const adminPin = $('#staff-admin-pin-verify')?.value.trim();
 
-    if (!hasAdminSession()) {
+    if (!hasAdminSession() && !demoRole(pin)) {
       showToast('Admin authentication required', false);
       return;
     }
