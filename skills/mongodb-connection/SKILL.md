@@ -48,18 +48,18 @@ Don't use when: variable durations—start conservative (10-20), monitor, adjust
 
 Query optimization can dramatically reduce required pool size.
 
-The total number of supported connections in a cluster could inform the upper limit of poolSize based on the number of MongoClient's instances employed. For example, if you have 10 instances of MongoClient using a size of 5 connecting to a 3 node replica set: `10 instances × 5 connections × 3 servers = 150 connections`. 
+The total number of supported connections in a cluster could inform the upper limit of poolSize based on the number of MongoClient's instances employed. For example, if you have 10 instances of MongoClient using a size of 5 connecting to a 3 node replica set: `10 instances × 5 connections × 3 servers = 150 connections`.
 
 Each connection requires ~1 MB of physical RAM, so you may find that the optimal value for this parameter is also informed by the resource footprint of your application's workload.
 
 #### The role of Topology:
-- Pools are created per server per MongoClient. 
+- Pools are created per server per MongoClient.
 - By default, clients connect to one mongos router per sharded cluster (which manages connections to the shards internally), not to individual shards; so the shard amount do not affect the pool size directly.
 - Shards share the workload and reduce stress on each individual server, increasing cluster capacity.
 - Replica members do not affect the max pool directly. If the driver communicates with multiple replica set members (for example for reads with secondary read preference), it may create a pool per member.
 - Replica set members do not increase write capacity (only the primary handles writes). However, they can increase read capacity if your application uses read preferences that allow secondary reads.
 
-#### Server-Side Connection Limits: 
+#### Server-Side Connection Limits:
 Total potential connections = instances × (maxPoolSize + 2) × replica set members. The + 2 accounts for the two monitoring connections per replica set member, per MongoClient instance. Monitor `connections.current` to avoid hitting limits. See `references/monitoring-guide.md` for how to set up monitoring.
 
 **Self-managed Servers**: Set `net.maxIncomingConnections` to a value slightly higher than the maximum number of connections that the client creates, or the maximum size of the connection pool. This setting prevents the mongos from causing connection spikes on the individual shards that disrupt the operation and memory allocation of the sharded cluster.
@@ -153,9 +153,9 @@ When operations queue, pool is exhausted.
 
 **Client Solutions**: Increase `connectTimeoutMS`/`socketTimeoutMS` if legitimately needed
 
-**Infrastructure Issues** (redirect): 
-- Cannot connect via shell: Network/firewall; 
-- Environment-specific: VPC/security; 
+**Infrastructure Issues** (redirect):
+- Cannot connect via shell: Network/firewall;
+- Environment-specific: VPC/security;
 - DNS errors: DNS/SRV resolution
 
 ### Connection Churn
@@ -192,7 +192,7 @@ When operations queue, pool is exhausted.
 
 ## Advising on Monitoring & Iteration
 
-**You must guide users to monitor** the relevant parameters to their pool configuration. 
+**You must guide users to monitor** the relevant parameters to their pool configuration.
 For detailed monitoring setup, see `references/monitoring-guide.md`.
 
 ---

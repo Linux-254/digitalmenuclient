@@ -40,10 +40,10 @@ class InteractiveScene(Scene):
     def construct(self):
         circle = Circle()
         self.play(ShowCreation(circle))
-        
+
         # Pause here for interactive exploration
         self.embed()
-        
+
         # Continue after exiting embed
         self.play(circle.animate.shift(RIGHT))
 ```
@@ -54,10 +54,10 @@ def construct(self):
     # Create initial state
     circle = Circle()
     self.play(ShowCreation(circle))
-    
+
     # Save checkpoint
     self.checkpoint_paste()  # Copy current state
-    
+
     # Experiment from here
     self.play(circle.animate.scale(2))
 ```
@@ -110,7 +110,7 @@ class CameraScene(Scene):
     def construct(self):
         circle = Circle()
         self.play(ShowCreation(circle))
-        
+
         # Access frame directly (not self.camera.frame)
         self.play(self.frame.animate.scale(0.5))
         self.play(self.frame.animate.move_to(circle))
@@ -123,10 +123,10 @@ class My3DScene(Scene):
         # No special 3D scene class needed
         surface = Surface(lambda u, v: [u, v, u*v])
         self.play(ShowCreation(surface))
-        
+
         # Reorient camera
         self.play(self.frame.animate.reorient(45, 60))
-        
+
         # Camera parameters: theta (rotation), phi (elevation)
 ```
 
@@ -177,13 +177,13 @@ class Simple3D(Scene):
         # 3D objects work in regular Scene
         axes = ThreeDAxes()
         sphere = Sphere(radius=1)
-        
+
         self.play(ShowCreation(axes))
         self.play(ShowCreation(sphere))
-        
+
         # Camera reorientation
         self.play(self.frame.animate.reorient(60, 70))
-        
+
         # Continuous rotation
         self.frame.add_updater(lambda m, dt: m.increment_theta(0.1 * dt))
         self.wait(5)
@@ -197,7 +197,7 @@ def construct(self):
     circle = Circle()
     self.add(circle)
     self.embed()
-    
+
     # In interactive mode, you can:
     # >>> circle.get_center()
     # >>> circle.set_color(RED)
@@ -251,10 +251,10 @@ class Prototype(Scene):
     def construct(self):
         # Quick setup
         self.play(ShowCreation(Circle()))
-        
+
         # Pause to experiment
         self.embed()
-        
+
         # Continue with refined version
 ```
 

@@ -2,14 +2,14 @@
   "name": "digitalmenuclient",
   "version": "1.0.0",
   "type": "module",
-  "description": "Shamba House — Modern tableside dining with live kitchen routing, QR-first guest menu, and SambaPOS bridge.",
+  "description": "Testimony Cafeteria — Modern tableside dining with live kitchen routing, QR-first guest menu, and SambaPOS bridge.",
   "scripts": {
     "dev": "node server.js",
     "build": "echo 'Build successful'",
-    "start": "node server.js",
-    "lint": "node --check server.js && node --check app.js"
+    "start": "node server.js"
   },
   "dependencies": {
+    "@supabase/supabase-js": "^2.117.3",
     "express": "^4.21.2"
   }
 }

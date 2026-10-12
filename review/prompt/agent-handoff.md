@@ -1,6 +1,6 @@
 # Agent Handoff & Continuity Guide — Shamba House Digital Menu
 
-> **Notice for Incoming AI Agents & Engineers**:  
+> **Notice for Incoming AI Agents & Engineers**:
 > This file is your single source of truth to seamlessly continue development without needing prior conversation transcripts. Read this first!
 
 ---

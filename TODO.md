@@ -1,20 +1,26 @@
 # Digital Menu & SambaPOS Bridge — Status & Roadmap
 
-## Completed Milestones (Session 1 – 3)
+## Completed Milestones
 - [x] Brand typography integrated (`Fanfarrón.otf`, `Milano Perla.otf`, `Inter`).
 - [x] Full mobile-first CSS design system with micro-animations & reduced-motion support.
-- [x] Guest ordering UI with categories, dish filtering, availability states, and cart drawer.
+- [x] Dedicated Guest Tableside OS: categories, filtering, availability states, customization modal, sticky order pill, and cart.
 - [x] New dish highlighting (`is-new` animated pulse) and promotional offer badges (`has-offer`).
-- [x] Payment simulation flow (M-Pesa STK push & Card) with masked phone references.
-- [x] Post-order 5-star rating collection and feedback capture.
-- [x] Admin / Staff Studio gated behind PIN `2407` with dish creation and availability toggles.
-- [x] Live Analytics dashboard reflecting top dishes, order volume, and satisfaction scores.
-- [x] Standalone print-ready Table QR Flyer (`public/qr-flyer.html`).
-- [x] Static hosting route definitions in `manus-routes.json`.
-- [x] Comprehensive review dossiers, changelog, and agent handoff guide in `review/prompt/`.
+- [x] Authoritative Server-Side Pricing: Server validates and computes prices, preventing client-side price tampering.
+- [x] Payment flow with Daraja M-Pesa STK Push simulation and card terminals with masked phone references (`07XX***456`).
+- [x] Customer post-order 5-star rating collection and feedback capture modal.
+- [x] Admin & Staff Console gated behind PIN `2407` with dish creation and availability toggles.
+- [x] Staff team management with personal PINs and immutable admin login audit logs.
+- [x] Floor map with multi-party table sessions, table merging with hover tooltips, and QR code downloads.
+- [x] Standalone print-ready Table QR Flyer (`public/qr-flyer.html`) and 12-table QR tents modal.
+- [x] POS sync diagnostic queue and SambaPOS hardware bridge logging.
+- [x] Supabase Postgres schema migrations (`0001_init_schema.sql`, `0002_rls_policies.sql`, `0003_seed_demo_data.sql`).
+- [x] Seed data synchronized with all 21 authentic dishes & drinks, exact KES pricing, and staff credentials.
+- [x] Supabase Edge Functions implemented (`open-table-session`, `initiate-mpesa-payment`, `mpesa-callback`, `close-session`, `pos-webhook-receiver`).
+- [x] Service Worker caching (`sw.js`) for network-resilient offline menu browsing.
+- [x] 100% SVG icons throughout (0 emoji icons) complying with production launch quality standards.
+- [x] Full button wiring and responsive touch targets (>= 44px) across mobile, tablet, and desktop.
 
-## Next Roadmap Steps
-- [ ] Connect live Supabase project instance (apply migrations from `digital-menu-sambapos/supabase/migrations/`).
-- [ ] Implement live Daraja STK Push webhook receiver in Supabase Edge Function (`initiate-mpesa-payment` & `mpesa-callback`).
-- [ ] Deploy local on-premise SambaPOS bridge service using `digital-menu-sambapos/apps/pos-bridge/` connected to venue LAN.
-- [ ] Add Service Worker caching for complete offline menu browsing resilience.
+## Operational Next Steps (On-Premise Deployment)
+- [ ] Connect venue production Supabase URL & keys in `.env`.
+- [ ] Connect production Safaricom Daraja STK Push credentials in `.env`.
+- [ ] Pair on-premise SambaPOS LAN Bridge agent (`digital-menu-sambapos/apps/pos-bridge/`) to local POS machine IP.

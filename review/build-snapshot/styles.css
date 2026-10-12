@@ -40,19 +40,19 @@
   --gold-glow:   rgba(212, 175, 55, 0.25);
   --orange:      #ff5a1f;
   --orange-soft: #fff1eb;
-  
+
   /* Modern Dashboard Tokens (Image 2) */
   --dash-bg:     #f8f9fa;
   --dash-card:   #ffffff;
   --dash-border: #eaedf0;
   --dash-ink:    #1a1d20;
   --dash-muted:  #717b86;
-  
+
   /* Typography */
   --font-display: 'Fanfarron', Georgia, serif;
   --font-serif:   'MilanoPerla', Georgia, serif;
   --font-ui:      'Inter', system-ui, -apple-system, sans-serif;
-  
+
   /* Transitions */
   --ease: cubic-bezier(0.16, 1, 0.3, 1);
   --fast: 160ms ease-out;

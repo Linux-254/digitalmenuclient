@@ -43,7 +43,7 @@ export async function generateMetadata({ params }): Promise<Metadata> {
     query: PAGE_QUERY,
     stega: false,  // Critical: no stega in metadata
   })
-  
+
   return {
     title: data.seo?.title || data.title,
     description: data.seo?.description,
@@ -77,7 +77,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       _updatedAt
     }
   `)
-  
+
   return pages.map(page => ({
     url: `https://example.com${page.url}`,
     lastModified: new Date(page._updatedAt),

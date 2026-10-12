@@ -4,16 +4,16 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
   <meta name="theme-color" content="#071f18" />
-  <meta name="description" content="Shamba House — Modern tableside dining with live kitchen routing, QR-first guest menu, and SambaPOS bridge." />
-  <meta property="og:title" content="Shamba House · Tableside OS &amp; Digital Menu" />
-  <meta property="og:description" content="Shamba House — Modern tableside dining with live kitchen routing, QR-first guest menu, and SambaPOS bridge." />
+  <meta name="description" content="Testimony Cafeteria — Modern tableside dining with live kitchen routing, QR-first guest menu, and SambaPOS bridge." />
+  <meta property="og:title" content="Testimony Cafeteria · Tableside OS &amp; Digital Menu" />
+  <meta property="og:description" content="Testimony Cafeteria — Modern tableside dining with live kitchen routing, QR-first guest menu, and SambaPOS bridge." />
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="/styles.css" />
-  <title>Shamba House · Tableside OS &amp; Digital Menu</title>
+  <title>Testimony Cafeteria · Tableside OS &amp; Digital Menu</title>
 </head>
 <body>
 <a class="skip-link" href="#main-content">Skip to content</a>
@@ -26,7 +26,7 @@
   <!-- ═══════════════════════════════════════════
        STAFF SIDEBAR NAVIGATION (DESKTOP & TABLET DRAWER)
        ═══════════════════════════════════════════ -->
-  <aside class="sidebar" id="app-sidebar" aria-label="Staff Navigation">
+  <aside class="sidebar" id="main-sidebar" data-id="app-sidebar" aria-label="Staff Navigation">
     <div class="sidebar-drawer-header">
       <strong>Staff OS Menu</strong>
       <button class="modal-close-btn" id="btn-close-sidebar" aria-label="Close Navigation">
@@ -44,7 +44,7 @@
         </svg>
       </div>
       <div>
-        <h1>Shamba House</h1>
+        <h1>Testimony Cafeteria</h1>
         <span>Tableside OS</span>
       </div>
     </div>
@@ -75,29 +75,29 @@
           <button class="nav-link" data-dash-nav="floor">
             <svg viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
             Floor Map
-            <span class="nav-badge">6</span>
+            <span class="nav-badge" id="floor-badge-count">6</span>
           </button>
         </li>
-        <li>
+        <li class="admin-only-nav-item" data-admin-only="true">
           <button class="nav-link" data-dash-nav="staff">
             <svg viewBox="0 0 24 24"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
             Staff Team
             <span class="nav-badge" id="staff-badge-count">5</span>
           </button>
         </li>
-        <li>
+        <li class="admin-only-nav-item" data-admin-only="true">
           <button class="nav-link" data-dash-nav="offers">
             <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
             Offers &amp; Promos
           </button>
         </li>
-        <li>
+        <li class="admin-only-nav-item" data-admin-only="true">
           <button class="nav-link" data-dash-nav="analytics">
             <svg viewBox="0 0 24 24"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
             Analytics
           </button>
         </li>
-        <li>
+        <li class="admin-only-nav-item" data-admin-only="true">
           <button class="nav-link" data-dash-nav="settings">
             <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
             POS Bridge
@@ -110,7 +110,7 @@
     <div class="sidebar-promo">
       <h3>Get 30% OFF</h3>
       <p>Special deal on all grill &amp; steak platters</p>
-      <div class="promo-code">CODE: SHAMBA30</div>
+      <div class="promo-code">CODE: TESTIMONY30</div>
       <button id="btn-configure-promo">Configure Deal</button>
     </div>
   </aside>
@@ -132,7 +132,7 @@
           </svg>
         </div>
         <div class="guest-brand-text">
-          <h1>Shamba House</h1>
+          <h1>Testimony Cafeteria</h1>
           <span>Tableside Menu</span>
         </div>
       </div>
@@ -190,11 +190,14 @@
         </button>
 
         <div class="user-profile">
-          <div class="user-avatar">AM</div>
+          <div class="user-avatar" id="dash-user-avatar">AM</div>
           <div>
-            <strong>Amina Mwangi</strong>
-            <small style="display:block;font-size:10px;color:var(--dash-muted);">Admin · PIN 2407</small>
+            <strong id="dash-user-name">Amina Mwangi</strong>
+            <small style="display:block;font-size:10px;color:var(--dash-muted);" id="dash-user-role">Admin · Authenticated session</small>
           </div>
+          <button id="btn-staff-logout" class="btn-logout" title="Staff Log Out & Switch" style="margin-left:10px;background:none;border:none;cursor:pointer;color:var(--dash-muted);display:flex;align-items:center;padding:4px;" aria-label="Log Out">
+            <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" y1="12" x2="9" y2="12"/></svg>
+          </button>
         </div>
       </div>
     </header>
@@ -208,7 +211,7 @@
       <section class="hero-card" aria-label="Promotional Highlight">
         <div class="hero-text">
           <h2>Delicious food, <span>delivered fast</span></h2>
-          <p>Table-side ordering for Shamba House. Realtime kitchen ticket routing with automated SambaPOS bridge integration.</p>
+          <p>Table-side ordering for Testimony Cafeteria. Realtime kitchen ticket routing with automated SambaPOS bridge integration.</p>
           <div class="hero-actions">
             <button class="btn-primary" id="btn-hero-add-dish">
               <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
@@ -273,6 +276,42 @@
 
           <!-- PANEL: Home (default) -->
           <div id="panel-home" class="dash-panel">
+            <!-- Today-Only Service Snapshot (Visible to all staff) -->
+            <section class="today-snapshot-section" aria-label="Today Service Snapshot" style="margin-bottom:24px;background:var(--dash-surface);border:1px solid var(--dash-border);border-radius:var(--radius-lg);padding:18px 20px;">
+              <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:14px;flex-wrap:wrap;gap:10px;">
+                <div>
+                  <h3 style="font-size:16px;margin:0;color:var(--dash-ink);">Today's Dining Snapshot</h3>
+                  <p style="font-size:12px;color:var(--dash-muted);margin:2px 0 0 0;">Real-time shift performance for floor &amp; kitchen staff</p>
+                </div>
+                <span class="status-pill" style="font-size:11px;font-weight:700;background:var(--status-success-soft);color:var(--status-success);padding:4px 10px;border-radius:999px;">Live Shift Active</span>
+              </div>
+              <div style="display:grid;grid-template-columns:repeat(auto-fit, minmax(130px, 1fr));gap:12px;margin-bottom:18px;">
+                <div style="background:var(--dash-bg);padding:10px 14px;border-radius:10px;border:1px solid var(--dash-border-subtle);">
+                  <span style="font-size:11px;color:var(--dash-muted);display:block;">Today's Orders</span>
+                  <strong id="home-today-orders-val" style="font-size:20px;color:var(--dash-ink);">28 Orders</strong>
+                </div>
+                <div style="background:var(--dash-bg);padding:10px 14px;border-radius:10px;border:1px solid var(--dash-border-subtle);">
+                  <span style="font-size:11px;color:var(--dash-muted);display:block;">Today's Sales</span>
+                  <strong id="home-today-sales-val" style="font-size:20px;color:var(--primary);">KES 86,400</strong>
+                </div>
+                <div style="background:var(--dash-bg);padding:10px 14px;border-radius:10px;border:1px solid var(--dash-border-subtle);">
+                  <span style="font-size:11px;color:var(--dash-muted);display:block;">Avg Turn Time</span>
+                  <strong id="home-today-turn-val" style="font-size:20px;color:var(--dash-ink);">42 min</strong>
+                </div>
+                <div style="background:var(--dash-bg);padding:10px 14px;border-radius:10px;border:1px solid var(--dash-border-subtle);">
+                  <span style="font-size:11px;color:var(--dash-muted);display:block;">Active Waiters</span>
+                  <strong id="home-today-waiters-val" style="font-size:20px;color:var(--status-success);">4 on Floor</strong>
+                </div>
+              </div>
+              <!-- Simple Hourly Order Volume Bar Chart -->
+              <div>
+                <span style="font-size:11px;font-weight:700;color:var(--dash-muted);text-transform:uppercase;letter-spacing:0.5px;display:block;margin-bottom:8px;">Hourly Order Flow (11:00 - 22:00)</span>
+                <div id="home-hourly-chart" style="display:flex;align-items:flex-end;gap:8px;height:70px;padding-top:10px;">
+                  <!-- Rendered dynamically by JS -->
+                </div>
+              </div>
+            </section>
+
             <section aria-label="Menu Categories">
               <div class="section-header">
                 <h3>Categories</h3>
@@ -371,19 +410,46 @@
 
           <!-- PANEL: Floor Map & QR Tableside OS -->
           <div id="panel-floor" class="dash-panel" style="display:none;">
-            <div class="section-header" style="margin-bottom:20px;flex-wrap:wrap;gap:14px;">
+            <div class="section-header" style="margin-bottom:16px;flex-wrap:wrap;gap:14px;">
               <div>
-                <h3>Floor Map &amp; Table QR Codes</h3>
-                <p style="font-size:13px;color:var(--dash-muted);margin-top:2px;">Real-time table sessions, waiter routing, and scannable QR codes per table</p>
+                <h3>Floor Map &amp; Table QR OS</h3>
+                <p style="font-size:13px;color:var(--dash-muted);margin-top:2px;">Multi-party capacity, independent session billing, and unique QR generation</p>
               </div>
               <div style="display:flex;gap:10px;align-items:center;flex-wrap:wrap;">
-                <button class="btn-primary" id="btn-print-all-qr" title="Print QR tent stands for all 12 tables">
+                <button class="btn-secondary" id="btn-open-merge-tables" style="border-color:var(--primary);color:var(--primary);font-weight:700;">
+                  <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M8 7h12m0 0l-4-4m4 4l-4 4m0 6H4m0 0l4 4m-4-4l4-4"/></svg>
+                  Merge Tables
+                </button>
+                <button class="btn-secondary" id="btn-open-add-table">
+                  <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+                  Add Table
+                </button>
+                <button class="btn-primary" id="btn-print-all-qr" title="Print QR tent stands for all tables">
                   <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 6 2 18 2 18 9"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect x="6" y="14" width="12" height="8"/></svg>
-                  Print All 12 Table QR Tents
+                  Print All Table QR Tents
                 </button>
               </div>
             </div>
-            <div class="floor-map-grid" id="floor-map-grid"></div>
+
+            <!-- Floor Sub-Navigation Tabs (Grid vs QR Manager) -->
+            <div style="display:flex;gap:10px;margin-bottom:18px;border-bottom:1px solid var(--dash-border);padding-bottom:10px;">
+              <button class="btn-secondary active floor-tab-btn" id="tab-floor-grid" data-floor-tab="grid" style="font-size:13px;padding:7px 14px;border-radius:8px;">
+                Floor Plan &amp; Multi-Party Sessions
+              </button>
+              <button class="btn-secondary floor-tab-btn" id="tab-floor-qr-mgr" data-floor-tab="qr" style="font-size:13px;padding:7px 14px;border-radius:8px;">
+                Table QR Manager &amp; Downloads (PNG / Tents)
+              </button>
+            </div>
+
+            <!-- Sub-view 1: Multi-party Interactive Floor Grid -->
+            <div id="subview-floor-grid">
+              <div class="floor-map-grid" id="floor-map-grid"></div>
+            </div>
+
+            <!-- Sub-view 2: Dedicated Table QR Manager Grid -->
+            <div id="subview-floor-qr" style="display:none;">
+              <div class="qr-manager-grid" id="table-qr-manager-grid" style="display:grid;grid-template-columns:repeat(auto-fill, minmax(260px, 1fr));gap:16px;"></div>
+            </div>
           </div><!-- /panel-floor -->
 
           <!-- PANEL: Staff Team -->
@@ -399,61 +465,175 @@
               </button>
             </div>
             <div class="staff-roster-grid" id="staff-roster-grid-panel"></div>
+
+            <!-- Admin-Only Staff PIN Login/Logout Audit Trail -->
+            <section id="section-login-audit" style="margin-top:36px;border-top:1px solid var(--dash-border);padding-top:24px;">
+              <div class="section-header" style="margin-bottom:14px;flex-wrap:wrap;gap:10px;">
+                <div>
+                  <h4 style="margin:0;font-size:16px;color:var(--dash-ink);">Staff PIN Authentication &amp; Shift Audit Log</h4>
+                  <p style="font-size:12px;color:var(--dash-muted);margin:2px 0 0 0;">Immutable record of staff logins and logouts with timestamps (Admin-only)</p>
+                </div>
+                <span style="font-size:11px;font-weight:700;background:var(--primary-soft);color:var(--primary);padding:4px 10px;border-radius:999px;">Admin Audit Trail</span>
+              </div>
+              <div style="overflow-x:auto;background:var(--dash-surface);border-radius:var(--radius-md);border:1px solid var(--dash-border);">
+                <table style="width:100%;border-collapse:collapse;font-size:13px;min-width:540px;">
+                  <thead>
+                    <tr style="background:#f8fafc;border-bottom:1px solid var(--dash-border);text-align:left;color:var(--dash-muted);font-size:11px;text-transform:uppercase;">
+                      <th style="padding:10px 14px;">Timestamp</th>
+                      <th style="padding:10px 14px;">Staff Member</th>
+                      <th style="padding:10px 14px;">Role</th>
+                      <th style="padding:10px 14px;">Event</th>
+                      <th style="padding:10px 14px;">Station</th>
+                    </tr>
+                  </thead>
+                  <tbody id="login-audit-tbody">
+                    <!-- Populated dynamically by JS -->
+                  </tbody>
+                </table>
+              </div>
+            </section>
           </div><!-- /panel-staff -->
 
           <!-- PANEL: Offers & Promos -->
           <div id="panel-offers" class="dash-panel" style="display:none;">
-            <div class="section-header" style="margin-bottom:24px;">
+            <div class="section-header" style="margin-bottom:24px;flex-wrap:wrap;gap:12px;">
               <div>
-                <h3>Offers &amp; Promotions</h3>
-                <p style="font-size:13px;color:var(--dash-muted);margin-top:2px;">Active deals, discount codes, and seasonal specials</p>
+                <h3>Offers, Promotions &amp; Daily Specials</h3>
+                <p style="font-size:13px;color:var(--dash-muted);margin-top:2px;">Create active deals, discount prices, and featured carousel specials</p>
               </div>
               <button class="btn-primary" id="btn-new-offer">
                 <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
-                New Offer
+                Create Promotion
               </button>
             </div>
-            <div class="offers-grid">
-              <div class="offer-card"><div class="offer-card-badge">Active</div><h4>SHAMBA30</h4><p>30% off all grill &amp; steak platters</p><div class="offer-meta"><span>Expires: 31 Oct 2026</span><span>Used: 47 times</span></div></div>
-              <div class="offer-card"><div class="offer-card-badge">Active</div><h4>HAPPY HOUR</h4><p>25% off all drinks — Mon–Thu 4–7 PM</p><div class="offer-meta"><span>Recurring</span><span>Used: 134 times</span></div></div>
+            <div class="offers-grid" id="offers-grid-container">
+              <!-- Populated dynamically by JS -->
             </div>
           </div><!-- /panel-offers -->
 
-          <!-- PANEL: Analytics -->
+          <!-- PANEL: Analytics (Admin-Only Comprehensive Revenue & Orders Intelligence) -->
           <div id="panel-analytics" class="dash-panel" style="display:none;">
-            <div class="section-header" style="margin-bottom:24px;">
-              <h3>Analytics &amp; Reports</h3>
-              <select class="form-control" style="width:auto;padding:8px 12px;font-size:13px;">
-                <option>Today</option><option selected>This Week</option><option>This Month</option>
-              </select>
+            <div class="section-header" style="margin-bottom:20px;flex-wrap:wrap;gap:14px;">
+              <div>
+                <h3>Admin Analytics &amp; Revenue Reports</h3>
+                <p style="font-size:13px;color:var(--dash-muted);margin-top:2px;">Order volumes, payment splits, and table turn performance (Admin-only)</p>
+              </div>
+              <div style="display:flex;gap:10px;align-items:center;flex-wrap:wrap;">
+                <select class="form-control" id="analytics-range-select" style="width:auto;padding:8px 14px;font-size:13px;font-weight:600;">
+                  <option value="today">Today</option>
+                  <option value="week" selected>This Week</option>
+                  <option value="month">This Month</option>
+                  <option value="3months">Last 3 Months</option>
+                  <option value="6months">Last 6 Months</option>
+                  <option value="12months">Last 12 Months</option>
+                  <option value="custom">Custom Date Range</option>
+                </select>
+                <button class="btn-primary" id="btn-export-analytics-csv">
+                  <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                  Export CSV
+                </button>
+              </div>
             </div>
-            <div class="analytics-kpi-row">
-              <div class="an-kpi"><span>Revenue</span><strong>KES 412,800</strong><small>+8.4% vs last week</small></div>
-              <div class="an-kpi"><span>Total Orders</span><strong>348</strong><small>+12 vs target</small></div>
-              <div class="an-kpi"><span>Avg Order Value</span><strong>KES 1,186</strong><small>+5.2%</small></div>
-              <div class="an-kpi"><span>Top Table</span><strong>Table 07 · VIP</strong><small>KES 42,000</small></div>
+
+            <!-- KPI Row -->
+            <div class="analytics-kpi-row" style="display:grid;grid-template-columns:repeat(auto-fit, minmax(180px, 1fr));gap:14px;margin-bottom:24px;">
+              <div class="an-kpi" style="background:var(--dash-surface);border:1px solid var(--dash-border);border-radius:12px;padding:16px;">
+                <span style="font-size:12px;color:var(--dash-muted);display:block;">Period Revenue</span>
+                <strong id="an-revenue-val" style="font-size:24px;color:var(--primary);display:block;margin:4px 0;">KES 412,800</strong>
+                <small style="color:var(--status-success);font-weight:600;">+8.4% vs prev period</small>
+              </div>
+              <div class="an-kpi" style="background:var(--dash-surface);border:1px solid var(--dash-border);border-radius:12px;padding:16px;">
+                <span style="font-size:12px;color:var(--dash-muted);display:block;">Total Orders</span>
+                <strong id="an-orders-val" style="font-size:24px;color:var(--dash-ink);display:block;margin:4px 0;">348</strong>
+                <small style="color:var(--dash-muted);">Avg KES 1,186 / order</small>
+              </div>
+              <div class="an-kpi" style="background:var(--dash-surface);border:1px solid var(--dash-border);border-radius:12px;padding:16px;">
+                <span style="font-size:12px;color:var(--dash-muted);display:block;">M-Pesa vs Cash Split</span>
+                <strong id="an-mpesa-split-val" style="font-size:22px;color:var(--dash-ink);display:block;margin:4px 0;">76% M-Pesa</strong>
+                <small id="an-cash-split-val" style="color:var(--dash-muted);">24% Cash on Floor</small>
+              </div>
+              <div class="an-kpi" style="background:var(--dash-surface);border:1px solid var(--dash-border);border-radius:12px;padding:16px;">
+                <span style="font-size:12px;color:var(--dash-muted);display:block;">Avg Table Turn Time</span>
+                <strong id="an-turn-time-val" style="font-size:24px;color:var(--dash-ink);display:block;margin:4px 0;">46 min</strong>
+                <small style="color:var(--status-success);font-weight:600;">Optimal turnover speed</small>
+              </div>
+            </div>
+
+            <!-- Visual Charts Breakdown -->
+            <div style="display:grid;grid-template-columns:repeat(auto-fit, minmax(280px, 1fr));gap:18px;margin-bottom:24px;">
+              <!-- Sales Trend Chart -->
+              <div style="background:var(--dash-surface);border:1px solid var(--dash-border);border-radius:12px;padding:18px;">
+                <h4 style="margin:0 0 12px 0;font-size:14px;color:var(--dash-ink);">Revenue Trend &amp; Daily Velocity</h4>
+                <div id="analytics-sales-trend-chart" style="display:flex;align-items:flex-end;gap:10px;height:120px;padding-top:10px;border-bottom:1px solid var(--dash-border);">
+                  <!-- Dynamic SVG / bar chart rendered by JS -->
+                </div>
+              </div>
+              <!-- Top Selling Dishes -->
+              <div style="background:var(--dash-surface);border:1px solid var(--dash-border);border-radius:12px;padding:18px;">
+                <h4 style="margin:0 0 12px 0;font-size:14px;color:var(--dash-ink);">Top Performing Dishes</h4>
+                <div id="analytics-top-dishes-list" style="display:flex;flex-direction:column;gap:10px;">
+                  <!-- Rendered dynamically by JS -->
+                </div>
+              </div>
             </div>
           </div><!-- /panel-analytics -->
 
-          <!-- PANEL: POS Bridge / Settings -->
+          <!-- PANEL: POS Bridge / Settings (Admin-Only) -->
           <div id="panel-settings" class="dash-panel" style="display:none;">
-            <div class="section-header" style="margin-bottom:24px;">
+            <div class="section-header" style="margin-bottom:20px;flex-wrap:wrap;gap:12px;">
               <div>
-                <h3>SambaPOS Bridge</h3>
-                <p style="font-size:13px;color:var(--dash-muted);margin-top:2px;">Connect, sync, and configure the SambaPOS integration layer</p>
+                <h3>SambaPOS Hardware &amp; Ticket Bridge</h3>
+                <p style="font-size:13px;color:var(--dash-muted);margin-top:2px;">Live synchronization with register terminals, tickets, and kitchen printers</p>
               </div>
-              <span class="bridge-status bridge-status--offline">Offline</span>
+              <div style="display:flex;align-items:center;gap:10px;">
+                <span class="bridge-status bridge-status--online" id="pos-bridge-status-pill">Active · Online</span>
+                <button class="btn-secondary" id="btn-sync-pos-header">Sync Now</button>
+              </div>
             </div>
+
             <div class="bridge-config-grid">
               <div class="bridge-config-card">
                 <div class="bridge-config-icon"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12.55a11 11 0 0 1 14.08 0"/><path d="M1.42 9a16 16 0 0 1 21.16 0"/><path d="M8.53 16.11a6 6 0 0 1 6.95 0"/><line x1="12" y1="20" x2="12.01" y2="20"/></svg></div>
-                <div><strong>Connection</strong><p>SambaPOS GraphQL endpoint not configured</p><button class="btn-secondary" style="margin-top:10px;" id="btn-configure-pos">Configure Endpoint</button></div>
+                <div>
+                  <strong>Endpoint Connection</strong>
+                  <p id="pos-endpoint-display">http://localhost:8080/api/tickets (LAN Bridge)</p>
+                  <small style="color:var(--dash-muted);display:block;margin-top:4px;">Last successful sync: <strong id="pos-last-sync-time">Just now</strong></small>
+                  <button class="btn-secondary" style="margin-top:10px;" id="btn-configure-pos">Configure Endpoint</button>
+                </div>
               </div>
               <div class="bridge-config-card">
                 <div class="bridge-config-icon"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2"><polyline points="23 4 23 10 17 10"/><polyline points="1 20 1 14 7 14"/><path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"/></svg></div>
-                <div><strong>Menu Sync</strong><p>Push catalog &amp; pricing to SambaPOS registers</p><button class="btn-secondary" style="margin-top:10px;" id="btn-sync-pos">Sync Now</button></div>
+                <div>
+                  <strong>Catalog &amp; Pricing Synchronization</strong>
+                  <p>Broadcast menu updates, availability, and promotional prices to POS terminals</p>
+                  <button class="btn-secondary" style="margin-top:10px;" id="btn-sync-pos">Push Menu to Registers</button>
+                </div>
               </div>
             </div>
+
+            <!-- Failed Syncs Log & Functional Retry Action -->
+            <section style="margin-top:28px;background:var(--dash-surface);border:1px solid var(--dash-border);border-radius:12px;padding:18px;">
+              <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px;">
+                <h4 style="margin:0;font-size:14px;color:var(--dash-ink);">Sync Queue &amp; Retry Diagnostics</h4>
+                <button class="btn-secondary" id="btn-retry-all-syncs" style="font-size:12px;padding:6px 12px;">Retry All Pending</button>
+              </div>
+              <div id="pos-sync-log-container">
+                <div style="padding:10px 14px;background:#fef2f2;border:1px solid #fee2e2;border-radius:8px;display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;">
+                  <div>
+                    <strong style="font-size:13px;color:#991b1b;">Ticket #SH-839 Sync Retry</strong>
+                    <small style="display:block;color:#7f1d1d;font-size:11px;">Table 07 VIP · Network timeout to POS terminal (14 min ago)</small>
+                  </div>
+                  <button class="btn-secondary btn-retry-sync-single" data-ticket="SH-839" style="font-size:11px;padding:4px 10px;">Retry Sync</button>
+                </div>
+                <div style="padding:10px 14px;background:var(--dash-bg);border:1px solid var(--dash-border);border-radius:8px;display:flex;justify-content:space-between;align-items:center;">
+                  <div>
+                    <strong style="font-size:13px;color:var(--dash-ink);">All other 27 tickets synchronized</strong>
+                    <small style="display:block;color:var(--dash-muted);font-size:11px;">Bridge listener running on port 8080</small>
+                  </div>
+                  <span style="font-size:11px;font-weight:700;color:var(--status-success);">Active</span>
+                </div>
+              </div>
+            </section>
           </div><!-- /panel-settings -->
 
         </div><!-- /dash-main-column -->
@@ -505,7 +685,7 @@
         <div class="guest-context-row">
           <div class="guest-greeting-block">
             <h2 id="guest-header-table-title">Table 04 · Garden Terrace</h2>
-            <p>Welcome to Shamba House — Handcrafted fresh dining</p>
+            <p>Welcome to Testimony Cafeteria — Handcrafted fresh dining</p>
           </div>
           <button class="btn-staff-gate" id="btn-guest-staff-gate" title="Staff OS Access">
             <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
@@ -517,6 +697,24 @@
         <div class="guest-search-row">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
           <input type="text" id="guest-search-input" placeholder="Search dishes, drinks, ingredients..." aria-label="Search Guest Menu" />
+        </div>
+      </section>
+
+      <!-- Arrival Verification Status Banner (Item 5) -->
+      <section class="guest-arrival-banner" id="guest-arrival-banner" style="display:none;margin-bottom:14px;background:rgba(245, 158, 11, 0.12);border:1px solid rgba(245, 158, 11, 0.35);border-radius:var(--radius-lg);padding:14px 18px;color:#fde68a;">
+        <div style="display:flex;align-items:flex-start;gap:12px;">
+          <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" style="flex-shrink:0;color:#f59e0b;"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+          <div>
+            <strong style="font-size:14px;display:block;margin-bottom:2px;color:#fde68a;">Table Arrival Pending Staff Confirmation</strong>
+            <p style="font-size:12px;margin:0;line-height:1.4;color:var(--guest-muted);">Welcome to Testimony Cafeteria! You can browse the full menu and build your cart. Our floor attendant will confirm your seating shortly to unlock sending orders to the kitchen.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Daily Specials & Live In-Window Promotions Carousel (Item 4) -->
+      <section class="guest-promos-section" id="guest-promos-section" aria-label="Daily Specials & Featured Deals" style="margin-bottom:18px;">
+        <div class="guest-promos-container" id="guest-promos-container">
+          <!-- Populated dynamically by JS -->
         </div>
       </section>
 
@@ -611,6 +809,22 @@
       <!-- Populated by JS -->
     </div>
 
+    <!-- Dine-in vs Takeaway Selector (Item 7) -->
+    <div class="form-group" style="margin-bottom:14px;">
+      <label style="font-weight:700;font-size:12px;margin-bottom:6px;display:block;">Dining Option</label>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;">
+        <button type="button" class="btn-secondary order-type-btn active" id="btn-type-dine-in" data-type="dine-in" style="font-weight:700;border:2px solid var(--primary);color:var(--primary);padding:8px 12px;display:flex;align-items:center;justify-content:center;gap:6px;">
+          <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 2v6a3 3 0 0 1-3 3 3 3 0 0 1-3-3V2"/><path d="M15 11v11"/><path d="M5 2v10a3 3 0 0 0 3 3 3 3 0 0 0 3-3V2"/><path d="M8 15v7"/></svg>
+          <span>Dine-In</span>
+        </button>
+        <button type="button" class="btn-secondary order-type-btn" id="btn-type-takeaway" data-type="takeaway" style="font-weight:600;padding:8px 12px;display:flex;align-items:center;justify-content:center;gap:6px;">
+          <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16Z"/><path d="m3.3 7 8.7 5 8.7-5"/><path d="M12 22V12"/></svg>
+          <span>Takeaway / To-Go</span>
+        </button>
+      </div>
+      <small style="color:var(--dash-muted);font-size:11px;display:block;margin-top:4px;">Takeaway informs the kitchen to package for pickup at your table.</small>
+    </div>
+
     <div style="border-top:1px solid var(--dash-border);padding-top:14px;margin-bottom:18px;">
       <div style="display:flex;justify-content:space-between;font-size:16px;font-weight:800;">
         <span>Total Payable:</span>
@@ -632,9 +846,348 @@
       <small style="color:var(--dash-muted);font-size:11px;">A secure STK prompt will appear on your phone.</small>
     </div>
 
+    <!-- Pending Arrival Alert (Item 5) -->
+    <div id="cart-arrival-warning" style="display:none;background:rgba(239,68,68,0.12);border:1px solid rgba(239,68,68,0.3);border-radius:var(--radius-md);padding:10px 12px;margin-bottom:14px;color:#fca5a5;font-size:12px;line-height:1.4;">
+      <div style="display:flex;align-items:center;gap:6px;margin-bottom:2px;">
+        <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+        <strong>Table Arrival Not Confirmed Yet</strong>
+      </div>
+      Please wait for a floor attendant to confirm your seating at Table <span id="cart-warning-table-num">--</span> before submitting your order.
+    </div>
+
     <button class="btn-primary" style="width:100%;justify-content:center;" id="btn-submit-order">
       Pay &amp; Send to Kitchen
     </button>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════
+     MODAL: DEDICATED ORDER CONFIRMATION SCREEN (Item 6)
+     ═══════════════════════════════════════════ -->
+<div class="modal-overlay" id="modal-order-confirmation">
+  <div class="modal-window" style="max-width:480px;text-align:left;">
+    <button class="modal-close-btn" id="btn-close-order-confirmation" aria-label="Close">
+      <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+    </button>
+    <div style="text-align:center;margin-bottom:16px;">
+      <div style="width:54px;height:54px;border-radius:50%;background:rgba(34, 197, 94, 0.15);color:#22c55e;margin:0 auto 10px;display:grid;place-items:center;">
+        <svg viewBox="0 0 24 24" width="30" height="30" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+      </div>
+      <h3 class="modal-title" style="margin-bottom:4px;">Asante Sana! Order Received</h3>
+      <p class="modal-subtitle" style="margin-bottom:0;" id="conf-order-header-subtitle">Sent to Shamba Kitchen &amp; Bar</p>
+    </div>
+
+    <!-- Order Summary Card -->
+    <div style="background:var(--dash-bg);border:1px solid var(--dash-border);border-radius:var(--radius-md);padding:14px;margin-bottom:16px;">
+      <div style="display:flex;justify-content:space-between;margin-bottom:10px;font-size:12px;color:var(--dash-muted);">
+        <span>Table: <strong style="color:var(--dash-text);" id="conf-table-label">Table 4</strong></span>
+        <span>Type: <strong style="color:var(--dash-text);" id="conf-dining-type">Dine-In</strong></span>
+      </div>
+      <div style="display:flex;justify-content:space-between;margin-bottom:10px;font-size:12px;color:var(--dash-muted);">
+        <span>Assigned Server:</span>
+        <strong style="color:#22c55e;" id="conf-assigned-waiter">Dennis Kiprop (Floor 1)</strong>
+      </div>
+      <div style="display:flex;justify-content:space-between;margin-bottom:12px;font-size:12px;color:var(--dash-muted);">
+        <span>Payment Method:</span>
+        <strong style="color:var(--dash-text);" id="conf-payment-method">M-Pesa STK (Confirmed)</strong>
+      </div>
+
+      <!-- Items breakdown with Qty x Price line totals -->
+      <div style="border-top:1px solid var(--dash-border);padding-top:10px;margin-bottom:10px;">
+        <div style="font-size:11px;text-transform:uppercase;letter-spacing:0.05em;color:var(--dash-muted);margin-bottom:8px;">Ordered Items</div>
+        <div id="conf-items-list" style="max-height:160px;overflow-y:auto;display:flex;flex-direction:column;gap:8px;">
+          <!-- Populated by JS -->
+        </div>
+      </div>
+
+      <!-- Total -->
+      <div style="border-top:1px solid var(--dash-border);padding-top:10px;display:flex;justify-content:space-between;align-items:center;">
+        <span style="font-size:14px;font-weight:700;">Order Total:</span>
+        <span style="font-size:18px;font-weight:800;color:var(--primary);" id="conf-total-price">KES 0</span>
+      </div>
+    </div>
+
+    <!-- Live Edit/Cancel Grace Window Notice (Item 6) -->
+    <div id="conf-edit-window-box" style="background:rgba(59, 130, 246, 0.1);border:1px solid rgba(59, 130, 246, 0.25);border-radius:var(--radius-md);padding:12px;margin-bottom:16px;">
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:4px;">
+        <span style="font-size:12px;font-weight:700;color:#60a5fa;display:flex;align-items:center;gap:6px;">
+          <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+          <span>Grace Modification Window</span>
+        </span>
+        <span id="conf-countdown-timer" style="font-family:monospace;font-size:13px;font-weight:800;color:#93c5fd;background:rgba(0,0,0,0.25);padding:2px 6px;border-radius:4px;">02:00</span>
+      </div>
+      <p style="font-size:11px;color:var(--dash-muted);margin:0 0 8px 0;line-height:1.4;">
+        You can cancel or change dishes within this grace period. Items lock immediately once kitchen staff begins preparation.
+      </p>
+      <div id="conf-items-cancel-actions" style="display:flex;flex-direction:column;gap:6px;">
+        <!-- Populated with item cancel buttons if window active -->
+      </div>
+    </div>
+
+    <button class="btn-primary" style="width:100%;justify-content:center;" id="btn-done-order-confirmation">
+      Back to Menu
+    </button>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════
+     MODAL: DISH CRUD (Create / Edit Dish) (Item 3)
+     ═══════════════════════════════════════════ -->
+<div class="modal-overlay" id="modal-dish-crud">
+  <div class="modal-window" style="max-width:500px;text-align:left;">
+    <button class="modal-close-btn" id="btn-close-dish-crud" aria-label="Close">
+      <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+    </button>
+    <h3 class="modal-title" id="dish-crud-title">Add New Menu Dish</h3>
+    <p class="modal-subtitle" id="dish-crud-subtitle">Create a new dish or beverage for Testimony Cafeteria</p>
+
+    <form id="form-dish-crud" onsubmit="event.preventDefault();">
+      <input type="hidden" id="dish-crud-id" value="" />
+
+      <div class="form-group">
+        <label>Dish Name *</label>
+        <input type="text" class="form-control" id="dish-crud-name" placeholder="e.g. Nyama Choma Platter" required />
+      </div>
+
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;">
+        <div class="form-group">
+          <label>Price (KES) *</label>
+          <input type="number" class="form-control" id="dish-crud-price" placeholder="1200" required min="10" />
+        </div>
+        <div class="form-group">
+          <label>Category *</label>
+          <select class="form-control" id="dish-crud-category" required>
+            <option value="Nyama Choma & Grills">Nyama Choma &amp; Grills</option>
+            <option value="Swahili & Coastal Specials">Swahili &amp; Coastal Specials</option>
+            <option value="Drinks & Beverages">Drinks &amp; Beverages</option>
+            <option value="Sides & Accompaniments">Sides &amp; Accompaniments</option>
+            <option value="Desserts & Tea">Desserts &amp; Tea</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label>Description *</label>
+        <textarea class="form-control" id="dish-crud-desc" rows="2" placeholder="Description, cooking style, key ingredients..." required></textarea>
+      </div>
+
+      <div class="form-group">
+        <label>Dish Image (URL or Upload)</label>
+        <input type="text" class="form-control" id="dish-crud-image-url" placeholder="https://images.unsplash.com/... or choose file below" />
+        <div style="margin-top:6px;display:flex;align-items:center;gap:10px;">
+          <input type="file" id="dish-crud-image-file" accept="image/*" style="font-size:12px;color:var(--dash-muted);" />
+          <span style="font-size:11px;color:var(--dash-muted);">Local file upload</span>
+        </div>
+      </div>
+
+      <div style="display:flex;gap:10px;margin-top:20px;">
+        <button type="button" class="btn-secondary" style="flex:1;justify-content:center;" id="btn-cancel-dish-crud">Cancel</button>
+        <button type="submit" class="btn-primary" style="flex:2;justify-content:center;" id="btn-save-dish-crud">Save Dish</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════
+     MODAL: CREATE / EDIT PROMOTION (Item 4)
+     ═══════════════════════════════════════════ -->
+<div class="modal-overlay" id="modal-promo-crud">
+  <div class="modal-window" style="max-width:520px;text-align:left;">
+    <button class="modal-close-btn" id="btn-close-promo-crud" aria-label="Close">
+      <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+    </button>
+    <h3 class="modal-title" id="promo-crud-title">Create New Special / Promo</h3>
+    <p class="modal-subtitle">Offer price with strikethrough, timing window, and daily special tag</p>
+
+    <form id="form-promo-crud" onsubmit="event.preventDefault();">
+      <input type="hidden" id="promo-crud-id" value="" />
+
+      <div class="form-group">
+        <label>Promo Title / Dish *</label>
+        <input type="text" class="form-control" id="promo-crud-title-input" placeholder="e.g. Sunset Goat Ribs & Tusker Deal" required />
+      </div>
+
+      <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;">
+        <div class="form-group">
+          <label>Original Price *</label>
+          <input type="number" class="form-control" id="promo-crud-orig-price" placeholder="1800" min="10" required />
+        </div>
+        <div class="form-group">
+          <label>Discount %</label>
+          <input type="number" class="form-control" id="promo-crud-discount" placeholder="20" min="1" max="99" />
+        </div>
+        <div class="form-group">
+          <label>Offer Price (KES)</label>
+          <input type="number" class="form-control" id="promo-crud-offer-price" placeholder="1440" min="10" />
+        </div>
+      </div>
+      <small style="display:block;margin-top:-6px;margin-bottom:12px;font-size:11px;color:var(--dash-muted);">
+        Enter either Discount % or Offer Price; the other computes automatically.
+      </small>
+
+      <div class="form-group">
+        <label>Promo Description *</label>
+        <textarea class="form-control" id="promo-crud-desc" rows="2" placeholder="Tender goat ribs served with fries or kachumbari + cold Tusker..." required></textarea>
+      </div>
+
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;">
+        <div class="form-group">
+          <label>Active Start Window</label>
+          <input type="datetime-local" class="form-control" id="promo-crud-start" />
+        </div>
+        <div class="form-group">
+          <label>Active End Window</label>
+          <input type="datetime-local" class="form-control" id="promo-crud-end" />
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label>Promo Image (URL or file)</label>
+        <input type="text" class="form-control" id="promo-crud-image-url" placeholder="https://images.unsplash.com/..." />
+        <div style="margin-top:6px;">
+          <input type="file" id="promo-crud-image-file" accept="image/*" style="font-size:12px;color:var(--dash-muted);" />
+        </div>
+      </div>
+
+      <div class="form-group" style="background:var(--dash-bg);padding:10px 12px;border-radius:var(--radius-md);border:1px solid var(--dash-border);">
+        <label style="display:flex;align-items:center;gap:10px;cursor:pointer;font-weight:600;margin:0;">
+          <input type="checkbox" id="promo-crud-is-daily-special" checked style="width:18px;height:18px;accent-color:var(--primary);" />
+          <span>Mark as "Daily Special" (Highlighted on Guest Menu Carousel)</span>
+        </label>
+      </div>
+
+      <div style="display:flex;gap:10px;margin-top:20px;">
+        <button type="button" class="btn-secondary" style="flex:1;justify-content:center;" id="btn-cancel-promo-crud">Cancel</button>
+        <button type="submit" class="btn-primary" style="flex:2;justify-content:center;" id="btn-save-promo-crud">Publish Promotion</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════
+     MODAL: CREATE NEW TABLE (Item 1 & Item 2)
+     ═══════════════════════════════════════════ -->
+<div class="modal-overlay" id="modal-add-table">
+  <div class="modal-window" style="max-width:440px;text-align:left;">
+    <button class="modal-close-btn" id="btn-close-add-table" aria-label="Close">
+      <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+    </button>
+    <h3 class="modal-title">Add New Dining Table</h3>
+    <p class="modal-subtitle">Automatically generates a unique QR code and QR tent stand</p>
+
+    <form id="form-add-table" onsubmit="event.preventDefault();">
+      <div class="form-group">
+        <label>Table Number / Code *</label>
+        <input type="number" class="form-control" id="new-table-num" placeholder="e.g. 13" required min="1" max="999" />
+      </div>
+
+      <div class="form-group">
+        <label>Seat Capacity (Persons) *</label>
+        <input type="number" class="form-control" id="new-table-capacity" value="4" min="1" max="30" required />
+        <small style="color:var(--dash-muted);font-size:11px;">Max independent parties/seats this table can comfortably accommodate.</small>
+      </div>
+
+      <div class="form-group">
+        <label>Dining Zone / Location *</label>
+        <select class="form-control" id="new-table-zone" required>
+          <option value="Main Garden">Main Garden</option>
+          <option value="Terrace Pergola">Terrace Pergola</option>
+          <option value="Indoor Dining">Indoor Dining</option>
+          <option value="VIP Gazebo">VIP Gazebo</option>
+          <option value="Lounge Bar">Lounge Bar</option>
+        </select>
+      </div>
+
+      <div style="display:flex;gap:10px;margin-top:20px;">
+        <button type="button" class="btn-secondary" style="flex:1;justify-content:center;" id="btn-cancel-add-table">Cancel</button>
+        <button type="submit" class="btn-primary" style="flex:2;justify-content:center;" id="btn-save-add-table">Create Table &amp; QR</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════
+     MODAL: MERGE TABLES (Combining Adjacent Tables & Sessions)
+     ═══════════════════════════════════════════ -->
+<div class="modal-overlay" id="modal-merge-tables">
+  <div class="modal-window" style="max-width:540px;text-align:left;">
+    <button class="modal-close-btn" id="btn-close-merge-tables" aria-label="Close">
+      <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+    </button>
+    <div style="display:flex;align-items:center;gap:12px;margin-bottom:12px;">
+      <div style="width:40px;height:40px;border-radius:10px;background:rgba(34, 197, 94, 0.15);color:var(--primary);display:grid;place-items:center;flex-shrink:0;">
+        <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M8 7h12m0 0l-4-4m4 4l-4 4m0 6H4m0 0l4 4m-4-4l4-4"/></svg>
+      </div>
+      <div>
+        <h3 class="modal-title" style="margin-bottom:2px;">Merge Dining Tables</h3>
+        <p class="modal-subtitle" style="margin-bottom:0;">Combine adjacent tables &amp; consolidate active sessions for unified party billing</p>
+      </div>
+    </div>
+
+    <form id="form-merge-tables" onsubmit="event.preventDefault();">
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:16px;">
+        <div class="form-group" style="margin-bottom:0;">
+          <label style="font-weight:700;font-size:12px;margin-bottom:6px;display:block;">Primary Table (Keep &amp; Bill To) *</label>
+          <select class="form-control" id="merge-primary-table" required>
+            <!-- Populated dynamically with tables -->
+          </select>
+          <small style="color:var(--dash-muted);font-size:11px;display:block;margin-top:4px;">Main table keeping QR &amp; master ticket.</small>
+        </div>
+        <div class="form-group" style="margin-bottom:0;">
+          <label style="font-weight:700;font-size:12px;margin-bottom:6px;display:block;">Adjacent Table to Merge In *</label>
+          <select class="form-control" id="merge-secondary-table" required>
+            <!-- Populated dynamically with adjacent tables -->
+          </select>
+          <small style="color:var(--dash-muted);font-size:11px;display:block;margin-top:4px;">Sessions &amp; orders move to primary table.</small>
+        </div>
+      </div>
+
+      <!-- Option: Combine into single session for large party billing -->
+      <div class="form-group" style="background:var(--dash-bg);padding:10px 12px;border-radius:var(--radius-md);border:1px solid var(--dash-border);margin-bottom:14px;">
+        <label style="display:flex;align-items:center;gap:10px;cursor:pointer;font-weight:600;font-size:12px;margin:0;color:var(--dash-text);">
+          <input type="checkbox" id="merge-combine-sessions-checkbox" checked style="width:16px;height:16px;accent-color:var(--primary);" />
+          <span>Combine active party sessions into 1 unified master party bill</span>
+        </label>
+        <small style="color:var(--dash-muted);font-size:11px;display:block;margin-left:26px;margin-top:2px;">Consolidates all orders into a single bill for the large group.</small>
+      </div>
+
+      <!-- Live preview of combined party & billing -->
+      <div id="merge-preview-box" style="background:var(--dash-bg);border:1px solid var(--dash-border);border-radius:var(--radius-md);padding:14px;margin-bottom:18px;">
+        <div style="font-size:11px;text-transform:uppercase;letter-spacing:0.05em;color:var(--dash-muted);margin-bottom:8px;font-weight:700;">
+          Consolidation Summary
+        </div>
+        <div style="display:flex;justify-content:space-between;margin-bottom:6px;font-size:13px;">
+          <span style="color:var(--dash-muted);">Total Combined Seats:</span>
+          <strong id="merge-preview-seats" style="color:var(--dash-text);">8 seats</strong>
+        </div>
+        <div style="display:flex;justify-content:space-between;margin-bottom:6px;font-size:13px;">
+          <span style="color:var(--dash-muted);">Combined Active Parties:</span>
+          <strong id="merge-preview-parties" style="color:var(--dash-text);">1 party (4 guests)</strong>
+        </div>
+        <div style="display:flex;justify-content:space-between;margin-bottom:6px;font-size:13px;">
+          <span style="color:var(--dash-muted);">Consolidated Running Bill:</span>
+          <strong id="merge-preview-bill" style="color:var(--primary);font-size:15px;font-weight:800;">KES 5,800</strong>
+        </div>
+        <div style="display:flex;justify-content:space-between;margin-bottom:6px;font-size:13px;">
+          <span style="color:var(--dash-muted);">Assigned Floor Waiter:</span>
+          <strong id="merge-preview-waiter" style="color:var(--dash-text);">Sarah Nduta</strong>
+        </div>
+        <div id="merge-preview-adjacency" style="margin-top:8px;padding-top:8px;border-top:1px dashed var(--dash-border);font-size:12px;color:#22c55e;font-weight:600;">
+          ✓ Adjacent tables in Terrace zone
+        </div>
+      </div>
+
+      <div style="background:rgba(245, 158, 11, 0.08);border:1px solid rgba(245, 158, 11, 0.25);border-radius:var(--radius-md);padding:10px 12px;margin-bottom:18px;font-size:11px;line-height:1.4;color:#fde68a;">
+        ℹ️ Once merged, the secondary table will be marked <strong>FREE</strong> and available for new guests, while all unbilled items and party sessions transfer cleanly to the primary table.
+      </div>
+
+      <div style="display:flex;gap:10px;">
+        <button type="button" class="btn-secondary" style="flex:1;justify-content:center;" id="btn-cancel-merge-tables">Cancel</button>
+        <button type="submit" class="btn-primary" style="flex:2;justify-content:center;" id="btn-confirm-merge-tables">
+          Confirm Table Merge
+        </button>
+      </div>
+    </form>
   </div>
 </div>
 
@@ -764,8 +1317,8 @@
     <p class="modal-subtitle">Enter 4-digit venue PIN to access the Staff OS</p>
 
     <div class="form-group" style="margin-bottom:12px;">
-      <input type="password" class="form-control" id="gate-pin-input" placeholder="Enter PIN (e.g. 2407)" maxlength="4" style="text-align:center;font-size:22px;letter-spacing:6px;font-weight:800;" />
-      <small style="color:var(--status-danger);font-size:11px;display:none;margin-top:6px;" id="gate-pin-error">Incorrect PIN. Try default: 2407</small>
+      <input type="password" class="form-control" id="gate-pin-input" placeholder="Authenticate through Staff OS" maxlength="4" style="text-align:center;font-size:22px;letter-spacing:6px;font-weight:800;" />
+      <small style="color:var(--status-danger);font-size:11px;display:none;margin-top:6px;" id="gate-pin-error">Authentication required; PINs are verified server-side</small>
     </div>
 
     <button class="btn-primary" style="width:100%;justify-content:center;" id="btn-unlock-staff-gate">
@@ -813,8 +1366,8 @@
     </div>
 
     <div class="form-group">
-      <label for="admin-pin-input">Admin Verification PIN</label>
-      <input type="password" class="form-control" id="admin-pin-input" placeholder="Enter PIN 2407" maxlength="4" />
+      <label for="admin-pin-input">Admin session verification</label>
+      <input type="password" class="form-control" id="admin-pin-input" placeholder="Verify admin session" maxlength="4" />
     </div>
 
     <button class="btn-primary" style="width:100%;justify-content:center;" id="btn-save-new-dish">
@@ -861,8 +1414,8 @@
     </div>
 
     <div class="form-group">
-      <label for="new-staff-pin">Personal 4-Digit PIN</label>
-      <input type="password" class="form-control" id="new-staff-pin" placeholder="e.g. 1042" maxlength="4" />
+      <label for="new-staff-pin">Staff access is provisioned securely</label>
+      <input type="password" class="form-control" id="new-staff-pin" placeholder="Managed by Staff OS" maxlength="4" />
     </div>
 
     <div class="form-group">
@@ -871,8 +1424,8 @@
     </div>
 
     <div class="form-group">
-      <label for="staff-admin-pin-verify">Admin Verification PIN</label>
-      <input type="password" class="form-control" id="staff-admin-pin-verify" placeholder="Enter PIN 2407" maxlength="4" />
+      <label for="staff-admin-pin-verify">Admin session verification</label>
+      <input type="password" class="form-control" id="staff-admin-pin-verify" placeholder="Verify admin session" maxlength="4" />
     </div>
 
     <button class="btn-primary" style="width:100%;justify-content:center;" id="btn-save-new-staff">
@@ -897,7 +1450,7 @@
     </div>
 
     <div style="background:var(--dash-bg);padding:10px 14px;border-radius:var(--radius-md);margin-bottom:18px;font-size:12px;color:var(--dash-muted);word-break:break-all;">
-      <span id="qr-url-text">https://shamba.house/menu?table=04</span>
+      <span id="qr-url-text">https://menu.testimony.example/menu?table=04</span>
     </div>
 
     <div style="display:flex;gap:10px;">
@@ -922,7 +1475,7 @@
     <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:16px;">
       <div>
         <h3 class="modal-title">Print 12 Table QR Stands</h3>
-        <p class="modal-subtitle" style="margin-bottom:0;">Printable table tent QR cards for Shamba House</p>
+        <p class="modal-subtitle" style="margin-bottom:0;">Printable table tent QR cards for Testimony Cafeteria</p>
       </div>
       <button class="btn-primary" id="btn-trigger-browser-print">
         <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 6 2 18 2 18 9"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect x="6" y="14" width="12" height="8"/></svg>

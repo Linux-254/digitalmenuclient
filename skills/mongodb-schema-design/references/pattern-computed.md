@@ -149,7 +149,7 @@ On-demand materialized views are not automatically refreshed—you control when 
 
 ### Find expensive aggregations that should be pre-computed
 
-For Atlas M10+ use slow query logs to find the slowest aggregations. See [Slow query logs](references/source-slow-query-logs.md). 
+For Atlas M10+ use slow query logs to find the slowest aggregations. See [Slow query logs](references/source-slow-query-logs.md).
 Use codebase if available, ask the user.
 
 ### Check if same aggregation runs repeatedly

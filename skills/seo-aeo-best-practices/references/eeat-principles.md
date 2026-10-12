@@ -101,9 +101,9 @@ defineType({
     defineField({ name: 'author', type: 'reference', to: [{ type: 'author' }] }),
     defineField({ name: 'publishedAt', type: 'datetime' }),
     defineField({ name: 'updatedAt', type: 'datetime' }),
-    defineField({ 
-      name: 'reviewedBy', 
-      type: 'reference', 
+    defineField({
+      name: 'reviewedBy',
+      type: 'reference',
       to: [{ type: 'author' }],
       description: 'Expert reviewer for fact-checking'
     }),

@@ -28,7 +28,7 @@ Access methods vary by driver. Consult your driver's [documentation](https://www
 
 **What it is**: The total number of connections the pool has established since initialization.
 
-**Events**: 
+**Events**:
 - `ConnectionCreatedEvent` - fired when a new connection object is instantiated.
 
 **What to watch for**: Rapid increases (+100 connections/hour in steady state) indicate connection churn due to network issues or misconfiguration.
@@ -88,7 +88,7 @@ Access methods vary by driver. Consult your driver's [documentation](https://www
 
 **What it is**: The number of operations currently waiting for an available connection because the pool is at capacity.
 
-**Event**: 
+**Event**:
 - `ConnectionCheckoutStartedEvent` - track when threads enter wait queue.
 
 **What to watch for**: Any value above zero indicates possible pool exhaustion. This is a critical metric.
@@ -143,7 +143,7 @@ Use `db.serverStatus().connections` via MongoDB shell or driver equivalent.
 
 **What to watch for**: Approaching `maxIncomingConnections` indicates server-side saturation.
 
-**Default maxIncomingConnections values per OS**: 
+**Default maxIncomingConnections values per OS**:
 - Windows: 1,000,000
 - Linux/Unix: `(RLIMIT_NOFILE / 2) * 0.8` (MongoDB enforces this limit even if configured higher)
 

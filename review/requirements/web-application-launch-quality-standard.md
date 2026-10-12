@@ -215,31 +215,31 @@ For every endpoint ask:
 
 Checklist
 
--  
+-
   Authentication
--  
+-
   Authorization
--  
+-
   Input validation
--  
+-
   Safe output
--  
+-
   Rate limiting
--  
+-
   Request-size limits
--  
+-
   Safe errors
--  
+-
   Intentional CORS configuration
--  
+-
   HTTPS
--  
+-
   Secure secrets
--  
+-
   Logging/monitoring
--  
+-
   Idempotency where appropriate
--  
+-
   Pagination for large datasets
 
 9. Payment Flow
@@ -398,27 +398,27 @@ Tell users what went wrong, where, and how to fix it.
 14. Tables & Data-Heavy Interfaces
 For large datasets:
 
--  
+-
   Search
--  
+-
   Filtering
--  
+-
   Sorting
--  
+-
   Pagination
--  
+-
   Useful column hierarchy
--  
+-
   Responsive behavior
--  
+-
   Empty state
--  
+-
   Loading state
--  
+-
   Bulk actions where justified
--  
+-
   Export where useful
--  
+-
   Permission-aware actions
 
 Don't load thousands of unnecessary records into the browser.
@@ -438,27 +438,27 @@ Test:
 
 Accessibility:
 
--  
+-
   Semantic HTML
--  
+-
   Keyboard navigation
--  
+-
   Visible focus
--  
+-
   Good contrast
--  
+-
   Form labels
--  
+-
   Accessible control names
--  
+-
   Useful alt text
--  
+-
   Correct heading hierarchy
--  
+-
   Understandable errors
--  
+-
   Reduced-motion support
--  
+-
   Accessible dialogs
 
 16. Performance
@@ -628,37 +628,37 @@ Test:
 24. Deployment Checklist
 Before production:
 
--  
+-
   Production environment configured.
--  
+-
   HTTPS enabled.
--  
+-
   Secrets secured.
--  
+-
   Database migrations applied.
--  
+-
   Backups configured.
--  
+-
   Error monitoring enabled.
--  
+-
   Debug mode disabled.
--  
+-
   Test accounts/data removed.
--  
+-
   CORS reviewed.
--  
+-
   Security headers reviewed.
--  
+-
   Rate limits configured.
--  
+-
   Domain configured.
--  
+-
   Email/SMS tested.
--  
+-
   Payment provider tested.
--  
+-
   Webhooks verified.
--  
+-
   Recovery/rollback plan understood.
 
 25. Production Security Red Flags
@@ -682,180 +682,180 @@ Stop and review if you find:
 26. Web App Pre-Launch Checklist
 Product
 
--  
+-
   Core problem is clear.
--  
+-
   Core workflows complete.
--  
+-
   User roles defined.
--  
+-
   Permissions defined.
--  
+-
   Empty/error/loading states exist.
--  
+-
   No fake production data.
 
 UI/UX
 
--  
+-
   Design system consistent.
--  
+-
   Navigation intuitive.
--  
+-
   Forms clear.
--  
+-
   Feedback immediate.
--  
+-
   Destructive actions protected.
--  
+-
   Mobile tested.
--  
+-
   Accessibility reviewed.
--  
+-
   Unnecessary visual effects removed.
 
 Authentication
 
--  
+-
   Registration tested.
--  
+-
   Login tested.
--  
+-
   Logout tested.
--  
+-
   Password recovery tested.
--  
+-
   Session expiry tested.
--  
+-
   Brute-force protection considered.
--  
+-
   Secure cookies/session handling configured.
 
 Authorization
 
--  
+-
   Roles defined.
--  
+-
   Ownership checks.
--  
+-
   Server-side authorization.
--  
+-
   Direct URL access tested.
--  
+-
   API authorization tested.
--  
+-
   Privilege escalation tested.
 
 API
 
--  
+-
   Validation.
--  
+-
   Authentication.
--  
+-
   Authorization.
--  
+-
   Rate limiting.
--  
+-
   Safe errors.
--  
+-
   CORS.
--  
+-
   Pagination.
--  
+-
   Request limits.
--  
+-
   Idempotency where needed.
 
 Database
 
--  
+-
   Schema reviewed.
--  
+-
   Relationships reviewed.
--  
+-
   Constraints added.
--  
+-
   Indexes reviewed.
--  
+-
   Migrations available.
--  
+-
   Backups configured.
--  
+-
   Sensitive data protected.
 
 Payments
 
--  
+-
   Server determines amount.
--  
+-
   Payment integration tested.
--  
+-
   Callback/webhook verification.
--  
+-
   Duplicate-payment protection.
--  
+-
   Pending/failed/success states.
--  
+-
   Refund/cancellation handling.
--  
+-
   Transaction records.
--  
+-
   Reconciliation process.
 
 Performance
 
--  
+-
   Images optimized.
--  
+-
   JavaScript optimized.
--  
+-
   API calls reviewed.
--  
+-
   Database queries reviewed.
--  
+-
   Large lists handled efficiently.
--  
+-
   Mobile performance tested.
 
 Security
 
--  
+-
   HTTPS.
--  
+-
   Secrets secured.
--  
+-
   Input validation.
--  
+-
   XSS protections.
--  
+-
   SQL injection protections.
--  
+-
   CSRF protections where applicable.
--  
+-
   Authentication.
--  
+-
   Authorization.
--  
+-
   Upload security.
--  
+-
   Security headers reviewed.
--  
+-
   Dependency vulnerabilities reviewed.
 
 Observability
 
--  
+-
   Error monitoring.
--  
+-
   Application logs.
--  
+-
   Important events.
--  
+-
   Payment monitoring.
--  
+-
   Health checks.
--  
+-
   Critical alerts.
 
 27. After Launch

@@ -427,8 +427,8 @@ function renderDashboardCategories() {
   if (!container) return;
 
   const cats = categoryNames.map(name => {
-    const count = name === 'All' 
-      ? menuItems.length 
+    const count = name === 'All'
+      ? menuItems.length
       : menuItems.filter(i => i.category === name).length;
     let thumb = '/images/hero-banner.jpg';
     if (name === 'Pizzas & Burgers') thumb = '/images/beef-pizza.jpg';

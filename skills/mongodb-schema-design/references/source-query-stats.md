@@ -30,19 +30,19 @@ db.aggregate([
     }
   },
   { $unwind: "$key.queryShape.pipeline" },
-  { 
-    $match: { "key.queryShape.pipeline.$lookup": { $exists: true } } 
+  {
+    $match: { "key.queryShape.pipeline.$lookup": { $exists: true } }
   },
-  { 
-    $set: { 
-      stageKeyValue: { 
-        $first: { $objectToArray: "$key.queryShape.pipeline" } 
-      } 
+  {
+    $set: {
+      stageKeyValue: {
+        $first: { $objectToArray: "$key.queryShape.pipeline" }
+      }
     }
   },
-  { 
+  {
     $group: {
-      _id: { 
+      _id: {
         source: "$key.queryShape.cmdNs.coll",
         target: "$stageKeyValue.v.from"
       },
@@ -58,9 +58,9 @@ db.aggregate([
   { $sort: { totalLookupHits: -1 } }
 ])
 
-// High totalLookupHits = frequently joined 
+// High totalLookupHits = frequently joined
 // High avgPipelineMS = lookup is part of slow queries (does not automatically mean that the $lookup is slow, could be the whole pipeline - see the full query shapes)
-// High scores on both - consider embedding to avoid $lookup 
+// High scores on both - consider embedding to avoid $lookup
 ```
 
 **Example 1.1: Find query shapes that use $lookup on specific collections**

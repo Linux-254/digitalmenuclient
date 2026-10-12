@@ -1,0 +1,383 @@
+{
+  "venue": {
+    "name": "Testimony Cafeteria",
+    "legal_name": "Testimony Cafeteria",
+    "short_name": "Testimony Cafe",
+    "tagline": "Come hungry. Leave smiling.",
+    "slogan": "The comfort classics. A proper plate, every time.",
+    "area": "Kasarani, Nairobi",
+    "currency": "KES"
+  },
+  "sections": [
+    { "id": "breakfast", "name": "Breakfast", "subtitle": "Start your day proper" },
+    { "id": "main-dish", "name": "Main Dish", "subtitle": "The comfort classics" },
+    { "id": "plains-sides", "name": "Plains & Sides", "subtitle": "Build your plate" },
+    { "id": "vegies", "name": "Vegies", "subtitle": "Fresh greens & sides" },
+    { "id": "fast-food", "name": "Fast Food", "subtitle": "Quick bites & snacks" },
+    { "id": "drinks", "name": "Drinks", "subtitle": "Cold juices, soda & hot tea" }
+  ],
+  "categories": [
+    { "id": "minji", "name": "Minji (Peas)", "station": "kitchen", "section": "Main Dish", "layout": "plate-card" },
+    { "id": "ndegu", "name": "Ndegu (Green Grams)", "station": "kitchen", "section": "Main Dish", "layout": "plate-card" },
+    { "id": "njahi", "name": "Njahi (Black Beans)", "station": "kitchen", "section": "Main Dish", "layout": "plate-card" },
+    { "id": "matumbo", "name": "Matumbo", "station": "kitchen", "section": "Main Dish", "layout": "plate-card" },
+    { "id": "githeri", "name": "Githeri", "station": "kitchen", "section": "Main Dish", "layout": "plate-card" },
+    { "id": "beans", "name": "Beans", "station": "kitchen", "section": "Main Dish", "layout": "plate-card" },
+    { "id": "beef", "name": "Beef", "station": "kitchen", "section": "Main Dish", "layout": "plate-card" },
+    { "id": "mix", "name": "Mix Plates", "station": "kitchen", "section": "Main Dish", "layout": "plate-card" },
+    { "id": "chicken-broiler", "name": "Chicken Broiler", "station": "kitchen", "section": "Main Dish", "layout": "portion-picker" },
+    { "id": "chicken-kienyeji", "name": "Chicken Kienyeji", "station": "kitchen", "section": "Main Dish", "layout": "portion-picker" },
+    { "id": "plains", "name": "Plains & Sides", "station": "kitchen", "section": "Plains & Sides", "layout": "build-plate" },
+    { "id": "vegies", "name": "Vegies & Greens", "station": "kitchen", "section": "Vegies", "layout": "build-plate" },
+    { "id": "breakfast-items", "name": "Breakfast Plates & Bites", "station": "kitchen", "section": "Breakfast", "layout": "menu-board" },
+    { "id": "breakfast-addons", "name": "Breakfast Add-ons", "station": "kitchen", "section": "Breakfast", "layout": "menu-board" },
+    { "id": "fast-food", "name": "Fast Food", "station": "kitchen", "section": "Fast Food", "layout": "quick-tiles" },
+    { "id": "juices", "name": "Fresh Juices", "station": "bar", "section": "Drinks", "note": "No Added Sugar, 100% Fruit", "layout": "glass-card" },
+    { "id": "soft-drinks", "name": "Soft Drinks & Water", "station": "bar", "section": "Drinks", "layout": "bottle-shelf" },
+    { "id": "hot-drinks", "name": "Hot Drinks", "station": "bar", "section": "Drinks", "layout": "menu-board" },
+    { "id": "coffee", "name": "Barista Coffee", "station": "bar", "section": "Drinks", "layout": "menu-board" },
+    { "id": "fishes", "name": "Fish Specials", "station": "kitchen", "section": "Main Dish", "note": "Priced by size at counter", "layout": "ask-staff" }
+  ],
+  "items": [
+    {
+      "id": "item-minji",
+      "category": "minji",
+      "name": "Minji",
+      "desc": "Slow-simmered green garden peas prepared in savory coastal herbs and tomato onion gravy.",
+      "image": "/images/tilapia-curry.jpg",
+      "starting_price": 140,
+      "variants": [
+        { "label": "Plain", "price": 140, "price_status": "confirmed" },
+        { "label": "Ugali", "price": 180, "price_status": "confirmed" },
+        { "label": "Beef", "price": 220, "price_status": "confirmed" },
+        { "label": "Mukimo", "price": 250, "price_status": "confirmed" },
+        { "label": "Pilau", "price": 270, "price_status": "confirmed" },
+        { "label": "Beef Rice", "price": 300, "price_status": "confirmed" }
+      ]
+    },
+    {
+      "id": "item-ndegu",
+      "category": "ndegu",
+      "name": "Ndegu",
+      "desc": "Wholesome green grams gently stewed with aromatic onions, garlic, and rich stock.",
+      "image": "/images/spaghetti.jpg",
+      "starting_price": 80,
+      "variants": [
+        { "label": "Plain", "price": 80, "price_status": "confirmed" },
+        { "label": "Rice", "price": 120, "price_status": "confirmed" },
+        { "label": "Ugali", "price": 120, "price_status": "working" },
+        { "label": "Matoke", "price": 150, "price_status": "confirmed" }
+      ]
+    },
+    {
+      "id": "item-njahi",
+      "category": "njahi",
+      "name": "Njahi",
+      "desc": "Traditional black beans braised with ripe bananas and sweet onions in heritage broth.",
+      "image": "/images/black-burger.jpg",
+      "starting_price": 100,
+      "variants": [
+        { "label": "Rice", "price": 100, "price_status": "confirmed" },
+        { "label": "Plain", "price": 120, "price_status": "confirmed" },
+        { "label": "Ugali", "price": 160, "price_status": "confirmed" },
+        { "label": "Mukimo", "price": 180, "price_status": "confirmed" },
+        { "label": "Beef", "price": 220, "price_status": "confirmed" },
+        { "label": "Beef Rice", "price": 220, "price_status": "confirmed" },
+        { "label": "Matumbo", "price": 270, "price_status": "confirmed" }
+      ]
+    },
+    {
+      "id": "item-matumbo",
+      "category": "matumbo",
+      "name": "Matumbo",
+      "desc": "Tender spiced tripe stewed slowly with sweet peppers, onions, tomatoes, and cilantro.",
+      "image": "/images/hero-banner.jpg",
+      "starting_price": 150,
+      "variants": [
+        { "label": "Plain", "price": 150, "price_status": "confirmed" },
+        { "label": "Ugali", "price": 200, "price_status": "working" },
+        { "label": "Rice", "price": 200, "price_status": "working" },
+        { "label": "Mukimo", "price": 270, "price_status": "confirmed" },
+        { "label": "Githeri", "price": 300, "price_status": "confirmed" },
+        { "label": "Pilau", "price": 300, "price_status": "confirmed" }
+      ]
+    },
+    {
+      "id": "item-githeri",
+      "category": "githeri",
+      "name": "Githeri",
+      "desc": "Hearty boiled maize and beans tossed with sauteed vegetables and rich stew.",
+      "image": "/images/beef-pizza.jpg",
+      "starting_price": 150,
+      "variants": [
+        { "label": "Cabbage", "price": 150, "price_status": "confirmed" },
+        { "label": "Sukuma", "price": 150, "price_status": "confirmed" },
+        { "label": "Vegies", "price": 150, "price_status": "confirmed" },
+        { "label": "Njahi", "price": 180, "price_status": "working" },
+        { "label": "Matoke", "price": 220, "price_status": "confirmed" },
+        { "label": "Minji", "price": 280, "price_status": "working" }
+      ]
+    },
+    {
+      "id": "item-beans",
+      "category": "beans",
+      "name": "Beans",
+      "desc": "Classic red kidney beans simmered in thick onion tomato gravy.",
+      "image": "/images/spaghetti.jpg",
+      "starting_price": 80,
+      "variants": [
+        { "label": "Plain", "price": 80, "price_status": "confirmed" },
+        { "label": "Rice", "price": 120, "price_status": "working" },
+        { "label": "Ugali", "price": 120, "price_status": "working" },
+        { "label": "Matoke", "price": 180, "price_status": "confirmed" }
+      ]
+    },
+    {
+      "id": "item-beef",
+      "category": "beef",
+      "name": "Beef Stew",
+      "desc": "Prime Kenyan beef chunks slow-braised with carrots, garlic, and fresh herbs.",
+      "image": "/images/hero-banner.jpg",
+      "starting_price": 250,
+      "variants": [
+        { "label": "Plain", "price": 250, "price_status": "working" },
+        { "label": "Rice", "price": 300, "price_status": "working" },
+        { "label": "Ugali", "price": 300, "price_status": "working" }
+      ]
+    },
+    {
+      "id": "item-mix-plates",
+      "category": "mix",
+      "name": "Mix Favorites",
+      "desc": "Crowd-pleasing kitchen combinations cooked to perfection.",
+      "image": "/images/beef-pizza.jpg",
+      "starting_price": 50,
+      "variants": [
+        { "label": "Managu", "price": 50, "price_status": "confirmed" },
+        { "label": "Egg Nyanya Plain", "price": 100, "price_status": "confirmed" },
+        { "label": "Mix Rice", "price": 100, "price_status": "confirmed" },
+        { "label": "Pilau Mix", "price": 100, "price_status": "confirmed" },
+        { "label": "Egg Nyanya Rice", "price": 140, "price_status": "confirmed" },
+        { "label": "Pilau Eggs Tomato", "price": 150, "price_status": "confirmed" }
+      ]
+    },
+    {
+      "id": "item-chicken-broiler",
+      "category": "chicken-broiler",
+      "name": "Chicken Broiler",
+      "desc": "Tender farm chicken roasted with paprika, garlic butter, and fresh herbs.",
+      "image": "/images/chicken-steak.jpg",
+      "type": "chicken",
+      "variants": [
+        { "label": "1/4", "portion": "quarter", "price": 200, "price_status": "confirmed" },
+        { "label": "1/2", "portion": "half", "price": 400, "price_status": "confirmed" },
+        { "label": "3/4", "portion": "three_quarters", "price": 600, "price_status": "confirmed" },
+        { "label": "Full", "portion": "full", "price": 800, "price_status": "confirmed" }
+      ]
+    },
+    {
+      "id": "item-chicken-kienyeji",
+      "category": "chicken-kienyeji",
+      "name": "Chicken Kienyeji",
+      "desc": "Authentic free-range indigenous chicken full of rich natural flavor.",
+      "image": "/images/chicken-steak.jpg",
+      "type": "chicken",
+      "variants": [
+        { "label": "1/4", "portion": "quarter", "price": 300, "price_status": "confirmed" },
+        { "label": "1/2", "portion": "half", "price": 600, "price_status": "confirmed" },
+        { "label": "3/4", "portion": "three_quarters", "price": 900, "price_status": "confirmed" },
+        { "label": "Full", "portion": "full", "price": 1200, "price_status": "confirmed" }
+      ]
+    },
+    {
+      "id": "item-plains-build",
+      "category": "plains",
+      "name": "Plains & Sides (Build Your Plate)",
+      "desc": "Select staples and accompaniments to complete your meal.",
+      "items": [
+        { "name": "Kachumbari", "price": 30, "group": "Extras" },
+        { "name": "Plastic Dish (Takeaway)", "price": 30, "group": "Extras" },
+        { "name": "Ugali", "price": 50, "group": "Staples" },
+        { "name": "Rice", "price": 50, "group": "Staples" },
+        { "name": "Mala (Kubwa)", "price": 80, "group": "Extras" },
+        { "name": "Omena Plain", "price": 80, "group": "Extras" },
+        { "name": "Matoke", "price": 100, "group": "Staples" },
+        { "name": "Mukimo", "price": 120, "group": "Staples" },
+        { "name": "Ugali Mala", "price": 130, "group": "Staples" },
+        { "name": "Omena Ugali/Rice", "price": 130, "group": "Staples" },
+        { "name": "Githeri Plain", "price": 150, "group": "Staples" },
+        { "name": "Pilau", "price": 150, "group": "Staples" }
+      ]
+    },
+    {
+      "id": "item-vegies-build",
+      "category": "vegies",
+      "name": "Vegies & Greens",
+      "desc": "Fresh daily market vegetables cooked lightly with ginger and onions.",
+      "items": [
+        { "name": "Avocado", "price": 40, "group": "Greens" },
+        { "name": "Cabbage Plain", "price": 50, "group": "Greens" },
+        { "name": "Sukuma Plain", "price": 50, "group": "Greens" },
+        { "name": "Ugali Plain", "price": 50, "group": "Staples" },
+        { "name": "Kienyeji Greens Plain", "price": 80, "group": "Greens" },
+        { "name": "Cabbage Rice", "price": 100, "group": "Combinations" },
+        { "name": "Cabbage Ugali", "price": 100, "group": "Combinations" },
+        { "name": "Sukuma Ugali", "price": 100, "group": "Combinations" },
+        { "name": "Cabbage Matoke", "price": 120, "group": "Combinations" },
+        { "name": "Cabbage Mukimo", "price": 120, "group": "Combinations" },
+        { "name": "Kienyeji Ugali", "price": 130, "group": "Combinations" },
+        { "name": "Kienyeji Rice", "price": 130, "group": "Combinations" }
+      ]
+    },
+    {
+      "id": "item-breakfast-menu",
+      "category": "breakfast-items",
+      "name": "Breakfast Bites & Plates",
+      "items": [
+        { "name": "Boiled Egg", "price": 30 },
+        { "name": "Smokie", "price": 40 },
+        { "name": "Fried Egg", "price": 50 },
+        { "name": "Samosa", "price": 50 },
+        { "name": "Nduma (Arrow Root)", "price": 50 },
+        { "name": "Ngwaci (Sweet Potato)", "price": 50 },
+        { "name": "Uji Power (Porridge)", "price": 50 },
+        { "name": "White Coffee", "price": 60 },
+        { "name": "Beef Sausage", "price": 80 },
+        { "name": "Omelette", "price": 100 },
+        { "name": "Toast Mayai", "price": 100 }
+      ]
+    },
+    {
+      "id": "item-fast-food",
+      "category": "fast-food",
+      "name": "Fast Food & Chips",
+      "items": [
+        { "name": "Chips Regular", "price": 150, "image": "/images/chicken-steak.jpg" },
+        { "name": "Chips Masala", "price": 200, "image": "/images/beef-pizza.jpg" }
+      ]
+    },
+    {
+      "id": "item-juices-fresh",
+      "category": "juices",
+      "name": "100% Pure Fruit Juices",
+      "badge": "No Added Sugar · 100% Fruit",
+      "items": [
+        {
+          "name": "Passion Juice",
+          "color": "#f59e0b",
+          "variants": [
+            { "label": "Small (300ml)", "price": 70 },
+            { "label": "Large (500ml)", "price": 150 }
+          ]
+        },
+        {
+          "name": "Sugarcane Juice",
+          "color": "#84cc16",
+          "variants": [
+            { "label": "Standard", "price": 100 }
+          ]
+        },
+        {
+          "name": "Beetroot Sugar Juice",
+          "color": "#e11d48",
+          "variants": [
+            { "label": "Standard", "price": 100 }
+          ]
+        },
+        {
+          "name": "Cocktail Juice",
+          "color": "#f97316",
+          "variants": [
+            { "label": "Large (500ml)", "price": 100 }
+          ]
+        },
+        {
+          "name": "Mango Juice",
+          "color": "#eab308",
+          "variants": [
+            { "label": "Large (500ml)", "price": 150 }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "item-soft-drinks-shelf",
+      "category": "soft-drinks",
+      "name": "Chilled Sodas & Mineral Water",
+      "items": [
+        { "brand": "Novida Ndogo", "size": "300ml", "price": 40 },
+        { "brand": "Novida Kubwa", "size": "500ml", "price": 60 },
+        { "brand": "Pepsi", "size": "350ml", "price": 50 },
+        { "brand": "Lemonade", "size": "Glass", "price": 50 },
+        { "brand": "Dasani Water 500ml", "size": "500ml", "price": 50 },
+        { "brand": "Dasani Water 1L", "size": "1L", "price": 80 },
+        { "brand": "Soda 300ml", "size": "300ml", "price": 60 },
+        { "brand": "Soda 500ml", "size": "500ml", "price": 70 },
+        { "brand": "Azam Soda", "size": "350ml", "price": 60 },
+        { "brand": "Predator Energy", "size": "400ml", "price": 70 },
+        { "brand": "Play Energy", "size": "400ml", "price": 80 },
+        { "brand": "Minute Maid Ndogo", "size": "350ml", "price": 80 },
+        { "brand": "Minute Maid Kubwa", "size": "1L", "price": 150 },
+        { "brand": "Can Soda", "size": "330ml", "price": 100 },
+        { "brand": "Afia Ndogo", "size": "300ml", "price": 60 },
+        { "brand": "Afia Kubwa", "size": "500ml", "price": 80 },
+        { "brand": "Plastic Soda 500ml", "size": "500ml", "price": 80 },
+        { "brand": "Plastic Soda 1.2L", "size": "1.2L", "price": 150 },
+        { "brand": "Plastic Soda 2L", "size": "2L", "price": 250 }
+      ]
+    },
+    {
+      "id": "item-hot-drinks-menu",
+      "category": "hot-drinks",
+      "name": "Hot Kenyan Teas & Milk",
+      "items": [
+        { "name": "Water Lemon", "price": 30 },
+        { "name": "Chai (Kenyan Milk Tea)", "price": 40 },
+        { "name": "Black Tea", "price": 40 },
+        { "name": "Black Coffee", "price": 40 },
+        { "name": "Milk Glass", "price": 50 },
+        { "name": "Lemon Tea", "price": 60 },
+        { "name": "Lemon Coffee", "price": 60 },
+        { "name": "Chocolate Milk", "price": 60 }
+      ]
+    },
+    {
+      "id": "item-coffee-menu",
+      "category": "coffee",
+      "name": "Barista Espressos & Lattes",
+      "items": [
+        {
+          "name": "Espresso",
+          "variants": [
+            { "label": "Single Shot", "price": 100 },
+            { "label": "Double Shot", "price": 150 }
+          ]
+        },
+        {
+          "name": "Cappuccino",
+          "variants": [
+            { "label": "Single Shot", "price": 130 },
+            { "label": "Double Shot", "price": 180 }
+          ]
+        },
+        { "name": "Black Coffee (Americano)", "price": 120 },
+        { "name": "Vanilla Latte", "price": 170 },
+        { "name": "Chocolate Latte", "price": 170 }
+      ]
+    },
+    {
+      "id": "item-fish-specials",
+      "category": "fishes",
+      "name": "Fresh Lake Victoria Fish",
+      "note": "Fish prices vary by size (medium / large). Please ask our floor attendant.",
+      "items": [
+        { "name": "Fish Dry Fry", "price": null, "status": "Ask Staff" },
+        { "name": "Fish Wet Fry", "price": null, "status": "Ask Staff" },
+        { "name": "Fish Masala", "price": null, "status": "Ask Staff" },
+        { "name": "Fish Curry", "price": null, "status": "Ask Staff" },
+        { "name": "Fish Biryani", "price": null, "status": "Ask Staff" },
+        { "name": "Fish Munye", "price": null, "status": "Ask Staff" }
+      ]
+    }
+  ]
+}

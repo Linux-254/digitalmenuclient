@@ -30,7 +30,7 @@ class TransparentScene(Scene):
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
         self.camera.background_color = None  # Transparent
-    
+
     def construct(self):
         circle = Circle(color=BLUE, fill_opacity=0.8)
         self.play(Create(circle))
@@ -95,22 +95,22 @@ ffmpeg -i input.mp4 -i palette.png \
 def create_optimized_gif(input_video, output_gif, fps=15, width=480):
     """Create optimized GIF from video."""
     palette = "palette_temp.png"
-    
+
     # Generate palette
     subprocess.run([
         "ffmpeg", "-y", "-i", input_video,
         "-vf", f"fps={fps},scale={width}:-1:flags=lanczos,palettegen",
         palette
     ])
-    
+
     # Create GIF
     subprocess.run([
         "ffmpeg", "-y", "-i", input_video, "-i", palette,
-        "-filter_complex", 
+        "-filter_complex",
         f"fps={fps},scale={width}:-1:flags=lanczos[x];[x][1:v]paletteuse",
         output_gif
     ])
-    
+
     # Cleanup
     os.remove(palette)
 ```
@@ -124,13 +124,13 @@ import React, { useRef, useEffect } from 'react';
 
 export function ManimAnimation({ src, autoplay = true, loop = false }) {
   const videoRef = useRef(null);
-  
+
   useEffect(() => {
     if (autoplay && videoRef.current) {
       videoRef.current.play();
     }
   }, [autoplay]);
-  
+
   return (
     <video
       ref={videoRef}
@@ -156,18 +156,18 @@ export function ResponsiveAnimation({ basePath, alt }) {
       playsInline
       style={{ maxWidth: '100%' }}
     >
-      <source 
-        src={`${basePath}_desktop.webm`} 
+      <source
+        src={`${basePath}_desktop.webm`}
         type="video/webm"
         media="(min-width: 1024px)"
       />
-      <source 
-        src={`${basePath}_tablet.mp4`} 
+      <source
+        src={`${basePath}_tablet.mp4`}
         type="video/mp4"
         media="(min-width: 768px)"
       />
-      <source 
-        src={`${basePath}_mobile.mp4`} 
+      <source
+        src={`${basePath}_mobile.mp4`}
         type="video/mp4"
       />
       {alt}
@@ -185,32 +185,32 @@ import { useState, useEffect } from 'react';
 
 export function useScrollProgress(ref) {
   const [progress, setProgress] = useState(0);
-  
+
   useEffect(() => {
     const handleScroll = () => {
       if (!ref.current) return;
-      
+
       const rect = ref.current.getBoundingClientRect();
       const windowHeight = window.innerHeight;
-      
+
       // Calculate progress (0 to 1)
       const start = windowHeight;  // Element enters viewport
       const end = -rect.height;    // Element leaves viewport
       const current = rect.top;
-      
-      const progress = Math.max(0, Math.min(1, 
+
+      const progress = Math.max(0, Math.min(1,
         (start - current) / (start - end)
       ));
-      
+
       setProgress(progress);
     };
-    
+
     window.addEventListener('scroll', handleScroll, { passive: true });
     handleScroll();  // Initial calculation
-    
+
     return () => window.removeEventListener('scroll', handleScroll);
   }, [ref]);
-  
+
   return progress;
 }
 ```
@@ -225,13 +225,13 @@ export function ScrollVideo({ src }) {
   const containerRef = useRef(null);
   const videoRef = useRef(null);
   const progress = useScrollProgress(containerRef);
-  
+
   useEffect(() => {
     if (videoRef.current && videoRef.current.duration) {
       videoRef.current.currentTime = progress * videoRef.current.duration;
     }
   }, [progress]);
-  
+
   return (
     <div ref={containerRef} style={{ height: '300vh' }}>
       <video
@@ -270,7 +270,7 @@ import dynamic from 'next/dynamic';
 
 const HeavyAnimation = dynamic(
   () => import('../components/HeavyAnimation'),
-  { 
+  {
     loading: () => <div>Loading animation...</div>,
     ssr: false  // Disable server-side rendering
   }
@@ -315,7 +315,7 @@ class SVGTextScene(Scene):
     def construct(self):
         text = Text("Mathematical Beauty")
         self.add(text)
-        
+
         # Export to SVG (instead of video)
         # Use: manim -pql --format svg script.py
 ```
@@ -361,12 +361,12 @@ fs.mkdirSync(OUTPUT_DIR, { recursive: true });
 // Render each scene
 for (const { file, scene } of SCENES) {
   console.log(`Rendering ${scene}...`);
-  
+
   execSync(
     `manim -qh --format mp4 ${file} ${scene} -o ${OUTPUT_DIR}/${scene}.mp4`,
     { stdio: 'inherit' }
   );
-  
+
   // Also create WebM version
   execSync(
     `ffmpeg -i ${OUTPUT_DIR}/${scene}.mp4 -c:v libvpx-vp9 -crf 30 ${OUTPUT_DIR}/${scene}.webm`,
@@ -400,7 +400,7 @@ function LazyVideo({ src }) {
     triggerOnce: true,
     rootMargin: '200px',  // Start loading before visible
   });
-  
+
   return (
     <div ref={ref}>
       {inView && (

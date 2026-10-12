@@ -95,12 +95,12 @@ class SyncedScene(Scene):
             "definition": 4.5,
             "example": 2.8,
         }
-        
+
         # Intro segment
         title = Text("Derivatives")
         self.play(Write(title), run_time=min(1.5, AUDIO_DURATIONS["intro"]))
         self.wait(AUDIO_DURATIONS["intro"] - 1.5)  # Fill remaining time
-        
+
         # Definition segment
         definition = MathTex(r"f'(x) = \lim_{h \to 0} \frac{f(x+h) - f(x)}{h}")
         self.play(
@@ -141,17 +141,17 @@ class MarkedScene(Scene):
         (2.2, "equation_start"),
         (5.2, "end"),
     ]
-    
+
     def construct(self):
         title = Text("Derivatives")
         equation = MathTex("f'(x)")
-        
+
         # Start to title_complete (1.2s)
         self.play(Write(title), run_time=1.2)
-        
+
         # Pause (0.5s)
         self.wait(0.5)
-        
+
         # Equation start to end
         self.play(
             FadeOut(title),
@@ -201,7 +201,7 @@ def concatenate_audio(audio_files, output_path):
     with open("audio_list.txt", "w") as f:
         for audio_file in audio_files:
             f.write(f"file '{audio_file}'\n")
-    
+
     cmd = [
         "ffmpeg", "-y",
         "-f", "concat",
@@ -255,17 +255,17 @@ class SFXScene(Scene):
         "transform": "sfx/whoosh.mp3",
         "complete": "sfx/ding.mp3",
     }
-    
+
     def construct(self):
         circle = Circle()
-        
+
         # Log timing for post-processing
         self.sfx_cues = []
-        
+
         # Pop sound at 0s
         self.sfx_cues.append((0, "appear"))
         self.play(GrowFromCenter(circle))
-        
+
         # Whoosh at current time
         self.sfx_cues.append((self.renderer.time, "transform"))
         self.play(circle.animate.shift(RIGHT * 2))
@@ -305,31 +305,31 @@ class AudioPipeline:
         self.project_dir = Path(project_dir)
         self.audio_dir = self.project_dir / "audio"
         self.audio_dir.mkdir(exist_ok=True)
-    
+
     async def generate_all_audio(self, script_segments):
         """Generate TTS for all segments."""
         for name, text in script_segments.items():
             output = self.audio_dir / f"{name}.mp3"
             await generate_voiceover(text, str(output))
-    
+
     def get_all_durations(self):
         """Get durations for all audio files."""
         durations = {}
         for audio_file in self.audio_dir.glob("*.mp3"):
             durations[audio_file.stem] = get_audio_duration(str(audio_file))
         return durations
-    
+
     def mux_final(self, video_path, output_path):
         """Combine all audio with video."""
         audio_files = sorted(self.audio_dir.glob("*.mp3"))
-        
+
         # Concatenate audio
         combined_audio = self.audio_dir / "combined.mp3"
         concatenate_audio(
             [str(f) for f in audio_files],
             str(combined_audio)
         )
-        
+
         # Mux with video
         mux_audio_video(video_path, str(combined_audio), output_path)
 ```
