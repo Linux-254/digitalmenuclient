@@ -312,9 +312,9 @@
               </div>
             </section>
 
-            <section aria-label="Menu Categories">
+            <section aria-label="Menu Categories · CRUD">
               <div class="section-header">
-                <h3>Categories</h3>
+                <h3>Categories · CRUD</h3>
                 <span style="font-size:12px;font-weight:600;color:var(--primary);cursor:pointer;" id="filter-all-cat">View All</span>
               </div>
               <div class="category-rail" id="category-rail" role="tablist"></div>
@@ -705,8 +705,8 @@
         <div style="display:flex;align-items:flex-start;gap:12px;">
           <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" style="flex-shrink:0;color:#f59e0b;"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
           <div>
-            <strong style="font-size:14px;display:block;margin-bottom:2px;color:#fde68a;">Table Arrival Pending Staff Confirmation</strong>
-            <p style="font-size:12px;margin:0;line-height:1.4;color:var(--guest-muted);">Welcome to Testimonial Cafe! You can browse the full menu and build your cart. Our floor attendant will confirm your seating shortly to unlock sending orders to the kitchen.</p>
+            <strong style="font-size:14px;display:block;margin-bottom:2px;color:#fde68a;">Table Arrival · Staff Assigned Automatically</strong>
+            <p style="font-size:12px;margin:0;line-height:1.4;color:var(--guest-muted);">Welcome to Testimonial Cafe! You can browse the full menu and build your cart. Your table is recognized and a floor attendant is assigned automatically.</p>
           </div>
         </div>
       </section>
@@ -719,9 +719,9 @@
       </section>
 
       <!-- Horizontally scrollable dynamic category filter row (from actual categories table) -->
-      <section class="guest-category-section" aria-label="Menu Categories">
+      <section class="guest-category-section" aria-label="Menu Categories · CRUD">
         <div class="guest-category-bar" id="guest-category-bar" role="tablist">
-          <!-- Populated dynamically from venueCategories -->
+          <!-- Populated dynamically from venueCategories · CRUD -->
         </div>
       </section>
 
@@ -1515,5 +1515,5 @@
 
 <script src="/qrcode.min.js"></script>
 <script src="/app.js"></script>
-</body>
+<div class="order-type-control" aria-label="Order type"><button>Dine in</button><button>To go</button></div></body>
 </html>
