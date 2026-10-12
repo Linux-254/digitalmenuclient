@@ -383,7 +383,7 @@ let cart = []; // Array of { id, name, price, qty, spice, side, notes }
 let currentView = 'dashboard'; // 'dashboard' or 'guest'
 let currentDashPanel = 'home';
 const staffSession = window.__STAFF_SESSION__ || null;
-const DEMO_STAFF = { admin: 'demo-admin', staff: 'demo-staff' };
+const DEMO_STAFF = { admin: '2407', staff: '1102' };
 const hasAdminSession = () => Boolean(staffSession && ['admin','manager'].includes(staffSession.role));
 const demoRole = pin => pin === DEMO_STAFF.admin ? 'admin' : pin === DEMO_STAFF.staff ? 'staff' : null;
 let selectedDishForCustomization = null;

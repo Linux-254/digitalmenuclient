@@ -4045,3 +4045,6 @@ button,a,.btn-primary,.btn-secondary{min-height:48px}
  --dash-ink:#211B18;--dash-muted:#6B5F57;--dash-hover:#E9E0D3;--guest-bg:#211B18;--guest-surface:#2D2420;
  --guest-ink:#FFFDF8;--guest-accent:#E9E0D3;--guest-pill-active:#ED1C24;
 }
+/* Daily special: editorial feature card, not a generic carousel */
+.daily-special{background:var(--charcoal);color:var(--cream);border:2px solid var(--red);border-radius:24px;overflow:hidden}.daily-special .price,.daily-special .badge{color:var(--red-on-dark)}
+
