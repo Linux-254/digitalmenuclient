@@ -1,3 +1,30 @@
+
+function isItemInCategory(item, catName) {
+  if (!catName || catName === 'All') return true;
+  if (!item) return false;
+  const icat = String(item.category || '').toLowerCase().trim();
+  const target = String(catName).toLowerCase().trim();
+  if (icat === target) return true;
+  if (target === 'barista coffee' || target === 'coffee') {
+    return icat === 'coffee' || icat === 'barista coffee' || icat === 'hot-drinks' || (item.name && item.name.toLowerCase().includes('coffee'));
+  }
+  if (target === 'fresh juices' || target === 'juices') {
+    return icat === 'juices' || icat === 'fresh juices' || (item.name && item.name.toLowerCase().includes('juice'));
+  }
+  if (target === 'drinks & beverages' || target === 'drinks') {
+    return icat.includes('drink') || icat.includes('juice') || icat.includes('coffee') || item.station === 'bar';
+  }
+  if (typeof categories !== 'undefined' && Array.isArray(categories)) {
+    const foundCat = categories.find(c =>
+      (c.id && c.id.toLowerCase() === target) || (c.name && c.name.toLowerCase() === target)
+    );
+    if (foundCat) {
+      if (icat === (foundCat.id || '').toLowerCase() || icat === (foundCat.name || '').toLowerCase()) return true;
+    }
+  }
+  return false;
+}
+
 /* ═══════════════════════════════════════════════
    SHAMBA HOUSE — Testimony OS & Digital Menu
    Design Principles:
@@ -3746,9 +3773,9 @@ function setView(viewName) {
 
     // Hide Staff OS buttons on guest/customer side
     const staffGateBtn = $('#btn-staff-gate');
-    if (staffGateBtn) staffGateBtn.style.display = 'none';
+    if (staffGateBtn) staffGateBtn.style.display = 'inline-flex';
     const guestStaffGateBtn = $('#btn-guest-staff-gate');
-    if (guestStaffGateBtn) guestStaffGateBtn.style.display = 'none';
+    if (guestStaffGateBtn) guestStaffGateBtn.style.display = 'inline-flex';
 
     $('#tab-dash-view')?.classList.remove('active');
     $('#tab-guest-view')?.classList.add('active');
@@ -3800,10 +3827,7 @@ function renderDashboardCategories() {
     const count = name === 'All'
       ? menuItems.length
       : menuItems.filter(i => {
-          if (name === 'Drinks & Beverages') {
-            return i.category === 'Drinks & Beverages' || i.category === 'Juices & Drinks' || i.category === 'Drinks';
-          }
-          return i.category === name;
+          return isItemInCategory(i, name);
         }).length;
     let thumb = '/images/hero-banner.jpg';
     if (name === 'Pizzas & Burgers') thumb = '/images/beef-pizza.jpg';
@@ -4130,12 +4154,7 @@ function renderGuestDishes() {
     // Render only the selected category
     sectionsToRender = [{
       category: guestActiveCategory,
-      items: menuItems.filter(m => {
-        if (guestActiveCategory === 'Drinks & Beverages') {
-          return m.category === 'Drinks & Beverages' || m.category === 'Juices & Drinks' || m.category === 'Drinks';
-        }
-        return m.category === guestActiveCategory;
-      })
+      items: menuItems.filter(m => isItemInCategory(m, guestActiveCategory))
     }];
   }
 
@@ -4596,8 +4615,9 @@ function submitTableOrder() {
   updateTableOverallStatus(table);
 
   // Payment Method Recording (Item 9)
+  const isCash = $('#pay-method-cash')?.classList.contains('active-pay-method');
   const isCard = $('#pay-method-card')?.classList.contains('active-pay-method');
-  const paymentMethodLabel = isCard ? 'Card / POS Terminal' : 'M-Pesa STK (Live)';
+  const paymentMethodLabel = isCash ? 'Cash (Pay to Waiter)' : (isCard ? 'Card / POS Terminal' : 'M-Pesa STK (Live)');
 
   // Order record with grace countdown window (Item 6)
   const orderPlacementTime = Date.now();
@@ -4649,7 +4669,7 @@ function submitTableOrder() {
           body: JSON.stringify({
             order_id: apiRes.order.id,
             phone_number: $('#customer-phone')?.value || '0712345678',
-            method: isCard ? 'card' : 'mpesa'
+            method: isCash ? 'cash' : (isCard ? 'card' : 'mpesa')
           })
         }).catch(() => {});
       }
@@ -5307,7 +5327,7 @@ function setupEventListeners() {
   function renderMenuCatalogDishes() {
     const grid = document.getElementById('dishes-grid-menu');
     if (!grid) return;
-    const filtered = menuItems.filter(item => activeCategory === 'All' || item.category === activeCategory);
+    const filtered = menuItems.filter(item => isItemInCategory(item, activeCategory));
     grid.innerHTML = filtered.map(item => `
       <article class="dish-card-dash ${!item.is_available ? 'sold-out' : ''}" data-id="${item.id}">
         <div class="dish-card-image">
