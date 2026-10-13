@@ -3,7 +3,21 @@
   "cleanUrls": true,
   "trailingSlash": false,
   "rewrites": [
-    { "source": "/guest", "destination": "/index.html" },
-    { "source": "/menu", "destination": "/index.html" }
+    {
+      "source": "/guest",
+      "destination": "/index.html"
+    },
+    {
+      "source": "/menu",
+      "destination": "/index.html"
+    },
+    {
+      "source": "/t/:match*",
+      "destination": "/index.html"
+    },
+    {
+      "source": "/(.*)",
+      "destination": "/index.html"
+    }
   ]
 }

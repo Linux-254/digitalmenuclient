@@ -4036,16 +4036,332 @@ button,a,.btn-primary,.btn-secondary{min-height:48px}
 @media (min-width:481px) and (max-width:834px){.menu-grid{grid-template-columns:repeat(2,minmax(0,1fr))!important}}
 @media (min-width:835px) and (max-width:1180px){.menu-grid{grid-template-columns:repeat(3,minmax(0,1fr))!important}}
 @media (prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.001ms!important;transition-duration:.001ms!important;scroll-behavior:auto!important}}
-/* Active Testimonial Cafe palette — applied values, not placeholders */
-:root{
- --charcoal:#211B18;--red:#ED1C24;--cream:#E9E0D3;--paper:#F5F1EA;--warm-white:#FFFDF8;
- --red-on-dark:#FF5A5F;--red-strong:#C8101A;
- --gray-border:#D8CEC2;--primary:#ED1C24;--primary-hover:#C8101A;--primary-active:#9B0C12;
- --primary-soft:#FBE4E5;--primary-border:#EBA1A5;--dash-bg:#F5F1EA;--dash-surface:#FFFDF8;--dash-card:#FFFDF8;
- --dash-ink:#211B18;--dash-muted:#6B5F57;--dash-hover:#E9E0D3;--guest-bg:#211B18;--guest-surface:#2D2420;
- --guest-ink:#FFFDF8;--guest-accent:#E9E0D3;--guest-pill-active:#ED1C24;
+
+/* ═══════════════════════════════════════════════
+   TESTIMONIAL CAFE AUTHORITATIVE BRAND PALETTE & CONTRAST
+   Tokens: --charcoal #211B18, --red #ED1C24, --cream #E9E0D3,
+           --paper #F5F1EA, --warm-white #FFFDF8
+   Contrast for small text:
+           --red-on-dark #FF5A5F (passes WCAG AA on dark backgrounds)
+           --red-strong #C8101A  (passes WCAG AA on light backgrounds)
+   ═══════════════════════════════════════════════ */
+:root {
+  --charcoal: #211B18;
+  --red: #ED1C24;
+  --cream: #E9E0D3;
+  --paper: #F5F1EA;
+  --warm-white: #FFFDF8;
+  --red-on-dark: #FF5A5F;
+  --red-strong: #C8101A;
+  --gray-border: #D8D0C5;
+
+  /* Brand and UI Semantics */
+  --primary: #ED1C24;
+  --primary-hover: #C8101A;
+  --primary-active: #9B0C12;
+  --primary-soft: #FBE4E5;
+  --primary-border: #EBA1A5;
+
+  /* Dashboard Theme (Warm Paper & Editorial Clean) */
+  --dash-bg: var(--paper);
+  --dash-surface: var(--warm-white);
+  --dash-card: var(--warm-white);
+  --dash-ink: var(--charcoal);
+  --dash-muted: #5C524A;
+  --dash-hover: var(--cream);
+  --dash-border: var(--cream);
+
+  /* Customer-Facing Tableside Menu Theme (Harmonized with Dashboard) */
+  --guest-bg: var(--paper);
+  --guest-bg-gradient: linear-gradient(180deg, #F5F1EA 0%, #ECE4D8 100%);
+  --guest-surface: var(--warm-white);
+  --guest-card: var(--warm-white);
+  --guest-card-hover: #FFFFFF;
+  --guest-border: var(--cream);
+  --guest-border-strong: var(--gray-border);
+  --guest-ink: var(--charcoal);
+  --guest-muted: #5C524A;
+  --guest-subtle: #7E7268;
+  --guest-accent: var(--charcoal);
+  --guest-pill-bg: var(--warm-white);
+  --guest-pill-hover: var(--cream);
+  --guest-pill-active: var(--charcoal);
+  --guest-pill-active-ink: var(--warm-white);
 }
-/* Daily special: editorial feature card, not a generic carousel */
-.daily-special{background:var(--charcoal);color:var(--cream);border:2px solid var(--red);border-radius:24px;overflow:hidden}.daily-special .price,.daily-special .badge{color:var(--red-on-dark)}
-.order-type-control{display:flex;gap:8px}.order-type-control button{min-height:48px;padding:0 18px;border:1px solid var(--red);background:var(--warm-white);color:var(--charcoal);border-radius:999px;font-weight:800}.order-type-control button:first-child{background:var(--red);color:#fff}
-.crud-actions{display:flex;gap:8px;flex-wrap:wrap;margin:12px 0}.crud-actions button{min-height:48px;padding:0 14px;border:1px solid var(--red);border-radius:10px;background:var(--warm-white);color:var(--charcoal);font-weight:800}
+
+/* ── Small Text Contrast Safety Rules ── */
+.small-text-on-light, .price-small-light, .dish-price-text {
+  color: var(--red-strong) !important;
+  font-weight: 800;
+}
+.small-text-on-dark, .badge-on-dark, .promo-tag-dark {
+  color: var(--red-on-dark) !important;
+  font-weight: 700;
+}
+
+/* ── CRUD Sub-Navigation Tabs ── */
+.crud-tab-bar .btn-secondary {
+  border: 1px solid var(--dash-border);
+  background: var(--dash-surface);
+  color: var(--dash-ink);
+  transition: all 0.2s ease;
+}
+.crud-tab-bar .btn-secondary.active {
+  background: var(--charcoal) !important;
+  color: var(--warm-white) !important;
+  border-color: var(--charcoal) !important;
+  font-weight: 700;
+}
+
+/* ── Category CRUD Cards & Table ── */
+.category-crud-card {
+  background: var(--dash-surface);
+  border: 1px solid var(--dash-border);
+  border-radius: var(--radius-lg);
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 12px;
+  box-shadow: var(--shadow-sm);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+.category-crud-card:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+  border-color: var(--gray-border);
+}
+.cat-badge-section {
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  padding: 3px 8px;
+  border-radius: 999px;
+  background: var(--cream);
+  color: var(--charcoal);
+}
+.cat-badge-station {
+  font-size: 11px;
+  font-weight: 700;
+  padding: 3px 8px;
+  border-radius: 999px;
+  background: rgba(16, 185, 129, 0.12);
+  color: #065f46;
+}
+
+/* ── Station CRUD Cards ── */
+.station-crud-card {
+  background: var(--dash-surface);
+  border: 1px solid var(--dash-border);
+  border-radius: var(--radius-lg);
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  box-shadow: var(--shadow-sm);
+  border-left-width: 5px;
+  transition: transform 0.2s ease;
+}
+.station-crud-card:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+}
+
+/* ── Dining Zone CRUD Cards ── */
+.zone-crud-card {
+  background: var(--dash-surface);
+  border: 1px solid var(--dash-border);
+  border-radius: var(--radius-lg);
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  box-shadow: var(--shadow-sm);
+  border-left-width: 5px;
+  transition: transform 0.2s ease;
+}
+.zone-crud-card:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+}
+
+/* ── Order Type Selector & Ticket Badges ── */
+.order-type-btn {
+  transition: all 0.2s ease;
+}
+.order-type-btn.active {
+  background: var(--primary-soft) !important;
+  border-color: var(--primary) !important;
+  color: var(--primary) !important;
+  font-weight: 800 !important;
+}
+.ticket-type-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 2px 8px;
+  border-radius: 999px;
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+}
+.ticket-type-badge.type-dinein {
+  background: #dcfce7;
+  color: #166534;
+  border: 1px solid #bbf7d0;
+}
+.ticket-type-badge.type-togo {
+  background: #ffedd5;
+  color: #9a3412;
+  border: 1px solid #fed7aa;
+}
+
+/* ── Editorial Daily Specials Carousel & Cards ── */
+.guest-promos-container {
+  display: flex;
+  gap: 16px;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  padding: 4px 4px 14px 4px;
+  -webkit-overflow-scrolling: touch;
+}
+.guest-promo-slide {
+  flex: 0 0 clamp(290px, 85vw, 380px);
+  scroll-snap-align: start;
+  background: var(--warm-white);
+  border: 1.5px solid var(--cream);
+  border-radius: 20px;
+  padding: 16px;
+  display: flex;
+  gap: 14px;
+  align-items: center;
+  box-shadow: 0 4px 16px rgba(33, 27, 24, 0.06);
+  position: relative;
+  transition: transform 0.25s ease, border-color 0.25s ease;
+}
+.guest-promo-slide:hover {
+  transform: translateY(-2px);
+  border-color: var(--red);
+}
+.guest-promo-slide img {
+  width: 90px;
+  height: 90px;
+  border-radius: 14px;
+  object-fit: cover;
+  flex-shrink: 0;
+}
+.guest-promo-slide .promo-badge-tag {
+  position: absolute;
+  top: 10px;
+  right: 12px;
+  background: var(--charcoal);
+  color: var(--red-on-dark);
+  font-size: 10px;
+  font-weight: 800;
+  padding: 3px 8px;
+  border-radius: 999px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+.guest-promo-slide .promo-title {
+  font-size: 14px;
+  font-weight: 800;
+  color: var(--charcoal);
+  margin: 0 0 4px 0;
+  line-height: 1.25;
+}
+.guest-promo-slide .promo-desc {
+  font-size: 11.5px;
+  color: var(--guest-muted);
+  margin: 0 0 8px 0;
+  line-height: 1.35;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+.btn-add-special-cart {
+  background: var(--red);
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  padding: 6px 12px;
+  font-size: 11px;
+  font-weight: 700;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  transition: background 0.15s ease;
+}
+.btn-add-special-cart:hover {
+  background: var(--red-strong);
+}
+
+/* ── Enhanced Staff Team Roster ── */
+.staff-stats-row {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 14px;
+  margin-bottom: 20px;
+}
+.staff-stat-box {
+  background: var(--dash-surface);
+  border: 1px solid var(--dash-border);
+  border-radius: 12px;
+  padding: 14px 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+.staff-stat-box span {
+  font-size: 11.5px;
+  color: var(--dash-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+.staff-stat-box strong {
+  font-size: 20px;
+  font-weight: 900;
+  color: var(--dash-ink);
+}
+
+.staff-card-v2 {
+  background: var(--dash-surface);
+  border: 1px solid var(--dash-border);
+  border-radius: 14px;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 14px;
+  box-shadow: var(--shadow-sm);
+  transition: all 0.2s ease;
+}
+.staff-card-v2:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+  border-color: var(--gray-border);
+}
+
+/* ── Clean Floor Map ── */
+.floor-filter-pill {
+  padding: 6px 14px;
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 700;
+  border: 1px solid var(--dash-border);
+  background: var(--dash-surface);
+  color: var(--dash-ink);
+  cursor: pointer;
+  white-space: nowrap;
+  transition: all 0.15s ease;
+}
+.floor-filter-pill.active {
+  background: var(--charcoal);
+  color: var(--warm-white);
+  border-color: var(--charcoal);
+}
+

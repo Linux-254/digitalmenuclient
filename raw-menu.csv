@@ -1,0 +1,162 @@
+Section,Category,Dish,Variant,Price KES,Status,Basis
+Breakfast,Breakfast Add-ons,Nescafe,Standard,,unknown,Name or price is cropped in the photo.
+Breakfast,Breakfast Add-ons,Sausage,Standard,,unknown,Name or price is cropped in the photo.
+Breakfast,Breakfast Add-ons,Tea Bag,Standard,,unknown,Name or price is cropped in the photo.
+Breakfast,Breakfast Add-ons,Toast,Standard,,unknown,Name or price is cropped in the photo.
+Breakfast,Breakfast Add-ons,Toast Mafuta,Standard,,unknown,Name or price is cropped in the photo.
+Breakfast,Breakfast Plates & Bites,"Egg (name partly hidden, '..iled Egg')",Standard,,unknown,Name and price row partly hidden.
+Drinks,Coffee,Iced Coffee Vanilla Latte,Standard,,unknown,"Blank, cropped or hidden on the menu and not on the website."
+Drinks,Coffee,Long Black,Standard,,unknown,"Blank, cropped or hidden on the menu and not on the website."
+Drinks,Coffee,Milk Chocolate (hot),Standard,,unknown,"Blank, cropped or hidden on the menu and not on the website."
+Drinks,Coffee,Mocha Cappuccino,Standard,,unknown,"Blank, cropped or hidden on the menu and not on the website."
+Drinks,Coffee,Vanilla Cold Espresso,Standard,,unknown,"Blank, cropped or hidden on the menu and not on the website."
+Drinks,Fresh Juices,Cocktail Juice,Small,,unknown,"Blank, cropped or hidden on the menu and not on the website."
+Drinks,Fresh Juices,Mango Juice,Small,,unknown,"Blank, cropped or hidden on the menu and not on the website."
+Drinks,Soft Drinks & Water,Water,1L,,unknown,"Blank, cropped or hidden on the menu and not on the website."
+Drinks,Soft Drinks & Water,Water,Small,,unknown,"Blank, cropped or hidden on the menu and not on the website."
+Fast Food,Fast Food,Andazi,Standard,,unknown,"Blank, cropped or hidden on the menu and not on the website."
+Fast Food,Fast Food,Bhajia,Standard,,unknown,"Blank, cropped or hidden on the menu and not on the website."
+Fast Food,Fast Food,Chapati Brown,Standard,,unknown,"Blank, cropped or hidden on the menu and not on the website."
+Fast Food,Fast Food,Chapati White,Standard,,unknown,"Blank, cropped or hidden on the menu and not on the website."
+Fast Food,Fast Food,Juice,Standard,,unknown,"Blank, cropped or hidden on the menu and not on the website."
+Main Course,Fishes,Fish Biryani,Standard,,unknown,"Blank, cropped or hidden on the menu and not on the website."
+Main Course,Fishes,Fish Curry,Standard,,unknown,"Blank, cropped or hidden on the menu and not on the website."
+Main Course,Fishes,Fish Dry Fry,Standard,,unknown,"Blank, cropped or hidden on the menu and not on the website."
+Main Course,Fishes,Fish Masala,Standard,,unknown,"Blank, cropped or hidden on the menu and not on the website."
+Main Course,Fishes,Fish Munye,Standard,,unknown,"Blank, cropped or hidden on the menu and not on the website."
+Main Course,Fishes,Fish Wet Fry,Standard,,unknown,"Blank, cropped or hidden on the menu and not on the website."
+Main Course,Vegies,Kienyeji (greens),Matoke,,unknown,"Menu sticker is blank; website's 80 equals Kienyeji Plain, likely a copy error."
+Main Dish,Beef,Beef,Githeri,,unknown,"Blank, cropped or hidden on the menu and not on the website."
+Main Dish,Beef,Beef,Matoke,,unknown,"Blank, cropped or hidden on the menu and not on the website."
+Main Dish,Beef,Beef,Minji Pilau,,unknown,"Blank, cropped or hidden on the menu and not on the website."
+Main Dish,Beef,Beef,Mokimo,,unknown,Handwritten sticker is ambiguous (340 or 310).
+Main Dish,Beef,Beef,Minji Plain,,unknown,"Blank, cropped or hidden on the menu and not on the website."
+Main Dish,Beef,Beef,Pilau,,unknown,"Blank, cropped or hidden on the menu and not on the website."
+Breakfast,Breakfast Plates & Bites,Boiled Egg,Standard,30,working,Legible but hand-patched or partly cropped on the menu; not on the website.
+Breakfast,Breakfast Plates & Bites,Fried Egg,Standard,50,working,Legible but hand-patched or partly cropped on the menu; not on the website.
+Drinks,Coffee,Chocolate Latte,Standard,170,working,Legible but hand-patched or partly cropped on the menu; not on the website.
+Main Course,Vegies,Cabbage,Mukimo,120,working,Sticker over the first Cabbage Mukimo row reads about 120. The second printed 'Cabbage Mukimo 180' looks like a stale duplicate line.
+Main Dish,Beans,Beans,Rice,120,working,Legible but hand-patched or partly cropped on the menu; not on the website.
+Main Dish,Beans,Beans,Ugali,120,working,Legible but hand-patched or partly cropped on the menu; not on the website.
+Main Dish,Beef,Beef,Plain,250,working,Legible but hand-patched or partly cropped on the menu; not on the website.
+Main Dish,Beef,Beef,Rice,300,working,Legible but hand-patched or partly cropped on the menu; not on the website.
+Main Dish,Beef,Beef,Ugali,300,working,Legible but hand-patched or partly cropped on the menu; not on the website.
+Main Dish,Githeri,Githeri,Minji,280,working,Handwritten sticker reads 280; website says 180 (probably the old printed price).
+Main Dish,Githeri,Githeri,Njahi,180,working,Menu line ends '...ahi' (Njahi) and shows 180/=; website calls it Ndengu. Name chosen from the menu.
+Main Dish,Matumbo,Matumbo,Ugali,200,working,Both Ugali rows on the menu read 200. Website's extra 'Matumbo Ugali 300' matches no priced row (three Matumbo rows are covered by blank stickers).
+Main Dish,Matumbo,Matumbo,Rice,200,working,Menu sticker clearly reads 200; website says 300 (looks like a copy of the Pilau price).
+Main Dish,Ndegu (Green Grams),Ndegu,Ugali,120,working,Sticker 120 sits over printed 100; Ndegu Rice shows the same pattern and the website used the sticker there.
+Plains & Sides,Plains & Sides,Omena,Plain,80,working,Sticker reads 80; website's 200 would make plain Omena dearer than Omena with ugali.
+Plains & Sides,Plains & Sides,Omena,Ugali / Rice,130,working,"Sticker reads 130 (80 + Ugali 50 adds up); website says 150. Sticker looks partly struck through, so recheck."
+Plains & Sides,Plains & Sides,Ugali Mala,Standard,130,working,Visible digits on the sticker are '13'; Ugali 50 + Mala 80 = 130. Website says 120.
+Breakfast,Breakfast Plates & Bites,Beef Sausage,Standard,80,confirmed,Printed price legible on the menu.
+Breakfast,Breakfast Plates & Bites,Nduma,Standard,50,confirmed,Printed price legible on the menu.
+Breakfast,Breakfast Plates & Bites,Ngwaci,Standard,50,confirmed,Printed price legible on the menu.
+Breakfast,Breakfast Plates & Bites,Omelette,Standard,100,confirmed,Printed price legible on the menu.
+Breakfast,Breakfast Plates & Bites,Samosa,Standard,50,confirmed,Printed price legible on the menu.
+Breakfast,Breakfast Plates & Bites,Smokie,Standard,40,confirmed,Printed price legible on the menu.
+Breakfast,Breakfast Plates & Bites,Toast Mayai,Standard,100,confirmed,Printed price legible on the menu.
+Breakfast,Breakfast Plates & Bites,Uji Power,Standard,50,confirmed,Printed price legible on the menu.
+Breakfast,Breakfast Plates & Bites,White Coffee,Standard,60,confirmed,Printed price legible on the menu.
+Drinks,Coffee,Black Coffee (espresso-based),Standard,120,confirmed,Printed price legible on the menu.
+Drinks,Coffee,Cappuccino,Single,130,confirmed,Printed price legible on the menu.
+Drinks,Coffee,Cappuccino,Double,180,confirmed,Printed price legible on the menu.
+Drinks,Coffee,Espresso,Single,100,confirmed,Printed price legible on the menu.
+Drinks,Coffee,Espresso,Double,150,confirmed,Printed price legible on the menu.
+Drinks,Coffee,Vanilla Latte,Standard,170,confirmed,Printed price legible on the menu.
+Drinks,Fresh Juices,Beetroot Sugar,Standard,100,confirmed,Menu photo and website agree.
+Drinks,Fresh Juices,Cocktail Juice,Large,100,confirmed,Menu photo and website agree.
+Drinks,Fresh Juices,Mango Juice,Large,150,confirmed,Menu photo and website agree.
+Drinks,Fresh Juices,Passion Juice,Large,150,confirmed,Menu photo and website agree.
+Drinks,Fresh Juices,Passion Juice,Small,70,confirmed,Menu photo and website agree.
+Drinks,Fresh Juices,Sugarcane Juice,Standard,100,confirmed,Menu photo and website agree.
+Drinks,Hot Drinks,Black Coffee,Standard,40,confirmed,Printed price legible on the menu.
+Drinks,Hot Drinks,Black Tea,Standard,40,confirmed,Printed price legible on the menu.
+Drinks,Hot Drinks,Chai,Standard,40,confirmed,Printed price legible on the menu.
+Drinks,Hot Drinks,Chocolate Milk,Standard,60,confirmed,Printed price legible on the menu.
+Drinks,Hot Drinks,Lemon Coffee,Standard,60,confirmed,Printed price legible on the menu.
+Drinks,Hot Drinks,Lemon Tea,Standard,60,confirmed,Printed price legible on the menu.
+Drinks,Hot Drinks,Milk Glass,Standard,50,confirmed,Printed price legible on the menu.
+Drinks,Hot Drinks,Water Lemon,Standard,30,confirmed,Printed price legible on the menu.
+Drinks,Soft Drinks & Water,Afia,Kubwa,80,confirmed,Menu photo and website agree.
+Drinks,Soft Drinks & Water,Afia,Ndogo,60,confirmed,Menu photo and website agree.
+Drinks,Soft Drinks & Water,Azam,Standard,60,confirmed,Menu photo and website agree.
+Drinks,Soft Drinks & Water,Can Soda,Standard,100,confirmed,Menu photo and website agree.
+Drinks,Soft Drinks & Water,Dasani Water,1L,80,confirmed,Menu photo and website agree.
+Drinks,Soft Drinks & Water,Dasani Water,500ml,50,confirmed,Menu photo and website agree.
+Drinks,Soft Drinks & Water,Lemonade,Standard,50,confirmed,Menu photo and website agree.
+Drinks,Soft Drinks & Water,Minute Maid,Kubwa,150,confirmed,Menu photo and website agree.
+Drinks,Soft Drinks & Water,Minute Maid,Ndogo,80,confirmed,Menu photo and website agree.
+Drinks,Soft Drinks & Water,Novida,Kubwa,60,confirmed,Menu photo and website agree.
+Drinks,Soft Drinks & Water,Novida,Ndogo,40,confirmed,Menu photo and website agree.
+Drinks,Soft Drinks & Water,Pepsi,Standard,50,confirmed,Menu photo and website agree.
+Drinks,Soft Drinks & Water,Plastic Soda,1.2L,150,confirmed,Menu photo and website agree.
+Drinks,Soft Drinks & Water,Plastic Soda,2L,250,confirmed,Menu photo and website agree.
+Drinks,Soft Drinks & Water,Plastic Soda,500ml,80,confirmed,Menu photo and website agree.
+Drinks,Soft Drinks & Water,Plastic Soda,Small,50,confirmed,Menu photo and website agree.
+Drinks,Soft Drinks & Water,Play,Standard,80,confirmed,Menu photo and website agree.
+Drinks,Soft Drinks & Water,Predator,Standard,70,confirmed,Menu photo and website agree.
+Drinks,Soft Drinks & Water,Soda,300ml,60,confirmed,Menu photo and website agree.
+Drinks,Soft Drinks & Water,Soda,500ml,70,confirmed,Menu photo and website agree.
+Fast Food,Fast Food,Chips,Standard,150,confirmed,Menu photo and website agree.
+Fast Food,Fast Food,Chips Masala,Standard,200,confirmed,Menu photo and website agree.
+Main Course,Vegies,Avocado,Standard,40,confirmed,Menu photo and website agree.
+Main Course,Vegies,Cabbage,Matoke,120,confirmed,Menu photo and website agree.
+Main Course,Vegies,Cabbage,Plain,50,confirmed,Menu photo and website agree.
+Main Course,Vegies,Cabbage,Rice,100,confirmed,Menu photo and website agree.
+Main Course,Vegies,Cabbage,Ugali,100,confirmed,Menu photo and website agree.
+Main Course,Vegies,Kienyeji (greens),Plain,80,confirmed,Menu photo and website agree.
+Main Course,Vegies,Kienyeji (greens),Ugali,130,confirmed,Menu photo and website agree.
+Main Course,Vegies,Kienyeji (greens),Rice,130,confirmed,Menu photo and website agree.
+Main Course,Vegies,Sukuma,Plain,50,confirmed,Menu photo and website agree.
+Main Course,Vegies,Sukuma,Ugali,100,confirmed,Menu photo and website agree.
+Main Course,Vegies,Ugali Plain,Standard,50,confirmed,Menu photo and website agree.
+Main Dish,Beans,Beans,Matoke,180,confirmed,Printed price legible on the menu.
+Main Dish,Beans,Beans,Plain,80,confirmed,Printed price legible on the menu.
+Main Dish,Chicken Broiler,Chicken Broiler,1/4,200,confirmed,Printed price legible on the menu.
+Main Dish,Chicken Broiler,Chicken Broiler,1/2,400,confirmed,Printed price legible on the menu.
+Main Dish,Chicken Broiler,Chicken Broiler,3/4,600,confirmed,Printed price legible on the menu.
+Main Dish,Chicken Broiler,Chicken Broiler,Full,800,confirmed,Printed price legible on the menu.
+Main Dish,Chicken Kienyeji,Chicken Kienyeji,1/4,300,confirmed,Printed price legible on the menu.
+Main Dish,Chicken Kienyeji,Chicken Kienyeji,1/2,600,confirmed,Printed price legible on the menu.
+Main Dish,Chicken Kienyeji,Chicken Kienyeji,3/4,900,confirmed,Printed price legible on the menu.
+Main Dish,Chicken Kienyeji,Chicken Kienyeji,Full,1200,confirmed,Printed price legible on the menu.
+Main Dish,Githeri,Githeri,Cabbage,150,confirmed,Menu photo and website agree.
+Main Dish,Githeri,Githeri,Matoke,220,confirmed,Menu photo and website agree.
+Main Dish,Githeri,Githeri,Sukuma,150,confirmed,Menu photo and website agree.
+Main Dish,Githeri,Githeri,Vegies,150,confirmed,Menu photo and website agree.
+Main Dish,Matumbo,Matumbo,Githeri,300,confirmed,Menu photo and website agree.
+Main Dish,Matumbo,Matumbo,Mukimo,270,confirmed,Menu photo and website agree.
+Main Dish,Matumbo,Matumbo,Pilau,300,confirmed,Menu photo and website agree.
+Main Dish,Matumbo,Matumbo,Plain,150,confirmed,Menu photo and website agree.
+Main Dish,Minji (Peas),Minji,Beef,220,confirmed,Menu photo and website agree.
+Main Dish,Minji (Peas),Minji,Beef Rice,300,confirmed,Menu photo and website agree.
+Main Dish,Minji (Peas),Minji,Mukimo,250,confirmed,Menu photo and website agree.
+Main Dish,Minji (Peas),Minji,Pilau,270,confirmed,Menu photo and website agree.
+Main Dish,Minji (Peas),Minji,Plain,140,confirmed,Menu photo and website agree.
+Main Dish,Minji (Peas),Minji,Ugali,180,confirmed,Menu photo and website agree.
+Main Dish,Mix,Egg Nyanya,Plain,100,confirmed,Menu photo and website agree.
+Main Dish,Mix,Egg Nyanya,Rice,140,confirmed,Menu photo and website agree.
+Main Dish,Mix,Managu,Standard,50,confirmed,Menu photo and website agree.
+Main Dish,Mix,Mix Rice,Standard,100,confirmed,Menu photo and website agree.
+Main Dish,Mix,Pilau Eggs Tomato,Standard,150,confirmed,Menu photo and website agree.
+Main Dish,Mix,Pilau Mix,Standard,100,confirmed,Menu photo and website agree.
+Main Dish,Ndegu (Green Grams),Ndegu,Matoke,150,confirmed,Menu photo and website agree.
+Main Dish,Ndegu (Green Grams),Ndegu,Plain,80,confirmed,Menu photo and website agree.
+Main Dish,Ndegu (Green Grams),Ndegu,Rice,120,confirmed,Menu photo and website agree.
+Main Dish,Njahi (Black Beans),Njahi,Beef,220,confirmed,Menu photo and website agree.
+Main Dish,Njahi (Black Beans),Njahi,Beef Rice,220,confirmed,Menu photo and website agree.
+Main Dish,Njahi (Black Beans),Njahi,Mukimo,180,confirmed,Menu photo and website agree.
+Main Dish,Njahi (Black Beans),Njahi,Matumbo,270,confirmed,Menu photo and website agree.
+Main Dish,Njahi (Black Beans),Njahi,Plain,120,confirmed,Menu photo and website agree.
+Main Dish,Njahi (Black Beans),Njahi,Rice,100,confirmed,Menu photo and website agree.
+Main Dish,Njahi (Black Beans),Njahi,Ugali,160,confirmed,Menu photo and website agree.
+Plains & Sides,Plains & Sides,Githeri Plain,Standard,150,confirmed,Menu photo and website agree.
+Plains & Sides,Plains & Sides,Kachumbari,Standard,30,confirmed,Menu photo and website agree.
+Plains & Sides,Plains & Sides,Mala,Kubwa (large),80,confirmed,Menu photo and website agree.
+Plains & Sides,Plains & Sides,Matoke,Standard,100,confirmed,Menu photo and website agree.
+Plains & Sides,Plains & Sides,Mukimo,Standard,120,confirmed,Menu photo and website agree.
+Plains & Sides,Plains & Sides,Pilau,Standard,150,confirmed,Menu photo and website agree.
+Plains & Sides,Plains & Sides,Plastic Dish (takeaway container),Standard,30,confirmed,Menu photo and website agree.
+Plains & Sides,Plains & Sides,Rice,Standard,50,confirmed,Menu photo and website agree.
+Plains & Sides,Plains & Sides,Ugali,Standard,50,confirmed,Menu photo and website agree.

@@ -343,15 +343,55 @@
 
           <!-- PANEL: Menu Catalog -->
           <div id="panel-menu" class="dash-panel" style="display:none;">
-            <div class="section-header">
-              <div><h3>Full Menu Catalog</h3><p style="font-size:13px;color:var(--dash-muted);margin-top:2px;">All dishes, drinks, and specials</p></div>
-              <button class="btn-primary" id="btn-menu-add-dish">
-                <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
-                Add New Dish
+            <div class="section-header" style="flex-wrap:wrap;gap:12px;">
+              <div>
+                <h3>Menu &amp; Catalog Management</h3>
+                <p style="font-size:13px;color:var(--dash-muted);margin-top:2px;">Dishes, dynamic categories, and kitchen/bar station routing</p>
+              </div>
+              <div style="display:flex;gap:8px;flex-wrap:wrap;">
+                <button class="btn-secondary" id="btn-menu-add-station">
+                  <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+                  + Add Station
+                </button>
+                <button class="btn-secondary" id="btn-menu-add-category">
+                  <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2"><line x1="8" y1="6" x2="21" y2="6"/><line x1="8" y1="12" x2="21" y2="12"/><line x1="8" y1="18" x2="21" y2="18"/><line x1="3" y1="6" x2="3.01" y2="6"/><line x1="3" y1="12" x2="3.01" y2="12"/><line x1="3" y1="18" x2="3.01" y2="18"/></svg>
+                  + Add Category
+                </button>
+                <button class="btn-primary" id="btn-menu-add-dish">
+                  <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+                  + Add New Dish
+                </button>
+              </div>
+            </div>
+
+            <!-- Menu Catalog Sub-Navigation Tabs -->
+            <div class="crud-tab-bar" style="display:flex;gap:8px;margin:16px 0 18px 0;border-bottom:1px solid var(--dash-border);padding-bottom:10px;">
+              <button class="btn-secondary active menu-tab-btn" id="tab-menu-dishes" data-menu-tab="dishes" style="font-size:13px;padding:7px 14px;border-radius:8px;">
+                Dishes Catalog (<span id="count-menu-dishes">0</span>)
+              </button>
+              <button class="btn-secondary menu-tab-btn" id="tab-menu-categories" data-menu-tab="categories" style="font-size:13px;padding:7px 14px;border-radius:8px;">
+                Categories (<span id="count-menu-categories">0</span>)
+              </button>
+              <button class="btn-secondary menu-tab-btn" id="tab-menu-stations" data-menu-tab="stations" style="font-size:13px;padding:7px 14px;border-radius:8px;">
+                Kitchen &amp; Bar Stations (<span id="count-menu-stations">0</span>)
               </button>
             </div>
-            <div class="category-rail" id="category-rail-menu" role="tablist" style="margin-top:16px;"></div>
-            <div class="dishes-grid" id="dishes-grid-menu" style="margin-top:20px;"></div>
+
+            <!-- Subview 1: Dishes Grid & Category Filter Rail -->
+            <div id="subview-menu-dishes">
+              <div class="category-rail" id="category-rail-menu" role="tablist" style="margin-top:6px;"></div>
+              <div class="dishes-grid" id="dishes-grid-menu" style="margin-top:16px;"></div>
+            </div>
+
+            <!-- Subview 2: Categories Management List & CRUD -->
+            <div id="subview-menu-categories" style="display:none;">
+              <div id="categories-manager-container" style="display:grid;grid-template-columns:repeat(auto-fill, minmax(280px, 1fr));gap:14px;"></div>
+            </div>
+
+            <!-- Subview 3: Kitchen & Bar Stations Management & CRUD -->
+            <div id="subview-menu-stations" style="display:none;">
+              <div id="stations-manager-container" style="display:grid;grid-template-columns:repeat(auto-fill, minmax(290px, 1fr));gap:16px;"></div>
+            </div>
           </div><!-- /panel-menu -->
 
           <!-- PANEL: Orders & Kitchen Kanban -->
@@ -413,9 +453,13 @@
             <div class="section-header" style="margin-bottom:16px;flex-wrap:wrap;gap:14px;">
               <div>
                 <h3>Floor Map &amp; Table QR OS</h3>
-                <p style="font-size:13px;color:var(--dash-muted);margin-top:2px;">Multi-party capacity, independent session billing, and unique QR generation</p>
+                <p style="font-size:13px;color:var(--dash-muted);margin-top:2px;">Multi-party capacity, dining zones, independent session billing, and unique QR generation</p>
               </div>
               <div style="display:flex;gap:10px;align-items:center;flex-wrap:wrap;">
+                <button class="btn-secondary" id="btn-open-add-zone">
+                  <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                  + Add Dining Zone
+                </button>
                 <button class="btn-secondary" id="btn-open-merge-tables" style="border-color:var(--primary);color:var(--primary);font-weight:700;">
                   <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M8 7h12m0 0l-4-4m4 4l-4 4m0 6H4m0 0l4 4m-4-4l4-4"/></svg>
                   Merge Tables
@@ -431,10 +475,13 @@
               </div>
             </div>
 
-            <!-- Floor Sub-Navigation Tabs (Grid vs QR Manager) -->
-            <div style="display:flex;gap:10px;margin-bottom:18px;border-bottom:1px solid var(--dash-border);padding-bottom:10px;">
+            <!-- Floor Sub-Navigation Tabs (Grid vs Dining Zones vs QR Manager) -->
+            <div style="display:flex;gap:10px;margin-bottom:18px;border-bottom:1px solid var(--dash-border);padding-bottom:10px;flex-wrap:wrap;">
               <button class="btn-secondary active floor-tab-btn" id="tab-floor-grid" data-floor-tab="grid" style="font-size:13px;padding:7px 14px;border-radius:8px;">
                 Floor Plan &amp; Multi-Party Sessions
+              </button>
+              <button class="btn-secondary floor-tab-btn" id="tab-floor-zones" data-floor-tab="zones" style="font-size:13px;padding:7px 14px;border-radius:8px;">
+                Dining Zones Manager (<span id="count-dining-zones">0</span>)
               </button>
               <button class="btn-secondary floor-tab-btn" id="tab-floor-qr-mgr" data-floor-tab="qr" style="font-size:13px;padding:7px 14px;border-radius:8px;">
                 Table QR Manager &amp; Downloads (PNG / Tents)
@@ -443,12 +490,18 @@
 
             <!-- Sub-view 1: Multi-party Interactive Floor Grid -->
             <div id="subview-floor-grid">
+              <div id="floor-zone-filters" class="category-rail" style="margin-bottom:16px;"></div>
               <div class="floor-map-grid" id="floor-map-grid"></div>
             </div>
 
             <!-- Sub-view 2: Dedicated Table QR Manager Grid -->
             <div id="subview-floor-qr" style="display:none;">
               <div class="qr-manager-grid" id="table-qr-manager-grid" style="display:grid;grid-template-columns:repeat(auto-fill, minmax(260px, 1fr));gap:16px;"></div>
+            </div>
+
+            <!-- Sub-view 3: Dining Zones Manager Grid -->
+            <div id="subview-floor-zones" style="display:none;">
+              <div id="dining-zones-manager-grid" style="display:grid;grid-template-columns:repeat(auto-fill, minmax(280px, 1fr));gap:16px;"></div>
             </div>
           </div><!-- /panel-floor -->
 
@@ -700,13 +753,13 @@
         </div>
       </section>
 
-      <!-- Arrival Verification Status Banner (Item 5) -->
-      <section class="guest-arrival-banner" id="guest-arrival-banner" style="display:none;margin-bottom:14px;background:rgba(245, 158, 11, 0.12);border:1px solid rgba(245, 158, 11, 0.35);border-radius:var(--radius-lg);padding:14px 18px;color:#fde68a;">
-        <div style="display:flex;align-items:flex-start;gap:12px;">
-          <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" style="flex-shrink:0;color:#f59e0b;"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+      <!-- Arrival Status Banner (Automatic Recognition) -->
+      <section class="guest-arrival-banner" id="guest-arrival-banner" style="display:none;margin-bottom:14px;background:rgba(16, 185, 129, 0.08);border:1px solid rgba(16, 185, 129, 0.25);border-radius:var(--radius-lg);padding:10px 16px;color:var(--charcoal);">
+        <div style="display:flex;align-items:center;gap:10px;">
+          <span style="width:8px;height:8px;border-radius:50%;background:#10b981;box-shadow:0 0 0 3px rgba(16,185,129,0.25);flex-shrink:0;"></span>
           <div>
-            <strong style="font-size:14px;display:block;margin-bottom:2px;color:#fde68a;">Table Arrival · Staff Assigned Automatically</strong>
-            <p style="font-size:12px;margin:0;line-height:1.4;color:var(--guest-muted);">Welcome to Testimonial Cafe! You can browse the full menu and build your cart. Your table is recognized and a floor attendant is assigned automatically.</p>
+            <strong style="font-size:13px;display:block;margin-bottom:1px;color:var(--charcoal);">Table <span id="arrival-banner-table-num">04</span> · Automatically Connected &amp; Seated</strong>
+            <p style="font-size:11px;margin:0;color:var(--guest-muted);line-height:1.3;">Welcome to Testimonial Cafe! Floor attendant assigned automatically. Your orders send directly to the kitchen.</p>
           </div>
         </div>
       </section>
@@ -846,15 +899,6 @@
       <small style="color:var(--dash-muted);font-size:11px;">A secure STK prompt will appear on your phone.</small>
     </div>
 
-    <!-- Pending Arrival Alert (Item 5) -->
-    <div id="cart-arrival-warning" style="display:none;background:rgba(239,68,68,0.12);border:1px solid rgba(239,68,68,0.3);border-radius:var(--radius-md);padding:10px 12px;margin-bottom:14px;color:#fca5a5;font-size:12px;line-height:1.4;">
-      <div style="display:flex;align-items:center;gap:6px;margin-bottom:2px;">
-        <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
-        <strong>Table Arrival Not Confirmed Yet</strong>
-      </div>
-      Please wait for a floor attendant to confirm your seating at Table <span id="cart-warning-table-num">--</span> before submitting your order.
-    </div>
-
     <button class="btn-primary" style="width:100%;justify-content:center;" id="btn-submit-order">
       Pay &amp; Send to Kitchen
     </button>
@@ -934,37 +978,94 @@
      MODAL: DISH CRUD (Create / Edit Dish) (Item 3)
      ═══════════════════════════════════════════ -->
 <div class="modal-overlay" id="modal-dish-crud">
-  <div class="modal-window" style="max-width:500px;text-align:left;">
+  <div class="modal-window" style="max-width:540px;text-align:left;">
     <button class="modal-close-btn" id="btn-close-dish-crud" aria-label="Close">
       <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
     </button>
     <h3 class="modal-title" id="dish-crud-title">Add New Menu Dish</h3>
-    <p class="modal-subtitle" id="dish-crud-subtitle">Create a new dish or beverage for Testimonial Cafe</p>
+    <p class="modal-subtitle" id="dish-crud-subtitle">Create or edit a dish with live price status, portion variant & notes</p>
 
     <form id="form-dish-crud" onsubmit="event.preventDefault();">
       <input type="hidden" id="dish-crud-id" value="" />
 
       <div class="form-group">
         <label>Dish Name *</label>
-        <input type="text" class="form-control" id="dish-crud-name" placeholder="e.g. Nyama Choma Platter" required />
+        <input type="text" class="form-control" id="dish-crud-name" placeholder="e.g. Minji Beef, Tilapia Fry, Iced Latte" required />
       </div>
 
       <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;">
         <div class="form-group">
-          <label>Price (KES) *</label>
-          <input type="number" class="form-control" id="dish-crud-price" placeholder="1200" required min="10" />
-        </div>
-        <div class="form-group">
           <label>Category *</label>
           <select class="form-control" id="dish-crud-category" required>
-            <option value="Nyama Choma & Grills">Nyama Choma &amp; Grills</option>
-            <option value="Swahili & Coastal Specials">Swahili &amp; Coastal Specials</option>
-            <option value="Drinks & Beverages">Drinks &amp; Beverages</option>
-            <option value="Sides & Accompaniments">Sides &amp; Accompaniments</option>
-            <option value="Desserts & Tea">Desserts &amp; Tea</option>
+            <option value="Breakfast Add-ons">Breakfast Add-ons</option>
+            <option value="Breakfast Plates & Bites">Breakfast Plates & Bites</option>
+            <option value="Coffee">Coffee</option>
+            <option value="Fresh Juices">Fresh Juices</option>
+            <option value="Soft Drinks & Water">Soft Drinks & Water</option>
+            <option value="Fast Food">Fast Food</option>
+            <option value="Fishes">Fishes</option>
+            <option value="Vegies">Vegies</option>
+            <option value="Beef">Beef</option>
+            <option value="Beans">Beans</option>
+            <option value="Githeri">Githeri</option>
+            <option value="Matumbo">Matumbo</option>
+            <option value="Ndegu (Green Grams)">Ndegu (Green Grams)</option>
+            <option value="Plains & Sides">Plains & Sides</option>
+            <option value="Hot Drinks">Hot Drinks</option>
+            <option value="Chicken Broiler">Chicken Broiler</option>
+            <option value="Chicken Kienyeji">Chicken Kienyeji</option>
+            <option value="Minji (Peas)">Minji (Peas)</option>
+            <option value="Mix">Mix</option>
+            <option value="Njahi (Black Beans)">Njahi (Black Beans)</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Portion / Variant</label>
+          <input type="text" class="form-control" id="dish-crud-variant" placeholder="e.g. Standard, 1kg, Single" />
+        </div>
+      </div>
+
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;">
+        <div class="form-group">
+          <label>Price (KES)</label>
+          <input type="number" class="form-control" id="dish-crud-price" placeholder="Leave empty if Unknown" min="0" />
+        </div>
+        <div class="form-group">
+          <label>Price Status *</label>
+          <select class="form-control" id="dish-crud-status">
+            <option value="confirmed">Confirmed (Exact Price)</option>
+            <option value="working">Working Price (~ Estimated)</option>
+            <option value="unknown">Unknown / Market Price</option>
           </select>
         </div>
       </div>
+
+      <div class="form-group">
+        <label>Pricing Basis / Notes</label>
+        <input type="text" class="form-control" id="dish-crud-basis" placeholder="e.g. Standard rate; or 'Cropped in menu photo - confirm at counter'" />
+      </div>
+
+      <div class="form-group">
+        <label>Description</label>
+        <textarea class="form-control" id="dish-crud-desc" rows="2" placeholder="Ingredients, preparation style, accompaniments..."></textarea>
+      </div>
+
+      <div class="form-group">
+        <label>Dish Image (URL or Upload)</label>
+        <input type="text" class="form-control" id="dish-crud-image-url" placeholder="https://images.unsplash.com/... or choose file below" />
+        <div style="margin-top:6px;display:flex;align-items:center;gap:10px;">
+          <input type="file" id="dish-crud-image-file" accept="image/*" style="font-size:12px;color:var(--dash-muted);" />
+          <span style="font-size:11px;color:var(--dash-muted);">Local file upload</span>
+        </div>
+      </div>
+
+      <div style="display:flex;gap:10px;margin-top:20px;">
+        <button type="button" class="btn-secondary" style="flex:1;justify-content:center;" id="btn-cancel-dish-crud">Cancel</button>
+        <button type="submit" class="btn-primary" style="flex:2;justify-content:center;" id="btn-save-dish-crud">Save Dish</button>
+      </div>
+    </form>
+  </div>
+</div>
 
       <div class="form-group">
         <label>Description *</label>
@@ -1314,10 +1415,10 @@
       <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
     </div>
     <h3 class="modal-title">Staff &amp; Admin Gateway</h3>
-    <p class="modal-subtitle">4-digit Staff OS PIN</p>
+    <p class="modal-subtitle">Staff &amp; Admin Password Authentication</p>
 
     <div class="form-group" style="margin-bottom:12px;">
-      <input type="password" class="form-control" id="gate-pin-input" placeholder="Admin PIN: 2407 · Staff PIN: 1102" maxlength="4" style="text-align:center;font-size:22px;letter-spacing:6px;font-weight:800;" />
+      <input type="password" class="form-control" id="gate-pin-input" style="text-align:center;font-size:16px;letter-spacing:1px;font-weight:700;" />
       <small style="color:var(--status-danger);font-size:11px;display:none;margin-top:6px;" id="gate-pin-error">Authentication required; PINs are verified server-side</small>
     </div>
 
@@ -1367,7 +1468,7 @@
 
     <div class="form-group">
       <label for="admin-pin-input">Admin session verification</label>
-      <input type="password" class="form-control" id="admin-pin-input" placeholder="Verify admin session" maxlength="4" />
+      <input type="password" class="form-control" id="admin-pin-input" placeholder="Enter Admin Password" autocomplete="current-password" />
     </div>
 
     <button class="btn-primary" style="width:100%;justify-content:center;" id="btn-save-new-dish">
@@ -1425,7 +1526,7 @@
 
     <div class="form-group">
       <label for="staff-admin-pin-verify">Admin session verification</label>
-      <input type="password" class="form-control" id="staff-admin-pin-verify" placeholder="Verify admin session" maxlength="4" />
+      <input type="password" class="form-control" id="staff-admin-pin-verify" placeholder="Enter Admin Password" autocomplete="current-password" />
     </div>
 
     <button class="btn-primary" style="width:100%;justify-content:center;" id="btn-save-new-staff">
@@ -1450,7 +1551,7 @@
     </div>
 
     <div style="background:var(--dash-bg);padding:10px 14px;border-radius:var(--radius-md);margin-bottom:18px;font-size:12px;color:var(--dash-muted);word-break:break-all;">
-      <span id="qr-url-text">https://menu.testimony.example/menu?table=04</span>
+      <span id="qr-url-text">https://dijimenu.vercel.app/?table=04&amp;zone=Terrace</span>
     </div>
 
     <div style="display:flex;gap:10px;">
@@ -1507,6 +1608,277 @@
   </div>
 </div>
 
+<!-- ═══════════════════════════════════════════
+     MODAL: CATEGORY CRUD (Add / Edit Menu Category)
+     ═══════════════════════════════════════════ -->
+<div class="modal-overlay" id="modal-category-crud">
+  <div class="modal-window" style="max-width:500px;text-align:left;">
+    <button class="modal-close-btn" id="btn-close-category-crud" aria-label="Close">
+      <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+    </button>
+    <h3 class="modal-title" id="category-crud-title">Add Menu Category</h3>
+    <p class="modal-subtitle" id="category-crud-subtitle">Organize dishes by section, station routing, and layout style</p>
+
+    <form id="form-category-crud" onsubmit="event.preventDefault();">
+      <input type="hidden" id="category-crud-id" value="" />
+
+      <div class="form-group">
+        <label>Category Name *</label>
+        <input type="text" class="form-control" id="category-crud-name" placeholder="e.g. Minji (Peas), Fresh Juices, Matumbo" required />
+      </div>
+
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;">
+        <div class="form-group">
+          <label>Section *</label>
+          <select class="form-control" id="category-crud-section">
+            <option value="Breakfast">Breakfast</option>
+            <option value="Main Dish">Main Dish</option>
+            <option value="Plains & Sides">Plains & Sides</option>
+            <option value="Vegies">Vegies</option>
+            <option value="Fast Food">Fast Food</option>
+            <option value="Drinks">Drinks</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label>Station Routing *</label>
+          <select class="form-control" id="category-crud-station">
+            <option value="kitchen">Main Kitchen</option>
+            <option value="bar">Bar &amp; Cold Drinks</option>
+            <option value="grill">Charcoal &amp; Grills</option>
+            <option value="bakery">Bakery &amp; Breakfast</option>
+            <option value="barista">Barista Coffee</option>
+          </select>
+        </div>
+      </div>
+
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;">
+        <div class="form-group">
+          <label>Sort Order</label>
+          <input type="number" class="form-control" id="category-crud-sort" min="1" value="1" />
+        </div>
+
+        <div class="form-group">
+          <label>Layout Style</label>
+          <select class="form-control" id="category-crud-layout">
+            <option value="plate-card">Plate Card</option>
+            <option value="portion-picker">Portion Picker</option>
+            <option value="build-plate">Build Plate</option>
+            <option value="menu-board">Menu Board</option>
+            <option value="quick-tiles">Quick Tiles</option>
+            <option value="glass-card">Glass Card (Drinks)</option>
+            <option value="bottle-shelf">Bottle Shelf</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label>Subtitle / Note</label>
+        <input type="text" class="form-control" id="category-crud-note" placeholder="e.g. The comfort classics, No added sugar" />
+      </div>
+
+      <div style="display:flex;gap:10px;margin-top:20px;justify-content:flex-end;">
+        <button type="button" class="btn-secondary" id="btn-cancel-category-crud">Cancel</button>
+        <button type="submit" class="btn-primary" id="btn-save-category-crud">Save Category</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════
+     MODAL: STATION CRUD (Add / Edit Station)
+     ═══════════════════════════════════════════ -->
+<div class="modal-overlay" id="modal-station-crud">
+  <div class="modal-window" style="max-width:500px;text-align:left;">
+    <button class="modal-close-btn" id="btn-close-station-crud" aria-label="Close">
+      <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+    </button>
+    <h3 class="modal-title" id="station-crud-title">Add Kitchen/Bar Station</h3>
+    <p class="modal-subtitle" id="station-crud-subtitle">Configure ticket routing, hardware thermal printers, and prep brigade</p>
+
+    <form id="form-station-crud" onsubmit="event.preventDefault();">
+      <input type="hidden" id="station-crud-id" value="" />
+
+      <div class="form-group">
+        <label>Station Name *</label>
+        <input type="text" class="form-control" id="station-crud-name" placeholder="e.g. Main Hot Kitchen, Cocktail Bar, Charcoal Grill" required />
+      </div>
+
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;">
+        <div class="form-group">
+          <label>Station Code *</label>
+          <input type="text" class="form-control" id="station-crud-code" placeholder="e.g. KIT-1, BAR-1, GRL-1" required />
+        </div>
+
+        <div class="form-group">
+          <label>Station Type *</label>
+          <select class="form-control" id="station-crud-type">
+            <option value="kitchen">Kitchen / Hot Food</option>
+            <option value="bar">Bar &amp; Cold Drinks</option>
+            <option value="grill">Charcoal &amp; Grills</option>
+            <option value="bakery">Bakery &amp; Breakfast</option>
+            <option value="barista">Barista Coffee</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label>Hardware Printer Route</label>
+        <input type="text" class="form-control" id="station-crud-printer" placeholder="e.g. Kitchen Thermal 01 (192.168.1.120)" />
+      </div>
+
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;">
+        <div class="form-group">
+          <label>Operational Status</label>
+          <select class="form-control" id="station-crud-status">
+            <option value="online">Online / Active</option>
+            <option value="busy">High Volume / Busy</option>
+            <option value="offline">Offline / Closed</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label>Accent Color</label>
+          <select class="form-control" id="station-crud-color">
+            <option value="#ED1C24">Brand Red (#ED1C24)</option>
+            <option value="#10b981">Emerald Green (#10b981)</option>
+            <option value="#3b82f6">Royal Blue (#3b82f6)</option>
+            <option value="#f59e0b">Amber Gold (#f59e0b)</option>
+            <option value="#8b5cf6">Purple (#8b5cf6)</option>
+          </select>
+        </div>
+      </div>
+
+      <div style="display:flex;gap:10px;margin-top:20px;justify-content:flex-end;">
+        <button type="button" class="btn-secondary" id="btn-cancel-station-crud">Cancel</button>
+        <button type="submit" class="btn-primary" id="btn-save-station-crud">Save Station</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════
+     MODAL: DINING ZONE CRUD (Add / Edit Dining Zone)
+     ═══════════════════════════════════════════ -->
+<div class="modal-overlay" id="modal-dining-zone-crud">
+  <div class="modal-window" style="max-width:500px;text-align:left;">
+    <button class="modal-close-btn" id="btn-close-dining-zone-crud" aria-label="Close">
+      <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+    </button>
+    <h3 class="modal-title" id="dining-zone-crud-title">Add Dining Zone</h3>
+    <p class="modal-subtitle" id="dining-zone-crud-subtitle">Group tables by floor area, ambiance, and service section</p>
+
+    <form id="form-dining-zone-crud" onsubmit="event.preventDefault();">
+      <input type="hidden" id="dining-zone-crud-id" value="" />
+
+      <div class="form-group">
+        <label>Zone Name *</label>
+        <input type="text" class="form-control" id="dining-zone-crud-name" placeholder="e.g. Kasarani Balcony, Main Hall, Rooftop" required />
+      </div>
+
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;">
+        <div class="form-group">
+          <label>Floor / Level *</label>
+          <select class="form-control" id="dining-zone-crud-floor">
+            <option value="Ground">Ground Floor</option>
+            <option value="1st Floor">1st Floor</option>
+            <option value="2nd Floor">2nd Floor</option>
+            <option value="Rooftop">Rooftop Terrace</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label>Theme Color</label>
+          <select class="form-control" id="dining-zone-crud-color">
+            <option value="#10b981">Garden Green (#10b981)</option>
+            <option value="#3b82f6">Terrace Blue (#3b82f6)</option>
+            <option value="#8b5cf6">VIP Purple (#8b5cf6)</option>
+            <option value="#f59e0b">Warm Amber (#f59e0b)</option>
+            <option value="#ED1C24">Brand Red (#ED1C24)</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label>Zone Description</label>
+        <textarea class="form-control" id="dining-zone-crud-desc" rows="2" placeholder="e.g. Elevated scenic seating overlooking Kasarani for casual bites"></textarea>
+      </div>
+
+      <div style="display:flex;gap:10px;margin-top:20px;justify-content:flex-end;">
+        <button type="button" class="btn-secondary" id="btn-cancel-dining-zone-crud">Cancel</button>
+        <button type="submit" class="btn-primary" id="btn-save-dining-zone-crud">Save Zone</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════
+     MODAL: EDIT STAFF MEMBER
+     ═══════════════════════════════════════════ -->
+<div class="modal-overlay" id="modal-edit-staff">
+  <div class="modal-window" style="max-width:500px;text-align:left;">
+    <button class="modal-close-btn" id="btn-close-edit-staff" aria-label="Close">
+      <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+    </button>
+    <h3 class="modal-title">Edit Staff Member</h3>
+    <p class="modal-subtitle">Update duty role, station assignment, contact, and shift status</p>
+
+    <form id="form-edit-staff" onsubmit="event.preventDefault();">
+      <input type="hidden" id="edit-staff-id" value="" />
+
+      <div class="form-group">
+        <label>Staff Full Name *</label>
+        <input type="text" class="form-control" id="edit-staff-name" required />
+      </div>
+
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;">
+        <div class="form-group">
+          <label>Role *</label>
+          <select class="form-control" id="edit-staff-role">
+            <option value="Floor Waiter">Floor Waiter</option>
+            <option value="Shift Lead / Admin">Shift Lead / Admin</option>
+            <option value="Head Chef">Head Chef</option>
+            <option value="Line Cook">Line Cook</option>
+            <option value="Bartender">Bartender</option>
+            <option value="Barista">Barista</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label>Assigned Station *</label>
+          <select class="form-control" id="edit-staff-station">
+            <option value="Main Dining Floor">Main Dining Floor</option>
+            <option value="Garden Terrace">Garden Terrace</option>
+            <option value="Hot Kitchen">Hot Kitchen</option>
+            <option value="Cocktail Bar">Cocktail Bar</option>
+            <option value="Barista Station">Barista Station</option>
+          </select>
+        </div>
+      </div>
+
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;">
+        <div class="form-group">
+          <label>Phone Number</label>
+          <input type="tel" class="form-control" id="edit-staff-phone" placeholder="+254 7..." />
+        </div>
+
+        <div class="form-group">
+          <label>Shift Status</label>
+          <select class="form-control" id="edit-staff-active">
+            <option value="true">On Duty (Active)</option>
+            <option value="false">Off Duty (Inactive)</option>
+          </select>
+        </div>
+      </div>
+
+      <div style="display:flex;gap:10px;margin-top:20px;justify-content:flex-end;">
+        <button type="button" class="btn-secondary" id="btn-cancel-edit-staff">Cancel</button>
+        <button type="submit" class="btn-primary" id="btn-save-edit-staff">Update Staff</button>
+      </div>
+    </form>
+  </div>
+</div>
+
 <!-- Toast Notification -->
 <div class="app-toast" id="toast-element">
   <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
@@ -1515,5 +1887,5 @@
 
 <script src="/qrcode.min.js"></script>
 <script src="/app.js"></script>
-<div class="order-type-control" aria-label="Order type"><button>Dine in</button><button>To go</button></div></body>
+</body>
 </html>

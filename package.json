@@ -6,10 +6,13 @@
   "scripts": {
     "dev": "node server.js",
     "build": "echo 'Build successful'",
-    "start": "node server.js"
+    "start": "node server.js",
+    "deploy": "npx wrangler deploy"
   },
   "dependencies": {
+    "@supabase/ssr": "^0.12.7",
     "@supabase/supabase-js": "^2.117.3",
-    "express": "^4.21.2"
+    "express": "^4.21.2",
+    "pg": "^8.23.1"
   }
 }

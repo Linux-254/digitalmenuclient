@@ -33,64 +33,75 @@
    (All colors MUST be declared here. No raw hex/rgb outside this block)
    ═══════════════════════════════════════════════ */
 :root {
-  /* ── Brand Palette ── */
-  --brand-forest: #0d4b3c;
-  --brand-forest-deep: #07382d;
-  --brand-forest-surface: #124437;
-  --brand-forest-soft: #195243;
-  --brand-forest-subtle: #236553;
-  --brand-cream: #e7dfb8;
-  --brand-cream-soft: #f6f3e8;
-  --brand-cream-tint: #faf7ef;
+  /* ── Testimony Cafeteria Website Brand Palette ── */
+  --charcoal: #211B18;
+  --red: #ED1C24;
+  --red-on-dark: #FF5A5F;
+  --red-strong: #C8101A;
+  --cream: #E9E0D3;
+  --paper: #F5F1EA;
+  --warm-white: #FFFDF8;
+  --gray-border: #D8D0C5;
+  --font-mono: 'JetBrains Mono', ui-monospace, SFMono-Regular, monospace;
+
+  /* ── Brand Mappings ── */
+  --brand-forest: var(--charcoal);
+  --brand-forest-deep: #191412;
+  --brand-forest-surface: #2b2320;
+  --brand-forest-soft: #382e2a;
+  --brand-forest-subtle: #453934;
+  --brand-cream: var(--cream);
+  --brand-cream-soft: #f1ebd8;
+  --brand-cream-tint: #faf6eb;
   --brand-lime: #b9d68a;
   --brand-teal: #82c9a7;
-  --brand-coral: #d66a51;
+  --brand-coral: var(--red-on-dark);
   --brand-amber: #bd873d;
-  --brand-gold: #d4af37;
-  --brand-gold-glow: rgba(212, 175, 55, 0.25);
+  --brand-gold: #c89b3c;
+  --brand-gold-glow: rgba(200, 155, 60, 0.25);
 
-  /* ── Accent & Primary Action ── */
-  --primary: #ff5a1f;
-  --primary-hover: #e04b16;
-  --primary-active: #c73d0f;
-  --primary-soft: #fff1eb;
-  --primary-border: #ffd5c4;
+  /* ── Accent & Primary Action (Brand Red) ── */
+  --primary: var(--red);
+  --primary-hover: var(--red-strong);
+  --primary-active: #9e0c14;
+  --primary-soft: #fde8e9;
+  --primary-border: #f8b4b7;
   --primary-contrast: #ffffff;
 
-  /* ── Staff OS / Light Dashboard Palette ── */
-  --dash-bg: #f8f9fa;
-  --dash-surface: #ffffff;
-  --dash-card: #ffffff;
-  --dash-card-subtle: #fcfdfd;
-  --dash-border: #eaedf0;
-  --dash-border-subtle: #f1f3f5;
-  --dash-border-strong: #d5dbe1;
-  --dash-ink: #1a1d20;
-  --dash-muted: #717b86;
-  --dash-subtle: #9aa2ab;
-  --dash-hover: #f3f5f8;
-  --dash-badge-bg: #edf0f5;
-  --dash-promo-bg: #fdf5f0;
-  --dash-promo-border: #f9e2d5;
+  /* ── Staff OS / Light Dashboard Palette (Paper & Warm-White) ── */
+  --dash-bg: var(--paper);
+  --dash-surface: var(--warm-white);
+  --dash-card: var(--warm-white);
+  --dash-card-subtle: #faf7f2;
+  --dash-border: var(--gray-border);
+  --dash-border-subtle: #e6dfd6;
+  --dash-border-strong: #bfb5a8;
+  --dash-ink: var(--charcoal);
+  --dash-muted: #6e655e;
+  --dash-subtle: #948b83;
+  --dash-hover: #ede6dc;
+  --dash-badge-bg: var(--cream);
+  --dash-promo-bg: #fff1f1;
+  --dash-promo-border: #ffd5d7;
 
-  /* ── Guest Tableside Dark Chalkboard Palette ── */
-  --guest-bg: #071f18;
-  --guest-surface: #0c2d24;
-  --guest-card: #11382e;
-  --guest-card-hover: #164639;
-  --guest-border: rgba(231, 223, 184, 0.16);
-  --guest-border-subtle: rgba(255, 255, 255, 0.08);
-  --guest-border-strong: rgba(231, 223, 184, 0.32);
-  --guest-ink: #f6f3e8;
-  --guest-muted: #a3b8b0;
-  --guest-subtle: #7a938a;
-  --guest-accent: #e7dfb8;
-  --guest-accent-soft: rgba(231, 223, 184, 0.12);
+  /* ── Guest Tableside Dark Charcoal Palette ── */
+  --guest-bg: var(--charcoal);
+  --guest-surface: #29221f;
+  --guest-card: #322b27;
+  --guest-card-hover: #3c342f;
+  --guest-border: rgba(233, 224, 211, 0.2);
+  --guest-border-subtle: rgba(255, 255, 255, 0.09);
+  --guest-border-strong: rgba(233, 224, 211, 0.4);
+  --guest-ink: var(--warm-white);
+  --guest-muted: #b8aea3;
+  --guest-subtle: #8c8278;
+  --guest-accent: var(--cream);
+  --guest-accent-soft: rgba(233, 224, 211, 0.14);
   --guest-pill-bg: rgba(255, 255, 255, 0.08);
-  --guest-pill-hover: rgba(255, 255, 255, 0.14);
-  --guest-pill-active: #e7dfb8;
-  --guest-pill-active-ink: #072e24;
-  --guest-scallop-accent: #b9d68a;
+  --guest-pill-hover: rgba(255, 255, 255, 0.15);
+  --guest-pill-active: var(--red);
+  --guest-pill-active-ink: #ffffff;
+  --guest-scallop-accent: var(--red);
 
   /* ── Status & Feedback Semantics ── */
   --status-success: #10b981;
@@ -3462,7 +3473,553 @@ img {
 .order-type-btn.active {
   border-color: var(--primary) !important;
   color: var(--primary) !important;
-  background: rgba(34, 197, 94, 0.1) !important;
+  background: rgba(237, 28, 36, 0.12) !important;
+}
+
+/* ═══════════════════════════════════════════════
+   TESTIMONY CAFETERIA — DEDICATED LAYOUTS SPEC
+   ═══════════════════════════════════════════════ */
+
+/* ── 1. Sticky Section Bar (Breakfast · Main Dish · Plains · Vegies · Fast Food · Drinks) ── */
+.testimony-sticky-sections {
+  position: sticky;
+  top: 68px;
+  z-index: 25;
+  background: var(--charcoal);
+  border-bottom: 1px solid rgba(233, 224, 211, 0.18);
+  padding: 8px 16px;
+  display: flex;
+  gap: 8px;
+  overflow-x: auto;
+  white-space: nowrap;
+  scrollbar-width: none;
+  -webkit-overflow-scrolling: touch;
+}
+.testimony-sticky-sections::-webkit-scrollbar {
+  display: none;
+}
+.testimony-section-pill {
+  padding: 8px 16px;
+  border-radius: var(--radius-full);
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--cream);
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(233, 224, 211, 0.15);
+  cursor: pointer;
+  transition: all var(--fast);
+  text-decoration: none;
+}
+.testimony-section-pill:hover {
+  background: rgba(255, 255, 255, 0.15);
+  color: var(--warm-white);
+}
+.testimony-section-pill.active {
+  background: var(--red);
+  color: #ffffff;
+  border-color: var(--red);
+  box-shadow: 0 2px 8px rgba(237, 28, 36, 0.35);
+}
+
+/* ── 2. Signature Plate Cards (Photo-led with live variant chips) ── */
+.testimony-plate-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(290px, 1fr));
+  gap: 16px;
+}
+.testimony-plate-card {
+  background: var(--guest-card);
+  border: 1px solid var(--guest-border);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  transition: transform var(--fast), border-color var(--fast);
+}
+.testimony-plate-card:hover {
+  border-color: rgba(233, 224, 211, 0.35);
+}
+.plate-media {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  overflow: hidden;
+  background: #191412;
+}
+.plate-media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.plate-badge-tag {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  background: var(--red);
+  color: #ffffff;
+  font-size: 10.5px;
+  font-family: var(--font-mono);
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  padding: 3px 8px;
+  border-radius: 4px;
+}
+.plate-body {
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+.plate-title-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 8px;
+  margin-bottom: 6px;
+}
+.plate-title {
+  font-size: 18px;
+  font-weight: 800;
+  color: var(--warm-white);
+  margin: 0;
+  line-height: 1.2;
+}
+.plate-price-tag {
+  font-size: 16px;
+  font-weight: 800;
+  color: var(--red-on-dark);
+  white-space: nowrap;
+}
+.plate-desc {
+  font-size: 12.5px;
+  color: var(--guest-muted);
+  line-height: 1.45;
+  margin: 0 0 14px 0;
+}
+.plate-variant-label {
+  font-size: 10.5px;
+  font-family: var(--font-mono);
+  color: var(--cream);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-bottom: 6px;
+  display: block;
+}
+.plate-variant-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-bottom: 16px;
+}
+.plate-variant-chip {
+  padding: 5px 10px;
+  border-radius: 6px;
+  font-size: 12px;
+  font-weight: 600;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(233, 224, 211, 0.15);
+  color: var(--guest-muted);
+  cursor: pointer;
+  transition: all var(--fast);
+}
+.plate-variant-chip:hover {
+  background: rgba(255, 255, 255, 0.15);
+  color: var(--warm-white);
+}
+.plate-variant-chip.active {
+  background: var(--red);
+  color: #ffffff;
+  border-color: var(--red);
+  font-weight: 700;
+}
+.plate-add-btn {
+  margin-top: auto;
+  width: 100%;
+  padding: 10px;
+  background: var(--red);
+  color: #ffffff;
+  border: none;
+  border-radius: 8px;
+  font-size: 13.5px;
+  font-weight: 700;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  transition: background var(--fast), transform var(--fast);
+}
+.plate-add-btn:hover {
+  background: var(--red-strong);
+}
+.plate-add-btn:active {
+  transform: scale(0.98);
+}
+
+/* ── 3. Chicken Portion Picker (¼, ½, ¾, Full; Broiler vs Kienyeji) ── */
+.chicken-picker-card {
+  background: var(--guest-card);
+  border: 1px solid var(--guest-border);
+  border-radius: var(--radius-lg);
+  padding: 20px;
+  margin-bottom: 20px;
+}
+.chicken-breed-toggle {
+  display: inline-flex;
+  background: rgba(0, 0, 0, 0.3);
+  padding: 4px;
+  border-radius: var(--radius-full);
+  margin-bottom: 16px;
+  border: 1px solid rgba(233, 224, 211, 0.15);
+}
+.breed-pill {
+  padding: 6px 16px;
+  border-radius: var(--radius-full);
+  font-size: 12.5px;
+  font-weight: 700;
+  color: var(--guest-muted);
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  transition: all var(--fast);
+}
+.breed-pill.active {
+  background: var(--red);
+  color: #ffffff;
+}
+.portion-selector-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 8px;
+  margin-bottom: 18px;
+}
+.portion-btn {
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(233, 224, 211, 0.15);
+  border-radius: 8px;
+  padding: 10px 4px;
+  text-align: center;
+  cursor: pointer;
+  transition: all var(--fast);
+  color: var(--guest-muted);
+}
+.portion-btn:hover {
+  background: rgba(255, 255, 255, 0.12);
+}
+.portion-btn.active {
+  background: rgba(237, 28, 36, 0.15);
+  border-color: var(--red);
+  color: var(--warm-white);
+}
+.portion-share-label {
+  font-size: 16px;
+  font-weight: 800;
+  display: block;
+}
+.portion-sub {
+  font-size: 10.5px;
+  opacity: 0.8;
+  display: block;
+  margin-top: 2px;
+}
+.portion-live-price {
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--red-on-dark);
+  margin-top: 4px;
+  display: block;
+}
+
+/* ── 4. Build-Your-Plate List (Plains & Vegies) ── */
+.build-plate-container {
+  background: var(--guest-card);
+  border: 1px solid var(--guest-border);
+  border-radius: var(--radius-lg);
+  padding: 20px;
+  margin-bottom: 24px;
+}
+.build-group-title {
+  font-size: 12px;
+  font-family: var(--font-mono);
+  color: var(--red-on-dark);
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+  margin: 14px 0 8px 0;
+  border-bottom: 1px solid rgba(233, 224, 211, 0.12);
+  padding-bottom: 4px;
+}
+.build-plate-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 8px 0;
+  border-bottom: 1px dotted rgba(233, 224, 211, 0.15);
+}
+.build-plate-name {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--warm-white);
+  flex: 1;
+}
+.build-plate-price {
+  font-size: 13.5px;
+  font-weight: 700;
+  color: var(--cream);
+  margin-right: 14px;
+}
+.build-stepper {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.build-step-btn {
+  width: 32px;
+  height: 32px;
+  border-radius: 6px;
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(233, 224, 211, 0.2);
+  color: var(--warm-white);
+  font-size: 15px;
+  font-weight: 700;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.build-step-btn:hover {
+  background: var(--red);
+  border-color: var(--red);
+}
+.build-step-qty {
+  font-size: 14px;
+  font-weight: 800;
+  min-width: 20px;
+  text-align: center;
+  color: var(--warm-white);
+}
+.build-plate-summary-tray {
+  margin-top: 16px;
+  background: rgba(0, 0, 0, 0.35);
+  border: 1px solid rgba(233, 224, 211, 0.2);
+  border-radius: 8px;
+  padding: 12px 16px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+.build-tray-text {
+  font-size: 13px;
+  color: var(--cream);
+}
+.build-tray-total {
+  font-weight: 800;
+  color: var(--red-on-dark);
+}
+
+/* ── 5. Fresh Juice Glass Cards (No Added Sugar · 100% Fruit) ── */
+.juice-glass-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 16px;
+}
+.juice-glass-card {
+  background: var(--guest-card);
+  border: 1px solid var(--guest-border);
+  border-radius: var(--radius-lg);
+  padding: 18px;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  overflow: hidden;
+}
+.juice-fruit-tint {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 6px;
+}
+.juice-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  background: rgba(16, 185, 129, 0.15);
+  color: #34d399;
+  border: 1px solid rgba(16, 185, 129, 0.3);
+  padding: 3px 8px;
+  border-radius: 4px;
+  font-size: 10.5px;
+  font-weight: 700;
+  margin-bottom: 12px;
+  width: fit-content;
+}
+.juice-name {
+  font-size: 17px;
+  font-weight: 800;
+  color: var(--warm-white);
+  margin: 0 0 6px 0;
+}
+.juice-size-toggle {
+  display: flex;
+  gap: 8px;
+  margin-top: 12px;
+  margin-bottom: 16px;
+}
+.juice-size-btn {
+  flex: 1;
+  padding: 8px;
+  border-radius: 6px;
+  font-size: 12px;
+  font-weight: 700;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(233, 224, 211, 0.15);
+  color: var(--guest-muted);
+  cursor: pointer;
+  text-align: center;
+}
+.juice-size-btn.active {
+  background: var(--red);
+  color: #ffffff;
+  border-color: var(--red);
+}
+
+/* ── 6. Soft Drinks & Water Bottle Shelf (3-column dense tiles) ── */
+.bottle-shelf-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
+  gap: 10px;
+}
+.bottle-tile {
+  background: var(--guest-card);
+  border: 1px solid var(--guest-border);
+  border-radius: 8px;
+  padding: 12px 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  text-align: center;
+  transition: transform var(--fast), border-color var(--fast);
+}
+.bottle-tile:hover {
+  border-color: var(--red);
+}
+.bottle-brand {
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--warm-white);
+  line-height: 1.2;
+  margin-bottom: 4px;
+}
+.bottle-size-pill {
+  font-size: 10.5px;
+  font-family: var(--font-mono);
+  color: var(--cream);
+  opacity: 0.8;
+  margin-bottom: 8px;
+}
+.bottle-price {
+  font-size: 14px;
+  font-weight: 800;
+  color: var(--red-on-dark);
+  margin-bottom: 10px;
+}
+.bottle-add-btn {
+  width: 100%;
+  padding: 6px 0;
+  background: rgba(237, 28, 36, 0.15);
+  border: 1px solid var(--red);
+  color: var(--warm-white);
+  border-radius: 6px;
+  font-size: 12px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all var(--fast);
+}
+.bottle-add-btn:hover {
+  background: var(--red);
+}
+
+/* ── 7. Breakfast & Coffee Menu Board ── */
+.menu-board-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 20px;
+}
+.menu-board-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 0;
+  border-bottom: 1px solid rgba(233, 224, 211, 0.12);
+}
+.menu-board-info {
+  flex: 1;
+}
+.menu-board-name {
+  font-size: 14.5px;
+  font-weight: 700;
+  color: var(--warm-white);
+}
+.menu-board-price {
+  font-size: 14px;
+  font-weight: 800;
+  color: var(--cream);
+  margin-right: 12px;
+}
+
+/* ── 8. Fast Food 2-Column Quick Tiles ── */
+.fast-food-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 16px;
+}
+.fast-food-card {
+  background: var(--guest-card);
+  border: 1px solid var(--guest-border);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+.fast-food-body {
+  padding: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+/* ── 9. Specials & Hero Banner (Testimony Cafeteria) ── */
+.testimony-hero-banner {
+  background: linear-gradient(180deg, #2b221e 0%, var(--charcoal) 100%);
+  border-bottom: 1px solid rgba(233, 224, 211, 0.15);
+  padding: 24px 20px;
+  text-align: center;
+}
+.testimony-hero-tag {
+  font-size: 11px;
+  font-family: var(--font-mono);
+  color: var(--red-on-dark);
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  font-weight: 700;
+  margin-bottom: 6px;
+  display: block;
+}
+.testimony-hero-title {
+  font-size: 28px;
+  font-weight: 900;
+  color: var(--warm-white);
+  margin: 0 0 6px 0;
+  letter-spacing: -0.5px;
+}
+.testimony-hero-subtitle {
+  font-size: 13.5px;
+  color: var(--cream);
+  max-width: 520px;
+  margin: 0 auto;
+  line-height: 1.5;
 }
 /* Prompt v3: Testimonial Cafe brand and mobile menu contract */
 :root{--charcoal:#211B18;--red:#ED1C24;--cream:#E9E0D3;--paper:#F5F1EA;--warm-white:#FFFDF8;--red-on-dark:#FF5A5F;--red-strong:#C8101A;--font-display:Manrope,Arial,sans-serif;--font-label:"JetBrains Mono",ui-monospace,monospace}
@@ -3479,16 +4036,332 @@ button,a,.btn-primary,.btn-secondary{min-height:48px}
 @media (min-width:481px) and (max-width:834px){.menu-grid{grid-template-columns:repeat(2,minmax(0,1fr))!important}}
 @media (min-width:835px) and (max-width:1180px){.menu-grid{grid-template-columns:repeat(3,minmax(0,1fr))!important}}
 @media (prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.001ms!important;transition-duration:.001ms!important;scroll-behavior:auto!important}}
-/* Active Testimonial Cafe palette — applied values, not placeholders */
-:root{
- --charcoal:#211B18;--red:#ED1C24;--cream:#E9E0D3;--paper:#F5F1EA;--warm-white:#FFFDF8;
- --red-on-dark:#FF5A5F;--red-strong:#C8101A;
- --gray-border:#D8CEC2;--primary:#ED1C24;--primary-hover:#C8101A;--primary-active:#9B0C12;
- --primary-soft:#FBE4E5;--primary-border:#EBA1A5;--dash-bg:#F5F1EA;--dash-surface:#FFFDF8;--dash-card:#FFFDF8;
- --dash-ink:#211B18;--dash-muted:#6B5F57;--dash-hover:#E9E0D3;--guest-bg:#211B18;--guest-surface:#2D2420;
- --guest-ink:#FFFDF8;--guest-accent:#E9E0D3;--guest-pill-active:#ED1C24;
+
+/* ═══════════════════════════════════════════════
+   TESTIMONIAL CAFE AUTHORITATIVE BRAND PALETTE & CONTRAST
+   Tokens: --charcoal #211B18, --red #ED1C24, --cream #E9E0D3,
+           --paper #F5F1EA, --warm-white #FFFDF8
+   Contrast for small text:
+           --red-on-dark #FF5A5F (passes WCAG AA on dark backgrounds)
+           --red-strong #C8101A  (passes WCAG AA on light backgrounds)
+   ═══════════════════════════════════════════════ */
+:root {
+  --charcoal: #211B18;
+  --red: #ED1C24;
+  --cream: #E9E0D3;
+  --paper: #F5F1EA;
+  --warm-white: #FFFDF8;
+  --red-on-dark: #FF5A5F;
+  --red-strong: #C8101A;
+  --gray-border: #D8D0C5;
+
+  /* Brand and UI Semantics */
+  --primary: #ED1C24;
+  --primary-hover: #C8101A;
+  --primary-active: #9B0C12;
+  --primary-soft: #FBE4E5;
+  --primary-border: #EBA1A5;
+
+  /* Dashboard Theme (Warm Paper & Editorial Clean) */
+  --dash-bg: var(--paper);
+  --dash-surface: var(--warm-white);
+  --dash-card: var(--warm-white);
+  --dash-ink: var(--charcoal);
+  --dash-muted: #5C524A;
+  --dash-hover: var(--cream);
+  --dash-border: var(--cream);
+
+  /* Customer-Facing Tableside Menu Theme (Harmonized with Dashboard) */
+  --guest-bg: var(--paper);
+  --guest-bg-gradient: linear-gradient(180deg, #F5F1EA 0%, #ECE4D8 100%);
+  --guest-surface: var(--warm-white);
+  --guest-card: var(--warm-white);
+  --guest-card-hover: #FFFFFF;
+  --guest-border: var(--cream);
+  --guest-border-strong: var(--gray-border);
+  --guest-ink: var(--charcoal);
+  --guest-muted: #5C524A;
+  --guest-subtle: #7E7268;
+  --guest-accent: var(--charcoal);
+  --guest-pill-bg: var(--warm-white);
+  --guest-pill-hover: var(--cream);
+  --guest-pill-active: var(--charcoal);
+  --guest-pill-active-ink: var(--warm-white);
 }
-/* Daily special: editorial feature card, not a generic carousel */
-.daily-special{background:var(--charcoal);color:var(--cream);border:2px solid var(--red);border-radius:24px;overflow:hidden}.daily-special .price,.daily-special .badge{color:var(--red-on-dark)}
-.order-type-control{display:flex;gap:8px}.order-type-control button{min-height:48px;padding:0 18px;border:1px solid var(--red);background:var(--warm-white);color:var(--charcoal);border-radius:999px;font-weight:800}.order-type-control button:first-child{background:var(--red);color:#fff}
-.crud-actions{display:flex;gap:8px;flex-wrap:wrap;margin:12px 0}.crud-actions button{min-height:48px;padding:0 14px;border:1px solid var(--red);border-radius:10px;background:var(--warm-white);color:var(--charcoal);font-weight:800}
+
+/* ── Small Text Contrast Safety Rules ── */
+.small-text-on-light, .price-small-light, .dish-price-text {
+  color: var(--red-strong) !important;
+  font-weight: 800;
+}
+.small-text-on-dark, .badge-on-dark, .promo-tag-dark {
+  color: var(--red-on-dark) !important;
+  font-weight: 700;
+}
+
+/* ── CRUD Sub-Navigation Tabs ── */
+.crud-tab-bar .btn-secondary {
+  border: 1px solid var(--dash-border);
+  background: var(--dash-surface);
+  color: var(--dash-ink);
+  transition: all 0.2s ease;
+}
+.crud-tab-bar .btn-secondary.active {
+  background: var(--charcoal) !important;
+  color: var(--warm-white) !important;
+  border-color: var(--charcoal) !important;
+  font-weight: 700;
+}
+
+/* ── Category CRUD Cards & Table ── */
+.category-crud-card {
+  background: var(--dash-surface);
+  border: 1px solid var(--dash-border);
+  border-radius: var(--radius-lg);
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 12px;
+  box-shadow: var(--shadow-sm);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+.category-crud-card:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+  border-color: var(--gray-border);
+}
+.cat-badge-section {
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  padding: 3px 8px;
+  border-radius: 999px;
+  background: var(--cream);
+  color: var(--charcoal);
+}
+.cat-badge-station {
+  font-size: 11px;
+  font-weight: 700;
+  padding: 3px 8px;
+  border-radius: 999px;
+  background: rgba(16, 185, 129, 0.12);
+  color: #065f46;
+}
+
+/* ── Station CRUD Cards ── */
+.station-crud-card {
+  background: var(--dash-surface);
+  border: 1px solid var(--dash-border);
+  border-radius: var(--radius-lg);
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  box-shadow: var(--shadow-sm);
+  border-left-width: 5px;
+  transition: transform 0.2s ease;
+}
+.station-crud-card:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+}
+
+/* ── Dining Zone CRUD Cards ── */
+.zone-crud-card {
+  background: var(--dash-surface);
+  border: 1px solid var(--dash-border);
+  border-radius: var(--radius-lg);
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  box-shadow: var(--shadow-sm);
+  border-left-width: 5px;
+  transition: transform 0.2s ease;
+}
+.zone-crud-card:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+}
+
+/* ── Order Type Selector & Ticket Badges ── */
+.order-type-btn {
+  transition: all 0.2s ease;
+}
+.order-type-btn.active {
+  background: var(--primary-soft) !important;
+  border-color: var(--primary) !important;
+  color: var(--primary) !important;
+  font-weight: 800 !important;
+}
+.ticket-type-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 2px 8px;
+  border-radius: 999px;
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+}
+.ticket-type-badge.type-dinein {
+  background: #dcfce7;
+  color: #166534;
+  border: 1px solid #bbf7d0;
+}
+.ticket-type-badge.type-togo {
+  background: #ffedd5;
+  color: #9a3412;
+  border: 1px solid #fed7aa;
+}
+
+/* ── Editorial Daily Specials Carousel & Cards ── */
+.guest-promos-container {
+  display: flex;
+  gap: 16px;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  padding: 4px 4px 14px 4px;
+  -webkit-overflow-scrolling: touch;
+}
+.guest-promo-slide {
+  flex: 0 0 clamp(290px, 85vw, 380px);
+  scroll-snap-align: start;
+  background: var(--warm-white);
+  border: 1.5px solid var(--cream);
+  border-radius: 20px;
+  padding: 16px;
+  display: flex;
+  gap: 14px;
+  align-items: center;
+  box-shadow: 0 4px 16px rgba(33, 27, 24, 0.06);
+  position: relative;
+  transition: transform 0.25s ease, border-color 0.25s ease;
+}
+.guest-promo-slide:hover {
+  transform: translateY(-2px);
+  border-color: var(--red);
+}
+.guest-promo-slide img {
+  width: 90px;
+  height: 90px;
+  border-radius: 14px;
+  object-fit: cover;
+  flex-shrink: 0;
+}
+.guest-promo-slide .promo-badge-tag {
+  position: absolute;
+  top: 10px;
+  right: 12px;
+  background: var(--charcoal);
+  color: var(--red-on-dark);
+  font-size: 10px;
+  font-weight: 800;
+  padding: 3px 8px;
+  border-radius: 999px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+.guest-promo-slide .promo-title {
+  font-size: 14px;
+  font-weight: 800;
+  color: var(--charcoal);
+  margin: 0 0 4px 0;
+  line-height: 1.25;
+}
+.guest-promo-slide .promo-desc {
+  font-size: 11.5px;
+  color: var(--guest-muted);
+  margin: 0 0 8px 0;
+  line-height: 1.35;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+.btn-add-special-cart {
+  background: var(--red);
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  padding: 6px 12px;
+  font-size: 11px;
+  font-weight: 700;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  transition: background 0.15s ease;
+}
+.btn-add-special-cart:hover {
+  background: var(--red-strong);
+}
+
+/* ── Enhanced Staff Team Roster ── */
+.staff-stats-row {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 14px;
+  margin-bottom: 20px;
+}
+.staff-stat-box {
+  background: var(--dash-surface);
+  border: 1px solid var(--dash-border);
+  border-radius: 12px;
+  padding: 14px 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+.staff-stat-box span {
+  font-size: 11.5px;
+  color: var(--dash-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+.staff-stat-box strong {
+  font-size: 20px;
+  font-weight: 900;
+  color: var(--dash-ink);
+}
+
+.staff-card-v2 {
+  background: var(--dash-surface);
+  border: 1px solid var(--dash-border);
+  border-radius: 14px;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 14px;
+  box-shadow: var(--shadow-sm);
+  transition: all 0.2s ease;
+}
+.staff-card-v2:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+  border-color: var(--gray-border);
+}
+
+/* ── Clean Floor Map ── */
+.floor-filter-pill {
+  padding: 6px 14px;
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 700;
+  border: 1px solid var(--dash-border);
+  background: var(--dash-surface);
+  color: var(--dash-ink);
+  cursor: pointer;
+  white-space: nowrap;
+  transition: all 0.15s ease;
+}
+.floor-filter-pill.active {
+  background: var(--charcoal);
+  color: var(--warm-white);
+  border-color: var(--charcoal);
+}
+

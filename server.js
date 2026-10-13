@@ -7,8 +7,23 @@ import { createClient } from '@supabase/supabase-js';
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
+// ── Load .env configuration ──
+const envPath = path.join(__dirname, '.env');
+if (fs.existsSync(envPath)) {
+  const envText = fs.readFileSync(envPath, 'utf8');
+  envText.split(/\r?\n/).forEach(line => {
+    const trimmed = line.trim();
+    if (trimmed && !trimmed.startsWith('#') && trimmed.includes('=')) {
+      const idx = trimmed.indexOf('=');
+      const k = trimmed.slice(0, idx).trim();
+      const v = trimmed.slice(idx + 1).trim();
+      process.env[k] = v;
+    }
+  });
+}
+
 const app = express();
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 3002;
 const HOST = '0.0.0.0';
 
 // Parse JSON bodies
@@ -38,361 +53,3170 @@ const VENUE = {
 };
 
 const CATEGORIES = [
-  { id: 'cat-1', name: 'Starters', sort_order: 1, station: 'kitchen' },
-  { id: 'cat-2', name: 'Grill & Steaks', sort_order: 2, station: 'kitchen' },
-  { id: 'cat-3', name: 'Pizzas & Burgers', sort_order: 3, station: 'kitchen' },
-  { id: 'cat-4', name: 'Pasta & Coastal', sort_order: 4, station: 'kitchen' },
-  { id: 'cat-5', name: 'Drinks & Beverages', sort_order: 5, station: 'bar' },
-  { id: 'cat-6', name: 'Desserts', sort_order: 6, station: 'kitchen' }
+  {
+    "id": "breakfast-add-ons",
+    "name": "Breakfast Add-ons",
+    "station": "kitchen",
+    "section": "Breakfast",
+    "sort_order": 1,
+    "layout": "plate-card",
+    "note": ""
+  },
+  {
+    "id": "breakfast-plates-bites",
+    "name": "Breakfast Plates & Bites",
+    "station": "kitchen",
+    "section": "Breakfast",
+    "sort_order": 2,
+    "layout": "plate-card",
+    "note": ""
+  },
+  {
+    "id": "coffee",
+    "name": "Coffee",
+    "station": "bar",
+    "section": "Drinks",
+    "sort_order": 3,
+    "layout": "plate-card",
+    "note": ""
+  },
+  {
+    "id": "fresh-juices",
+    "name": "Fresh Juices",
+    "station": "bar",
+    "section": "Drinks",
+    "sort_order": 4,
+    "layout": "plate-card",
+    "note": ""
+  },
+  {
+    "id": "soft-drinks-water",
+    "name": "Soft Drinks & Water",
+    "station": "bar",
+    "section": "Drinks",
+    "sort_order": 5,
+    "layout": "plate-card",
+    "note": ""
+  },
+  {
+    "id": "fast-food",
+    "name": "Fast Food",
+    "station": "kitchen",
+    "section": "Fast Food",
+    "sort_order": 6,
+    "layout": "plate-card",
+    "note": ""
+  },
+  {
+    "id": "fishes",
+    "name": "Fishes",
+    "station": "kitchen",
+    "section": "Main Course",
+    "sort_order": 7,
+    "layout": "plate-card",
+    "note": ""
+  },
+  {
+    "id": "vegies",
+    "name": "Vegies",
+    "station": "kitchen",
+    "section": "Main Course",
+    "sort_order": 8,
+    "layout": "plate-card",
+    "note": ""
+  },
+  {
+    "id": "beef",
+    "name": "Beef",
+    "station": "kitchen",
+    "section": "Main Dish",
+    "sort_order": 9,
+    "layout": "plate-card",
+    "note": ""
+  },
+  {
+    "id": "beans",
+    "name": "Beans",
+    "station": "kitchen",
+    "section": "Main Dish",
+    "sort_order": 10,
+    "layout": "plate-card",
+    "note": ""
+  },
+  {
+    "id": "githeri",
+    "name": "Githeri",
+    "station": "kitchen",
+    "section": "Main Dish",
+    "sort_order": 11,
+    "layout": "plate-card",
+    "note": ""
+  },
+  {
+    "id": "matumbo",
+    "name": "Matumbo",
+    "station": "kitchen",
+    "section": "Main Dish",
+    "sort_order": 12,
+    "layout": "plate-card",
+    "note": ""
+  },
+  {
+    "id": "ndegu-green-grams",
+    "name": "Ndegu (Green Grams)",
+    "station": "kitchen",
+    "section": "Main Dish",
+    "sort_order": 13,
+    "layout": "plate-card",
+    "note": ""
+  },
+  {
+    "id": "plains-sides",
+    "name": "Plains & Sides",
+    "station": "kitchen",
+    "section": "Plains & Sides",
+    "sort_order": 14,
+    "layout": "plate-card",
+    "note": ""
+  },
+  {
+    "id": "hot-drinks",
+    "name": "Hot Drinks",
+    "station": "bar",
+    "section": "Drinks",
+    "sort_order": 15,
+    "layout": "plate-card",
+    "note": ""
+  },
+  {
+    "id": "chicken-broiler",
+    "name": "Chicken Broiler",
+    "station": "kitchen",
+    "section": "Main Dish",
+    "sort_order": 16,
+    "layout": "plate-card",
+    "note": ""
+  },
+  {
+    "id": "chicken-kienyeji",
+    "name": "Chicken Kienyeji",
+    "station": "kitchen",
+    "section": "Main Dish",
+    "sort_order": 17,
+    "layout": "plate-card",
+    "note": ""
+  },
+  {
+    "id": "minji-peas",
+    "name": "Minji (Peas)",
+    "station": "kitchen",
+    "section": "Main Dish",
+    "sort_order": 18,
+    "layout": "plate-card",
+    "note": ""
+  },
+  {
+    "id": "mix",
+    "name": "Mix",
+    "station": "kitchen",
+    "section": "Main Dish",
+    "sort_order": 19,
+    "layout": "plate-card",
+    "note": ""
+  },
+  {
+    "id": "njahi-black-beans",
+    "name": "Njahi (Black Beans)",
+    "station": "kitchen",
+    "section": "Main Dish",
+    "sort_order": 20,
+    "layout": "plate-card",
+    "note": ""
+  }
 ];
 
 let menuCatalog = [
-  // ── Starters ──
   {
-    id: 'samosa-trio',
-    name: 'Swahili Samosa Trio',
-    desc: 'Crisp golden handcrafted pastry filled with spiced minced beef, fresh coriander, ginger, and homemade coast tamarind dip.',
-    price: 650,
-    category: 'Starters',
-    categoryId: 'cat-1',
-    image: '/images/beef-pizza.jpg',
-    is_available: true,
-    prep_time: '10-12 min',
-    rating: 4.8,
-    station: 'kitchen',
-    is_new: false,
-    offer_label: '',
-    offer_price: null
+    "id": "item-breakfast-add-ons-nescafe",
+    "name": "Nescafe",
+    "desc": "Nescafe – Breakfast Add-ons",
+    "price": null,
+    "category": "Breakfast Add-ons",
+    "categoryId": "breakfast-add-ons",
+    "image": "/images/tilapia-curry.jpg",
+    "is_available": true,
+    "prep_time": "12-20 min",
+    "rating": 4.6,
+    "station": "kitchen",
+    "is_new": false,
+    "offer_label": "",
+    "offer_price": null,
+    "price_status": "unknown",
+    "basis": "Name or price is cropped in the photo.",
+    "section": "Breakfast",
+    "variants": [
+      {
+        "label": "Standard",
+        "price": null,
+        "price_status": "unknown",
+        "basis": "Name or price is cropped in the photo."
+      }
+    ]
   },
   {
-    id: 'salt-pepper-calamari',
-    name: 'Salt & Pepper Calamari',
-    desc: 'Lightly dusted tender Indian Ocean baby squid tossed with crushed sea salt, lime zest, spring onions, and roasted chili garlic aioli.',
-    price: 950,
-    category: 'Starters',
-    categoryId: 'cat-1',
-    image: '/images/tilapia-curry.jpg',
-    is_available: true,
-    prep_time: '12-15 min',
-    rating: 4.9,
-    station: 'kitchen',
-    is_new: true,
-    offer_label: 'Chef Choice',
-    offer_price: null
-  },
-
-  // ── Grill & Steaks ──
-  {
-    id: 'nyama-choma',
-    name: 'Nyama Choma Platter',
-    desc: 'Slow charcoal-grilled prime goat cuts seasoned with crushed sea salt, roasted sweet peppers, ugali, and fresh garden kachumbari.',
-    price: 1950,
-    category: 'Grill & Steaks',
-    categoryId: 'cat-2',
-    image: '/images/hero-banner.jpg',
-    is_available: true,
-    prep_time: '25-30 min',
-    rating: 4.9,
-    station: 'kitchen',
-    is_new: false,
-    offer_label: '30% OFF',
-    offer_price: 1365
+    "id": "item-breakfast-add-ons-sausage",
+    "name": "Sausage",
+    "desc": "Sausage – Breakfast Add-ons",
+    "price": null,
+    "category": "Breakfast Add-ons",
+    "categoryId": "breakfast-add-ons",
+    "image": "/images/tilapia-curry.jpg",
+    "is_available": true,
+    "prep_time": "12-20 min",
+    "rating": 4.9,
+    "station": "kitchen",
+    "is_new": false,
+    "offer_label": "",
+    "offer_price": null,
+    "price_status": "unknown",
+    "basis": "Name or price is cropped in the photo.",
+    "section": "Breakfast",
+    "variants": [
+      {
+        "label": "Standard",
+        "price": null,
+        "price_status": "unknown",
+        "basis": "Name or price is cropped in the photo."
+      }
+    ]
   },
   {
-    id: 'chicken-steak',
-    name: 'Flame Grilled Chicken Steak',
-    desc: 'Succulent boneless chicken breast marinated in fresh herbs and black pepper glaze, served with hand-cut fries and house salad.',
-    price: 1350,
-    category: 'Grill & Steaks',
-    categoryId: 'cat-2',
-    image: '/images/chicken-steak.jpg',
-    is_available: true,
-    prep_time: '20-25 min',
-    rating: 4.7,
-    station: 'kitchen',
-    is_new: false,
-    offer_label: 'HOT DEAL',
-    offer_price: 1050
+    "id": "item-breakfast-add-ons-tea-bag",
+    "name": "Tea Bag",
+    "desc": "Tea Bag – Breakfast Add-ons",
+    "price": null,
+    "category": "Breakfast Add-ons",
+    "categoryId": "breakfast-add-ons",
+    "image": "/images/beef-pizza.jpg",
+    "is_available": true,
+    "prep_time": "12-20 min",
+    "rating": 4.8,
+    "station": "kitchen",
+    "is_new": false,
+    "offer_label": "",
+    "offer_price": null,
+    "price_status": "unknown",
+    "basis": "Name or price is cropped in the photo.",
+    "section": "Breakfast",
+    "variants": [
+      {
+        "label": "Standard",
+        "price": null,
+        "price_status": "unknown",
+        "basis": "Name or price is cropped in the photo."
+      }
+    ]
   },
   {
-    id: 'lamb-chops-tikka',
-    name: 'Spiced Lamb Chops Tikka',
-    desc: 'Tender marinated lamb chops seared on charcoal embers with smoked paprika, cumin butter, mint yogurt, and roasted baby potatoes.',
-    price: 2100,
-    category: 'Grill & Steaks',
-    categoryId: 'cat-2',
-    image: '/images/hero-banner.jpg',
-    is_available: true,
-    prep_time: '25-30 min',
-    rating: 4.9,
-    station: 'kitchen',
-    is_new: false,
-    offer_label: '',
-    offer_price: null
-  },
-
-  // ── Pizzas & Burgers ──
-  {
-    id: 'beef-pizza',
-    name: 'Artisan Beef Pizza',
-    desc: 'Wood-fired sourdough crust, slow-simmered tomato passata, melted mozzarella, spiced minced beef, caramelized onions, and oregano.',
-    price: 1650,
-    category: 'Pizzas & Burgers',
-    categoryId: 'cat-3',
-    image: '/images/beef-pizza.jpg',
-    is_available: true,
-    prep_time: '18-22 min',
-    rating: 4.8,
-    station: 'kitchen',
-    is_new: false,
-    offer_label: '30% OFF',
-    offer_price: 1155
+    "id": "item-breakfast-add-ons-toast",
+    "name": "Toast",
+    "desc": "Toast – Breakfast Add-ons",
+    "price": null,
+    "category": "Breakfast Add-ons",
+    "categoryId": "breakfast-add-ons",
+    "image": "/images/tilapia-curry.jpg",
+    "is_available": true,
+    "prep_time": "12-20 min",
+    "rating": 4.9,
+    "station": "kitchen",
+    "is_new": false,
+    "offer_label": "",
+    "offer_price": null,
+    "price_status": "unknown",
+    "basis": "Name or price is cropped in the photo.",
+    "section": "Breakfast",
+    "variants": [
+      {
+        "label": "Standard",
+        "price": null,
+        "price_status": "unknown",
+        "basis": "Name or price is cropped in the photo."
+      }
+    ]
   },
   {
-    id: 'black-burger',
-    name: 'Gourmet Charcoal Burger',
-    desc: 'Artisanal black charcoal brioche bun, 200g prime beef patty, melted cheddar, crisp iceberg lettuce, dill pickles, and truffle garlic aioli.',
-    price: 1450,
-    category: 'Pizzas & Burgers',
-    categoryId: 'cat-3',
-    image: '/images/black-burger.jpg',
-    is_available: true,
-    prep_time: '15-20 min',
-    rating: 4.9,
-    station: 'kitchen',
-    is_new: false,
-    offer_label: '',
-    offer_price: null
+    "id": "item-breakfast-add-ons-toast-mafuta",
+    "name": "Toast Mafuta",
+    "desc": "Toast Mafuta – Breakfast Add-ons",
+    "price": null,
+    "category": "Breakfast Add-ons",
+    "categoryId": "breakfast-add-ons",
+    "image": "/images/beef-pizza.jpg",
+    "is_available": true,
+    "prep_time": "12-20 min",
+    "rating": 4.7,
+    "station": "kitchen",
+    "is_new": false,
+    "offer_label": "",
+    "offer_price": null,
+    "price_status": "unknown",
+    "basis": "Name or price is cropped in the photo.",
+    "section": "Breakfast",
+    "variants": [
+      {
+        "label": "Standard",
+        "price": null,
+        "price_status": "unknown",
+        "basis": "Name or price is cropped in the photo."
+      }
+    ]
   },
   {
-    id: 'margherita-supreme',
-    name: 'Margherita Supreme',
-    desc: 'San Marzano tomato base, fresh buffalo mozzarella, aromatic sweet basil leaves, and extra virgin cold-pressed olive oil.',
-    price: 1250,
-    category: 'Pizzas & Burgers',
-    categoryId: 'cat-3',
-    image: '/images/beef-pizza.jpg',
-    is_available: true,
-    prep_time: '15-18 min',
-    rating: 4.6,
-    station: 'kitchen',
-    is_new: false,
-    offer_label: '',
-    offer_price: null
-  },
-
-  // ── Pasta & Coastal Seafood ──
-  {
-    id: 'tilapia-curry',
-    name: 'Coastal Tilapia Coconut Curry',
-    desc: 'Fresh Lake Victoria tilapia simmered in rich coconut milk reduction, turmeric, ginger, fresh lime, cilantro, and jasmine rice.',
-    price: 1850,
-    category: 'Pasta & Coastal',
-    categoryId: 'cat-4',
-    image: '/images/tilapia-curry.jpg',
-    is_available: true,
-    prep_time: '22-25 min',
-    rating: 4.9,
-    station: 'kitchen',
-    is_new: true,
-    offer_label: 'Chef Special',
-    offer_price: null
+    "id": "item-breakfast-plates-bites-egg-name-partly-hidden-iled-egg",
+    "name": "Egg (name partly hidden, '..iled Egg')",
+    "desc": "Egg (name partly hidden, '..iled Egg') – Breakfast Plates & Bites",
+    "price": null,
+    "category": "Breakfast Plates & Bites",
+    "categoryId": "breakfast-plates-bites",
+    "image": "/images/beef-pizza.jpg",
+    "is_available": true,
+    "prep_time": "12-20 min",
+    "rating": 4.8,
+    "station": "kitchen",
+    "is_new": false,
+    "offer_label": "",
+    "offer_price": null,
+    "price_status": "unknown",
+    "basis": "Name and price row partly hidden.",
+    "section": "Breakfast",
+    "variants": [
+      {
+        "label": "Standard",
+        "price": null,
+        "price_status": "unknown",
+        "basis": "Name and price row partly hidden."
+      }
+    ]
   },
   {
-    id: 'spaghetti-bolognese',
-    name: 'Spaghetti Bolognese Tagliatelle',
-    desc: 'Traditional slow-braised minced beef ragù, plum tomatoes, fresh rosemary, aged parmesan shavings, and torn Italian basil.',
-    price: 1250,
-    category: 'Pasta & Coastal',
-    categoryId: 'cat-4',
-    image: '/images/spaghetti.jpg',
-    is_available: true,
-    prep_time: '15-18 min',
-    rating: 4.6,
-    station: 'kitchen',
-    is_new: false,
-    offer_label: '',
-    offer_price: null
+    "id": "item-coffee-iced-coffee-vanilla-latte",
+    "name": "Iced Coffee Vanilla Latte",
+    "desc": "Iced Coffee Vanilla Latte – Coffee",
+    "price": null,
+    "category": "Coffee",
+    "categoryId": "coffee",
+    "image": "/images/hero-banner.jpg",
+    "is_available": true,
+    "prep_time": "3-5 min",
+    "rating": 4.9,
+    "station": "bar",
+    "is_new": false,
+    "offer_label": "",
+    "offer_price": null,
+    "price_status": "unknown",
+    "basis": "Blank, cropped or hidden on the menu and not on the website.",
+    "section": "Drinks",
+    "variants": [
+      {
+        "label": "Standard",
+        "price": null,
+        "price_status": "unknown",
+        "basis": "Blank, cropped or hidden on the menu and not on the website."
+      }
+    ]
   },
   {
-    id: 'swahili-prawns',
-    name: 'Swahili Garlic Coconut Prawns',
-    desc: 'Jumbo coastal ocean prawns sautéed in garlic, crushed chili, coconut cream, and fresh lime, served with buttery herb naan bread.',
-    price: 2250,
-    category: 'Pasta & Coastal',
-    categoryId: 'cat-4',
-    image: '/images/tilapia-curry.jpg',
-    is_available: true,
-    prep_time: '18-20 min',
-    rating: 4.9,
-    station: 'kitchen',
-    is_new: false,
-    offer_label: '',
-    offer_price: null
-  },
-
-  // ── Drinks & Beverages ──
-  {
-    id: 'mango-passion-cooler',
-    name: 'Cold-Pressed Passion Mango',
-    desc: 'Pure cold-pressed coastal mango pulp blended with tart wild passion fruit, sparkling water, and fresh garden mint leaves.',
-    price: 450,
-    category: 'Drinks & Beverages',
-    categoryId: 'cat-5',
-    image: '/images/hero-banner.jpg',
-    is_available: true,
-    prep_time: '4 min',
-    rating: 4.9,
-    station: 'bar',
-    is_new: false,
-    offer_label: 'Fresh Squeezed',
-    offer_price: null
+    "id": "item-coffee-long-black",
+    "name": "Long Black",
+    "desc": "Long Black – Coffee",
+    "price": null,
+    "category": "Coffee",
+    "categoryId": "coffee",
+    "image": "/images/hero-banner.jpg",
+    "is_available": true,
+    "prep_time": "3-5 min",
+    "rating": 5,
+    "station": "bar",
+    "is_new": false,
+    "offer_label": "",
+    "offer_price": null,
+    "price_status": "unknown",
+    "basis": "Blank, cropped or hidden on the menu and not on the website.",
+    "section": "Drinks",
+    "variants": [
+      {
+        "label": "Standard",
+        "price": null,
+        "price_status": "unknown",
+        "basis": "Blank, cropped or hidden on the menu and not on the website."
+      }
+    ]
   },
   {
-    id: 'traditional-dawa',
-    name: 'Traditional Kenyan Dawa',
-    desc: 'Hot natural wild forest honey, crushed organic ginger, fresh lime wedges, served with a natural Kenyan sugarcane stirring wand.',
-    price: 400,
-    category: 'Drinks & Beverages',
-    categoryId: 'cat-5',
-    image: '/images/hero-banner.jpg',
-    is_available: true,
-    prep_time: '5 min',
-    rating: 4.8,
-    station: 'bar',
-    is_new: false,
-    offer_label: 'Signature Drink',
-    offer_price: null
+    "id": "item-coffee-milk-chocolate-hot",
+    "name": "Milk Chocolate (hot)",
+    "desc": "Milk Chocolate (hot) – Coffee",
+    "price": null,
+    "category": "Coffee",
+    "categoryId": "coffee",
+    "image": "/images/hero-banner.jpg",
+    "is_available": true,
+    "prep_time": "3-5 min",
+    "rating": 4.9,
+    "station": "bar",
+    "is_new": false,
+    "offer_label": "",
+    "offer_price": null,
+    "price_status": "unknown",
+    "basis": "Blank, cropped or hidden on the menu and not on the website.",
+    "section": "Drinks",
+    "variants": [
+      {
+        "label": "Standard",
+        "price": null,
+        "price_status": "unknown",
+        "basis": "Blank, cropped or hidden on the menu and not on the website."
+      }
+    ]
   },
   {
-    id: 'hibiscus-mint-tea',
-    name: 'Hibiscus Mint Iced Cooler',
-    desc: 'Chilled crimson roselle hibiscus flower brew, crushed spearmint, a squeeze of fresh lime, and organic cane nectar.',
-    price: 380,
-    category: 'Drinks & Beverages',
-    categoryId: 'cat-5',
-    image: '/images/hero-banner.jpg',
-    is_available: true,
-    prep_time: '3 min',
-    rating: 4.7,
-    station: 'bar',
-    is_new: false,
-    offer_label: '',
-    offer_price: null
+    "id": "item-coffee-mocha-cappuccino",
+    "name": "Mocha Cappuccino",
+    "desc": "Mocha Cappuccino – Coffee",
+    "price": null,
+    "category": "Coffee",
+    "categoryId": "coffee",
+    "image": "/images/chicken-steak.jpg",
+    "is_available": true,
+    "prep_time": "3-5 min",
+    "rating": 4.6,
+    "station": "bar",
+    "is_new": false,
+    "offer_label": "",
+    "offer_price": null,
+    "price_status": "unknown",
+    "basis": "Blank, cropped or hidden on the menu and not on the website.",
+    "section": "Drinks",
+    "variants": [
+      {
+        "label": "Standard",
+        "price": null,
+        "price_status": "unknown",
+        "basis": "Blank, cropped or hidden on the menu and not on the website."
+      }
+    ]
   },
   {
-    id: 'tamarind-sparkler',
-    name: 'Coastal Tamarind Sparkler',
-    desc: 'Tangy artisanal tamarind syrup pressed in-house, sparkling mineral water, crushed ice, and a roasted chili salt rim.',
-    price: 390,
-    category: 'Drinks & Beverages',
-    categoryId: 'cat-5',
-    image: '/images/hero-banner.jpg',
-    is_available: true,
-    prep_time: '4 min',
-    rating: 4.7,
-    station: 'bar',
-    is_new: false,
-    offer_label: '',
-    offer_price: null
+    "id": "item-coffee-vanilla-cold-espresso",
+    "name": "Vanilla Cold Espresso",
+    "desc": "Vanilla Cold Espresso – Coffee",
+    "price": null,
+    "category": "Coffee",
+    "categoryId": "coffee",
+    "image": "/images/beef-pizza.jpg",
+    "is_available": true,
+    "prep_time": "3-5 min",
+    "rating": 4.8,
+    "station": "bar",
+    "is_new": false,
+    "offer_label": "",
+    "offer_price": null,
+    "price_status": "unknown",
+    "basis": "Blank, cropped or hidden on the menu and not on the website.",
+    "section": "Drinks",
+    "variants": [
+      {
+        "label": "Standard",
+        "price": null,
+        "price_status": "unknown",
+        "basis": "Blank, cropped or hidden on the menu and not on the website."
+      }
+    ]
   },
   {
-    id: 'tusker-cider',
-    name: 'Kenyan Crisp Apple Cider (500ml)',
-    desc: 'Crisp, chilled premium Kenyan cider made with real apples. Served in an ice-frosted glass with a slice of fresh green apple.',
-    price: 480,
-    category: 'Drinks & Beverages',
-    categoryId: 'cat-5',
-    image: '/images/hero-banner.jpg',
-    is_available: true,
-    prep_time: '2 min',
-    rating: 4.8,
-    station: 'bar',
-    is_new: false,
-    offer_label: '',
-    offer_price: null
+    "id": "item-fresh-juices-cocktail-juice",
+    "name": "Cocktail Juice",
+    "desc": "Cocktail Juice – Fresh Juices",
+    "price": 100,
+    "category": "Fresh Juices",
+    "categoryId": "fresh-juices",
+    "image": "/images/beef-pizza.jpg",
+    "is_available": true,
+    "prep_time": "3-5 min",
+    "rating": 4.7,
+    "station": "bar",
+    "is_new": false,
+    "offer_label": "",
+    "offer_price": null,
+    "price_status": "unknown",
+    "basis": "Blank, cropped or hidden on the menu and not on the website.",
+    "section": "Drinks",
+    "variants": [
+      {
+        "label": "Small",
+        "price": null,
+        "price_status": "unknown",
+        "basis": "Blank, cropped or hidden on the menu and not on the website."
+      },
+      {
+        "label": "Large",
+        "price": 100,
+        "price_status": "confirmed",
+        "basis": "Menu photo and website agree."
+      }
+    ]
   },
   {
-    id: 'kenyan-espresso',
-    name: 'Single Origin AA Cold Brew Espresso',
-    desc: 'Nyeri high-altitude single estate arabica, slow cold-extracted for 18 hours with bright citrus undertones and silky crema.',
-    price: 350,
-    category: 'Drinks & Beverages',
-    categoryId: 'cat-5',
-    image: '/images/hero-banner.jpg',
-    is_available: true,
-    prep_time: '3 min',
-    rating: 4.9,
-    station: 'bar',
-    is_new: false,
-    offer_label: '',
-    offer_price: null
+    "id": "item-fresh-juices-mango-juice",
+    "name": "Mango Juice",
+    "desc": "Mango Juice – Fresh Juices",
+    "price": 150,
+    "category": "Fresh Juices",
+    "categoryId": "fresh-juices",
+    "image": "/images/beef-pizza.jpg",
+    "is_available": true,
+    "prep_time": "3-5 min",
+    "rating": 4.9,
+    "station": "bar",
+    "is_new": false,
+    "offer_label": "",
+    "offer_price": null,
+    "price_status": "unknown",
+    "basis": "Blank, cropped or hidden on the menu and not on the website.",
+    "section": "Drinks",
+    "variants": [
+      {
+        "label": "Small",
+        "price": null,
+        "price_status": "unknown",
+        "basis": "Blank, cropped or hidden on the menu and not on the website."
+      },
+      {
+        "label": "Large",
+        "price": 150,
+        "price_status": "confirmed",
+        "basis": "Menu photo and website agree."
+      }
+    ]
   },
   {
-    id: 'classic-lime-mojito',
-    name: 'Fresh Mint & Lime Mojito Mocktail',
-    desc: 'Muddled fresh garden mint, Persian lime juice, raw cane syrup, sparkling club soda, and crushed ice.',
-    price: 420,
-    category: 'Drinks & Beverages',
-    categoryId: 'cat-5',
-    image: '/images/hero-banner.jpg',
-    is_available: true,
-    prep_time: '4 min',
-    rating: 4.9,
-    station: 'bar',
-    is_new: true,
-    offer_label: 'Popular',
-    offer_price: null
+    "id": "item-soft-drinks-water-water",
+    "name": "Water",
+    "desc": "Water – Soft Drinks & Water",
+    "price": null,
+    "category": "Soft Drinks & Water",
+    "categoryId": "soft-drinks-water",
+    "image": "/images/tilapia-curry.jpg",
+    "is_available": true,
+    "prep_time": "3-5 min",
+    "rating": 4.8,
+    "station": "bar",
+    "is_new": false,
+    "offer_label": "",
+    "offer_price": null,
+    "price_status": "unknown",
+    "basis": "Blank, cropped or hidden on the menu and not on the website.",
+    "section": "Drinks",
+    "variants": [
+      {
+        "label": "1L",
+        "price": null,
+        "price_status": "unknown",
+        "basis": "Blank, cropped or hidden on the menu and not on the website."
+      },
+      {
+        "label": "Small",
+        "price": null,
+        "price_status": "unknown",
+        "basis": "Blank, cropped or hidden on the menu and not on the website."
+      }
+    ]
   },
   {
-    id: 'masala-chai',
-    name: 'Spiced Masala Chai',
-    desc: 'Fresh Kericho gold tea leaves brewed with whole milk, crushed green cardamom pods, cinnamon bark, and fresh ginger.',
-    price: 320,
-    category: 'Drinks & Beverages',
-    categoryId: 'cat-5',
-    image: '/images/hero-banner.jpg',
-    is_available: true,
-    prep_time: '5 min',
-    rating: 4.8,
-    station: 'bar',
-    is_new: false,
-    offer_label: '',
-    offer_price: null
-  },
-
-  // ── Desserts ──
-  {
-    id: 'cardamom-flan',
-    name: 'Cardamom Honey Creme Flan',
-    desc: 'Silky baked cream custard infused with coastal green cardamom, wild honey caramel reduction, and roasted crushed cashews.',
-    price: 550,
-    category: 'Desserts',
-    categoryId: 'cat-6',
-    image: '/images/spaghetti.jpg',
-    is_available: true,
-    prep_time: '8 min',
-    rating: 4.8,
-    station: 'kitchen',
-    is_new: false,
-    offer_label: '',
-    offer_price: null
+    "id": "item-fast-food-andazi",
+    "name": "Andazi",
+    "desc": "Andazi – Fast Food",
+    "price": null,
+    "category": "Fast Food",
+    "categoryId": "fast-food",
+    "image": "/images/chicken-steak.jpg",
+    "is_available": true,
+    "prep_time": "12-20 min",
+    "rating": 4.7,
+    "station": "kitchen",
+    "is_new": false,
+    "offer_label": "",
+    "offer_price": null,
+    "price_status": "unknown",
+    "basis": "Blank, cropped or hidden on the menu and not on the website.",
+    "section": "Fast Food",
+    "variants": [
+      {
+        "label": "Standard",
+        "price": null,
+        "price_status": "unknown",
+        "basis": "Blank, cropped or hidden on the menu and not on the website."
+      }
+    ]
   },
   {
-    id: 'chocolate-lava',
-    name: 'Belgian Dark Chocolate Lava Cake',
-    desc: 'Warm molten 70% dark cocoa fondant cake served with Madagascar bourbon vanilla bean gelato and strawberry coulis.',
-    price: 750,
-    category: 'Desserts',
-    categoryId: 'cat-6',
-    image: '/images/black-burger.jpg',
-    is_available: true,
-    prep_time: '12 min',
-    rating: 4.9,
-    station: 'kitchen',
-    is_new: true,
-    offer_label: '',
-    offer_price: null
+    "id": "item-fast-food-bhajia",
+    "name": "Bhajia",
+    "desc": "Bhajia – Fast Food",
+    "price": null,
+    "category": "Fast Food",
+    "categoryId": "fast-food",
+    "image": "/images/chicken-steak.jpg",
+    "is_available": true,
+    "prep_time": "12-20 min",
+    "rating": 4.8,
+    "station": "kitchen",
+    "is_new": false,
+    "offer_label": "",
+    "offer_price": null,
+    "price_status": "unknown",
+    "basis": "Blank, cropped or hidden on the menu and not on the website.",
+    "section": "Fast Food",
+    "variants": [
+      {
+        "label": "Standard",
+        "price": null,
+        "price_status": "unknown",
+        "basis": "Blank, cropped or hidden on the menu and not on the website."
+      }
+    ]
+  },
+  {
+    "id": "item-fast-food-chapati-brown",
+    "name": "Chapati Brown",
+    "desc": "Chapati Brown – Fast Food",
+    "price": null,
+    "category": "Fast Food",
+    "categoryId": "fast-food",
+    "image": "/images/tilapia-curry.jpg",
+    "is_available": true,
+    "prep_time": "12-20 min",
+    "rating": 5,
+    "station": "kitchen",
+    "is_new": false,
+    "offer_label": "",
+    "offer_price": null,
+    "price_status": "unknown",
+    "basis": "Blank, cropped or hidden on the menu and not on the website.",
+    "section": "Fast Food",
+    "variants": [
+      {
+        "label": "Standard",
+        "price": null,
+        "price_status": "unknown",
+        "basis": "Blank, cropped or hidden on the menu and not on the website."
+      }
+    ]
+  },
+  {
+    "id": "item-fast-food-chapati-white",
+    "name": "Chapati White",
+    "desc": "Chapati White – Fast Food",
+    "price": null,
+    "category": "Fast Food",
+    "categoryId": "fast-food",
+    "image": "/images/hero-banner.jpg",
+    "is_available": true,
+    "prep_time": "12-20 min",
+    "rating": 4.8,
+    "station": "kitchen",
+    "is_new": false,
+    "offer_label": "",
+    "offer_price": null,
+    "price_status": "unknown",
+    "basis": "Blank, cropped or hidden on the menu and not on the website.",
+    "section": "Fast Food",
+    "variants": [
+      {
+        "label": "Standard",
+        "price": null,
+        "price_status": "unknown",
+        "basis": "Blank, cropped or hidden on the menu and not on the website."
+      }
+    ]
+  },
+  {
+    "id": "item-fast-food-juice",
+    "name": "Juice",
+    "desc": "Juice – Fast Food",
+    "price": null,
+    "category": "Fast Food",
+    "categoryId": "fast-food",
+    "image": "/images/chicken-steak.jpg",
+    "is_available": true,
+    "prep_time": "12-20 min",
+    "rating": 4.9,
+    "station": "kitchen",
+    "is_new": false,
+    "offer_label": "",
+    "offer_price": null,
+    "price_status": "unknown",
+    "basis": "Blank, cropped or hidden on the menu and not on the website.",
+    "section": "Fast Food",
+    "variants": [
+      {
+        "label": "Standard",
+        "price": null,
+        "price_status": "unknown",
+        "basis": "Blank, cropped or hidden on the menu and not on the website."
+      }
+    ]
+  },
+  {
+    "id": "item-fishes-fish-biryani",
+    "name": "Fish Biryani",
+    "desc": "Fish Biryani – Fishes",
+    "price": null,
+    "category": "Fishes",
+    "categoryId": "fishes",
+    "image": "/images/chicken-steak.jpg",
+    "is_available": true,
+    "prep_time": "12-20 min",
+    "rating": 4.7,
+    "station": "kitchen",
+    "is_new": false,
+    "offer_label": "",
+    "offer_price": null,
+    "price_status": "unknown",
+    "basis": "Blank, cropped or hidden on the menu and not on the website.",
+    "section": "Main Course",
+    "variants": [
+      {
+        "label": "Standard",
+        "price": null,
+        "price_status": "unknown",
+        "basis": "Blank, cropped or hidden on the menu and not on the website."
+      }
+    ]
+  },
+  {
+    "id": "item-fishes-fish-curry",
+    "name": "Fish Curry",
+    "desc": "Fish Curry – Fishes",
+    "price": null,
+    "category": "Fishes",
+    "categoryId": "fishes",
+    "image": "/images/beef-pizza.jpg",
+    "is_available": true,
+    "prep_time": "12-20 min",
+    "rating": 4.9,
+    "station": "kitchen",
+    "is_new": false,
+    "offer_label": "",
+    "offer_price": null,
+    "price_status": "unknown",
+    "basis": "Blank, cropped or hidden on the menu and not on the website.",
+    "section": "Main Course",
+    "variants": [
+      {
+        "label": "Standard",
+        "price": null,
+        "price_status": "unknown",
+        "basis": "Blank, cropped or hidden on the menu and not on the website."
+      }
+    ]
+  },
+  {
+    "id": "item-fishes-fish-dry-fry",
+    "name": "Fish Dry Fry",
+    "desc": "Fish Dry Fry – Fishes",
+    "price": null,
+    "category": "Fishes",
+    "categoryId": "fishes",
+    "image": "/images/hero-banner.jpg",
+    "is_available": true,
+    "prep_time": "12-20 min",
+    "rating": 4.6,
+    "station": "kitchen",
+    "is_new": false,
+    "offer_label": "",
+    "offer_price": null,
+    "price_status": "unknown",
+    "basis": "Blank, cropped or hidden on the menu and not on the website.",
+    "section": "Main Course",
+    "variants": [
+      {
+        "label": "Standard",
+        "price": null,
+        "price_status": "unknown",
+        "basis": "Blank, cropped or hidden on the menu and not on the website."
+      }
+    ]
+  },
+  {
+    "id": "item-fishes-fish-masala",
+    "name": "Fish Masala",
+    "desc": "Fish Masala – Fishes",
+    "price": null,
+    "category": "Fishes",
+    "categoryId": "fishes",
+    "image": "/images/beef-pizza.jpg",
+    "is_available": true,
+    "prep_time": "12-20 min",
+    "rating": 4.6,
+    "station": "kitchen",
+    "is_new": false,
+    "offer_label": "",
+    "offer_price": null,
+    "price_status": "unknown",
+    "basis": "Blank, cropped or hidden on the menu and not on the website.",
+    "section": "Main Course",
+    "variants": [
+      {
+        "label": "Standard",
+        "price": null,
+        "price_status": "unknown",
+        "basis": "Blank, cropped or hidden on the menu and not on the website."
+      }
+    ]
+  },
+  {
+    "id": "item-fishes-fish-munye",
+    "name": "Fish Munye",
+    "desc": "Fish Munye – Fishes",
+    "price": null,
+    "category": "Fishes",
+    "categoryId": "fishes",
+    "image": "/images/hero-banner.jpg",
+    "is_available": true,
+    "prep_time": "12-20 min",
+    "rating": 4.9,
+    "station": "kitchen",
+    "is_new": false,
+    "offer_label": "",
+    "offer_price": null,
+    "price_status": "unknown",
+    "basis": "Blank, cropped or hidden on the menu and not on the website.",
+    "section": "Main Course",
+    "variants": [
+      {
+        "label": "Standard",
+        "price": null,
+        "price_status": "unknown",
+        "basis": "Blank, cropped or hidden on the menu and not on the website."
+      }
+    ]
+  },
+  {
+    "id": "item-fishes-fish-wet-fry",
+    "name": "Fish Wet Fry",
+    "desc": "Fish Wet Fry – Fishes",
+    "price": null,
+    "category": "Fishes",
+    "categoryId": "fishes",
+    "image": "/images/hero-banner.jpg",
+    "is_available": true,
+    "prep_time": "12-20 min",
+    "rating": 4.8,
+    "station": "kitchen",
+    "is_new": false,
+    "offer_label": "",
+    "offer_price": null,
+    "price_status": "unknown",
+    "basis": "Blank, cropped or hidden on the menu and not on the website.",
+    "section": "Main Course",
+    "variants": [
+      {
+        "label": "Standard",
+        "price": null,
+        "price_status": "unknown",
+        "basis": "Blank, cropped or hidden on the menu and not on the website."
+      }
+    ]
+  },
+  {
+    "id": "item-vegies-kienyeji-greens",
+    "name": "Kienyeji (greens)",
+    "desc": "Kienyeji (greens) – Vegies",
+    "price": 80,
+    "category": "Vegies",
+    "categoryId": "vegies",
+    "image": "/images/tilapia-curry.jpg",
+    "is_available": true,
+    "prep_time": "12-20 min",
+    "rating": 4.6,
+    "station": "kitchen",
+    "is_new": false,
+    "offer_label": "",
+    "offer_price": null,
+    "price_status": "unknown",
+    "basis": "Menu sticker is blank; website's 80 equals Kienyeji Plain, likely a copy error.",
+    "section": "Main Course",
+    "variants": [
+      {
+        "label": "Matoke",
+        "price": null,
+        "price_status": "unknown",
+        "basis": "Menu sticker is blank; website's 80 equals Kienyeji Plain, likely a copy error."
+      },
+      {
+        "label": "Plain",
+        "price": 80,
+        "price_status": "confirmed",
+        "basis": "Menu photo and website agree."
+      },
+      {
+        "label": "Ugali",
+        "price": 130,
+        "price_status": "confirmed",
+        "basis": "Menu photo and website agree."
+      },
+      {
+        "label": "Rice",
+        "price": 130,
+        "price_status": "confirmed",
+        "basis": "Menu photo and website agree."
+      }
+    ]
+  },
+  {
+    "id": "item-beef-beef",
+    "name": "Beef",
+    "desc": "Beef – Beef",
+    "price": 250,
+    "category": "Beef",
+    "categoryId": "beef",
+    "image": "/images/hero-banner.jpg",
+    "is_available": true,
+    "prep_time": "12-20 min",
+    "rating": 4.8,
+    "station": "kitchen",
+    "is_new": false,
+    "offer_label": "",
+    "offer_price": null,
+    "price_status": "unknown",
+    "basis": "Blank, cropped or hidden on the menu and not on the website.",
+    "section": "Main Dish",
+    "variants": [
+      {
+        "label": "Githeri",
+        "price": null,
+        "price_status": "unknown",
+        "basis": "Blank, cropped or hidden on the menu and not on the website."
+      },
+      {
+        "label": "Matoke",
+        "price": null,
+        "price_status": "unknown",
+        "basis": "Blank, cropped or hidden on the menu and not on the website."
+      },
+      {
+        "label": "Minji Pilau",
+        "price": null,
+        "price_status": "unknown",
+        "basis": "Blank, cropped or hidden on the menu and not on the website."
+      },
+      {
+        "label": "Mokimo",
+        "price": null,
+        "price_status": "unknown",
+        "basis": "Handwritten sticker is ambiguous (340 or 310)."
+      },
+      {
+        "label": "Minji Plain",
+        "price": null,
+        "price_status": "unknown",
+        "basis": "Blank, cropped or hidden on the menu and not on the website."
+      },
+      {
+        "label": "Pilau",
+        "price": null,
+        "price_status": "unknown",
+        "basis": "Blank, cropped or hidden on the menu and not on the website."
+      },
+      {
+        "label": "Plain",
+        "price": 250,
+        "price_status": "working",
+        "basis": "Legible but hand-patched or partly cropped on the menu; not on the website."
+      },
+      {
+        "label": "Rice",
+        "price": 300,
+        "price_status": "working",
+        "basis": "Legible but hand-patched or partly cropped on the menu; not on the website."
+      },
+      {
+        "label": "Ugali",
+        "price": 300,
+        "price_status": "working",
+        "basis": "Legible but hand-patched or partly cropped on the menu; not on the website."
+      }
+    ]
+  },
+  {
+    "id": "item-breakfast-plates-bites-boiled-egg",
+    "name": "Boiled Egg",
+    "desc": "Boiled Egg – Breakfast Plates & Bites",
+    "price": 30,
+    "category": "Breakfast Plates & Bites",
+    "categoryId": "breakfast-plates-bites",
+    "image": "/images/tilapia-curry.jpg",
+    "is_available": true,
+    "prep_time": "12-20 min",
+    "rating": 4.7,
+    "station": "kitchen",
+    "is_new": false,
+    "offer_label": "",
+    "offer_price": null,
+    "price_status": "working",
+    "basis": "Legible but hand-patched or partly cropped on the menu; not on the website.",
+    "section": "Breakfast",
+    "variants": [
+      {
+        "label": "Standard",
+        "price": 30,
+        "price_status": "working",
+        "basis": "Legible but hand-patched or partly cropped on the menu; not on the website."
+      }
+    ]
+  },
+  {
+    "id": "item-breakfast-plates-bites-fried-egg",
+    "name": "Fried Egg",
+    "desc": "Fried Egg – Breakfast Plates & Bites",
+    "price": 50,
+    "category": "Breakfast Plates & Bites",
+    "categoryId": "breakfast-plates-bites",
+    "image": "/images/hero-banner.jpg",
+    "is_available": true,
+    "prep_time": "12-20 min",
+    "rating": 4.7,
+    "station": "kitchen",
+    "is_new": false,
+    "offer_label": "",
+    "offer_price": null,
+    "price_status": "working",
+    "basis": "Legible but hand-patched or partly cropped on the menu; not on the website.",
+    "section": "Breakfast",
+    "variants": [
+      {
+        "label": "Standard",
+        "price": 50,
+        "price_status": "working",
+        "basis": "Legible but hand-patched or partly cropped on the menu; not on the website."
+      }
+    ]
+  },
+  {
+    "id": "item-coffee-chocolate-latte",
+    "name": "Chocolate Latte",
+    "desc": "Chocolate Latte – Coffee",
+    "price": 170,
+    "category": "Coffee",
+    "categoryId": "coffee",
+    "image": "/images/beef-pizza.jpg",
+    "is_available": true,
+    "prep_time": "3-5 min",
+    "rating": 4.9,
+    "station": "bar",
+    "is_new": false,
+    "offer_label": "",
+    "offer_price": null,
+    "price_status": "working",
+    "basis": "Legible but hand-patched or partly cropped on the menu; not on the website.",
+    "section": "Drinks",
+    "variants": [
+      {
+        "label": "Standard",
+        "price": 170,
+        "price_status": "working",
+        "basis": "Legible but hand-patched or partly cropped on the menu; not on the website."
+      }
+    ]
+  },
+  {
+    "id": "item-vegies-cabbage",
+    "name": "Cabbage",
+    "desc": "Cabbage – Vegies",
+    "price": 120,
+    "category": "Vegies",
+    "categoryId": "vegies",
+    "image": "/images/chicken-steak.jpg",
+    "is_available": true,
+    "prep_time": "12-20 min",
+    "rating": 4.6,
+    "station": "kitchen",
+    "is_new": false,
+    "offer_label": "",
+    "offer_price": null,
+    "price_status": "working",
+    "basis": "Sticker over the first Cabbage Mukimo row reads about 120. The second printed 'Cabbage Mukimo 180' looks like a stale duplicate line.",
+    "section": "Main Course",
+    "variants": [
+      {
+        "label": "Mukimo",
+        "price": 120,
+        "price_status": "working",
+        "basis": "Sticker over the first Cabbage Mukimo row reads about 120. The second printed 'Cabbage Mukimo 180' looks like a stale duplicate line."
+      },
+      {
+        "label": "Matoke",
+        "price": 120,
+        "price_status": "confirmed",
+        "basis": "Menu photo and website agree."
+      },
+      {
+        "label": "Plain",
+        "price": 50,
+        "price_status": "confirmed",
+        "basis": "Menu photo and website agree."
+      },
+      {
+        "label": "Rice",
+        "price": 100,
+        "price_status": "confirmed",
+        "basis": "Menu photo and website agree."
+      },
+      {
+        "label": "Ugali",
+        "price": 100,
+        "price_status": "confirmed",
+        "basis": "Menu photo and website agree."
+      }
+    ]
+  },
+  {
+    "id": "item-beans-beans",
+    "name": "Beans",
+    "desc": "Beans – Beans",
+    "price": 120,
+    "category": "Beans",
+    "categoryId": "beans",
+    "image": "/images/tilapia-curry.jpg",
+    "is_available": true,
+    "prep_time": "12-20 min",
+    "rating": 5,
+    "station": "kitchen",
+    "is_new": false,
+    "offer_label": "",
+    "offer_price": null,
+    "price_status": "working",
+    "basis": "Legible but hand-patched or partly cropped on the menu; not on the website.",
+    "section": "Main Dish",
+    "variants": [
+      {
+        "label": "Rice",
+        "price": 120,
+        "price_status": "working",
+        "basis": "Legible but hand-patched or partly cropped on the menu; not on the website."
+      },
+      {
+        "label": "Ugali",
+        "price": 120,
+        "price_status": "working",
+        "basis": "Legible but hand-patched or partly cropped on the menu; not on the website."
+      },
+      {
+        "label": "Matoke",
+        "price": 180,
+        "price_status": "confirmed",
+        "basis": "Printed price legible on the menu."
+      },
+      {
+        "label": "Plain",
+        "price": 80,
+        "price_status": "confirmed",
+        "basis": "Printed price legible on the menu."
+      }
+    ]
+  },
+  {
+    "id": "item-githeri-githeri",
+    "name": "Githeri",
+    "desc": "Githeri – Githeri",
+    "price": 280,
+    "category": "Githeri",
+    "categoryId": "githeri",
+    "image": "/images/tilapia-curry.jpg",
+    "is_available": true,
+    "prep_time": "12-20 min",
+    "rating": 4.9,
+    "station": "kitchen",
+    "is_new": false,
+    "offer_label": "",
+    "offer_price": null,
+    "price_status": "working",
+    "basis": "Handwritten sticker reads 280; website says 180 (probably the old printed price).",
+    "section": "Main Dish",
+    "variants": [
+      {
+        "label": "Minji",
+        "price": 280,
+        "price_status": "working",
+        "basis": "Handwritten sticker reads 280; website says 180 (probably the old printed price)."
+      },
+      {
+        "label": "Njahi",
+        "price": 180,
+        "price_status": "working",
+        "basis": "Menu line ends '...ahi' (Njahi) and shows 180/=; website calls it Ndengu. Name chosen from the menu."
+      },
+      {
+        "label": "Cabbage",
+        "price": 150,
+        "price_status": "confirmed",
+        "basis": "Menu photo and website agree."
+      },
+      {
+        "label": "Matoke",
+        "price": 220,
+        "price_status": "confirmed",
+        "basis": "Menu photo and website agree."
+      },
+      {
+        "label": "Sukuma",
+        "price": 150,
+        "price_status": "confirmed",
+        "basis": "Menu photo and website agree."
+      },
+      {
+        "label": "Vegies",
+        "price": 150,
+        "price_status": "confirmed",
+        "basis": "Menu photo and website agree."
+      }
+    ]
+  },
+  {
+    "id": "item-matumbo-matumbo",
+    "name": "Matumbo",
+    "desc": "Matumbo – Matumbo",
+    "price": 200,
+    "category": "Matumbo",
+    "categoryId": "matumbo",
+    "image": "/images/hero-banner.jpg",
+    "is_available": true,
+    "prep_time": "12-20 min",
+    "rating": 4.5,
+    "station": "kitchen",
+    "is_new": false,
+    "offer_label": "",
+    "offer_price": null,
+    "price_status": "working",
+    "basis": "Both Ugali rows on the menu read 200. Website's extra 'Matumbo Ugali 300' matches no priced row (three Matumbo rows are covered by blank stickers).",
+    "section": "Main Dish",
+    "variants": [
+      {
+        "label": "Ugali",
+        "price": 200,
+        "price_status": "working",
+        "basis": "Both Ugali rows on the menu read 200. Website's extra 'Matumbo Ugali 300' matches no priced row (three Matumbo rows are covered by blank stickers)."
+      },
+      {
+        "label": "Rice",
+        "price": 200,
+        "price_status": "working",
+        "basis": "Menu sticker clearly reads 200; website says 300 (looks like a copy of the Pilau price)."
+      },
+      {
+        "label": "Githeri",
+        "price": 300,
+        "price_status": "confirmed",
+        "basis": "Menu photo and website agree."
+      },
+      {
+        "label": "Mukimo",
+        "price": 270,
+        "price_status": "confirmed",
+        "basis": "Menu photo and website agree."
+      },
+      {
+        "label": "Pilau",
+        "price": 300,
+        "price_status": "confirmed",
+        "basis": "Menu photo and website agree."
+      },
+      {
+        "label": "Plain",
+        "price": 150,
+        "price_status": "confirmed",
+        "basis": "Menu photo and website agree."
+      }
+    ]
+  },
+  {
+    "id": "item-ndegu-green-grams-ndegu",
+    "name": "Ndegu",
+    "desc": "Ndegu – Ndegu (Green Grams)",
+    "price": 120,
+    "category": "Ndegu (Green Grams)",
+    "categoryId": "ndegu-green-grams",
+    "image": "/images/beef-pizza.jpg",
+    "is_available": true,
+    "prep_time": "12-20 min",
+    "rating": 4.9,
+    "station": "kitchen",
+    "is_new": false,
+    "offer_label": "",
+    "offer_price": null,
+    "price_status": "working",
+    "basis": "Sticker 120 sits over printed 100; Ndegu Rice shows the same pattern and the website used the sticker there.",
+    "section": "Main Dish",
+    "variants": [
+      {
+        "label": "Ugali",
+        "price": 120,
+        "price_status": "working",
+        "basis": "Sticker 120 sits over printed 100; Ndegu Rice shows the same pattern and the website used the sticker there."
+      },
+      {
+        "label": "Matoke",
+        "price": 150,
+        "price_status": "confirmed",
+        "basis": "Menu photo and website agree."
+      },
+      {
+        "label": "Plain",
+        "price": 80,
+        "price_status": "confirmed",
+        "basis": "Menu photo and website agree."
+      },
+      {
+        "label": "Rice",
+        "price": 120,
+        "price_status": "confirmed",
+        "basis": "Menu photo and website agree."
+      }
+    ]
+  },
+  {
+    "id": "item-plains-sides-omena",
+    "name": "Omena",
+    "desc": "Omena – Plains & Sides",
+    "price": 80,
+    "category": "Plains & Sides",
+    "categoryId": "plains-sides",
+    "image": "/images/beef-pizza.jpg",
+    "is_available": true,
+    "prep_time": "12-20 min",
+    "rating": 4.7,
+    "station": "kitchen",
+    "is_new": false,
+    "offer_label": "",
+    "offer_price": null,
+    "price_status": "working",
+    "basis": "Sticker reads 80; website's 200 would make plain Omena dearer than Omena with ugali.",
+    "section": "Plains & Sides",
+    "variants": [
+      {
+        "label": "Plain",
+        "price": 80,
+        "price_status": "working",
+        "basis": "Sticker reads 80; website's 200 would make plain Omena dearer than Omena with ugali."
+      },
+      {
+        "label": "Ugali / Rice",
+        "price": 130,
+        "price_status": "working",
+        "basis": "Sticker reads 130 (80 + Ugali 50 adds up); website says 150. Sticker looks partly struck through, so recheck."
+      }
+    ]
+  },
+  {
+    "id": "item-plains-sides-ugali-mala",
+    "name": "Ugali Mala",
+    "desc": "Ugali Mala – Plains & Sides",
+    "price": 130,
+    "category": "Plains & Sides",
+    "categoryId": "plains-sides",
+    "image": "/images/beef-pizza.jpg",
+    "is_available": true,
+    "prep_time": "12-20 min",
+    "rating": 4.7,
+    "station": "kitchen",
+    "is_new": false,
+    "offer_label": "",
+    "offer_price": null,
+    "price_status": "working",
+    "basis": "Visible digits on the sticker are '13'; Ugali 50 + Mala 80 = 130. Website says 120.",
+    "section": "Plains & Sides",
+    "variants": [
+      {
+        "label": "Standard",
+        "price": 130,
+        "price_status": "working",
+        "basis": "Visible digits on the sticker are '13'; Ugali 50 + Mala 80 = 130. Website says 120."
+      }
+    ]
+  },
+  {
+    "id": "item-breakfast-plates-bites-beef-sausage",
+    "name": "Beef Sausage",
+    "desc": "Beef Sausage – Breakfast Plates & Bites",
+    "price": 80,
+    "category": "Breakfast Plates & Bites",
+    "categoryId": "breakfast-plates-bites",
+    "image": "/images/tilapia-curry.jpg",
+    "is_available": true,
+    "prep_time": "12-20 min",
+    "rating": 4.7,
+    "station": "kitchen",
+    "is_new": false,
+    "offer_label": "",
+    "offer_price": null,
+    "price_status": "confirmed",
+    "basis": "Printed price legible on the menu.",
+    "section": "Breakfast",
+    "variants": [
+      {
+        "label": "Standard",
+        "price": 80,
+        "price_status": "confirmed",
+        "basis": "Printed price legible on the menu."
+      }
+    ]
+  },
+  {
+    "id": "item-breakfast-plates-bites-nduma",
+    "name": "Nduma",
+    "desc": "Nduma – Breakfast Plates & Bites",
+    "price": 50,
+    "category": "Breakfast Plates & Bites",
+    "categoryId": "breakfast-plates-bites",
+    "image": "/images/beef-pizza.jpg",
+    "is_available": true,
+    "prep_time": "12-20 min",
+    "rating": 5,
+    "station": "kitchen",
+    "is_new": false,
+    "offer_label": "",
+    "offer_price": null,
+    "price_status": "confirmed",
+    "basis": "Printed price legible on the menu.",
+    "section": "Breakfast",
+    "variants": [
+      {
+        "label": "Standard",
+        "price": 50,
+        "price_status": "confirmed",
+        "basis": "Printed price legible on the menu."
+      }
+    ]
+  },
+  {
+    "id": "item-breakfast-plates-bites-ngwaci",
+    "name": "Ngwaci",
+    "desc": "Ngwaci – Breakfast Plates & Bites",
+    "price": 50,
+    "category": "Breakfast Plates & Bites",
+    "categoryId": "breakfast-plates-bites",
+    "image": "/images/beef-pizza.jpg",
+    "is_available": true,
+    "prep_time": "12-20 min",
+    "rating": 5,
+    "station": "kitchen",
+    "is_new": false,
+    "offer_label": "",
+    "offer_price": null,
+    "price_status": "confirmed",
+    "basis": "Printed price legible on the menu.",
+    "section": "Breakfast",
+    "variants": [
+      {
+        "label": "Standard",
+        "price": 50,
+        "price_status": "confirmed",
+        "basis": "Printed price legible on the menu."
+      }
+    ]
+  },
+  {
+    "id": "item-breakfast-plates-bites-omelette",
+    "name": "Omelette",
+    "desc": "Omelette – Breakfast Plates & Bites",
+    "price": 100,
+    "category": "Breakfast Plates & Bites",
+    "categoryId": "breakfast-plates-bites",
+    "image": "/images/tilapia-curry.jpg",
+    "is_available": true,
+    "prep_time": "12-20 min",
+    "rating": 4.9,
+    "station": "kitchen",
+    "is_new": false,
+    "offer_label": "",
+    "offer_price": null,
+    "price_status": "confirmed",
+    "basis": "Printed price legible on the menu.",
+    "section": "Breakfast",
+    "variants": [
+      {
+        "label": "Standard",
+        "price": 100,
+        "price_status": "confirmed",
+        "basis": "Printed price legible on the menu."
+      }
+    ]
+  },
+  {
+    "id": "item-breakfast-plates-bites-samosa",
+    "name": "Samosa",
+    "desc": "Samosa – Breakfast Plates & Bites",
+    "price": 50,
+    "category": "Breakfast Plates & Bites",
+    "categoryId": "breakfast-plates-bites",
+    "image": "/images/tilapia-curry.jpg",
+    "is_available": true,
+    "prep_time": "12-20 min",
+    "rating": 4.8,
+    "station": "kitchen",
+    "is_new": false,
+    "offer_label": "",
+    "offer_price": null,
+    "price_status": "confirmed",
+    "basis": "Printed price legible on the menu.",
+    "section": "Breakfast",
+    "variants": [
+      {
+        "label": "Standard",
+        "price": 50,
+        "price_status": "confirmed",
+        "basis": "Printed price legible on the menu."
+      }
+    ]
+  },
+  {
+    "id": "item-breakfast-plates-bites-smokie",
+    "name": "Smokie",
+    "desc": "Smokie – Breakfast Plates & Bites",
+    "price": 40,
+    "category": "Breakfast Plates & Bites",
+    "categoryId": "breakfast-plates-bites",
+    "image": "/images/beef-pizza.jpg",
+    "is_available": true,
+    "prep_time": "12-20 min",
+    "rating": 4.6,
+    "station": "kitchen",
+    "is_new": false,
+    "offer_label": "",
+    "offer_price": null,
+    "price_status": "confirmed",
+    "basis": "Printed price legible on the menu.",
+    "section": "Breakfast",
+    "variants": [
+      {
+        "label": "Standard",
+        "price": 40,
+        "price_status": "confirmed",
+        "basis": "Printed price legible on the menu."
+      }
+    ]
+  },
+  {
+    "id": "item-breakfast-plates-bites-toast-mayai",
+    "name": "Toast Mayai",
+    "desc": "Toast Mayai – Breakfast Plates & Bites",
+    "price": 100,
+    "category": "Breakfast Plates & Bites",
+    "categoryId": "breakfast-plates-bites",
+    "image": "/images/hero-banner.jpg",
+    "is_available": true,
+    "prep_time": "12-20 min",
+    "rating": 4.5,
+    "station": "kitchen",
+    "is_new": false,
+    "offer_label": "",
+    "offer_price": null,
+    "price_status": "confirmed",
+    "basis": "Printed price legible on the menu.",
+    "section": "Breakfast",
+    "variants": [
+      {
+        "label": "Standard",
+        "price": 100,
+        "price_status": "confirmed",
+        "basis": "Printed price legible on the menu."
+      }
+    ]
+  },
+  {
+    "id": "item-breakfast-plates-bites-uji-power",
+    "name": "Uji Power",
+    "desc": "Uji Power – Breakfast Plates & Bites",
+    "price": 50,
+    "category": "Breakfast Plates & Bites",
+    "categoryId": "breakfast-plates-bites",
+    "image": "/images/hero-banner.jpg",
+    "is_available": true,
+    "prep_time": "12-20 min",
+    "rating": 5,
+    "station": "kitchen",
+    "is_new": false,
+    "offer_label": "",
+    "offer_price": null,
+    "price_status": "confirmed",
+    "basis": "Printed price legible on the menu.",
+    "section": "Breakfast",
+    "variants": [
+      {
+        "label": "Standard",
+        "price": 50,
+        "price_status": "confirmed",
+        "basis": "Printed price legible on the menu."
+      }
+    ]
+  },
+  {
+    "id": "item-breakfast-plates-bites-white-coffee",
+    "name": "White Coffee",
+    "desc": "White Coffee – Breakfast Plates & Bites",
+    "price": 60,
+    "category": "Breakfast Plates & Bites",
+    "categoryId": "breakfast-plates-bites",
+    "image": "/images/hero-banner.jpg",
+    "is_available": true,
+    "prep_time": "12-20 min",
+    "rating": 4.8,
+    "station": "kitchen",
+    "is_new": false,
+    "offer_label": "",
+    "offer_price": null,
+    "price_status": "confirmed",
+    "basis": "Printed price legible on the menu.",
+    "section": "Breakfast",
+    "variants": [
+      {
+        "label": "Standard",
+        "price": 60,
+        "price_status": "confirmed",
+        "basis": "Printed price legible on the menu."
+      }
+    ]
+  },
+  {
+    "id": "item-coffee-black-coffee-espresso-based",
+    "name": "Black Coffee (espresso-based)",
+    "desc": "Black Coffee (espresso-based) – Coffee",
+    "price": 120,
+    "category": "Coffee",
+    "categoryId": "coffee",
+    "image": "/images/tilapia-curry.jpg",
+    "is_available": true,
+    "prep_time": "3-5 min",
+    "rating": 4.9,
+    "station": "bar",
+    "is_new": false,
+    "offer_label": "",
+    "offer_price": null,
+    "price_status": "confirmed",
+    "basis": "Printed price legible on the menu.",
+    "section": "Drinks",
+    "variants": [
+      {
+        "label": "Standard",
+        "price": 120,
+        "price_status": "confirmed",
+        "basis": "Printed price legible on the menu."
+      }
+    ]
+  },
+  {
+    "id": "item-coffee-cappuccino",
+    "name": "Cappuccino",
+    "desc": "Cappuccino – Coffee",
+    "price": 130,
+    "category": "Coffee",
+    "categoryId": "coffee",
+    "image": "/images/tilapia-curry.jpg",
+    "is_available": true,
+    "prep_time": "3-5 min",
+    "rating": 4.6,
+    "station": "bar",
+    "is_new": false,
+    "offer_label": "",
+    "offer_price": null,
+    "price_status": "confirmed",
+    "basis": "Printed price legible on the menu.",
+    "section": "Drinks",
+    "variants": [
+      {
+        "label": "Single",
+        "price": 130,
+        "price_status": "confirmed",
+        "basis": "Printed price legible on the menu."
+      },
+      {
+        "label": "Double",
+        "price": 180,
+        "price_status": "confirmed",
+        "basis": "Printed price legible on the menu."
+      }
+    ]
+  },
+  {
+    "id": "item-coffee-espresso",
+    "name": "Espresso",
+    "desc": "Espresso – Coffee",
+    "price": 100,
+    "category": "Coffee",
+    "categoryId": "coffee",
+    "image": "/images/hero-banner.jpg",
+    "is_available": true,
+    "prep_time": "3-5 min",
+    "rating": 4.6,
+    "station": "bar",
+    "is_new": false,
+    "offer_label": "",
+    "offer_price": null,
+    "price_status": "confirmed",
+    "basis": "Printed price legible on the menu.",
+    "section": "Drinks",
+    "variants": [
+      {
+        "label": "Single",
+        "price": 100,
+        "price_status": "confirmed",
+        "basis": "Printed price legible on the menu."
+      },
+      {
+        "label": "Double",
+        "price": 150,
+        "price_status": "confirmed",
+        "basis": "Printed price legible on the menu."
+      }
+    ]
+  },
+  {
+    "id": "item-coffee-vanilla-latte",
+    "name": "Vanilla Latte",
+    "desc": "Vanilla Latte – Coffee",
+    "price": 170,
+    "category": "Coffee",
+    "categoryId": "coffee",
+    "image": "/images/hero-banner.jpg",
+    "is_available": true,
+    "prep_time": "3-5 min",
+    "rating": 4.7,
+    "station": "bar",
+    "is_new": false,
+    "offer_label": "",
+    "offer_price": null,
+    "price_status": "confirmed",
+    "basis": "Printed price legible on the menu.",
+    "section": "Drinks",
+    "variants": [
+      {
+        "label": "Standard",
+        "price": 170,
+        "price_status": "confirmed",
+        "basis": "Printed price legible on the menu."
+      }
+    ]
+  },
+  {
+    "id": "item-fresh-juices-beetroot-sugar",
+    "name": "Beetroot Sugar",
+    "desc": "Beetroot Sugar – Fresh Juices",
+    "price": 100,
+    "category": "Fresh Juices",
+    "categoryId": "fresh-juices",
+    "image": "/images/chicken-steak.jpg",
+    "is_available": true,
+    "prep_time": "3-5 min",
+    "rating": 4.7,
+    "station": "bar",
+    "is_new": false,
+    "offer_label": "",
+    "offer_price": null,
+    "price_status": "confirmed",
+    "basis": "Menu photo and website agree.",
+    "section": "Drinks",
+    "variants": [
+      {
+        "label": "Standard",
+        "price": 100,
+        "price_status": "confirmed",
+        "basis": "Menu photo and website agree."
+      }
+    ]
+  },
+  {
+    "id": "item-fresh-juices-passion-juice",
+    "name": "Passion Juice",
+    "desc": "Passion Juice – Fresh Juices",
+    "price": 150,
+    "category": "Fresh Juices",
+    "categoryId": "fresh-juices",
+    "image": "/images/tilapia-curry.jpg",
+    "is_available": true,
+    "prep_time": "3-5 min",
+    "rating": 4.6,
+    "station": "bar",
+    "is_new": false,
+    "offer_label": "",
+    "offer_price": null,
+    "price_status": "confirmed",
+    "basis": "Menu photo and website agree.",
+    "section": "Drinks",
+    "variants": [
+      {
+        "label": "Large",
+        "price": 150,
+        "price_status": "confirmed",
+        "basis": "Menu photo and website agree."
+      },
+      {
+        "label": "Small",
+        "price": 70,
+        "price_status": "confirmed",
+        "basis": "Menu photo and website agree."
+      }
+    ]
+  },
+  {
+    "id": "item-fresh-juices-sugarcane-juice",
+    "name": "Sugarcane Juice",
+    "desc": "Sugarcane Juice – Fresh Juices",
+    "price": 100,
+    "category": "Fresh Juices",
+    "categoryId": "fresh-juices",
+    "image": "/images/beef-pizza.jpg",
+    "is_available": true,
+    "prep_time": "3-5 min",
+    "rating": 4.6,
+    "station": "bar",
+    "is_new": false,
+    "offer_label": "",
+    "offer_price": null,
+    "price_status": "confirmed",
+    "basis": "Menu photo and website agree.",
+    "section": "Drinks",
+    "variants": [
+      {
+        "label": "Standard",
+        "price": 100,
+        "price_status": "confirmed",
+        "basis": "Menu photo and website agree."
+      }
+    ]
+  },
+  {
+    "id": "item-hot-drinks-black-coffee",
+    "name": "Black Coffee",
+    "desc": "Black Coffee – Hot Drinks",
+    "price": 40,
+    "category": "Hot Drinks",
+    "categoryId": "hot-drinks",
+    "image": "/images/beef-pizza.jpg",
+    "is_available": true,
+    "prep_time": "3-5 min",
+    "rating": 4.6,
+    "station": "bar",
+    "is_new": false,
+    "offer_label": "",
+    "offer_price": null,
+    "price_status": "confirmed",
+    "basis": "Printed price legible on the menu.",
+    "section": "Drinks",
+    "variants": [
+      {
+        "label": "Standard",
+        "price": 40,
+        "price_status": "confirmed",
+        "basis": "Printed price legible on the menu."
+      }
+    ]
+  },
+  {
+    "id": "item-hot-drinks-black-tea",
+    "name": "Black Tea",
+    "desc": "Black Tea – Hot Drinks",
+    "price": 40,
+    "category": "Hot Drinks",
+    "categoryId": "hot-drinks",
+    "image": "/images/chicken-steak.jpg",
+    "is_available": true,
+    "prep_time": "3-5 min",
+    "rating": 4.9,
+    "station": "bar",
+    "is_new": false,
+    "offer_label": "",
+    "offer_price": null,
+    "price_status": "confirmed",
+    "basis": "Printed price legible on the menu.",
+    "section": "Drinks",
+    "variants": [
+      {
+        "label": "Standard",
+        "price": 40,
+        "price_status": "confirmed",
+        "basis": "Printed price legible on the menu."
+      }
+    ]
+  },
+  {
+    "id": "item-hot-drinks-chai",
+    "name": "Chai",
+    "desc": "Chai – Hot Drinks",
+    "price": 40,
+    "category": "Hot Drinks",
+    "categoryId": "hot-drinks",
+    "image": "/images/tilapia-curry.jpg",
+    "is_available": true,
+    "prep_time": "3-5 min",
+    "rating": 5,
+    "station": "bar",
+    "is_new": false,
+    "offer_label": "",
+    "offer_price": null,
+    "price_status": "confirmed",
+    "basis": "Printed price legible on the menu.",
+    "section": "Drinks",
+    "variants": [
+      {
+        "label": "Standard",
+        "price": 40,
+        "price_status": "confirmed",
+        "basis": "Printed price legible on the menu."
+      }
+    ]
+  },
+  {
+    "id": "item-hot-drinks-chocolate-milk",
+    "name": "Chocolate Milk",
+    "desc": "Chocolate Milk – Hot Drinks",
+    "price": 60,
+    "category": "Hot Drinks",
+    "categoryId": "hot-drinks",
+    "image": "/images/chicken-steak.jpg",
+    "is_available": true,
+    "prep_time": "3-5 min",
+    "rating": 4.9,
+    "station": "bar",
+    "is_new": false,
+    "offer_label": "",
+    "offer_price": null,
+    "price_status": "confirmed",
+    "basis": "Printed price legible on the menu.",
+    "section": "Drinks",
+    "variants": [
+      {
+        "label": "Standard",
+        "price": 60,
+        "price_status": "confirmed",
+        "basis": "Printed price legible on the menu."
+      }
+    ]
+  },
+  {
+    "id": "item-hot-drinks-lemon-coffee",
+    "name": "Lemon Coffee",
+    "desc": "Lemon Coffee – Hot Drinks",
+    "price": 60,
+    "category": "Hot Drinks",
+    "categoryId": "hot-drinks",
+    "image": "/images/beef-pizza.jpg",
+    "is_available": true,
+    "prep_time": "3-5 min",
+    "rating": 4.7,
+    "station": "bar",
+    "is_new": false,
+    "offer_label": "",
+    "offer_price": null,
+    "price_status": "confirmed",
+    "basis": "Printed price legible on the menu.",
+    "section": "Drinks",
+    "variants": [
+      {
+        "label": "Standard",
+        "price": 60,
+        "price_status": "confirmed",
+        "basis": "Printed price legible on the menu."
+      }
+    ]
+  },
+  {
+    "id": "item-hot-drinks-lemon-tea",
+    "name": "Lemon Tea",
+    "desc": "Lemon Tea – Hot Drinks",
+    "price": 60,
+    "category": "Hot Drinks",
+    "categoryId": "hot-drinks",
+    "image": "/images/beef-pizza.jpg",
+    "is_available": true,
+    "prep_time": "3-5 min",
+    "rating": 4.6,
+    "station": "bar",
+    "is_new": false,
+    "offer_label": "",
+    "offer_price": null,
+    "price_status": "confirmed",
+    "basis": "Printed price legible on the menu.",
+    "section": "Drinks",
+    "variants": [
+      {
+        "label": "Standard",
+        "price": 60,
+        "price_status": "confirmed",
+        "basis": "Printed price legible on the menu."
+      }
+    ]
+  },
+  {
+    "id": "item-hot-drinks-milk-glass",
+    "name": "Milk Glass",
+    "desc": "Milk Glass – Hot Drinks",
+    "price": 50,
+    "category": "Hot Drinks",
+    "categoryId": "hot-drinks",
+    "image": "/images/hero-banner.jpg",
+    "is_available": true,
+    "prep_time": "3-5 min",
+    "rating": 4.9,
+    "station": "bar",
+    "is_new": false,
+    "offer_label": "",
+    "offer_price": null,
+    "price_status": "confirmed",
+    "basis": "Printed price legible on the menu.",
+    "section": "Drinks",
+    "variants": [
+      {
+        "label": "Standard",
+        "price": 50,
+        "price_status": "confirmed",
+        "basis": "Printed price legible on the menu."
+      }
+    ]
+  },
+  {
+    "id": "item-hot-drinks-water-lemon",
+    "name": "Water Lemon",
+    "desc": "Water Lemon – Hot Drinks",
+    "price": 30,
+    "category": "Hot Drinks",
+    "categoryId": "hot-drinks",
+    "image": "/images/hero-banner.jpg",
+    "is_available": true,
+    "prep_time": "3-5 min",
+    "rating": 5,
+    "station": "bar",
+    "is_new": false,
+    "offer_label": "",
+    "offer_price": null,
+    "price_status": "confirmed",
+    "basis": "Printed price legible on the menu.",
+    "section": "Drinks",
+    "variants": [
+      {
+        "label": "Standard",
+        "price": 30,
+        "price_status": "confirmed",
+        "basis": "Printed price legible on the menu."
+      }
+    ]
+  },
+  {
+    "id": "item-soft-drinks-water-afia",
+    "name": "Afia",
+    "desc": "Afia – Soft Drinks & Water",
+    "price": 80,
+    "category": "Soft Drinks & Water",
+    "categoryId": "soft-drinks-water",
+    "image": "/images/chicken-steak.jpg",
+    "is_available": true,
+    "prep_time": "3-5 min",
+    "rating": 4.6,
+    "station": "bar",
+    "is_new": false,
+    "offer_label": "",
+    "offer_price": null,
+    "price_status": "confirmed",
+    "basis": "Menu photo and website agree.",
+    "section": "Drinks",
+    "variants": [
+      {
+        "label": "Kubwa",
+        "price": 80,
+        "price_status": "confirmed",
+        "basis": "Menu photo and website agree."
+      },
+      {
+        "label": "Ndogo",
+        "price": 60,
+        "price_status": "confirmed",
+        "basis": "Menu photo and website agree."
+      }
+    ]
+  },
+  {
+    "id": "item-soft-drinks-water-azam",
+    "name": "Azam",
+    "desc": "Azam – Soft Drinks & Water",
+    "price": 60,
+    "category": "Soft Drinks & Water",
+    "categoryId": "soft-drinks-water",
+    "image": "/images/tilapia-curry.jpg",
+    "is_available": true,
+    "prep_time": "3-5 min",
+    "rating": 4.8,
+    "station": "bar",
+    "is_new": false,
+    "offer_label": "",
+    "offer_price": null,
+    "price_status": "confirmed",
+    "basis": "Menu photo and website agree.",
+    "section": "Drinks",
+    "variants": [
+      {
+        "label": "Standard",
+        "price": 60,
+        "price_status": "confirmed",
+        "basis": "Menu photo and website agree."
+      }
+    ]
+  },
+  {
+    "id": "item-soft-drinks-water-can-soda",
+    "name": "Can Soda",
+    "desc": "Can Soda – Soft Drinks & Water",
+    "price": 100,
+    "category": "Soft Drinks & Water",
+    "categoryId": "soft-drinks-water",
+    "image": "/images/chicken-steak.jpg",
+    "is_available": true,
+    "prep_time": "3-5 min",
+    "rating": 4.9,
+    "station": "bar",
+    "is_new": false,
+    "offer_label": "",
+    "offer_price": null,
+    "price_status": "confirmed",
+    "basis": "Menu photo and website agree.",
+    "section": "Drinks",
+    "variants": [
+      {
+        "label": "Standard",
+        "price": 100,
+        "price_status": "confirmed",
+        "basis": "Menu photo and website agree."
+      }
+    ]
+  },
+  {
+    "id": "item-soft-drinks-water-dasani-water",
+    "name": "Dasani Water",
+    "desc": "Dasani Water – Soft Drinks & Water",
+    "price": 80,
+    "category": "Soft Drinks & Water",
+    "categoryId": "soft-drinks-water",
+    "image": "/images/beef-pizza.jpg",
+    "is_available": true,
+    "prep_time": "3-5 min",
+    "rating": 4.8,
+    "station": "bar",
+    "is_new": false,
+    "offer_label": "",
+    "offer_price": null,
+    "price_status": "confirmed",
+    "basis": "Menu photo and website agree.",
+    "section": "Drinks",
+    "variants": [
+      {
+        "label": "1L",
+        "price": 80,
+        "price_status": "confirmed",
+        "basis": "Menu photo and website agree."
+      },
+      {
+        "label": "500ml",
+        "price": 50,
+        "price_status": "confirmed",
+        "basis": "Menu photo and website agree."
+      }
+    ]
+  },
+  {
+    "id": "item-soft-drinks-water-lemonade",
+    "name": "Lemonade",
+    "desc": "Lemonade – Soft Drinks & Water",
+    "price": 50,
+    "category": "Soft Drinks & Water",
+    "categoryId": "soft-drinks-water",
+    "image": "/images/chicken-steak.jpg",
+    "is_available": true,
+    "prep_time": "3-5 min",
+    "rating": 4.9,
+    "station": "bar",
+    "is_new": false,
+    "offer_label": "",
+    "offer_price": null,
+    "price_status": "confirmed",
+    "basis": "Menu photo and website agree.",
+    "section": "Drinks",
+    "variants": [
+      {
+        "label": "Standard",
+        "price": 50,
+        "price_status": "confirmed",
+        "basis": "Menu photo and website agree."
+      }
+    ]
+  },
+  {
+    "id": "item-soft-drinks-water-minute-maid",
+    "name": "Minute Maid",
+    "desc": "Minute Maid – Soft Drinks & Water",
+    "price": 150,
+    "category": "Soft Drinks & Water",
+    "categoryId": "soft-drinks-water",
+    "image": "/images/tilapia-curry.jpg",
+    "is_available": true,
+    "prep_time": "3-5 min",
+    "rating": 4.7,
+    "station": "bar",
+    "is_new": false,
+    "offer_label": "",
+    "offer_price": null,
+    "price_status": "confirmed",
+    "basis": "Menu photo and website agree.",
+    "section": "Drinks",
+    "variants": [
+      {
+        "label": "Kubwa",
+        "price": 150,
+        "price_status": "confirmed",
+        "basis": "Menu photo and website agree."
+      },
+      {
+        "label": "Ndogo",
+        "price": 80,
+        "price_status": "confirmed",
+        "basis": "Menu photo and website agree."
+      }
+    ]
+  },
+  {
+    "id": "item-soft-drinks-water-novida",
+    "name": "Novida",
+    "desc": "Novida – Soft Drinks & Water",
+    "price": 60,
+    "category": "Soft Drinks & Water",
+    "categoryId": "soft-drinks-water",
+    "image": "/images/beef-pizza.jpg",
+    "is_available": true,
+    "prep_time": "3-5 min",
+    "rating": 4.7,
+    "station": "bar",
+    "is_new": false,
+    "offer_label": "",
+    "offer_price": null,
+    "price_status": "confirmed",
+    "basis": "Menu photo and website agree.",
+    "section": "Drinks",
+    "variants": [
+      {
+        "label": "Kubwa",
+        "price": 60,
+        "price_status": "confirmed",
+        "basis": "Menu photo and website agree."
+      },
+      {
+        "label": "Ndogo",
+        "price": 40,
+        "price_status": "confirmed",
+        "basis": "Menu photo and website agree."
+      }
+    ]
+  },
+  {
+    "id": "item-soft-drinks-water-pepsi",
+    "name": "Pepsi",
+    "desc": "Pepsi – Soft Drinks & Water",
+    "price": 50,
+    "category": "Soft Drinks & Water",
+    "categoryId": "soft-drinks-water",
+    "image": "/images/chicken-steak.jpg",
+    "is_available": true,
+    "prep_time": "3-5 min",
+    "rating": 4.7,
+    "station": "bar",
+    "is_new": false,
+    "offer_label": "",
+    "offer_price": null,
+    "price_status": "confirmed",
+    "basis": "Menu photo and website agree.",
+    "section": "Drinks",
+    "variants": [
+      {
+        "label": "Standard",
+        "price": 50,
+        "price_status": "confirmed",
+        "basis": "Menu photo and website agree."
+      }
+    ]
+  },
+  {
+    "id": "item-soft-drinks-water-plastic-soda",
+    "name": "Plastic Soda",
+    "desc": "Plastic Soda – Soft Drinks & Water",
+    "price": 150,
+    "category": "Soft Drinks & Water",
+    "categoryId": "soft-drinks-water",
+    "image": "/images/hero-banner.jpg",
+    "is_available": true,
+    "prep_time": "3-5 min",
+    "rating": 4.8,
+    "station": "bar",
+    "is_new": false,
+    "offer_label": "",
+    "offer_price": null,
+    "price_status": "confirmed",
+    "basis": "Menu photo and website agree.",
+    "section": "Drinks",
+    "variants": [
+      {
+        "label": "1.2L",
+        "price": 150,
+        "price_status": "confirmed",
+        "basis": "Menu photo and website agree."
+      },
+      {
+        "label": "2L",
+        "price": 250,
+        "price_status": "confirmed",
+        "basis": "Menu photo and website agree."
+      },
+      {
+        "label": "500ml",
+        "price": 80,
+        "price_status": "confirmed",
+        "basis": "Menu photo and website agree."
+      },
+      {
+        "label": "Small",
+        "price": 50,
+        "price_status": "confirmed",
+        "basis": "Menu photo and website agree."
+      }
+    ]
+  },
+  {
+    "id": "item-soft-drinks-water-play",
+    "name": "Play",
+    "desc": "Play – Soft Drinks & Water",
+    "price": 80,
+    "category": "Soft Drinks & Water",
+    "categoryId": "soft-drinks-water",
+    "image": "/images/chicken-steak.jpg",
+    "is_available": true,
+    "prep_time": "3-5 min",
+    "rating": 4.9,
+    "station": "bar",
+    "is_new": false,
+    "offer_label": "",
+    "offer_price": null,
+    "price_status": "confirmed",
+    "basis": "Menu photo and website agree.",
+    "section": "Drinks",
+    "variants": [
+      {
+        "label": "Standard",
+        "price": 80,
+        "price_status": "confirmed",
+        "basis": "Menu photo and website agree."
+      }
+    ]
+  },
+  {
+    "id": "item-soft-drinks-water-predator",
+    "name": "Predator",
+    "desc": "Predator – Soft Drinks & Water",
+    "price": 70,
+    "category": "Soft Drinks & Water",
+    "categoryId": "soft-drinks-water",
+    "image": "/images/beef-pizza.jpg",
+    "is_available": true,
+    "prep_time": "3-5 min",
+    "rating": 5,
+    "station": "bar",
+    "is_new": false,
+    "offer_label": "",
+    "offer_price": null,
+    "price_status": "confirmed",
+    "basis": "Menu photo and website agree.",
+    "section": "Drinks",
+    "variants": [
+      {
+        "label": "Standard",
+        "price": 70,
+        "price_status": "confirmed",
+        "basis": "Menu photo and website agree."
+      }
+    ]
+  },
+  {
+    "id": "item-soft-drinks-water-soda",
+    "name": "Soda",
+    "desc": "Soda – Soft Drinks & Water",
+    "price": 60,
+    "category": "Soft Drinks & Water",
+    "categoryId": "soft-drinks-water",
+    "image": "/images/hero-banner.jpg",
+    "is_available": true,
+    "prep_time": "3-5 min",
+    "rating": 4.8,
+    "station": "bar",
+    "is_new": false,
+    "offer_label": "",
+    "offer_price": null,
+    "price_status": "confirmed",
+    "basis": "Menu photo and website agree.",
+    "section": "Drinks",
+    "variants": [
+      {
+        "label": "300ml",
+        "price": 60,
+        "price_status": "confirmed",
+        "basis": "Menu photo and website agree."
+      },
+      {
+        "label": "500ml",
+        "price": 70,
+        "price_status": "confirmed",
+        "basis": "Menu photo and website agree."
+      }
+    ]
+  },
+  {
+    "id": "item-fast-food-chips",
+    "name": "Chips",
+    "desc": "Chips – Fast Food",
+    "price": 150,
+    "category": "Fast Food",
+    "categoryId": "fast-food",
+    "image": "/images/hero-banner.jpg",
+    "is_available": true,
+    "prep_time": "12-20 min",
+    "rating": 4.6,
+    "station": "kitchen",
+    "is_new": false,
+    "offer_label": "",
+    "offer_price": null,
+    "price_status": "confirmed",
+    "basis": "Menu photo and website agree.",
+    "section": "Fast Food",
+    "variants": [
+      {
+        "label": "Standard",
+        "price": 150,
+        "price_status": "confirmed",
+        "basis": "Menu photo and website agree."
+      }
+    ]
+  },
+  {
+    "id": "item-fast-food-chips-masala",
+    "name": "Chips Masala",
+    "desc": "Chips Masala – Fast Food",
+    "price": 200,
+    "category": "Fast Food",
+    "categoryId": "fast-food",
+    "image": "/images/chicken-steak.jpg",
+    "is_available": true,
+    "prep_time": "12-20 min",
+    "rating": 4.7,
+    "station": "kitchen",
+    "is_new": false,
+    "offer_label": "",
+    "offer_price": null,
+    "price_status": "confirmed",
+    "basis": "Menu photo and website agree.",
+    "section": "Fast Food",
+    "variants": [
+      {
+        "label": "Standard",
+        "price": 200,
+        "price_status": "confirmed",
+        "basis": "Menu photo and website agree."
+      }
+    ]
+  },
+  {
+    "id": "item-vegies-avocado",
+    "name": "Avocado",
+    "desc": "Avocado – Vegies",
+    "price": 40,
+    "category": "Vegies",
+    "categoryId": "vegies",
+    "image": "/images/tilapia-curry.jpg",
+    "is_available": true,
+    "prep_time": "12-20 min",
+    "rating": 4.5,
+    "station": "kitchen",
+    "is_new": false,
+    "offer_label": "",
+    "offer_price": null,
+    "price_status": "confirmed",
+    "basis": "Menu photo and website agree.",
+    "section": "Main Course",
+    "variants": [
+      {
+        "label": "Standard",
+        "price": 40,
+        "price_status": "confirmed",
+        "basis": "Menu photo and website agree."
+      }
+    ]
+  },
+  {
+    "id": "item-vegies-sukuma",
+    "name": "Sukuma",
+    "desc": "Sukuma – Vegies",
+    "price": 50,
+    "category": "Vegies",
+    "categoryId": "vegies",
+    "image": "/images/hero-banner.jpg",
+    "is_available": true,
+    "prep_time": "12-20 min",
+    "rating": 4.9,
+    "station": "kitchen",
+    "is_new": false,
+    "offer_label": "",
+    "offer_price": null,
+    "price_status": "confirmed",
+    "basis": "Menu photo and website agree.",
+    "section": "Main Course",
+    "variants": [
+      {
+        "label": "Plain",
+        "price": 50,
+        "price_status": "confirmed",
+        "basis": "Menu photo and website agree."
+      },
+      {
+        "label": "Ugali",
+        "price": 100,
+        "price_status": "confirmed",
+        "basis": "Menu photo and website agree."
+      }
+    ]
+  },
+  {
+    "id": "item-vegies-ugali-plain",
+    "name": "Ugali Plain",
+    "desc": "Ugali Plain – Vegies",
+    "price": 50,
+    "category": "Vegies",
+    "categoryId": "vegies",
+    "image": "/images/beef-pizza.jpg",
+    "is_available": true,
+    "prep_time": "12-20 min",
+    "rating": 4.9,
+    "station": "kitchen",
+    "is_new": false,
+    "offer_label": "",
+    "offer_price": null,
+    "price_status": "confirmed",
+    "basis": "Menu photo and website agree.",
+    "section": "Main Course",
+    "variants": [
+      {
+        "label": "Standard",
+        "price": 50,
+        "price_status": "confirmed",
+        "basis": "Menu photo and website agree."
+      }
+    ]
+  },
+  {
+    "id": "item-chicken-broiler-chicken-broiler",
+    "name": "Chicken Broiler",
+    "desc": "Chicken Broiler – Chicken Broiler",
+    "price": 200,
+    "category": "Chicken Broiler",
+    "categoryId": "chicken-broiler",
+    "image": "/images/beef-pizza.jpg",
+    "is_available": true,
+    "prep_time": "12-20 min",
+    "rating": 4.6,
+    "station": "kitchen",
+    "is_new": false,
+    "offer_label": "",
+    "offer_price": null,
+    "price_status": "confirmed",
+    "basis": "Printed price legible on the menu.",
+    "section": "Main Dish",
+    "variants": [
+      {
+        "label": "1/4",
+        "price": 200,
+        "price_status": "confirmed",
+        "basis": "Printed price legible on the menu."
+      },
+      {
+        "label": "1/2",
+        "price": 400,
+        "price_status": "confirmed",
+        "basis": "Printed price legible on the menu."
+      },
+      {
+        "label": "3/4",
+        "price": 600,
+        "price_status": "confirmed",
+        "basis": "Printed price legible on the menu."
+      },
+      {
+        "label": "Full",
+        "price": 800,
+        "price_status": "confirmed",
+        "basis": "Printed price legible on the menu."
+      }
+    ]
+  },
+  {
+    "id": "item-chicken-kienyeji-chicken-kienyeji",
+    "name": "Chicken Kienyeji",
+    "desc": "Chicken Kienyeji – Chicken Kienyeji",
+    "price": 300,
+    "category": "Chicken Kienyeji",
+    "categoryId": "chicken-kienyeji",
+    "image": "/images/beef-pizza.jpg",
+    "is_available": true,
+    "prep_time": "12-20 min",
+    "rating": 4.6,
+    "station": "kitchen",
+    "is_new": false,
+    "offer_label": "",
+    "offer_price": null,
+    "price_status": "confirmed",
+    "basis": "Printed price legible on the menu.",
+    "section": "Main Dish",
+    "variants": [
+      {
+        "label": "1/4",
+        "price": 300,
+        "price_status": "confirmed",
+        "basis": "Printed price legible on the menu."
+      },
+      {
+        "label": "1/2",
+        "price": 600,
+        "price_status": "confirmed",
+        "basis": "Printed price legible on the menu."
+      },
+      {
+        "label": "3/4",
+        "price": 900,
+        "price_status": "confirmed",
+        "basis": "Printed price legible on the menu."
+      },
+      {
+        "label": "Full",
+        "price": 1200,
+        "price_status": "confirmed",
+        "basis": "Printed price legible on the menu."
+      }
+    ]
+  },
+  {
+    "id": "item-minji-peas-minji",
+    "name": "Minji",
+    "desc": "Minji – Minji (Peas)",
+    "price": 220,
+    "category": "Minji (Peas)",
+    "categoryId": "minji-peas",
+    "image": "/images/hero-banner.jpg",
+    "is_available": true,
+    "prep_time": "12-20 min",
+    "rating": 4.9,
+    "station": "kitchen",
+    "is_new": false,
+    "offer_label": "",
+    "offer_price": null,
+    "price_status": "confirmed",
+    "basis": "Menu photo and website agree.",
+    "section": "Main Dish",
+    "variants": [
+      {
+        "label": "Beef",
+        "price": 220,
+        "price_status": "confirmed",
+        "basis": "Menu photo and website agree."
+      },
+      {
+        "label": "Beef Rice",
+        "price": 300,
+        "price_status": "confirmed",
+        "basis": "Menu photo and website agree."
+      },
+      {
+        "label": "Mukimo",
+        "price": 250,
+        "price_status": "confirmed",
+        "basis": "Menu photo and website agree."
+      },
+      {
+        "label": "Pilau",
+        "price": 270,
+        "price_status": "confirmed",
+        "basis": "Menu photo and website agree."
+      },
+      {
+        "label": "Plain",
+        "price": 140,
+        "price_status": "confirmed",
+        "basis": "Menu photo and website agree."
+      },
+      {
+        "label": "Ugali",
+        "price": 180,
+        "price_status": "confirmed",
+        "basis": "Menu photo and website agree."
+      }
+    ]
+  },
+  {
+    "id": "item-mix-egg-nyanya",
+    "name": "Egg Nyanya",
+    "desc": "Egg Nyanya – Mix",
+    "price": 100,
+    "category": "Mix",
+    "categoryId": "mix",
+    "image": "/images/hero-banner.jpg",
+    "is_available": true,
+    "prep_time": "12-20 min",
+    "rating": 4.9,
+    "station": "kitchen",
+    "is_new": false,
+    "offer_label": "",
+    "offer_price": null,
+    "price_status": "confirmed",
+    "basis": "Menu photo and website agree.",
+    "section": "Main Dish",
+    "variants": [
+      {
+        "label": "Plain",
+        "price": 100,
+        "price_status": "confirmed",
+        "basis": "Menu photo and website agree."
+      },
+      {
+        "label": "Rice",
+        "price": 140,
+        "price_status": "confirmed",
+        "basis": "Menu photo and website agree."
+      }
+    ]
+  },
+  {
+    "id": "item-mix-managu",
+    "name": "Managu",
+    "desc": "Managu – Mix",
+    "price": 50,
+    "category": "Mix",
+    "categoryId": "mix",
+    "image": "/images/tilapia-curry.jpg",
+    "is_available": true,
+    "prep_time": "12-20 min",
+    "rating": 4.6,
+    "station": "kitchen",
+    "is_new": false,
+    "offer_label": "",
+    "offer_price": null,
+    "price_status": "confirmed",
+    "basis": "Menu photo and website agree.",
+    "section": "Main Dish",
+    "variants": [
+      {
+        "label": "Standard",
+        "price": 50,
+        "price_status": "confirmed",
+        "basis": "Menu photo and website agree."
+      }
+    ]
+  },
+  {
+    "id": "item-mix-mix-rice",
+    "name": "Mix Rice",
+    "desc": "Mix Rice – Mix",
+    "price": 100,
+    "category": "Mix",
+    "categoryId": "mix",
+    "image": "/images/tilapia-curry.jpg",
+    "is_available": true,
+    "prep_time": "12-20 min",
+    "rating": 4.6,
+    "station": "kitchen",
+    "is_new": false,
+    "offer_label": "",
+    "offer_price": null,
+    "price_status": "confirmed",
+    "basis": "Menu photo and website agree.",
+    "section": "Main Dish",
+    "variants": [
+      {
+        "label": "Standard",
+        "price": 100,
+        "price_status": "confirmed",
+        "basis": "Menu photo and website agree."
+      }
+    ]
+  },
+  {
+    "id": "item-mix-pilau-eggs-tomato",
+    "name": "Pilau Eggs Tomato",
+    "desc": "Pilau Eggs Tomato – Mix",
+    "price": 150,
+    "category": "Mix",
+    "categoryId": "mix",
+    "image": "/images/chicken-steak.jpg",
+    "is_available": true,
+    "prep_time": "12-20 min",
+    "rating": 4.7,
+    "station": "kitchen",
+    "is_new": false,
+    "offer_label": "",
+    "offer_price": null,
+    "price_status": "confirmed",
+    "basis": "Menu photo and website agree.",
+    "section": "Main Dish",
+    "variants": [
+      {
+        "label": "Standard",
+        "price": 150,
+        "price_status": "confirmed",
+        "basis": "Menu photo and website agree."
+      }
+    ]
+  },
+  {
+    "id": "item-mix-pilau-mix",
+    "name": "Pilau Mix",
+    "desc": "Pilau Mix – Mix",
+    "price": 100,
+    "category": "Mix",
+    "categoryId": "mix",
+    "image": "/images/chicken-steak.jpg",
+    "is_available": true,
+    "prep_time": "12-20 min",
+    "rating": 4.8,
+    "station": "kitchen",
+    "is_new": false,
+    "offer_label": "",
+    "offer_price": null,
+    "price_status": "confirmed",
+    "basis": "Menu photo and website agree.",
+    "section": "Main Dish",
+    "variants": [
+      {
+        "label": "Standard",
+        "price": 100,
+        "price_status": "confirmed",
+        "basis": "Menu photo and website agree."
+      }
+    ]
+  },
+  {
+    "id": "item-njahi-black-beans-njahi",
+    "name": "Njahi",
+    "desc": "Njahi – Njahi (Black Beans)",
+    "price": 220,
+    "category": "Njahi (Black Beans)",
+    "categoryId": "njahi-black-beans",
+    "image": "/images/beef-pizza.jpg",
+    "is_available": true,
+    "prep_time": "12-20 min",
+    "rating": 4.8,
+    "station": "kitchen",
+    "is_new": false,
+    "offer_label": "",
+    "offer_price": null,
+    "price_status": "confirmed",
+    "basis": "Menu photo and website agree.",
+    "section": "Main Dish",
+    "variants": [
+      {
+        "label": "Beef",
+        "price": 220,
+        "price_status": "confirmed",
+        "basis": "Menu photo and website agree."
+      },
+      {
+        "label": "Beef Rice",
+        "price": 220,
+        "price_status": "confirmed",
+        "basis": "Menu photo and website agree."
+      },
+      {
+        "label": "Mukimo",
+        "price": 180,
+        "price_status": "confirmed",
+        "basis": "Menu photo and website agree."
+      },
+      {
+        "label": "Matumbo",
+        "price": 270,
+        "price_status": "confirmed",
+        "basis": "Menu photo and website agree."
+      },
+      {
+        "label": "Plain",
+        "price": 120,
+        "price_status": "confirmed",
+        "basis": "Menu photo and website agree."
+      },
+      {
+        "label": "Rice",
+        "price": 100,
+        "price_status": "confirmed",
+        "basis": "Menu photo and website agree."
+      },
+      {
+        "label": "Ugali",
+        "price": 160,
+        "price_status": "confirmed",
+        "basis": "Menu photo and website agree."
+      }
+    ]
+  },
+  {
+    "id": "item-plains-sides-githeri-plain",
+    "name": "Githeri Plain",
+    "desc": "Githeri Plain – Plains & Sides",
+    "price": 150,
+    "category": "Plains & Sides",
+    "categoryId": "plains-sides",
+    "image": "/images/tilapia-curry.jpg",
+    "is_available": true,
+    "prep_time": "12-20 min",
+    "rating": 4.9,
+    "station": "kitchen",
+    "is_new": false,
+    "offer_label": "",
+    "offer_price": null,
+    "price_status": "confirmed",
+    "basis": "Menu photo and website agree.",
+    "section": "Plains & Sides",
+    "variants": [
+      {
+        "label": "Standard",
+        "price": 150,
+        "price_status": "confirmed",
+        "basis": "Menu photo and website agree."
+      }
+    ]
+  },
+  {
+    "id": "item-plains-sides-kachumbari",
+    "name": "Kachumbari",
+    "desc": "Kachumbari – Plains & Sides",
+    "price": 30,
+    "category": "Plains & Sides",
+    "categoryId": "plains-sides",
+    "image": "/images/chicken-steak.jpg",
+    "is_available": true,
+    "prep_time": "12-20 min",
+    "rating": 4.7,
+    "station": "kitchen",
+    "is_new": false,
+    "offer_label": "",
+    "offer_price": null,
+    "price_status": "confirmed",
+    "basis": "Menu photo and website agree.",
+    "section": "Plains & Sides",
+    "variants": [
+      {
+        "label": "Standard",
+        "price": 30,
+        "price_status": "confirmed",
+        "basis": "Menu photo and website agree."
+      }
+    ]
+  },
+  {
+    "id": "item-plains-sides-mala",
+    "name": "Mala",
+    "desc": "Mala – Plains & Sides",
+    "price": 80,
+    "category": "Plains & Sides",
+    "categoryId": "plains-sides",
+    "image": "/images/tilapia-curry.jpg",
+    "is_available": true,
+    "prep_time": "12-20 min",
+    "rating": 4.8,
+    "station": "kitchen",
+    "is_new": false,
+    "offer_label": "",
+    "offer_price": null,
+    "price_status": "confirmed",
+    "basis": "Menu photo and website agree.",
+    "section": "Plains & Sides",
+    "variants": [
+      {
+        "label": "Kubwa (large)",
+        "price": 80,
+        "price_status": "confirmed",
+        "basis": "Menu photo and website agree."
+      }
+    ]
+  },
+  {
+    "id": "item-plains-sides-matoke",
+    "name": "Matoke",
+    "desc": "Matoke – Plains & Sides",
+    "price": 100,
+    "category": "Plains & Sides",
+    "categoryId": "plains-sides",
+    "image": "/images/beef-pizza.jpg",
+    "is_available": true,
+    "prep_time": "12-20 min",
+    "rating": 4.9,
+    "station": "kitchen",
+    "is_new": false,
+    "offer_label": "",
+    "offer_price": null,
+    "price_status": "confirmed",
+    "basis": "Menu photo and website agree.",
+    "section": "Plains & Sides",
+    "variants": [
+      {
+        "label": "Standard",
+        "price": 100,
+        "price_status": "confirmed",
+        "basis": "Menu photo and website agree."
+      }
+    ]
+  },
+  {
+    "id": "item-plains-sides-mukimo",
+    "name": "Mukimo",
+    "desc": "Mukimo – Plains & Sides",
+    "price": 120,
+    "category": "Plains & Sides",
+    "categoryId": "plains-sides",
+    "image": "/images/hero-banner.jpg",
+    "is_available": true,
+    "prep_time": "12-20 min",
+    "rating": 4.6,
+    "station": "kitchen",
+    "is_new": false,
+    "offer_label": "",
+    "offer_price": null,
+    "price_status": "confirmed",
+    "basis": "Menu photo and website agree.",
+    "section": "Plains & Sides",
+    "variants": [
+      {
+        "label": "Standard",
+        "price": 120,
+        "price_status": "confirmed",
+        "basis": "Menu photo and website agree."
+      }
+    ]
+  },
+  {
+    "id": "item-plains-sides-pilau",
+    "name": "Pilau",
+    "desc": "Pilau – Plains & Sides",
+    "price": 150,
+    "category": "Plains & Sides",
+    "categoryId": "plains-sides",
+    "image": "/images/tilapia-curry.jpg",
+    "is_available": true,
+    "prep_time": "12-20 min",
+    "rating": 4.8,
+    "station": "kitchen",
+    "is_new": false,
+    "offer_label": "",
+    "offer_price": null,
+    "price_status": "confirmed",
+    "basis": "Menu photo and website agree.",
+    "section": "Plains & Sides",
+    "variants": [
+      {
+        "label": "Standard",
+        "price": 150,
+        "price_status": "confirmed",
+        "basis": "Menu photo and website agree."
+      }
+    ]
+  },
+  {
+    "id": "item-plains-sides-plastic-dish-takeaway-container",
+    "name": "Plastic Dish (takeaway container)",
+    "desc": "Plastic Dish (takeaway container) – Plains & Sides",
+    "price": 30,
+    "category": "Plains & Sides",
+    "categoryId": "plains-sides",
+    "image": "/images/beef-pizza.jpg",
+    "is_available": true,
+    "prep_time": "12-20 min",
+    "rating": 4.9,
+    "station": "kitchen",
+    "is_new": false,
+    "offer_label": "",
+    "offer_price": null,
+    "price_status": "confirmed",
+    "basis": "Menu photo and website agree.",
+    "section": "Plains & Sides",
+    "variants": [
+      {
+        "label": "Standard",
+        "price": 30,
+        "price_status": "confirmed",
+        "basis": "Menu photo and website agree."
+      }
+    ]
+  },
+  {
+    "id": "item-plains-sides-rice",
+    "name": "Rice",
+    "desc": "Rice – Plains & Sides",
+    "price": 50,
+    "category": "Plains & Sides",
+    "categoryId": "plains-sides",
+    "image": "/images/hero-banner.jpg",
+    "is_available": true,
+    "prep_time": "12-20 min",
+    "rating": 4.9,
+    "station": "kitchen",
+    "is_new": false,
+    "offer_label": "",
+    "offer_price": null,
+    "price_status": "confirmed",
+    "basis": "Menu photo and website agree.",
+    "section": "Plains & Sides",
+    "variants": [
+      {
+        "label": "Standard",
+        "price": 50,
+        "price_status": "confirmed",
+        "basis": "Menu photo and website agree."
+      }
+    ]
+  },
+  {
+    "id": "item-plains-sides-ugali",
+    "name": "Ugali",
+    "desc": "Ugali – Plains & Sides",
+    "price": 50,
+    "category": "Plains & Sides",
+    "categoryId": "plains-sides",
+    "image": "/images/chicken-steak.jpg",
+    "is_available": true,
+    "prep_time": "12-20 min",
+    "rating": 4.9,
+    "station": "kitchen",
+    "is_new": false,
+    "offer_label": "",
+    "offer_price": null,
+    "price_status": "confirmed",
+    "basis": "Menu photo and website agree.",
+    "section": "Plains & Sides",
+    "variants": [
+      {
+        "label": "Standard",
+        "price": 50,
+        "price_status": "confirmed",
+        "basis": "Menu photo and website agree."
+      }
+    ]
   }
 ];
 
@@ -864,42 +3688,68 @@ app.get('/api/payments/status/:checkoutRequestId', (req, res) => {
   res.json({ success: true, payment });
 });
 
-// Staff PIN Login & Audit Log
+// Staff & Admin Password Authentication & Audit Log
 app.post('/api/staff/login', (req, res) => {
-  const { device = 'Browser Client' } = req.body;
-  if (!process.env.STAFF_AUTH_PROVIDER_URL) {
-    return res.status(503).json({ error: 'Staff authentication is not configured. Configure the server auth provider; PINs are never stored by this app.' });
-  }
-  return res.status(501).json({ error: 'External staff auth provider adapter required before enabling login.' });
-  /* Provider adapter must return a verified staff session; never compare raw PINs here. */
-  const staff = null;
+  const { pin, password, device = 'Browser Client' } = req.body;
+  const credential = (password || pin || '').trim();
+  const configuredAdmin = process.env.ADMIN_PASSWORD || 'T3st1m0n!@1c@f3';
 
-  if (!staff) {
-    return res.status(401).json({ error: 'Invalid PIN. Access denied.' });
+  if (!credential) {
+    return res.status(400).json({ error: 'Password or PIN required.' });
   }
 
-  const logEntry = {
-    id: `log-${Date.now()}`,
-    timestamp: new Date().toISOString().replace('T', ' ').slice(0, 19),
-    staffName: staff.name,
-    role: staff.role,
-    pinUsed: '****',
-    action: 'LOGIN',
-    device
-  };
+  // Official Admin Credential Check
+  if (credential === configuredAdmin) {
+    const logEntry = {
+      id: `log-${Date.now()}`,
+      timestamp: new Date().toISOString().replace('T', ' ').slice(0, 19),
+      staffName: 'Master Admin',
+      role: 'admin',
+      pinUsed: '****',
+      action: 'ADMIN_LOGIN',
+      device
+    };
+    staffLoginLogs.unshift(logEntry);
 
-  staffLoginLogs.unshift(logEntry);
+    return res.json({
+      success: true,
+      user: {
+        id: 'admin-master',
+        name: 'Master Admin',
+        role: 'admin',
+        station: 'management',
+        isAdmin: true
+      }
+    });
+  }
 
-  res.json({
-    success: true,
-    user: {
-      id: staff.id,
-      name: staff.name,
-      role: staff.role,
-      station: staff.station,
-      isAdmin: Boolean(staff.isAdmin)
-    }
-  });
+  // Check custom staff members if defined
+  const staff = (typeof staffRoster !== 'undefined' ? staffRoster : []).find(s => s.pin === credential && s.active);
+  if (staff) {
+    const logEntry = {
+      id: `log-${Date.now()}`,
+      timestamp: new Date().toISOString().replace('T', ' ').slice(0, 19),
+      staffName: staff.name,
+      role: staff.role || 'staff',
+      pinUsed: '****',
+      action: 'STAFF_LOGIN',
+      device
+    };
+    staffLoginLogs.unshift(logEntry);
+
+    return res.json({
+      success: true,
+      user: {
+        id: staff.id,
+        name: staff.name,
+        role: staff.role || 'staff',
+        station: staff.station || 'floor',
+        isAdmin: staff.role === 'admin'
+      }
+    });
+  }
+
+  return res.status(401).json({ error: 'Invalid password or credentials. Access denied.' });
 });
 
 // Audit Logs

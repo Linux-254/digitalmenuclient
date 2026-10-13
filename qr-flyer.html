@@ -327,7 +327,7 @@
   <!-- WiFi (optional) -->
   <div class="wifi-strip" style="margin: 16px 32px 0; width: calc(100% - 64px)">
     <span>Free Wi-Fi:</span>
-    <strong>ShambaHouse_Guest</strong>
+    <strong>TestimonialCafe_Guest</strong>
     <span>· No password</span>
   </div>
 
@@ -352,7 +352,8 @@
     document.getElementById('flyer-table-number').textContent = tableNum;
     document.getElementById('flyer-table-zone').textContent = zone + ' Area · Scan once — stays open';
 
-    const origin = window.location.origin && window.location.origin !== 'null' ? window.location.origin : 'https://dijimenu.vercel.app';
+    const isLocal = !window.location.hostname || window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1';
+    const origin = isLocal ? 'https://dijimenu.vercel.app' : (window.location.origin || 'https://dijimenu.vercel.app');
     const targetUrl = origin + '/?table=' + tableNum + '&zone=' + encodeURIComponent(zone);
     document.getElementById('flyer-footer-url').textContent = targetUrl;
 

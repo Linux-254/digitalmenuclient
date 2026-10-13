@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Testimonial Cafe · Table QR Flyer</title>
+  <title>Shamba House · Table QR Flyer</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap" rel="stylesheet" />
   <style>
@@ -264,7 +264,7 @@
   <!-- Top hero section -->
   <div class="flyer-top">
     <p class="venue-label">Westlands · Nairobi · Est. 2024</p>
-    <h1 class="venue-name">Testimonial<br><em>Cafe.</em></h1>
+    <h1 class="venue-name">Shamba<br><em>House.</em></h1>
     <p class="venue-sub">SOCIAL HOUSE &amp; KITCHEN</p>
   </div>
 
@@ -327,7 +327,7 @@
   <!-- WiFi (optional) -->
   <div class="wifi-strip" style="margin: 16px 32px 0; width: calc(100% - 64px)">
     <span>Free Wi-Fi:</span>
-    <strong>Testimony_Guest</strong>
+    <strong>TestimonialCafe_Guest</strong>
     <span>· No password</span>
   </div>
 
@@ -352,7 +352,8 @@
     document.getElementById('flyer-table-number').textContent = tableNum;
     document.getElementById('flyer-table-zone').textContent = zone + ' Area · Scan once — stays open';
 
-    const origin = window.location.origin && window.location.origin !== 'null' ? window.location.origin : 'https://dijimenu.vercel.app';
+    const isLocal = !window.location.hostname || window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1';
+    const origin = isLocal ? 'https://dijimenu.vercel.app' : (window.location.origin || 'https://dijimenu.vercel.app');
     const targetUrl = origin + '/?table=' + tableNum + '&zone=' + encodeURIComponent(zone);
     document.getElementById('flyer-footer-url').textContent = targetUrl;
 
