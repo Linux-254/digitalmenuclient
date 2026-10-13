@@ -888,8 +888,7 @@
     <div class="form-group">
       <label>Payment Method</label>
       <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;">
-        <button class="btn-secondary" style="border:2px solid var(--primary);font-weight:700;" id="pay-method-mpesa">M-Pesa STK</button>
-        <button class="btn-secondary" id="pay-method-card">Card / POS</button>
+        <button class="btn-secondary" style="border:2px solid var(--primary);font-weight:700;" id="pay-method-mpesa">M-Pesa STK</button>`r`n        <button class="btn-secondary" id="pay-method-cash">Cash</button>
       </div>
     </div>
 
@@ -897,6 +896,14 @@
       <label>M-Pesa Phone Number</label>
       <input type="tel" class="form-control" id="customer-phone" value="+254 712 345 678" />
       <small style="color:var(--dash-muted);font-size:11px;">A secure STK prompt will appear on your phone.</small>
+    </div>
+
+    <div class="form-group" id="cash-waiter-field-group" style="display:none;">
+      <label>Serving Waiter (Cash Record)</label>
+      <select class="form-control" id="cash-serving-waiter">
+        <option value="">� Select waiter handling cash �</option>
+      </select>
+      <small style="color:var(--dash-muted);font-size:11px;">Cash payments are logged with the receiving waiter for audit.</small>
     </div>
 
     <button class="btn-primary" style="width:100%;justify-content:center;" id="btn-submit-order">
@@ -1067,27 +1074,7 @@
   </div>
 </div>
 
-      <div class="form-group">
-        <label>Description *</label>
-        <textarea class="form-control" id="dish-crud-desc" rows="2" placeholder="Description, cooking style, key ingredients..." required></textarea>
-      </div>
-
-      <div class="form-group">
-        <label>Dish Image (URL or Upload)</label>
-        <input type="text" class="form-control" id="dish-crud-image-url" placeholder="https://images.unsplash.com/... or choose file below" />
-        <div style="margin-top:6px;display:flex;align-items:center;gap:10px;">
-          <input type="file" id="dish-crud-image-file" accept="image/*" style="font-size:12px;color:var(--dash-muted);" />
-          <span style="font-size:11px;color:var(--dash-muted);">Local file upload</span>
-        </div>
-      </div>
-
-      <div style="display:flex;gap:10px;margin-top:20px;">
-        <button type="button" class="btn-secondary" style="flex:1;justify-content:center;" id="btn-cancel-dish-crud">Cancel</button>
-        <button type="submit" class="btn-primary" style="flex:2;justify-content:center;" id="btn-save-dish-crud">Save Dish</button>
-      </div>
-    </form>
-  </div>
-</div>
+      
 
 <!-- ═══════════════════════════════════════════
      MODAL: CREATE / EDIT PROMOTION (Item 4)

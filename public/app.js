@@ -3359,8 +3359,10 @@ let staffRoster = [
 // ── Application State ──
 let activeCategory = 'All';
 let guestActiveCategory = 'All';
+let guestCurrentPage = 1;
+const GUEST_ITEMS_PER_PAGE = 10;
 let cart = []; // Array of { id, name, price, qty, spice, side, notes }
-let currentView = 'dashboard'; // 'dashboard' or 'guest'
+let currentView = 'guest'; // 'dashboard' or 'guest'
 let currentDashPanel = 'home';
 const staffSession = window.__STAFF_SESSION__ || null;
 const DEMO_STAFF = { admin: '2407', staff: '1102' };
@@ -3681,6 +3683,8 @@ function initTableSessionFromUrl() {
 
 // ── Initialize App ──
 document.addEventListener('DOMContentLoaded', () => {
+  initTableSessionFromUrl();
+  setView('guest');
   renderDashboardCategories();
   renderDashboardDishes();
   renderStaffRoster();
@@ -4194,10 +4198,17 @@ function renderGuestDishes() {
   }).join('');
 }
 
+window.changeGuestPage = function(delta) {
+  guestCurrentPage = Math.max(1, guestCurrentPage + delta);
+  renderGuestDishes();
+  document.getElementById('guest-category-bar')?.scrollIntoView({ behavior: 'smooth' });
+};
+
 window.filterToCategory = function(catName) {
   guestActiveCategory = catName;
-  renderGuestCategories();
-  renderGuestDishes();
+    guestCurrentPage = 1; // reset page
+    renderGuestCategories();
+    renderGuestDishes();
   window.scrollTo({ top: 120, behavior: 'smooth' });
 };
 

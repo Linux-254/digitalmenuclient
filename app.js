@@ -3359,13 +3359,19 @@ let staffRoster = [
 // ── Application State ──
 let activeCategory = 'All';
 let guestActiveCategory = 'All';
+let guestCurrentPage = 1;
+const GUEST_ITEMS_PER_PAGE = 10;
 let cart = []; // Array of { id, name, price, qty, spice, side, notes }
-let currentView = 'dashboard'; // 'dashboard' or 'guest'
+let currentView = 'guest'; // 'dashboard' or 'guest'
 let currentDashPanel = 'home';
-const staffSession = window.__STAFF_SESSION__ || null;
-const DEMO_STAFF = { admin: '2407', staff: '1102' };
-const hasAdminSession = () => Boolean(staffSession && ['admin','manager'].includes(staffSession.role));
-const demoRole = pin => pin === DEMO_STAFF.admin ? 'admin' : pin === DEMO_STAFF.staff ? 'staff' : null;
+// -- Auth State (server-verified, persistent via sessionStorage) --
+let staffSession = null;
+try {
+  const saved = sessionStorage.getItem('testimony_staff_session');
+  if (saved) staffSession = JSON.parse(saved);
+} catch(e) {}
+const hasAdminSession = () => Boolean(staffSession && ['admin','manager','Admin','Manager'].includes(staffSession.role));
+const isAuthenticated = () => Boolean(staffSession && staffSession.id);
 let selectedDishForCustomization = null;
 let currentCustomSpice = 'Medium';
 let currentCustomSide = 'Hand-Cut Fries';
@@ -3681,6 +3687,8 @@ function initTableSessionFromUrl() {
 
 // ── Initialize App ──
 document.addEventListener('DOMContentLoaded', () => {
+  initTableSessionFromUrl();
+  setView('guest');
   renderDashboardCategories();
   renderDashboardDishes();
   renderStaffRoster();
@@ -4194,10 +4202,17 @@ function renderGuestDishes() {
   }).join('');
 }
 
+window.changeGuestPage = function(delta) {
+  guestCurrentPage = Math.max(1, guestCurrentPage + delta);
+  renderGuestDishes();
+  document.getElementById('guest-category-bar')?.scrollIntoView({ behavior: 'smooth' });
+};
+
 window.filterToCategory = function(catName) {
   guestActiveCategory = catName;
-  renderGuestCategories();
-  renderGuestDishes();
+    guestCurrentPage = 1; // reset page
+    renderGuestCategories();
+    renderGuestDishes();
   window.scrollTo({ top: 120, behavior: 'smooth' });
 };
 
@@ -4816,15 +4831,42 @@ function setupEventListeners() {
     $('#modal-staff-pin')?.classList.remove('active');
   });
 
-  $('#btn-unlock-staff-gate')?.addEventListener('click', () => {
-    const pin = $('#gate-pin-input')?.value;
-    if (hasAdminSession() || demoRole(pin)) {
-      $('#modal-staff-pin')?.classList.remove('active');
-      setView('dashboard');
-      showToast('Demo Staff Dashboard Unlocked');
-    } else {
+  $('#btn-unlock-staff-gate')?.addEventListener('click', async () => {
+    const credential = $('#gate-pin-input')?.value?.trim();
+    if (!credential) { $('#gate-pin-error').style.display = 'block'; return; }
+    const btn = $('#btn-unlock-staff-gate');
+    if (btn) { btn.disabled = true; btn.textContent = 'Verifying...'; }
+    try {
+      const apiBase = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1'
+        ? `http://${window.location.hostname}:3002` : '';
+      const res = await fetch(`\/api/staff/login`, {
+        method: 'POST', headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ password: credential, device: navigator.userAgent.slice(0,40) })
+      });
+      const data = await res.json().catch(() => ({}));
+      if (res.ok && data.success && data.user) {
+        staffSession = data.user;
+        try { sessionStorage.setItem('testimony_staff_session', JSON.stringify(data.user)); } catch(e) {}
+        loggedInUser = { id: data.user.id, name: data.user.name, role: data.user.role, station: data.user.station, isAdmin: data.user.isAdmin };
+        loginAuditLog.unshift({ id: 'log-'+Date.now(), timestamp: new Date().toLocaleString(), staffName: data.user.name, role: data.user.role, pinUsed: '****', action: 'LOGIN', device: 'Browser' });
+        updateDashboardUserHeader();
+        $('#modal-staff-pin')?.classList.remove('active');
+        setView('dashboard');
+        showToast(`Welcome, ${data.user.name}! Logged in as ${data.user.role}`);
+      } else {
+        $('#gate-pin-error').style.display = 'block';
+        $('#gate-pin-error').textContent = data.error || 'Invalid credentials. Access denied.';
+      }
+    } catch(err) {
       $('#gate-pin-error').style.display = 'block';
+      $('#gate-pin-error').textContent = 'Server unreachable. Check connection.';
+    } finally {
+      if (btn) { btn.disabled = false; btn.textContent = 'Unlock Staff Dashboard'; }
     }
+  });
+
+  $('#gate-pin-input')?.addEventListener('keydown', (e) => {
+    if (e.key === 'Enter') $('#btn-unlock-staff-gate')?.click();
   });
 
   // Close modals
