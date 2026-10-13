@@ -81,7 +81,14 @@ self.addEventListener('fetch', (event) => {
           .catch(() => {});
         return cachedResponse;
       }
-      return fetch(event.request);
+      return fetch(event.request).catch(async () => {
+        const cached = await caches.match(event.request);
+        if (cached) return cached;
+        if (event.request.mode === 'navigate' || event.request.destination === 'document') {
+          return (await caches.match('/index.html')) || (await caches.match('/'));
+        }
+        return new Response('', { status: 200, statusText: 'OK' });
+      });
     })
   );
 });

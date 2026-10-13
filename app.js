@@ -3666,6 +3666,8 @@ function checkGuestBrowserLocation() {
 }
 
 function initTableSessionFromUrl() {
+  // Dismiss any lingering table selector modal if URL or QR defines table
+  $('#modal-guest-table-select')?.classList.remove('active');
   const urlParams = new URLSearchParams(window.location.search);
 
   // Check /t/:token path routing (e.g. from physical QR stands)
@@ -3689,8 +3691,9 @@ function initTableSessionFromUrl() {
     const matched = tables.find(t => String(t.num).padStart(2, '0') === formattedNum);
     const resolvedZone = zoneParam || (matched ? matched.zone : 'Terrace');
     setActiveTableSession(formattedNum, resolvedZone, false);
+    $('#modal-guest-table-select')?.classList.remove('active');
     setView('guest');
-    showToast(`Welcome! You are seated at Table ${formattedNum} (${resolvedZone}) · Tableside Menu`);
+    showToast(`Connected to Table ${formattedNum} (${resolvedZone}) · Order sent directly to kitchen`);
     return;
   }
 
@@ -4415,6 +4418,36 @@ window.toggleCartModal = function(forceState) {
   const shouldOpen = typeof forceState === 'boolean' ? forceState : !modal.classList.contains('active');
   if (shouldOpen) {
     renderCartModalItems();
+
+  // Render Desktop Cart Panel (Image 2)
+  const dtContainer = document.getElementById('desktop-cart-items-container');
+  const dtTotal = document.getElementById('desktop-cart-total-amount');
+  if (dtTotal) dtTotal.textContent = `KES ${totalPrice.toLocaleString()}`;
+  if (dtContainer) {
+    if (cart.length === 0) {
+      dtContainer.innerHTML = `
+        <div style="text-align:center;padding:24px 10px;color:var(--guest-muted);font-size:12px;">
+          <p style="margin:0 0 4px;font-weight:600;color:var(--guest-ink);">Your order is empty</p>
+          <small>Add delicious plates or drinks to send to kitchen</small>
+        </div>
+      `;
+    } else {
+      dtContainer.innerHTML = cart.map((item, idx) => `
+        <div style="display:flex;justify-content:space-between;align-items:center;padding:10px 0;border-bottom:1px solid var(--guest-border);font-size:12px;">
+          <div style="flex:1;">
+            <strong style="color:var(--guest-ink);display:block;font-size:13px;">${item.qty}x ${item.name}</strong>
+            <span style="color:var(--brand-lime);font-weight:700;">KES ${(item.price * item.qty).toLocaleString()}</span>
+          </div>
+          <div style="display:flex;align-items:center;gap:6px;">
+            <button type="button" style="width:26px;height:26px;border-radius:6px;border:1px solid var(--guest-border);background:var(--guest-surface);color:var(--guest-ink);font-weight:800;cursor:pointer;" onclick="changeCartItemQty(${idx}, -1)">-</button>
+            <span style="font-weight:800;min-width:16px;text-align:center;">${item.qty}</span>
+            <button type="button" style="width:26px;height:26px;border-radius:6px;border:1px solid var(--guest-border);background:var(--guest-surface);color:var(--guest-ink);font-weight:800;cursor:pointer;" onclick="changeCartItemQty(${idx}, 1)">+</button>
+          </div>
+        </div>
+      `).join('');
+    }
+  }
+
     modal.classList.add('active');
   } else {
     modal.classList.remove('active');
@@ -4691,7 +4724,7 @@ function submitTableOrder() {
   showDedicatedOrderConfirmation(orderRecord);
 
   // Refresh floor map in background
-  renderFloorMap();
+  if (typeof renderFloorMap === 'function') { renderFloorMap(); } else if (typeof window.renderFloorMap === 'function') { window.renderFloorMap(); }
   showToast(`${currentOrderDiningType === 'takeaway' ? 'Takeaway' : 'Dine-in'} order #${orderNum} placed; changes are available for 5 minutes. Attendant ${assignedWaiterName} assigned to Table ${activeTableSession.num}.`);
 }
 
@@ -4793,7 +4826,7 @@ window.cancelOrderedItemInGraceWindow = function(orderId, itemIndex) {
 
     showToast(`Cancelled ${item.name}. KES ${refundAmount.toLocaleString()} deducted.`);
     showDedicatedOrderConfirmation(order);
-    renderFloorMap();
+    if (typeof renderFloorMap === 'function') { renderFloorMap(); } else if (typeof window.renderFloorMap === 'function') { window.renderFloorMap(); }
   }
 };
 
@@ -4802,6 +4835,115 @@ window.cancelOrderedItemInGraceWindow = function(orderId, itemIndex) {
 // ═══════════════════════════════════════════
 
 function setupEventListeners() {
+
+  // Cash vs M-Pesa selection
+  const selectCashPay = () => {
+    $('#pay-method-cash')?.classList.add('active-pay-method');
+    $('#pay-method-cash').style.border = '2px solid var(--primary)';
+    $('#pay-method-cash').style.color = 'var(--primary)';
+    $('#pay-method-mpesa')?.classList.remove('active-pay-method');
+    $('#pay-method-mpesa').style.border = '1px solid var(--dash-border)';
+    $('#pay-method-mpesa').style.color = '';
+    if ($('#phone-field-group')) $('#phone-field-group').style.display = 'none';
+    if ($('#cash-waiter-field-group')) $('#cash-waiter-field-group').style.display = 'block';
+    const subBtn = $('#btn-submit-order');
+    if (subBtn) subBtn.textContent = 'Confirm Cash Order & Send to Kitchen';
+  };
+
+  const selectMpesaPay = () => {
+    $('#pay-method-mpesa')?.classList.add('active-pay-method');
+    $('#pay-method-mpesa').style.border = '2px solid var(--primary)';
+    $('#pay-method-mpesa').style.color = 'var(--primary)';
+    $('#pay-method-cash')?.classList.remove('active-pay-method');
+    $('#pay-method-cash').style.border = '1px solid var(--dash-border)';
+    $('#pay-method-cash').style.color = '';
+    if ($('#phone-field-group')) $('#phone-field-group').style.display = 'block';
+    if ($('#cash-waiter-field-group')) $('#cash-waiter-field-group').style.display = 'none';
+    const subBtn = $('#btn-submit-order');
+    if (subBtn) subBtn.textContent = 'Pay via M-Pesa & Send to Kitchen';
+  };
+
+  document.addEventListener('click', (e) => {
+    if (e.target.closest('#pay-method-cash')) selectCashPay();
+    if (e.target.closest('#pay-method-mpesa')) selectMpesaPay();
+  });
+
+
+
+  // Subtabs in Menu Catalog
+  $('#tab-menu-dishes')?.addEventListener('click', () => {
+    $('.menu-tab-btn').forEach(b => b.classList.remove('active'));
+    $('#tab-menu-dishes')?.classList.add('active');
+    if ($('#subview-menu-dishes')) $('#subview-menu-dishes').style.display = 'block';
+    if ($('#subview-menu-categories')) $('#subview-menu-categories').style.display = 'none';
+    if ($('#subview-menu-stations')) $('#subview-menu-stations').style.display = 'none';
+    renderMenuCatalogCategories();
+    renderMenuCatalogDishes();
+  });
+
+  $('#tab-menu-categories')?.addEventListener('click', () => {
+    $('.menu-tab-btn').forEach(b => b.classList.remove('active'));
+    $('#tab-menu-categories')?.classList.add('active');
+    if ($('#subview-menu-dishes')) $('#subview-menu-dishes').style.display = 'none';
+    if ($('#subview-menu-categories')) $('#subview-menu-categories').style.display = 'block';
+    if ($('#subview-menu-stations')) $('#subview-menu-stations').style.display = 'none';
+    if (typeof renderCategoriesManager === 'function') renderCategoriesManager();
+  });
+
+  $('#tab-menu-stations')?.addEventListener('click', () => {
+    $('.menu-tab-btn').forEach(b => b.classList.remove('active'));
+    $('#tab-menu-stations')?.classList.add('active');
+    if ($('#subview-menu-dishes')) $('#subview-menu-dishes').style.display = 'none';
+    if ($('#subview-menu-categories')) $('#subview-menu-categories').style.display = 'none';
+    if ($('#subview-menu-stations')) $('#subview-menu-stations').style.display = 'block';
+    if (typeof renderStationsManager === 'function') renderStationsManager();
+  });
+
+  // Add buttons in Menu Catalog header
+  $('#btn-menu-add-station')?.addEventListener('click', () => {
+    if ($('#station-crud-id')) $('#station-crud-id').value = '';
+    if ($('#station-crud-name')) $('#station-crud-name').value = '';
+    if ($('#station-crud-printer')) $('#station-crud-printer').value = '';
+    $('#modal-station-crud')?.classList.add('active');
+  });
+
+  $('#btn-menu-add-category')?.addEventListener('click', () => {
+    if ($('#cat-crud-id')) $('#cat-crud-id').value = '';
+    if ($('#cat-crud-name')) $('#cat-crud-name').value = '';
+    if ($('#cat-crud-desc')) $('#cat-crud-desc').value = '';
+    $('#modal-category-crud')?.classList.add('active');
+  });
+
+  $('#btn-close-category-crud')?.addEventListener('click', () => {
+    $('#modal-category-crud')?.classList.remove('active');
+  });
+  $('#btn-cancel-category-crud')?.addEventListener('click', () => {
+    $('#modal-category-crud')?.classList.remove('active');
+  });
+
+  $('#btn-close-station-crud')?.addEventListener('click', () => {
+    $('#modal-station-crud')?.classList.remove('active');
+  });
+  $('#btn-cancel-station-crud')?.addEventListener('click', () => {
+    $('#modal-station-crud')?.classList.remove('active');
+  });
+
+
+
+  // Logo acts as hidden Staff OS Gateway
+  const handleLogoStaffLogin = () => {
+    const input = document.getElementById('gate-pin-input');
+    if (input) input.value = '';
+    const err = document.getElementById('gate-pin-error');
+    if (err) err.style.display = 'none';
+    const modal = document.getElementById('modal-staff-pin');
+    if (modal) modal.classList.add('active');
+    input?.focus();
+  };
+  document.getElementById('guest-logo-staff-trigger')?.addEventListener('click', handleLogoStaffLogin);
+  document.querySelector('.guest-brand-logo')?.addEventListener('click', handleLogoStaffLogin);
+
+
   // Topbar mode toggles
   $('#tab-dash-view')?.addEventListener('click', () => setView('dashboard'));
   $('#tab-guest-view')?.addEventListener('click', () => setView('guest'));
@@ -5089,7 +5231,7 @@ function setupEventListeners() {
     // Special panel hydration
     if (currentDashPanel === 'home') renderTodaySnapshot();
     if (currentDashPanel === 'floor') {
-      renderFloorMap();
+      if (typeof renderFloorMap === 'function') { renderFloorMap(); } else if (typeof window.renderFloorMap === 'function') { window.renderFloorMap(); }
       renderTableQrManager();
     }
     if (currentDashPanel === 'staff') {
@@ -5294,6 +5436,15 @@ function setupEventListeners() {
 
   // ── Menu Catalog Panel Renderer ──
   function renderMenuCatalogCategories() {
+
+    const countDishes = document.getElementById('count-menu-dishes');
+    if (countDishes) countDishes.textContent = menuItems.length;
+    const countCats = document.getElementById('count-menu-categories');
+    if (countCats) countCats.textContent = dynamicCategories.filter(c => c !== 'All').length;
+    const countStations = document.getElementById('count-menu-stations');
+    if (countStations) countStations.textContent = (typeof stations !== 'undefined' ? stations.length : 5);
+
+
     const rail = document.getElementById('category-rail-menu');
     if (!rail) return;
     const dynamicCategories = getDynamicCategoryList();
@@ -5346,7 +5497,7 @@ function setupEventListeners() {
           <p>${item.desc}</p>
           <div class="dish-meta-row">
             <div>
-              <div class="dish-price">KES ${item.offer_price ? item.offer_price.toLocaleString() : item.price.toLocaleString()}</div>
+              <div class="dish-price">KES ${(item.offer_price != null ? item.offer_price : (item.price != null ? item.price : (item.starting_price != null ? item.starting_price : 0))).toLocaleString()}</div>
               <div class="dish-prep-time">
                 <svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
                 <span>${item.prep_time}</span>
@@ -5462,7 +5613,7 @@ function setupEventListeners() {
   };
 
   // ── Floor Map & Table QR Code Renderer (Item 1, 2, 5 & Merge Tables) ──
-  function renderFloorMap() {
+  function renderFloorMap() { window.renderFloorMap = renderFloorMap;
     const grid = document.getElementById('floor-map-grid');
     if (!grid) return;
 
@@ -5885,7 +6036,7 @@ function setupEventListeners() {
 
     $('#modal-merge-tables')?.classList.remove('active');
     showToast(`Tables ${pTable.num} & ${sTable.num} merged! Total capacity: ${pTable.capacity} seats with unified billing.`);
-    renderFloorMap();
+    if (typeof renderFloorMap === 'function') { renderFloorMap(); } else if (typeof window.renderFloorMap === 'function') { window.renderFloorMap(); }
     renderTableQrManager();
   }
 
@@ -5921,7 +6072,7 @@ function setupEventListeners() {
     sTable.waiter = 'Unassigned';
 
     showToast(`Tables ${pTable.num} and ${sTable.num} separated. Table ${sTable.num} is now FREE and available.`);
-    renderFloorMap();
+    if (typeof renderFloorMap === 'function') { renderFloorMap(); } else if (typeof window.renderFloorMap === 'function') { window.renderFloorMap(); }
     renderTableQrManager();
   };
 
@@ -5934,7 +6085,7 @@ function setupEventListeners() {
       session.status = 'confirmed';
       updateTableOverallStatus(table);
       showToast(`Arrival Confirmed for ${session.partyName} at Table ${table.num}! Ordering unlocked.`);
-      renderFloorMap();
+      if (typeof renderFloorMap === 'function') { renderFloorMap(); } else if (typeof window.renderFloorMap === 'function') { window.renderFloorMap(); }
       updateGuestArrivalBanner();
     }
   };
@@ -6093,7 +6244,7 @@ function setupEventListeners() {
         table.status = nextStatus;
         showToast(`Table ${table.num} status changed to ${nextStatus.toUpperCase()}`);
         openTableQrModal(table.num);
-        renderFloorMap();
+        if (typeof renderFloorMap === 'function') { renderFloorMap(); } else if (typeof window.renderFloorMap === 'function') { window.renderFloorMap(); }
       };
     }
 
@@ -6417,7 +6568,7 @@ function setupEventListeners() {
       } else {
         if (mapSec) mapSec.style.display = 'block';
         if (qrSec) qrSec.style.display = 'none';
-        renderFloorMap();
+        if (typeof renderFloorMap === 'function') { renderFloorMap(); } else if (typeof window.renderFloorMap === 'function') { window.renderFloorMap(); }
       }
     });
   });
@@ -6467,7 +6618,7 @@ function setupEventListeners() {
 
     $('#modal-add-table')?.classList.remove('active');
     showToast(`Table ${formattedNum} (${zone}, ${capacity} seats) created with unique QR code!`);
-    renderFloorMap();
+    if (typeof renderFloorMap === 'function') { renderFloorMap(); } else if (typeof window.renderFloorMap === 'function') { window.renderFloorMap(); }
     renderTableQrManager();
   });
 
@@ -6663,7 +6814,7 @@ function setupEventListeners() {
 
     showToast(`Cash payment of KES ${tableTotal.toLocaleString()} confirmed received by ${cashierName} at ${timestamp}!`);
     $('#modal-cash-confirm')?.classList.remove('active');
-    renderFloorMap();
+    if (typeof renderFloorMap === 'function') { renderFloorMap(); } else if (typeof window.renderFloorMap === 'function') { window.renderFloorMap(); }
     renderTodaySnapshot();
   });
 
@@ -6749,7 +6900,7 @@ function setupEventListeners() {
       t.status = 'available';
       t.sessions = [];
     }
-    renderFloorMap();
+    if (typeof renderFloorMap === 'function') { renderFloorMap(); } else if (typeof window.renderFloorMap === 'function') { window.renderFloorMap(); }
   });
 
   // ── Customer Post-Payment Rating & Feedback Modal ──
@@ -7043,7 +7194,7 @@ function renderFloorZoneFilters() {
 window.filterFloorMapByZone = function(zoneName) {
   window.activeFloorZoneFilter = zoneName;
   renderFloorZoneFilters();
-  renderFloorMap();
+  if (typeof renderFloorMap === 'function') { renderFloorMap(); } else if (typeof window.renderFloorMap === 'function') { window.renderFloorMap(); }
 };
 
 window.openCreateDiningZoneModal = function() {

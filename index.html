@@ -8,6 +8,7 @@
   <meta property="og:title" content="Testimonial Cafe · Testimony OS &amp; Digital Menu" />
   <meta property="og:description" content="Testimonial Cafe — Modern tableside dining with live kitchen routing, QR-first guest menu, and SambaPOS bridge." />
   <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="mobile-web-app-capable" content="yes" />
   <link rel="icon" type="image/png" href="/favicon.png" />
   <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -119,7 +120,7 @@
     <!-- Dedicated Guest Topbar (Clean tableside header) -->
     <header class="guest-topbar" id="guest-topbar" style="display:none;" aria-label="Tableside Guest Header">
       <div class="guest-topbar-brand">
-        <div class="guest-brand-logo" style="background:transparent;padding:0;display:flex;align-items:center;">
+        <div class="guest-brand-logo" id="guest-logo-staff-trigger" style="background:transparent;padding:0;display:flex;align-items:center;cursor:pointer;" title="Testimony Cafeteria · Tap for Staff Login">
           <img src="/images/logo.png" alt="Testimony Cafeteria" style="height:32px;width:auto;object-fit:contain;" />
         </div>
         <div class="guest-brand-text">
@@ -145,10 +146,7 @@
           <span class="guest-cart-count" id="guest-cart-count">0</span>
           <span id="guest-cart-sum">KES 0</span>
         </button>
-        <button class="btn-staff-gate" id="btn-staff-gate" title="Staff &amp; Admin Dashboard Access" style="display:inline-flex !important;background:var(--primary);color:#fff;border:none;font-weight:700;">
-          <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
-          <span>Staff OS</span>
-        </button>
+        
       </div>
     </header>
 
@@ -731,10 +729,7 @@
             <h2 id="guest-header-table-title">Table 04 · Garden Terrace</h2>
             <p>Welcome to Testimony Cafeteria — Handcrafted fresh dining</p>
           </div>
-          <button class="btn-staff-gate" id="btn-guest-staff-gate" title="Staff OS Access" style="display:inline-flex !important;background:var(--primary);color:#fff;border:none;font-weight:700;padding:8px 14px;border-radius:20px;cursor:pointer;gap:6px;align-items:center;">
-            <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
-            <span>Staff OS</span>
-          </button>
+          
         </div>
 
         <!-- Full-width rounded search bar sitting directly under header -->
@@ -1397,7 +1392,7 @@
     <p class="modal-subtitle">Staff &amp; Admin Password Authentication</p>
 
     <div class="form-group" style="margin-bottom:12px;">
-      <input type="password" class="form-control" id="gate-pin-input" style="text-align:center;font-size:16px;letter-spacing:1px;font-weight:700;" />
+      <form onsubmit="event.preventDefault();" style="margin:0;padding:0;"><input type="password" class="form-control" id="gate-pin-input" style="text-align:center;font-size:16px;letter-spacing:1px;font-weight:700;" /></form>
       <small style="color:var(--status-danger);font-size:11px;display:none;margin-top:6px;" id="gate-pin-error">Authentication required; PINs are verified server-side</small>
     </div>
 
@@ -1447,7 +1442,7 @@
 
     <div class="form-group">
       <label for="admin-pin-input">Admin session verification</label>
-      <input type="password" class="form-control" id="admin-pin-input" placeholder="Enter Admin Password" autocomplete="current-password" />
+      <form onsubmit="event.preventDefault();" style="margin:0;padding:0;"><input type="password" class="form-control" id="admin-pin-input" placeholder="Enter Admin Password" autocomplete="current-password" /></form>
     </div>
 
     <button class="btn-primary" style="width:100%;justify-content:center;" id="btn-save-new-dish">
@@ -1495,7 +1490,7 @@
 
     <div class="form-group">
       <label for="new-staff-pin">Staff access is provisioned securely</label>
-      <input type="password" class="form-control" id="new-staff-pin" placeholder="Managed by Staff OS" maxlength="4" />
+      <form onsubmit="event.preventDefault();" style="margin:0;padding:0;"><input type="password" class="form-control" id="new-staff-pin" placeholder="Managed by Staff OS" maxlength="4" /></form>
     </div>
 
     <div class="form-group">
@@ -1505,7 +1500,7 @@
 
     <div class="form-group">
       <label for="staff-admin-pin-verify">Admin session verification</label>
-      <input type="password" class="form-control" id="staff-admin-pin-verify" placeholder="Enter Admin Password" autocomplete="current-password" />
+      <form onsubmit="event.preventDefault();" style="margin:0;padding:0;"><input type="password" class="form-control" id="staff-admin-pin-verify" placeholder="Enter Admin Password" autocomplete="current-password" /></form>
     </div>
 
     <button class="btn-primary" style="width:100%;justify-content:center;" id="btn-save-new-staff">

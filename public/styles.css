@@ -1,3 +1,18 @@
+
+/* Prevent side-to-side shifting on mobile devices */
+html, body {
+  overflow-x: hidden !important;
+  max-width: 100vw !important;
+  width: 100% !important;
+  box-sizing: border-box;
+}
+.app-shell, .main-wrapper, .dash-container, .guest-menu-container {
+  overflow-x: hidden !important;
+  max-width: 100% !important;
+  width: 100% !important;
+  box-sizing: border-box;
+}
+
 /* ═══════════════════════════════════════════════
    DIGITAL MENU — SHAMBA HOUSE TABLESIDE OS
    Typography: Fanfarrón (Display) · Milano Perla (Editorial Accent) · Inter (UI)
